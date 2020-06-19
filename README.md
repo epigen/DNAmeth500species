@@ -24,6 +24,5 @@ Generation of the phylogenetic tree for iTOl, it's optimization for future analy
 
 ```bash
 Rscript 00.3_create_ITOL.R
-#vizualize
 Rscript 00.31_species_order.R
 ```
