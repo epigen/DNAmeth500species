@@ -3,7 +3,7 @@ mkdir  $LOGDIR/compEpi/
 #!/bin/bash
 
 #SBATCH --job-name compEpiQC
-#SBATCH --output $LOGDIR/compEpi/00.21_%j\A_%a.txt
+#SBATCH --output $LOGDIR/compEpi/00.21_%A_%a.txt
 #SBATCH --partition shortq
 #SBATCH --mem 80000
 #SBATCH --cpus-per-task=16
