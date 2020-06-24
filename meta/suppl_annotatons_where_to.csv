@@ -1,0 +1,139 @@
+﻿;column_list;level;level correction (to double check)/comment;New name
+1;Fortlaufende Nr;sample;individual;
+2;Patho-Nr;individual;;Internal ID
+3;scientific_name;species;;Scientific name
+4;blast_species2;sample;sample;BLAST hit 1
+5;blast_species1;sample;sample;BLAST hit 2
+6;Sample_Name_unif;not included;;
+7;Sample_Name;sample;;Sample ID
+8;species;species;merge by;Species abbreviation
+9;total_reads;sample;;Total reads
+10;mapped_reads;sample;;Mapped reads
+11;mapping_efficiency;sample;;Mapping efficiency
+12;informative_reads;sample;;
+13;CpG_meth;sample;;Average CpG methylation
+14;avg_meth;sample;don't use because confusing;
+15;CpG_measurements;sample;don't use because confusing;
+16;coveredCpGs;sample;;Covered CpGs
+17;conversionRate;sample;;Conversion rate (non-CpG Cs)
+18;k1_unmeth;sample;calculate 1- value;Conversion rate (unmethylated spike-in)
+19;k3_meth;sample;calculate 1- value;Conversion rate (methylated spike-in)
+20;totalMeasurements_k1;sample;;
+21;totalMeasurements_k3;sample;;
+22;total_reads_untrimmed;sample;;
+23;[CT]GG;sample;;
+24;CGG;sample;;CGG reads (%)
+25;TGG;sample;;TGG reads (%)
+26;[CT]GA;sample;;
+27;CGA;sample;;CGA reads (%)
+28;TGA;sample;;TGA reads (%)
+29;others;sample;;Prefragmentation (%)
+30;all_bases_Mio;sample;;
+31;As;sample;;
+32;Ts;sample;;
+33;Cs;sample;;
+34;Gs;sample;;
+35;Ns;sample;;
+36;perc_As;sample;;Adenines (%)
+37;perc_Ts;sample;;Thymines (%)
+38;perc_Cs;sample;;Cytosines (%)
+39;perc_Gs;sample;;Guanines (%)
+40;perc_Ns;sample;;Ns(%)
+41;fragments_ref;species;;Deduced reference fragments
+42;fragments_uncovered;sample;;
+43;fragments_uncovered_perc;sample;;
+44;max_cont_sp;sample;;Top contaminating species
+45;max_cont;sample;;
+46;cont;sample;;
+47;cont_rat;sample;;Contamination rate
+48;blast_count1;sample;;
+49;blast_count2;sample;;
+50;mean_overlap;sample;;Mean CpG overlap
+51;min_overlap;sample;;Minimum CpG overlap
+52;max_overlap;sample;;Maximum CpG overlap
+53;conversion_type;sample;;Converion status
+54;res_mapRate_nonMotifReads;sample;;
+55;min_overlap_perc;sample;;Minimum CpG overlap (%)
+56;max_overlap_perc;sample;;Maximum CpG overlap (%)
+57;V1;not included;;
+58;English;species;;Common name
+59;Tierart;species;;
+60;sex;individual;;Sex
+61;age;individual;;Age
+62;Entnahme;individual;;Dissection date
+63;Tissue;sample;;Tissue
+64;Well_y;sample;;
+65;Well_x;sample;;
+66;DNA (ng/Âµl);sample;;
+67;Volume (Âµl);sample;;
+68;DNA prep date;sample;;DNA isolation date
+69;comment;not included;;
+70;Box;not included;;
+71;RRBS-status;not included;;
+72;Experiment ID;not included;;
+73;pre-BC_CT;sample;;
+74;Enrichment cycles;sample;;PCR enrichment cycles
+75;Pool;sample;;
+76;Adapter;sample;;Adapter
+77;FlowCell;sample;;Flowcell
+78;lane;sample;;Lane
+79;renamed;not included;;
+80;Experiment_new lib prep;not included;;
+81;pre-BC CT_uc;sample;;
+82;Adapter_uc;sample;;Adapter unconverted
+83;unconverted;sample;;
+84;renamed_uc;sample;;
+85;Experiment_unconverted;sample;;
+86;enrichtment_uc;sample;;PCR enrichment cycles (unconverted)
+87;Flowcell_uc;sample;;Flowcell unconverted
+88;lane_uc;sample;;Lane unconverted
+89;abbreviation_sp;not included;;
+90;replicate;individual;merge by + species;Replicate
+91;ncbi_name;species;;NCBI scientific name
+92;ncbi_id;species;;NCBI ID
+93;ncbi_order;species;;NCBI order
+94;ncbi_class;species;;NCBI class
+95;ncbi_group;species;;NCBI group
+96;ncbi_id_blastS1;sample;;
+97;ncbi_name_blastS1;sample;;
+98;ncbi_id_blastS2;sample;;
+99;ncbi_name_blastS2;sample;;
+100;lowest_common_blastS1;sample;;BLAST hit 1 (lowest common rank)
+101;lowest_common_blastS2;sample;;BLAST hit 2 (lowest common rank)
+102;max_lowest_common;sample;;Best lowest common rank
+103;Female maturity (days);individual;These are all annotations from another publication and per Species;
+104;Male maturity (days);individual;We didn't use them as far as I know;
+105;Gestation/Incubation (days);sample;So we can leave them out;
+106;Weaning (days);sample;;
+107;Litter/Clutch size;sample;;
+108;Litters/Clutches per year;sample;;
+109;Inter-litter/Interbirth interval;sample;;
+110;Birth weight (g);individual;;
+111;Weaning weight (g);individual;;
+112;Adult weight (g);individual;;
+113;Growth rate (1/days);individual;;
+114;Maximum longevity (yrs);species;;
+115;Specimen origin;species;;
+116;Sample size;sample;;
+117;Data quality;sample;;
+118;IMR (per yr);individual;;
+119;MRDT (yrs);individual;;
+120;Metabolic rate (W);individual;;
+121;Body mass (g);species;;
+122;Temperature (K);species;;
+123;preservation;individual;;Preservation
+124;Diagnosis;individual;;Disease
+125;color_class;species;;Practical class
+126;color;not included;;
+127;mapping_efficiency_qual_tier;not included;;
+128;coveredCpGs_qual_tier;not included;;
+129;conversionRate_qual_tier;not included;;
+130;k1_unmeth_qual_tier;not included;;
+131;k3_meth_qual_tier;not included;;
+132;others_qual_tier;not included;;
+133;fragments_uncovered_perc_qual_tier;not included;;
+134;cont_rat_qual_tier;not included;;
+135;max_lowest_common_qual_tier;not included;;
+136;max_qual_tier;not included;;
+137;mean_qual_tier;not included;;
+138;species_check;not included;sample;Species confirmation
