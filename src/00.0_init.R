@@ -76,11 +76,11 @@ core_inv <- c("Muscle","Tube_feet","Tentacle","Arm","Gills","Gonad","Pharynx")
 core_vert <- c("Liver","Heart","Brain","Spleen","Muscle","Gills","Fin")
 
 #paths (have to be updated)
-RefFreeDMA_dir = "/data/groups/lab_bock/jklughammer/gitRepos/RefFreeDMA_public/"
-convCtr_dir = "/data/groups/lab_bock/jklughammer/gitRepos/RefFreeDMA_public/auxiliary/conversionCtr/"
-BSF_dir = "/scratch/lab_bsf/samples/"
+RefFreeDMA_dir = <your path to RefFreeDMA>
+convCtr_dir = <???>
+BSF_dir = <your path to samples>
 
-data_dir = "/scratch/lab_bock/shared/projects/compEpi/"
+data_dir = <your path where to stire the data>
 source_dir = file.path(Sys.getenv("CODEBASE"),"DNAmeth500species")
 rrbs_dir = "toSelf_filtered_0.08mm_final_concat"
 
