@@ -9,8 +9,9 @@ In general, scripts can be divided into two categories - ones, that have to be r
 Additionaly, two enviromnental variables are required:  
 CODEBASE
 LOGDIR
-### 00: preparing to run the pipeline on raw data
 
+
+### 00: preparing to run the pipeline on raw data
 Preparing to run RefFreeDMA, if you want to repeat the steps from the raw data
 ```bash
 Rscript 00.1_prepareRefFreeDMA.R 
@@ -48,7 +49,7 @@ sbatch sbatch/01.8.sbatch
 ```
 
 ### 02: Main statisctics
-Following scripts perform statistical analysis and generate summary plots,giving us an overview of the data
+Following scripts perform statistical analysis and generate summary plots,giving us an overview of the data  
 02.1_stats_uc.R  
 02.2_stats_general.R  
 02.3_stats_detail.R  
@@ -59,8 +60,20 @@ Saving the supplementary tables and the stats for the data
 ```bash
 Rscript 02.6_save_annot.R
 ```
-### 03: Recinstructing phylogeny
-### 04: Explaining mean DNA methylation
+
+
+### 03: Explaining mean DNA methylation
+Step-by-step exploring features, that explain mean DNA methylation level per species
+```bash
+Rscript 03.1_prediction_features.R ##creating a table of features
+Rscript 03.2_kmer_predictability_by_group.R ##prediction values for each group, takes a couple of hours
+Rscript 03.3_kmer3_stability.R ##stepwise selection on 3mers, takes a while
+```
+### 04: Reconstructing phylogeny
+Using kmer frequencies to create a hierarchical clustering of species, based on their sequence composition
+```bash
+Rscript 04.1_phylogeny_reconstruction.R
+```
 ### 05: Prediction of DNA methylation from sequence
 With-in species DNA methylation prediction
 ```bash
@@ -80,6 +93,7 @@ Rscript 05.5_summary_cross_species_prediction.R
 ```
 
 ### 06: Investigating the invertiness
+First, we confirm the observed effect with additional experiments on subsets of data in a tissue-specific and in 
 ### 07: TFBS analysis across species and tissues
 ### 08: Tissue-specific DNA methylation
 
