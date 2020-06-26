@@ -93,7 +93,53 @@ Rscript 05.5_summary_cross_species_prediction.R
 ```
 
 ### 06: Investigating the invertiness
-First, we confirm the observed effect with additional experiments on subsets of data in a tissue-specific and in 
-### 07: TFBS analysis across species and tissues
-### 08: Tissue-specific DNA methylation
+Identifying the species, that we classify as "inverted":
+```bash
+Rscript 06.1_inverted.R
+```
+Than, we confirm the observed effect with additional experiments on subsets of data in a tissue-specific and via performing subsampling:
+```bash
+sbatch sbatch/06.2.1.sbatch <candidate species>
+sbatch sbatch/06.2.2.sbatch <candidate species>
+sbatch sbatch/06.2.3.sbatch <candidate species>
+Rscript 06.2_verify_inv_summary.R
+```
+Analysing the frequencies of kmers specifically in high/low methylated sequences:
+!!first two scripts require additional specification of the data_dir path
+```bash
+python 06.3.1_to_fasta_for_kmer_count.py
+sbatch 06.3.2.sbatch #runs on all the species, where classes contain inverted
+RScript 06.3_freq_kmers.R
+```
+And summarizing all the knowledge, oriented on the WHH species
+```
+Rscript 06.4_explore_inverted_final_WHH.R
+```
 
+### 07: TFBS analysis across species and tissues
+As a preparation, the JASPAR matrix of all the TF profiles has to be downloaded: http://jaspar.genereg.net/downloads/
+We used the non-redundant vertebrate TFBS set.
+First, for each species we calculate frequencies of each TFBS in deduced reference fragments.
+```bash
+sbatch sbatch/07.1.sbatch
+sbatch sbatch/07.2.sbatch
+Rscript 07.3_TFBS_summary.R
+```
+
+Than we run differential methylation analysis and motif enrichment in tissue-specific manner:
+(make sure you have ame installed)
+```bash
+sbatch sbatch/07.4.1.sbatch
+sbatch sbatch/07.4.2.sbatch
+Rscript 07.4.ame_summary.R
+```
+
+Than on the enriched we are running specific analysis:
+For integrating the methylation preference specificity step, we used the data from (reference and how we share it? link?)
+```bash
+Rscript 07.5_ame_selex.R
+Rscript 07.6_GO.R
+Rscript 07.7_GO.R
+
+### 08: Tissue-specific DNA methylation
+<Johanna?>
