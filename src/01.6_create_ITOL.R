@@ -69,10 +69,10 @@ make_stats_per_species=function(stats){
 #include unranked taxa
 #expand all (might need manual expanding to make sure all are expanded)
 #cat(na.omit(unique(stats_annot$ncbi_id)),file="species_list_ncbiID.txt",sep="\n") #only do once
-
+#save tree as species_tree_unranked.phy in the meta directory
 
 #read tree to set NCBI ids and fix internal nodes
-tree=readLines(paste0("species_tree_unranked.phy"))
+tree=readLines(paste0(source_dir, "/meta/species_tree_unranked.phy"))
 tree=paste0(gsub("'","",tree),collapse="")
 writeLines(tree,con="species_tree_unranked_names.phy")
 
