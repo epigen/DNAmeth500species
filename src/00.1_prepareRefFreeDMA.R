@@ -1,3 +1,5 @@
+#convenience script to run RefFreeDMA on a lot of species. It sets up the directory structure, and produces config and annotation files as well as execution scripts.
+
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 
 wd=processed_dir
