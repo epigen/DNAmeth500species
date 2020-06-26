@@ -1,0 +1,58 @@
+---
+title: "colors"
+output: html_document
+---
+
+
+```{r colors}
+library(RColorBrewer)
+colors<-c("Actinopteri"="#e31a1c","Reptilia"="#6a3d9a","Aves"="#ff7f00","Chondrichthyes"="#fb9a99","Invertebrata"="#cfcfcf","Mammalia"="#1f78b4","Amphibia"="#33a02c","Marsupialia"="#a6cee3")
+```
+
+```{r}
+update_colors<-function(start, end, N=30){
+  colfunc<-colorRampPalette(c(start,end))
+  return(c(colfunc(N)[10], colfunc(N)[25]))
+}
+```
+
+
+
+```{r pressure, echo=FALSE}
+colors_new<-c()
+newc<-update_colors(colors[["Actinopteri"]], colors[["Chondrichthyes"]])
+#reds - Actinopteri & Chondrichthytes
+
+colors_new[["Actinopteri"]]<-newc[[1]]
+colors_new[["Chondrichthyes"]]<-newc[[2]]
+
+#blues Mammalia & Marsupials
+newc<-update_colors(colors[["Mammalia"]], colors[["Marsupialia"]])
+colors_new[["Mammalia"]]<-newc[[1]]
+colors_new[["Marsupialia"]]<-newc[[2]]
+
+#orange Bird 
+newc<-update_colors(colors[["Aves"]], "#fdbf6f")
+colors_new[["Aves"]]<-newc[[1]]
+
+#green - amfibia (Intuitive, cause frogs are green)
+newc<-update_colors(colors[["Amphibia"]], "#b2df8a")
+colors_new[["Amphibia"]]<-newc[[1]]
+
+#purple - Reptillia
+newc<-update_colors(colors[["Reptilia"]], "#cab2d6")
+colors_new[["Reptilia"]]<-newc[[1]]
+
+colors_new[["Invertebrata"]]<-colors[["Invertebrata"]]
+```
+
+
+```{r}
+#blues - Mammalia & Marsupials
+plot(rep(1,8),col=unname(tissue_colors),pch=19,cex=3)
+```
+
+```{r}
+colors_new
+```
+
