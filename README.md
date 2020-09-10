@@ -6,18 +6,19 @@ In general, scripts can be divided into two categories: Those that have to be rn
 ## Reproducing the project step-by-step
 ### Adapting to your setup
 00.0_init.R is the script, to initialize all further scripts, it will standardize setting, make annotations availble, and set paths to data and scripts. Few absolute paths need to be adjusted and two enviromnental variables are required:  
-CODEBASE (location of this github repository)
-LOGDIR (location for pipelen log files)
+```
+CODEBASE (location of this github repository) 
+LOGDIR (location for pipelen log files) 
+```
 
-
-### 00: preparing to run the pipeline on raw data
+### 00: Preparing to run the pipeline on raw data
 Preparing to run RefFreeDMA, if you want to start from the raw data. This will prepare the run folders and shell scripts containing the commands to run RefFeeDMA.
 If run in interactive mode stats can be checked and parameters can be adjusted.
 ```bash
 Rscript 00.1_prepareRefFreeDMA.R 
 ```
-### 01: creating a comprehensive sample annotation table
-Following scripts will generate some additional data metrics, that are used in most subsequent analysis.
+### 01: Creating a comprehensive sample annotation table
+Following scripts will generate some additional data metrices, that are used in most subsequent analysis.
 Here we create the big summary annotation table and other initial stats:
 ```bash
 Rscript 01.1_collectStats.R
@@ -25,7 +26,7 @@ RScript 01.2_taxonomicAnnotation.R. #generates the stats annot table
 RScript 01.3_quality_stratification.R
 ```
 
-Calcualating the frequency of CGs for future analysis:
+Calcualating the frequency of CGs for subsequent analysis:
 ```
 Rscript 01.4_dedRef_CpG_count.R  ##takes a while
 ```
@@ -48,13 +49,15 @@ Calculating the CpG island properties:
 sbatch sbatch/01.8.sbatch 
 ```
 
-### 02: Main statisctics
+### 02: Main statistics
 Following scripts create summary statistics and generate summary plots, giving us an overview of the data  
-02.1_stats_uc.R  
-02.2_stats_general.R  
-02.3_stats_detail.R  
-02.4_stats_location.R  
-02.5_stats_methylation.R  
+```bash
+Rscript 02.1_stats_uc.R  
+Rscript 02.2_stats_general.R  
+Rscript 02.3_stats_detail.R  
+Rscript 02.4_stats_location.R  
+Rscript 02.5_stats_methylation.R  
+```
 
 Saving the supplementary tables and the stats for the paper
 ```bash
@@ -74,7 +77,7 @@ Using kmer frequencies to create a hierarchical clustering of species, based on 
 ```bash
 Rscript 04.1_phylogeny_reconstruction.R
 ```
-### 05: Prediction of DNA methylation from sequence
+### 05: Predicting DNA methylation from sequence
 With-in species DNA methylation prediction
 ```bash
 sbatch sbatch/05.1.sbatch: repeated on k 1:10, k = 3, k = 4, k = 7
@@ -97,14 +100,14 @@ Identifying the species, that we classify as "inverted":
 ```bash
 Rscript 06.1_inverted.R
 ```
-Than, we confirm the observed effect with additional experiments on subsets of data (by tissue, individual, and random subsampling)
+Confirm the observed effect with additional experiments on subsets of data (by tissue, individual, and random sub-sampling)
 ```bash
 sbatch sbatch/06.2.1.sbatch <candidate species>
 sbatch sbatch/06.2.2.sbatch <candidate species>
 sbatch sbatch/06.2.3.sbatch <candidate species>
 Rscript 06.2_verify_inv_summary.R
 ```
-Analysing the frequencies of kmers specifically in highly/lowly methylated sequences:
+Analysing the frequencies of kmers/repeats specifically in highly/lowly methylated sequences:
 !!first two scripts require additional specification of the data_dir path
 ```bash
 python 06.3.1_to_fasta_for_kmer_count.py
@@ -141,7 +144,7 @@ Rscript 07.5_ame_selex.R
 Rscript 07.6_GO.R
 Rscript 07.7_GO.R
 ```
-### 08: Investigate sources of within-species DNA methylation variability
+### 08: Investigating sources of within-species DNA methylation variability
 Multidimensional scaling analysis for selected species
 ```bash
 Rscript 08.1_tissue_MDS.R
@@ -151,4 +154,7 @@ Comparison of DNA methylation variability due to tissue and individual
 Rscript 08.2_tissue_correlation.R
 Rscript 08.3_tissue_distance.R
 ```
+Create correlation plots between liver and heart DNA methylattion levels for selected species
+```bash
 08.4_tissue_diffMeth.R
+```
