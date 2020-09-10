@@ -80,7 +80,7 @@ Rscript 04.1_phylogeny_reconstruction.R
 ### 05: Predicting DNA methylation from sequence
 With-in species DNA methylation prediction
 ```bash
-sbatch sbatch/05.1.sbatch: repeated on k 1:10, k = 3, k = 4, k = 7
+sbatch sbatch/05.1.sbatch ##repeated on k 1:10, k = 3, k = 4, k = 7
 Rscript 05.2_summarize_within_sp_prediction.R
 Rscript 05.3_feature_weights_analysis.R
 ```
@@ -138,7 +138,7 @@ Rscript 07.4.ame_summary.R
 ```
 
 Follow-up on enriched TFBS:
-For integrating the methylation preference specificity step, we used the data from (reference and how we share it? link?)
+For integrating the methylation preference for TF binding, we used the data from (reference and how we share it? link?)
 ```bash
 Rscript 07.5_ame_selex.R
 Rscript 07.6_GO.R
