@@ -10,6 +10,14 @@ In general, scripts can be divided into two categories: Those that have to be rn
 CODEBASE (location of this github repository) 
 LOGDIR (location for pipelen log files) 
 ```
+#### Preparation
+Make sure, you have all the nessesary packages in R:
+1. For data processing, set up RefFreeDMA and bisulfiteBlast,a s described in corresponding repositories:
+https://github.com/jklughammer/RefFreeDMA 
+https://github.com/jklughammer/bisulfiteBlast
+
+2. for the analysis install the following packages via install.packages or bioconductor:
+simpleCache, parallel, Rsamtools, data.table, dplyr, tidyr, ggplot2, ggrepel, ggseqlogo, pheatmap, ComplexHeatmap, circlize, ape, ggtree, taxize, phylobase, tidytree, maps, dummies, MASS, boot, magrittr, corrplot, caret, LiblineaR, rr2, ggdendro, phylolm, dendextend, mclust, kebabs, ROCR, seqLogo, pheatmap, ggseqlogo, treeio, pryr, tibble, msa, ggubr, Biostrings, RColorBrewer, plyr, TFBSTools, JASPAR2014, GenomicRanges, topGO, biomaRt, MASS, stringr
 
 ### 00: Preparing to run the pipeline on raw data
 Preparing to run RefFreeDMA, if you want to start from the raw data. This will prepare the run folders and shell scripts containing the commands to run RefFeeDMA.
