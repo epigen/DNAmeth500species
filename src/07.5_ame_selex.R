@@ -10,7 +10,7 @@ head(ans)
 
 
 ##reading the selex data (Yin et al, S. table 3)
-selex <- read.csv("../resources/Selex_data.csv", skip = 20, header = 21, sep = ";")
+selex <- read.csv(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/meta/Selex_data.csv", skip = 20, header = 21, sep = ";") ## data from the paper Yin et al
 head(selex)
 
 length(intersect(row.names(ans), selex$TF.name))
