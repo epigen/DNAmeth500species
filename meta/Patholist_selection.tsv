@@ -1532,7 +1532,7 @@ V1	Fortlaufende Nr	Patho-Nr	English	Tierart	scientific_name	sex	age	Entnahme	Tis
 1535	3207	AC/692/14	Weasel 	Wiesel	Mustela	m	adult	18.08.2014	Liver		NA	WEA_1_L	29,0	100	14.10.2016	well E8 column damaged --> precipitation	3	prepped	AK33	9,88	12	3	TruSeq LT Index 4	285	2								NA	NA	NA
 1536	3249	AC/742/14	Weasel 	Wiesel	Mustela	m	adult	08.09.2014	Heart	E	9	WEA_2_H	13,9	100	14.10.2016		16	prepped	AK33	11,40	12	5	TruSeq LT Index 5	285	4					WEA_2_H_uc		AK_uc_34	7	425	2
 1537	3249	AC/742/14	Weasel 	Wiesel	Mustela	m	adult	08.09.2014	Liver	E	10	WEA_2_L	82,8	100	14.10.2016		16	prepped	AK33	10,62	12	5	TruSeq LT Index 6	285	4								NA	NA	NA
-1538	3266	AC/768/14	Chicken	Sulmtaler Huhn	Gallus gallus	f	juvenil	23.09.2014	Heart	E	11	CHK_4_H	19,4	100	14.10.2016		16	prepped	AK33	9,94	12	3	TruSeq LT Index 7	285	2					SUL_1_H_uc		AK_uc_26	9	378	3
+1538	3266	AC/768/14	Chicken	Sulmtaler Huhn	Gallus gallus	f	juvenil	23.09.2014	Heart	E	11	CHK_4_H	19,4	100	14.10.2016		16	prepped	AK33	9,94	12	3	TruSeq LT Index 7	285	2							AK_uc_26	9	378	3
 1539	3266	AC/768/14	Chicken	Sulmtaler Huhn	Gallus gallus	f	juvenil	23.09.2014	Liver	E	12	CHK_4_L	116,8	100	14.10.2016		16	prepped	AK33	12,77	13	7	TruSeq LT Index 8	285	6								NA	NA	NA
 1540	3270	AC/774/14	conehead lizards	Kronenbasilisk	Laemanctus	m	adult	29.09.2014	Heart	F	1	COL_2_H	32,6	100	14.10.2016	column damaged  --> contamination (nothing left --> use)	16	prepped	AK33	10,73	12	5	TruSeq LT Index 9	285	4								NA	NA	NA
 1541	3270	AC/774/14	conehead lizards	Kronenbasilisk	Laemanctus	m	adult	29.09.2014	Liver	F	2	COL_2_L	122,8	100	14.10.2016		16	prepped	AK33	10,34	13	7	TruSeq LT Index 10	285	6								NA	NA	NA
