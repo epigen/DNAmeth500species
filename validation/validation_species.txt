@@ -1,0 +1,3 @@
+species;BSlibrary;genome_id;species_id
+Mouse;BSgenome.Mmusculus.UCSC.mm10;Mmusculus;MUS
+Zebrafish;BSgenome.Drerio.UCSC.danRer7;Drerio;
