@@ -1,0 +1,50 @@
+species;ucsc_genome;class;BSlibrary;genome_id;provider;masked
+Mouse;mm10;Mammalia;BSgenome.Mmusculus.UCSC.mm10;Mmusculus;UCSC;FALSE
+Mouse;mm10;Mammalia;BSgenome.Mmusculus.UCSC.mm10.masked;Mmusculus;UCSC;TRUE
+Zebrafish;danRer11;Actinopteri;BSgenome.Drerio.UCSC.danRer11;Drerio;UCSC;FALSE
+Lancelet;braFlo1;Invertebrata;NA;NA;NA;NA
+Sea Hare;aplCal1;Invertebrata;NA;NA;NA;NA
+Lamprey;petMar3;Jawless Vertebrate;NA;NA;NA;NA
+Elephant shark;calMil1;Chondrichthyes;NA;NA;NA;NA
+Atlantic cod;gadMor1;Actinopteri;NA;NA;NA;NA
+Nile tilapia;oreNil2;Actinopteri;NA;NA;NA;NA
+Fugu;fr3;Actinopteri;NA;NA;NA;NA
+Coelacanth;latCha1;Actinopteri;NA;NA;NA;NA
+X. tropicalis;xenTro9;Amphibia;NA;NA;NA;NA
+African clawed frog;xenLae2;Amphibia;NA;NA;NA;NA
+Tibetan frog;nanPar1;Amphibia;NA;NA;NA;NA
+American alligator;allMis1;Reptilia;NA;NA;NA;NA
+Garter snake;thaSir1;Reptilia;NA;NA;NA;NA
+Lizard;anoCar2;Reptilia;NA;NA;NA;NA
+Painted turtle;chrPic1;Reptilia;NA;NA;NA;NA
+Chicken;galGal6;Aves;BSgenome.Ggallus.UCSC.galGal6;Ggallus;UCSC;FALSE
+Zebra finch;taeGut2;Aves;BSgenome.Tguttata.UCSC.taeGut2;Tguttata;UCSC;FALSE
+Medium ground finch;geoFor1;Aves;NA;NA;NA;NA
+Budgeriger;melUnd1;Aves;NA;NA;NA;NA
+Golden eagle;aquChr2;Aves;NA;NA;NA;NA
+Tasmanian devil;sarHar1;Marsupiala;NA;NA;NA;NA
+Opossum;monDom5;Marsupiala;BSgenome.Mdomestica.UCSC.monDom5;Mdomestica;UCSC;FALSE
+Cow;bosTau9;Mammalia;BSgenome.Btaurus.UCSC.bosTau9;Btaurus;UCSC;FALSE
+Cat;felCat9;Mammalia;NA;NA;NA;NA
+Dog;canFam3;Mammalia;BSgenome.Cfamiliaris.UCSC.canFam3;Cfamiliaris;UCSC;FALSE
+Dog;canFam3;Mammalia;BSgenome.Cfamiliaris.UCSC.canFam3.masked;Cfamiliaris;UCSC;TRUE
+Ferret;musFur1;Mammalia;BSgenome.Mfuro.UCSC.musFur1;Mfuro;UCSC;FALSE
+Gibbon;nomLeu3;Mammalia;NA;NA;NA;NA
+Gorilla;gorGor6;Mammalia;NA;NA;NA;NA
+Chimp;panTro6;Mammalia;BSgenome.Ptroglodytes.UCSC.panTro6;Ptroglodytes;UCSC;FALSE
+Bonobo;panPan2;Mammalia;NA;NA;NA;NA
+Green Monkey;chlSab2;Mammalia;NA;NA;NA;NA
+Megabat;pteVam1;Mammalia;NA;NA;NA;NA
+Microbat;myoLuc2;Mammalia;NA;NA;NA;NA
+Naked mole rat;hetGla2;Mammalia;NA;NA;NA;NA
+Orangutan;ponAbe3;Mammalia;NA;NA;NA;NA
+Pig;susScr11;Mammalia;BSgenome.Sscrofa.UCSC.susScr11;Sscrofa;UCSC;FALSE
+Rhesus;rheMac10;Mammalia;BSgenome.Mmulatta.UCSC.rheMac10;Mmulatta;UCSC;FALSE
+Rabbit;oryCun2;Mammalia;NA;NA;NA;NA
+Sheep;oviAri4;Mammalia;NA;NA;NA;NA
+Squirrel;speTri2;Mammalia;NA;NA;NA;NA
+Squirrel monkey;saiBol1;Mammalia;NA;NA;NA;NA
+Shrew;sorAra2;Mammalia;NA;NA;NA;NA
+Tree shrew;tupBel1;Mammalia;NA;NA;NA;NA
+Wallaby;macEug2;Mammalia;NA;NA;NA;NA
+White rhinoceros;cerSim1;Mammalia;NA;NA;NA;NA
