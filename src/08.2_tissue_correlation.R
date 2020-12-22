@@ -141,3 +141,16 @@ stats_annot_used=stats_annot[Sample_Name%in%used_samples,]
 pdf("tissues_CoG_overlap.pdf",height=2.5,width=4)
 ggplot(stats_annot_used,aes(y=mean_overlap_perc,x=class_short,fill=color_class))+geom_boxplot()+scale_fill_manual(values = class_colors)+ylab("Mean CpG overlap (%)")+rotate_labels(angle = 45,vjust = 1)
 dev.off()
+                                  
+# plot correlations of all the sample pairs per species grouped by class as qc
+all_dist_orig=fread(paste0("all_cor_orig_intfilt_",thres,".tsv"))
+
+#annotate the species
+sp_annot=stats_annot[conversion_type=="converted",.(scientific_name=scientific_name[1],color_class=color_class[1],ncbi_order=ncbi_order[1],species_check=all(species_check=="pass")),by=species]
+all_dist_orig_annot=merge(all_dist_orig,sp_annot,by.x="spec1",by.y="species")
+
+pdf("methylation_correlation.pdf",height=4,width=6)
+ggplot(all_dist_orig_annot,aes(x=color_class,y=dist))+geom_boxplot(aes(fill=color_class))+scale_fill_manual(values = class_colors)+ylab("Pairwise pearson correlation")+rotate_labels(angle = 45,vjust = 1)+ylim(c(0,1))+geom_hline(yintercept = 0.75,lty=2)+stat_summary(fun.data = give.n,fun.args = c(y=0), geom = "text",size=2)
+dev.off()
+
+                                  
