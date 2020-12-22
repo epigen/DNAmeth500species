@@ -2,7 +2,7 @@
 ##
 ## Insilico digestion analysis
 ##
-## Simulation of the RRBS prototcol insilico, evaluation of the percentage of CpGs covered, from the regulatory species
+## Simulation of the RRBS prototcol insilico, evaluation of the percentage of CpGs covered in regulatory elements of interest
 ##
 ## Authors: Johanna Klughammer, Daria Romanovskaia
 ##
@@ -22,22 +22,28 @@ suppressMessages(library(rtracklayer)) ## for reading - exporting
 
 
 ##parcing the arguments:
-options <- commandArgs(trailingOnly = TRUE)  ## as an argument read in the human-like name of the species
+options <- commandArgs(trailingOnly = TRUE)  ## as an argument read in the row in the annotation matrix
 
-annot_table <- read.csv("validation_species.csv", sep = ";")
+idx = options[1]
 
-print(annot_table[annot_table$species == options[[1]],]$genome_id)
-genome_id = as.character(annot_table[annot_table$species == options[[1]],]$genome_id)
+annot_table <- read.csv("meta/validation_species_resources.csv", sep = ";", stringsAsFactors = FALSE)
+
+print(paste0("working with ", annot_table[idx,]$genome_id))
+print(annot_table[idx,])
+
+genome_id = as.character(annot_table[idx,]$genome_id)
+species = as.character(annot_table[idx,]$species)
 
 ##identifying where to save the output
-output_dir <- file.path( "/scratch/lab_bock/shared/projects/compEpi/validation/insilicoDigest/model", options[[1]])
-resource_dir <- file.path("/scratch/lab_bock/shared/projects/compEpi/validation/insilicoDigest/data/tracks/", options[[1]])
+output_dir <- file.path( "/scratch/lab_bock/shared/projects/compEpi/validation/insilicoDigest/model", genome_id)
+resource_dir <- file.path("/scratch/lab_bock/shared/projects/compEpi/validation/insilicoDigest/data/tracks/", species)
 
 dir.create(output_dir,  showWarnings=FALSE, recursive = TRUE)
 print(output_dir)
 
 
-library(BSgenome.Mmusculus.UCSC.mm10)
+library(annot_table[idx,]$BSlibrary, character.only = TRUE)
+#library(BSgenome.Cmilii.UCSC.calMil1)
 ##extracting sequences from a chromosome
 get_seq <- function(chr, start, end, genome){
     
@@ -74,7 +80,8 @@ insilicoRRBS <- function(genome, output_dir_genome){
       m <- matchPattern(pattern_seq, genome_set[[i]])
       ##getting everything, EXCEPT the pattern      
       frags = gaps(m)
-            
+
+      if(length(frags) > 0){      
       ##extracting geomic coordinates
       starts<-start(frags)
       ends<-end(frags)
@@ -114,6 +121,7 @@ insilicoRRBS <- function(genome, output_dir_genome){
                                                             origin=c(rep("front",length(front_start_pos)),rep("tail",length(tail_start_pos))))))
       }
     }
+    }
     save(uniqFragments, file = paste0(output_dir_genome, "/uniqFragments_full.RData"))
     #uniqFragments[,dupl:=duplicated(seq),by=list(genome, pattern)]
     ## adjusting the start of the first fragment to 1:
@@ -121,9 +129,9 @@ insilicoRRBS <- function(genome, output_dir_genome){
     uniqFragments[uniqFragments$start <= 0, ]$start <- 1
     
     ##adjusting the end of the chromosomes after correction to the chr length
-    
+    if(NROW(uniqFragments[uniqFragments$end>uniqFragments$maxlength, ])> 0){
     uniqFragments[uniqFragments$end>uniqFragments$maxlength, ]$end <- uniqFragments[uniqFragments$end>uniqFragments$maxlength, ]$maxlength
-    
+    }
     ##filtering by width
     print("filtering the sequences: ")
     print(NROW(uniqFragments))
@@ -135,12 +143,11 @@ insilicoRRBS <- function(genome, output_dir_genome){
 
     uniqFragments[, seq_exact :=as.character(subseq(genome_set[[chr]], start, end)), by = 1:nrow(uniqFragments)]
     
-    ##!! WIDTH IS NOT ADJUSTED (NOT NEEDED)
+    ##!! WIDTH IS NOT ACTUAL, (NOT NEEDED)
 
     ## we are only interested in the sequences, 
     ##saving output
     
-    dir.create(output_dir_genome, exisits_ok=TRUE)
    
     print("saving length distribution...")
     ##saving stats of fragment length:
@@ -149,12 +156,12 @@ insilicoRRBS <- function(genome, output_dir_genome){
     
     count=mdf[,.N,by=c("width","genome", "name")]
     
-    ggplot(count[width>50&width<1000],aes(x=width,y=N)) + 
+    ggplot(count[width>50&width<1000],aes(x=width,y=N, color = name)) + 
                                 geom_line() +
                                 facet_wrap(~genome,scale="free_y") +
                                     xlab("fragment length") + theme_bw()
     
-    ggsave(file.path(output_dir_genome, "fragmentLengths.svg"),width=8,height=5)
+    ggsave(file.path(output_dir_genome, "fragmentLengths.pdf"),width=8,height=5)
     write.csv(mdf, file.path(output_dir_genome, "fragmentLengths.csv"))
 
      #saving Rdata
@@ -168,10 +175,10 @@ insilicoRRBS <- function(genome, output_dir_genome){
 
 if(file.exists(paste0(output_dir, "/uniqFragments.RData"))){
     print("insilico simulation already performed")
-    df <- load(paste0(output_dir_genome, "/uniqFragments.RData"))
+    load(paste0(output_dir, "/uniqFragments.RData"))
 }else{
     print("running insilico RRBS simulation")
-    df <- insilicoRRBS(genome_id, output_dir)
+    uniqFragments <- insilicoRRBS(genome_id, output_dir)
 }
 
 
@@ -179,24 +186,32 @@ if(file.exists(paste0(output_dir, "/uniqFragments.RData"))){
 ###  creating a GRanges obect with all the possible CpGs:
 genome_set <- get(genome_id)
 
-if(file.exists(paste0(output_dir, "/CpGs_genomewide.RData"))){
+if(!file.exists(paste0(output_dir, "/CpGs_genomewide.RData"))){
 
-CpGs_table = data.table()
+  CpGs_table = data.table()
 
 #collecting the CpGs from each chromosome:
-for (i in seq_along(genome_set)){
-    print(seqnames(genome_set)[[i]])
-if ("DNAStringSet"%in%is(genome_set[[i]])) {
+  for (i in seq_along(genome_set)){
+      if ("DNAStringSet"%in%is(genome_set[[i]])) {
                         print(length(genome_set[[i]]))
                                                     next}
-        CpGs = matchPattern("CG", genome_set[[i]])
-        CpGs_df <- data.frame(chr = seqnames(genome_set)[[i]], start =  start(CpGs), end = end(CpGs), width = width(CpGs))
+      CpGs = matchPattern("CG", genome_set[[i]])
+      if(length(CpGs) > 0){
+      CpGs_df <- data.frame(chr = seqnames(genome_set)[[i]], start =  start(CpGs), end = end(CpGs), width = width(CpGs))
       CpGs_table <- rbind(CpGs_table, CpGs_df)
-          }
-CpGs_GRanges <- makeGRangesFromDataFrame(CpGs_table)
-save(CpGs_GRanges,file=paste0(output_dir, "/CpGs_genomewide.RData"))
+      }
+      
+  }
+
+  print("coordinates of CpGs in the genome extracted")
+
+  CpGs_GRanges <- makeGRangesFromDataFrame(CpGs_table)
+
+  save(CpGs_GRanges,file=paste0(output_dir, "/CpGs_genomewide.RData"))
 }else{
+  print("coordinates of CpGs in the genome already extracted")
   load(paste0(output_dir, "/CpGs_genomewide.RData"))
+
 }
 
 
@@ -209,7 +224,8 @@ unF_granges <- makeGRangesFromDataFrame(uniqFragments, keep.extra.columns=TRUE)
 CpGs_in_RRBS <- GenomicRanges::intersect(unF_granges, CpGs_GRanges)
 
 ##creating the output file:
-output_stat_file <- file.path(output_dir, "overlap_stats.tsv")
+output_stat_file <- file.path(output_dir, paste0(as.character(annot_table[idx,]$ucsc_genome), "_overlap_stats.tsv"))
+
 cat("type\tCpGs\tCpGs_in_RRBS", file=output_stat_file, sep="\n")
 
 ##saving first overlap:
@@ -220,7 +236,7 @@ cat(paste0(c("total", NROW(CpGs_GRanges), NROW(CpGs_in_RRBS)), sep = "\t"),file=
 annot_files <- list.files(resource_dir)
 
 for (file_path in annot_files){
-  annot_id <- gsub("\\.bed", "", gsub(".*_","", file))
+  annot_id <- gsub("\\.bed", "", gsub(".*_","", file_path))
   print(annot_id)
   ##reading the annotation:
   annot <- import.bed(file.path(resource_dir, file_path))
@@ -230,7 +246,7 @@ for (file_path in annot_files){
   CpGs_in_annot_in_RRBS <- GenomicRanges::intersect(CpGs_in_annot, unF_granges, ignore.strand = TRUE)
 
   ##saving output numbers:
-  if (annot_id == "ncbiRefSeq"){
+  if (annot_id %in% c("refSeqComposite", "ensGene", "xenoRefGene", "refGene", "genscan", "lampreyGene")){
   annot_id <- "transcripts"
   cat(paste0(c(paste0("\n",annot_id), NROW(CpGs_in_annot), NROW(CpGs_in_annot_in_RRBS)), sep = "\t"),
                                                              file=output_stat_file, append = "TRUE")
@@ -240,9 +256,12 @@ for (file_path in annot_files){
   promoters_annot <- promoters(annot, upstream = 500, downstream = 1000)
 
   CpGs_in_promoters <- GenomicRanges::intersect(CpGs_GRanges, GRanges(promoters_annot), ignore.strand = TRUE)
-  CpGs_in_promoters_in_RRBS <- GenomicRanges::intersect(CpGs_in_annot, unF_granges, ignore.strand = TRUE)
+  CpGs_in_promoters_in_RRBS <- GenomicRanges::intersect(CpGs_in_promoters, unF_granges, ignore.strand = TRUE)
 
   cat(paste0(c(paste0("\n",annot_id), NROW(CpGs_in_promoters), NROW(CpGs_in_promoters_in_RRBS)), sep = "\t"),
+                                                             file=output_stat_file, append = "TRUE")
+}else{
+  cat(paste0(c(paste0("\n",annot_id), NROW(CpGs_in_annot), NROW(CpGs_in_annot_in_RRBS)), sep = "\t"),
                                                              file=output_stat_file, append = "TRUE")
 }
 

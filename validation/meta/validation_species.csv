@@ -1,0 +1,48 @@
+species;ucsc_genome;class;scientific_name
+Mouse;mm10;Mammalia;Mus musculus
+Zebrafish;danRer11;Actinopteri;Danio rerio
+Lancelet;braFlo1;Invertebrata;Cephalochordata
+Sea Hare;aplCal1;Invertebrata;Aplysia californica
+Lamprey;petMar2;Jawless Vertebrate;Petromyzon marinus
+Elephant shark;calMil1;Chondrichthyes;Callorhinchus milii
+Atlantic cod;gadMor1;Actinopteri;Gadus morhua
+Nile tilapia;oreNil2;Actinopteri;Oreochromis niloticus
+Fugu;fr3;Actinopteri;Takifugu rubripes
+Coelacanth;latCha1;Actinopteri;Latimeria chalumnae
+Tropical clawed frog;xenTro9;Amphibia;Xenopus tropicalis 
+African clawed frog;xenLae2;Amphibia;Xenopus laevis
+Tibetan frog;nanPar1;Amphibia;Nanorana parkeri
+American alligator;allMis1;Reptilia;Alligator mississippiensis
+Garter snake;thaSir1;Reptilia;Thamnophis sirtalis
+Lizard;anoCar2;Reptilia;Anolis carolinensis
+Painted turtle;chrPic1;Reptilia;Chrysemys picta
+Chicken;galGal6;Aves;Gallus gallus
+Zebra finch;taeGut2;Aves;Taeniopygia guttata
+Medium ground finch;geoFor1;Aves;Geospiza fortis
+Budgeriger;melUnd1;Aves;Melopsittacus undulatus
+Golden eagle;aquChr2;Aves;Aquila chrysaetos
+Tasmanian devil;sarHar1;Marsupiala;Sarcophilus harrisii
+Opossum;monDom5;Marsupiala;Monodelphis domestica
+Cow;bosTau9;Mammalia;Bos taurus
+Cat;felCat9;Mammalia;Felis catus
+Dog;canFam3;Mammalia;Canis lupus familiaris
+Ferret;musFur1;Mammalia;Mustela putorius furo 
+Gibbon;nomLeu3;Mammalia;Nomascus leucogenys
+Gorilla;gorGor6;Mammalia;Gorilla gorilla
+Chimp;panTro6;Mammalia;Pan troglodytes
+Bonobo;panPan2;Mammalia;Pan paniscus
+Green Monkey;chlSab2;Mammalia;Chlorocebus sabaeus
+Megabat;pteVam1;Mammalia;Pteropus vampyrus
+Microbat;myoLuc2;Mammalia;Myotis lucifugus
+Naked mole rat;hetGla2;Mammalia;Heterocephalus glaber
+Orangutan;ponAbe3;Mammalia;Pongo abelii
+Pig;susScr11;Mammalia;Sus scrofa
+Rhesus;rheMac10;Mammalia;Macaca mulatta
+Rabbit;oryCun2;Mammalia;Oryctolagus cuniculus
+Sheep;oviAri4;Mammalia;Ovis aries
+Squirrel;speTri2;Mammalia;Ictidomys tridecemlineatus
+Squirrel monkey;saiBol1;Mammalia;Saimiri boliviensis boliviensis
+Shrew;sorAra2;Mammalia;Sorex araneus
+Tree shrew;tupBel1;Mammalia;Tupaia belangeri
+Wallaby;macEug2;Marsupiala;Notamacropus eugenii
+White rhinoceros;cerSim1;Mammalia;Ceratotherium simum
