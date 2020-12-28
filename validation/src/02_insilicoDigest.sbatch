@@ -2,10 +2,10 @@
 #SBATCH --job-name insilicoDigest
 #SBATCH --output /scratch/users/dromanovskaia/compEpi/validation_%A_%a.txt
 #SBATCH --partition shortq
-#SBATCH --mem 32000
+#SBATCH --mem 16000
 #SBATCH --cpus-per-task=4
-#SBATCH --time 08:00:00
-#SBATCH --array=1-47%10
+#SBATCH --time 02:00:00
+#SBATCH --array=20
 
 conda activate crossSp
 

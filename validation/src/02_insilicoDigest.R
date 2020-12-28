@@ -65,6 +65,7 @@ insilicoRRBS <- function(genome, output_dir_genome){
 
     genome_set <- get(genome)
     
+    if(!file.exists(paste0(output_dir_genome, "/uniqFragments_full.RData"))){
 
     mdf=data.frame()
     uniqFragments=data.table()
@@ -101,7 +102,7 @@ insilicoRRBS <- function(genome, output_dir_genome){
       #50 - size-selection(shortest you get via the library prep), but: including the adapters, which we don't account for
       #500 - upper threshold for the width of the fragment we are interested in
       sub=frags[width(frags)>=50]
-      
+      if(length(sub) > 0){
       #fragment ends
       tail_start=width(sub)-49
       tail_end=width(sub)
@@ -118,11 +119,16 @@ insilicoRRBS <- function(genome, output_dir_genome){
                                                             start=c(front_start_pos,tail_start_pos),
                                                             end=c(front_end_pos,tail_end_pos),
                                                             width=c(width(sub),width(sub)),
-                                                            origin=c(rep("front",length(front_start_pos)),rep("tail",length(tail_start_pos))))))
+                                                            origin=c(rep("front",length(front_start_pos)),rep("tail",length(tail_start_pos))))))}
       }
     }
     }
     save(uniqFragments, file = paste0(output_dir_genome, "/uniqFragments_full.RData"))
+    }else{
+
+      print("already extracted pattern coordinates, loading...")
+      load(paste0(output_dir_genome, "/uniqFragments_full.RData"))
+    }
     #uniqFragments[,dupl:=duplicated(seq),by=list(genome, pattern)]
     ## adjusting the start of the first fragment to 1:
     print("adjusting chromosome borders...")
@@ -139,9 +145,9 @@ insilicoRRBS <- function(genome, output_dir_genome){
     print(NROW(uniqFragments))
 
     ##extracting the sequence:
-    print("extracting sequences...")
+   # print("extracting sequences...")
 
-    uniqFragments[, seq_exact :=as.character(subseq(genome_set[[chr]], start, end)), by = 1:nrow(uniqFragments)]
+  #  uniqFragments[, seq_exact :=as.character(subseq(genome_set[[chr]], start, end)), by = 1:nrow(uniqFragments)]
     
     ##!! WIDTH IS NOT ACTUAL, (NOT NEEDED)
 
@@ -224,12 +230,12 @@ unF_granges <- makeGRangesFromDataFrame(uniqFragments, keep.extra.columns=TRUE)
 CpGs_in_RRBS <- GenomicRanges::intersect(unF_granges, CpGs_GRanges)
 
 ##creating the output file:
-output_stat_file <- file.path(output_dir, paste0(as.character(annot_table[idx,]$ucsc_genome), "_overlap_stats.tsv"))
+output_stat_file <- file.path(output_dir, paste0(as.character(annot_table[idx,]$ucsc_genome), "_overlap_stats_final.tsv"))
 
 cat("type\tCpGs\tCpGs_in_RRBS", file=output_stat_file, sep="\n")
 
 ##saving first overlap:
-cat(paste0(c("total", NROW(CpGs_GRanges), NROW(CpGs_in_RRBS)), sep = "\t"),file=output_stat_file, append = "TRUE")
+cat(paste0(c("total", NROW(CpGs_GRanges), NROW(CpGs_in_RRBS)), sep = "\t"),file=output_stat_file, append = TRUE)
 
 ###annotations:
 
@@ -247,22 +253,43 @@ for (file_path in annot_files){
 
   ##saving output numbers:
   if (annot_id %in% c("refSeqComposite", "ensGene", "xenoRefGene", "refGene", "genscan", "lampreyGene")){
+
   annot_id <- "transcripts"
   cat(paste0(c(paste0("\n",annot_id), NROW(CpGs_in_annot), NROW(CpGs_in_annot_in_RRBS)), sep = "\t"),
-                                                             file=output_stat_file, append = "TRUE")
+                                                             file=output_stat_file, append = TRUE)
   annot_id <- "promoters"
   print(annot_id)
   ##extracting promoters
-  promoters_annot <- promoters(annot, upstream = 500, downstream = 1000)
+  promoters_annot <- promoters(annot, upstream = 1000, downstream = 500)
 
   CpGs_in_promoters <- GenomicRanges::intersect(CpGs_GRanges, GRanges(promoters_annot), ignore.strand = TRUE)
   CpGs_in_promoters_in_RRBS <- GenomicRanges::intersect(CpGs_in_promoters, unF_granges, ignore.strand = TRUE)
 
-  cat(paste0(c(paste0("\n",annot_id), NROW(CpGs_in_promoters), NROW(CpGs_in_promoters_in_RRBS)), sep = "\t"),
-                                                             file=output_stat_file, append = "TRUE")
+  cat(paste0(c(paste0("\n",annot_id, "1000_500"), NROW(CpGs_in_promoters), NROW(CpGs_in_promoters_in_RRBS)), sep = "\t"),
+                                                             file=output_stat_file, append = TRUE)
+  ## coord2
+  #promoters_annot <- promoters(annot, upstream = 2000, downstream = 1000)
+
+  #CpGs_in_promoters <- GenomicRanges::intersect(CpGs_GRanges, GRanges(promoters_annot), ignore.strand = TRUE)
+  #CpGs_in_promoters_in_RRBS <- GenomicRanges::intersect(CpGs_in_promoters, unF_granges, ignore.strand = TRUE)
+
+#  cat(paste0(c(paste0("\n",annot_id, "2000_1000"), NROW(CpGs_in_promoters), NROW(CpGs_in_promoters_in_RRBS)), sep = "\t"),
+  #                                                           file=output_stat_file, append = TRUE)
+
+  # coord 3
+ # promoters_annot <- promoters(annot, upstream = 500, downstream = 200)
+
+  #CpGs_in_promoters <- GenomicRanges::intersect(CpGs_GRanges, GRanges(promoters_annot), ignore.strand = TRUE)
+  #CpGs_in_promoters_in_RRBS <- GenomicRanges::intersect(CpGs_in_promoters, unF_granges, ignore.strand = TRUE)
+
+#  cat(paste0(c(paste0("\n",annot_id, "500_200"), NROW(CpGs_in_promoters), NROW(CpGs_in_promoters_in_RRBS)), sep = "\t"),
+ #                                                            file=output_stat_file, append = TRUE)
+
+
 }else{
+
   cat(paste0(c(paste0("\n",annot_id), NROW(CpGs_in_annot), NROW(CpGs_in_annot_in_RRBS)), sep = "\t"),
-                                                             file=output_stat_file, append = "TRUE")
+                                                             file=output_stat_file, append = TRUE)
 }
 
 }
