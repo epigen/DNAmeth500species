@@ -6,7 +6,7 @@ GO:0034641    cellular nitrogen compound metabolic process
 GO:0030154    cell differentiation
 GO:0031099    regeneration
 GO:0034616    response to laminar fluid shear stress 
-GO:0002154    thyroid hormone mediated signaling pathway 115 annotations
+GO:0002154    thyroid hormone mediated signaling pathway
 
 				glucagon
 GO:0070091    glucagon secretion
