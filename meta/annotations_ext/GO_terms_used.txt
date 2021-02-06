@@ -1,0 +1,443 @@
+				selected
+GO:0046903    secretion
+GO:0045786    negative regulation of cell cycle
+GO:0042593    glucose homeostasis
+GO:0034641    cellular nitrogen compound metabolic process
+GO:0030154    cell differentiation
+GO:0031099    regeneration
+GO:0034616    response to laminar fluid shear stress 
+GO:0002154    thyroid hormone mediated signaling pathway
+
+				glucagon
+GO:0070091    glucagon secretion
+GO:0120116    glucagon processing	
+GO:0120022    glucagon binding	
+GO:0031769    glucagon receptor binding
+GO:0004967    glucagon receptor activity
+GO:0033762    response to glucagon
+GO:0070092    regulation of glucagon secretion
+GO:0120024    glucagon-like peptide binding	
+GO:0070093    negative regulation of glucagon secretion
+GO:0070094    positive regulation of glucagon secretion
+GO:0071377    cellular response to glucagon stimulus
+GO:0044508    glucagon-like peptide 1 receptor activity
+GO:0044506    modulation of glucagon-like peptide receptor 1 activity in other organism	
+GO:0044516    positive regulation of glucagon-like peptide receptor 1 activity in other organism	
+GO:0044512    envenomation resulting in modulation of glucagon-like peptide receptor 1 activity in other organism	
+GO:0044515    envenomation resulting in positive regulation of glucagon-like peptide receptor 1 activity in other organism
+
+
+				hypoxia
+GO:0070483    detection of hypoxia
+GO:0001666    response to hypoxia
+GO:1990910    response to hypobaric hypoxia
+GO:0071456    cellular response to hypoxia
+GO:0102113    hypoxia-inducible factor-asparagine oxygenase activity
+GO:0097411    hypoxia-inducible factor-1alpha signaling pathway
+GO:1900037    regulation of cellular response to hypoxia
+GO:1900038    negative regulation of cellular response to hypoxia
+GO:1900039    positive regulation of cellular response to hypoxia
+GO:1990144    intrinsic apoptotic signaling pathway in response to hypoxia
+GO:1903297    regulation of hypoxia-induced intrinsic apoptotic signaling pathway
+GO:1902071    regulation of hypoxia-inducible factor-1alpha signaling pathway
+GO:1903298    negative regulation of hypoxia-induced intrinsic apoptotic signaling pathway
+GO:1902073    positive regulation of hypoxia-inducible factor-1alpha signaling pathway
+GO:1902072    negative regulation of hypoxia-inducible factor-1alpha signaling pathway
+GO:0061418    regulation of transcription from RNA polymerase II promoter in response to hypoxia
+GO:0061419    positive regulation of transcription from RNA polymerase II promoter in response to hypoxia
+GO:0061428    negative regulation of transcription from RNA polymerase II promoter in response to hypoxia
+GO:2000777    positive regulation of proteasomal ubiquitin-dependent protein catabolic process involved in cellular response to hypoxia
+
+
+				detoxification
+GO:0098754    detoxification
+GO:1990748    cellular detoxification
+GO:0033355    ascorbate glutathione cycle
+GO:0071722    detoxification of arsenic-containing substance
+GO:0098869    cellular oxidant detoxification
+GO:0010127    mycothiol-dependent detoxification
+GO:0050787    detoxification of mercury ion
+GO:0051410    detoxification of nitrogen compound
+GO:0110095    cellular detoxification of aldehyde
+GO:1990461    detoxification of iron ion
+GO:0010273    detoxification of copper ion
+GO:0010299    detoxification of cobalt ion	
+GO:0010312    detoxification of zinc ion
+GO:0061691    detoxification of hydrogen peroxide
+GO:0061687    detoxification of inorganic compound
+GO:0071585    detoxification of cadmium ion
+GO:0140114    cellular detoxification of fluoride
+GO:0140041    cellular detoxification of methylglyoxal
+GO:0070458    cellular detoxification of nitrogen compound
+GO:0098849    cellular detoxification of cadmium ion
+GO:0061692    cellular detoxification of hydrogen peroxide
+GO:1990880    cellular detoxification of copper ion	
+GO:0009636    response to toxic substance
+GO:1990961    xenobiotic detoxification by transmembrane export across the plasma membrane
+GO:0140330    xenobiotic detoxification by transmembrane export across the cell outer membrane
+GO:1905699    regulation of xenobiotic detoxification by transmembrane export across the plasma membrane	
+GO:1905701    positive regulation of xenobiotic detoxification by transmembrane export across the plasma membrane	
+GO:1905700    negative regulation of xenobiotic detoxification by transmembrane export across the plasma membrane	
+GO:0019430    removal of superoxide radicals
+GO:0042744    hydrogen peroxide catabolic process
+GO:0019243    methylglyoxal catabolic process to D-lactate via S-lactoyl-glutathione
+GO:2000295    regulation of hydrogen peroxide catabolic process
+GO:2000296    negative regulation of hydrogen peroxide catabolic process
+GO:0052165    symbiont defense to host-produced phytoalexin	
+GO:1904833    positive regulation of removal of superoxide radicals	
+GO:1904832    negative regulation of removal of superoxide radicals
+GO:1903285    positive regulation of hydrogen peroxide catabolic process
+
+				liver
+GO:0072576    liver morphogenesis
+GO:0001889    liver development
+GO:0097421    liver regeneration
+GO:0060344    liver trabecula formation	
+GO:1990402    embryonic liver development
+GO:0070365    hepatocyte differentiation
+GO:0070366    regulation of hepatocyte differentiation
+GO:0071910    determination of liver left/right asymmetry
+GO:2001069    glycogen binding
+GO:0072575    epithelial cell proliferation involved in liver morphogenesis
+GO:0070367    negative regulation of hepatocyte differentiation
+GO:0070368    positive regulation of hepatocyte differentiation
+GO:0004806    triglyceride lipase activity
+GO:0061011    hepatic duct development
+GO:0002384    hepatic immune response
+GO:0035733    hepatic stellate cell activation
+GO:0061521    hepatic stellate cell differentiation	
+GO:0061872    hepatic stellate cell contraction	
+GO:0061868    hepatic stellate cell migration	
+GO:1990922    hepatic stellate cell proliferation	
+GO:2000489    regulation of hepatic stellate cell activation
+GO:0061873    regulation of hepatic stellate cell contraction
+GO:0061869    regulation of hepatic stellate cell migration
+GO:1904897    regulation of hepatic stellate cell proliferation
+GO:2000491    positive regulation of hepatic stellate cell activation
+GO:2000490    negative regulation of hepatic stellate cell activation
+GO:0061870    positive regulation of hepatic stellate cell migration
+GO:0061871    negative regulation of hepatic stellate cell migration
+GO:0061874    positive regulation of hepatic stellate cell contraction
+GO:0061875    negative regulation of hepatic stellate cell contraction
+GO:1904899    positive regulation of hepatic stellate cell proliferation
+GO:1904898    negative regulation of hepatic stellate cell proliferation	
+GO:0004454    ketohexokinase activity
+GO:0061007    hepaticobiliary system process
+GO:0061008    hepaticobiliary system development
+GO:0004806    triglyceride lipase activity
+GO:0070091    glucagon secretion
+GO:0120116    glucagon processing
+GO:0032782    bile acid secretion
+GO:0002152    bile acid conjugation
+GO:0032052    bile acid binding
+GO:0008206    bile acid metabolic process
+GO:0006699    bile acid biosynthetic process
+GO:0030573    bile acid catabolic process
+GO:1903412    response to bile acid
+GO:0061009    common bile duct development
+GO:0038183    bile acid signaling pathway
+GO:0038181    bile acid receptor activity
+GO:0008508    bile acid:sodium symporter activity
+GO:0047704    bile-salt sulfotransferase activity
+GO:0035622    intrahepatic bile duct development
+GO:0015722    canalicular bile acid transport
+GO:0033881    bile-acid-CoA hydrolase activity
+GO:0015125    bile acid transmembrane transporter activity
+GO:1903413    cellular response to bile acid
+GO:0033988    bile-acid 7alpha-dehydratase activity
+GO:0033792    bile-acid 7alpha-dehydroxylase activity
+GO:0120188    regulation of bile acid secretion
+GO:1904251    regulation of bile acid metabolic process
+GO:0070857    regulation of bile acid biosynthetic process
+GO:0015126    canalicular bile acid transmembrane transporter activity
+GO:0038185    intracellular bile acid receptor signaling pathway
+GO:0015432    ABC-type bile acid transporter activity
+GO:0015721    bile acid and bile salt transport
+GO:0120189    positive regulation of bile acid secretion
+GO:0120190    negative regulation of bile acid secretion
+GO:0038184    cell surface bile acid receptor signaling pathway
+GO:1904253    positive regulation of bile acid metabolic process
+GO:1904252    negative regulation of bile acid metabolic process
+GO:0070858    negative regulation of bile acid biosynthetic process
+GO:0070859    positive regulation of bile acid biosynthetic process
+GO:0038182    G protein-coupled bile acid receptor activity
+GO:1902488    cholangiocyte apoptotic process
+GO:0033876    glycochenodeoxycholate sulfotransferase activity	
+GO:0045302    choloylglycine hydrolase activity
+GO:0043961    succinyl-CoA:(R)-citramalate CoA-transferase activity
+GO:1904192    regulation of cholangiocyte apoptotic process
+GO:0047963    glycine N-choloyltransferase activity
+GO:1904194    positive regulation of cholangiocyte apoptotic process	
+GO:1904193    negative regulation of cholangiocyte apoptotic process
+GO:0047747    cholate-CoA ligase activity
+
+				heart
+GO:0003129    heart induction
+GO:0003146    heart jogging
+GO:0003297    heart wedging	
+GO:0003015    heart process
+GO:0003007    heart morphogenesis
+GO:0060419    heart growth
+GO:0060914    heart formation
+GO:0001947    heart looping
+GO:0060047    heart contraction
+GO:0007507    heart development
+GO:0003128    heart field specification
+GO:0003170    heart valve development
+GO:0003179    heart valve morphogenesis
+GO:0003188    heart valve formation
+GO:0003248    heart capillary growth	
+GO:0003320    heart rudiment involution	
+GO:0003313    heart rudiment development
+GO:0003314    heart rudiment morphogenesis
+GO:0003315    heart rudiment formation
+GO:0060347    heart trabecula formation
+GO:0061384    heart trabecula morphogenesis
+GO:0007512    adult heart development
+GO:0007508    larval heart development
+GO:0003206    cardiac chamber morphogenesis
+GO:0003207    cardiac chamber formation
+GO:0003279    cardiac septum development
+GO:0055017    cardiac muscle tissue growth
+GO:0060411    cardiac septum morphogenesis
+GO:0060945    cardiac neuron differentiation
+GO:0060959    cardiac neuron development
+GO:0060048    cardiac muscle contraction
+GO:0048738    cardiac muscle tissue development
+GO:0003143    embryonic heart tube morphogenesis
+GO:0003144    embryonic heart tube formation
+GO:0003138    primary heart field specification
+GO:0003139    secondary heart field specification
+GO:0003293    heart valve cell differentiation	
+GO:0090381    regulation of heart induction
+GO:1901207    regulation of heart looping
+GO:0060420    regulation of heart growth
+GO:0002027    regulation of heart rate
+GO:0035050    embryonic heart tube development
+GO:0008016    regulation of heart contraction
+GO:2000826    regulation of heart morphogenesis
+GO:0036306    embryonic heart tube elongation
+GO:0003204    cardiac skeleton development	
+GO:1905072    cardiac jelly development
+GO:0060960    cardiac neuron fate commitment	
+GO:0002026    regulation of the force of heart contraction
+GO:0003153    closure of embryonic heart tube	
+GO:0003241    growth involved in heart morphogenesis
+GO:0003053    circadian regulation of heart rate
+GO:1905285    fibrous ring of heart morphogenesis
+GO:1901208    negative regulation of heart looping
+GO:1901209    positive regulation of heart looping	
+GO:0061117    negative regulation of heart growth
+GO:0060421    positive regulation of heart growth
+GO:1901321    positive regulation of heart induction
+GO:1901320    negative regulation of heart induction
+GO:0045823    positive regulation of heart contraction
+GO:0045822    negative regulation of heart contraction
+GO:0010460    positive regulation of heart rate
+GO:0010459    negative regulation of heart rate
+GO:0003278    apoptotic process involved in heart morphogenesis
+GO:0055006    cardiac cell development
+GO:0055008    cardiac muscle tissue morphogenesis
+GO:0055024    regulation of cardiac muscle tissue development
+GO:1901210    regulation of cardiac chamber formation
+GO:1901219    regulation of cardiac chamber morphogenesis
+GO:0035922    foramen ovale closure
+GO:0060317    cardiac epithelial to mesenchymal transition
+GO:0003064    regulation of heart rate by hormone
+GO:0003305    cell migration involved in heart jogging
+GO:0060973    cell migration involved in heart development
+GO:0060974    cell migration involved in heart formation
+GO:0061323    cell proliferation involved in heart morphogenesis
+GO:0061343    cell adhesion involved in heart morphogenesis
+GO:0061314    Notch signaling involved in heart development
+GO:0061371    determination of heart left/right asymmetry
+GO:0061385    fibroblast proliferation involved in heart morphogenesis	
+GO:0003276    apoptotic process involved in heart valve morphogenesis	
+GO:0055007    cardiac muscle cell differentiation
+GO:0060947    cardiac vascular smooth muscle cell differentiation
+GO:0060948    cardiac vascular smooth muscle cell development
+GO:0035051    cardiocyte differentiation
+GO:0003130    BMP signaling pathway involved in heart induction
+GO:0003145    embryonic heart tube formation via epithelial folding	
+GO:0003137    Notch signaling pathway involved in heart induction	
+GO:0003249    cell proliferation involved in heart valve morphogenesis	
+GO:0003265    regulation of primary heart field cardioblast proliferation	
+GO:0003266    regulation of secondary heart field cardioblast proliferation
+GO:0003062    regulation of heart rate by chemical signal
+GO:0003063    negative regulation of heart rate by acetylcholine
+GO:0003065    positive regulation of heart rate by epinephrine
+GO:0003066    positive regulation of heart rate by norepinephrine	
+GO:0003303    BMP signaling pathway involved in heart jogging
+GO:0003304    myocardial epithelial involution involved in heart jogging	
+GO:0003306    Wnt signaling pathway involved in heart development
+GO:0060970    embryonic heart tube dorsal/ventral pattern formation	
+GO:0060971    embryonic heart tube left/right pattern formation
+GO:0035053    dorsal vessel heart proper cell fate commitment
+GO:0035054    embryonic heart tube anterior/posterior pattern specification
+GO:0086091    regulation of heart rate by cardiac conduction
+GO:2000793    cell proliferation involved in heart valve development
+GO:0061312    BMP signaling pathway involved in heart development
+GO:0044554    modulation of heart rate in other organism
+GO:0003060    negative regulation of the force of heart contraction by acetylcholine	
+GO:0055013    cardiac muscle cell development
+GO:0055014    atrial cardiac muscle cell development
+GO:0060949    cardiac vascular smooth muscle cell fate commitment	
+GO:0060044    negative regulation of cardiac muscle cell proliferation
+GO:0060045    positive regulation of cardiac muscle cell proliferation
+GO:0003132    mesodermal-endodermal cell signaling involved in heart induction	
+GO:0003134    endodermal-mesodermal cell signaling involved in heart induction
+GO:0003147    neural crest cell migration involved in heart formation
+GO:0003111    positive regulation of heart rate by circulating epinephrine	
+GO:0003112    positive regulation of heart rate by neuronal epinephrine	
+GO:0003113    positive regulation of heart rate by neuronal norepinephrine	
+GO:0003114    positive regulation of heart rate by circulating norepinephrine	
+GO:0003245    cardiac muscle tissue growth involved in heart morphogenesis
+GO:0003058    hormonal regulation of the force of heart contraction
+GO:0098735    positive regulation of the force of heart contraction
+GO:0098736    negative regulation of the force of heart contraction
+GO:2000136    regulation of cell proliferation involved in heart morphogenesis
+GO:0001996    positive regulation of heart rate by epinephrine-norepinephrine
+GO:0072513    positive regulation of secondary heart field cardioblast proliferation
+GO:0086101    endothelin receptor signaling pathway involved in heart process	
+GO:0086098    angiotensin-activated signaling pathway involved in heart process
+GO:0061344    regulation of cell adhesion involved in heart morphogenesis
+GO:0061346    planar cell polarity pathway involved in heart morphogenesis
+GO:0061316    canonical Wnt signaling pathway involved in heart development
+GO:0061372    activin receptor signaling pathway involved in heart jogging
+GO:0044555    negative regulation of heart rate in other organism
+GO:0055010    ventricular cardiac muscle tissue morphogenesis
+GO:0055011    atrial cardiac muscle cell differentiation
+GO:0055012    ventricular cardiac muscle cell differentiation
+GO:0055004    atrial cardiac myofibril assembly
+GO:0055005    ventricular cardiac myofibril assembly
+GO:0055015    ventricular cardiac muscle cell development
+GO:2000722    regulation of cardiac vascular smooth muscle cell differentiation
+GO:0048739    cardiac muscle fiber development
+GO:0003250    regulation of cell proliferation involved in heart valve morphogenesis
+GO:0003246    embryonic cardiac muscle cell growth involved in heart morphogenesis	
+GO:0003055    circadian regulation of heart rate by the suprachiasmatic nucleus	
+GO:0003307    regulation of Wnt signaling pathway involved in heart development
+GO:0003318    cell migration to the midline involved in heart development
+GO:0100012    regulation of heart induction by canonical Wnt signaling pathway
+GO:0002531    regulation of heart contraction involved in acute-phase response	
+GO:2000138    positive regulation of cell proliferation involved in heart morphogenesis
+GO:2000137    negative regulation of cell proliferation involved in heart morphogenesis
+GO:2000223    regulation of BMP signaling pathway involved in heart jogging
+GO:0035480    regulation of Notch signaling pathway involved in heart induction
+GO:0061341    non-canonical Wnt signaling pathway involved in heart development
+GO:0061311    cell surface receptor signaling pathway involved in heart development
+GO:0061307    cardiac neural crest cell differentiation involved in heart development
+GO:0061308    cardiac neural crest cell development involved in heart development
+GO:0003135    fibroblast growth factor receptor signaling pathway involved in heart induction	
+GO:0003136    negative regulation of heart induction by canonical Wnt signaling pathway
+GO:0003199    endocardial cushion to mesenchymal transition involved in heart valve formation
+GO:0003200    endocardial cushion to mesenchymal transition involved in heart chamber septation	
+GO:0003251    positive regulation of cell proliferation involved in heart valve morphogenesis
+GO:0003252    negative regulation of cell proliferation involved in heart valve morphogenesis
+GO:0003247    post-embryonic cardiac muscle cell growth involved in heart morphogenesis
+GO:0003057    regulation of the force of heart contraction by chemical signal
+GO:0003059    positive regulation of the force of heart contraction by epinephrine
+GO:0003061    positive regulation of the force of heart contraction by norepinephrine
+GO:0003308    negative regulation of Wnt signaling pathway involved in heart development
+GO:0003319    cardioblast migration to the midline involved in heart rudiment formation
+GO:1905066    regulation of canonical Wnt signaling pathway involved in heart development
+GO:1905251    epidermal growth factor receptor signaling pathway involved in heart process	
+GO:2000159    regulation of planar cell polarity pathway involved in heart morphogenesis
+GO:0035481    positive regulation of Notch signaling pathway involved in heart induction
+GO:0060975    cardioblast migration to the midline involved in heart field formation
+GO:0086103    G protein-coupled receptor signaling pathway involved in heart process
+GO:0086092    regulation of the force of heart contraction by cardiac conduction
+GO:0061313    fibroblast growth factor receptor signaling pathway involved in heart development	
+GO:0003161    cardiac conduction system development
+GO:0055003    cardiac myofibril assembly
+GO:0060923    cardiac muscle cell fate commitment
+GO:0060038    cardiac muscle cell proliferation
+GO:2000723    negative regulation of cardiac vascular smooth muscle cell differentiation
+GO:2000724    positive regulation of cardiac vascular smooth muscle cell differentiation
+GO:0003087    positive regulation of the force of heart contraction by neuronal epinephrine	
+GO:0003088    positive regulation of the force of heart contraction by circulating epinephrine	
+GO:0090081    regulation of heart induction by regulation of canonical Wnt signaling pathway
+GO:0003110    positive regulation of the force of heart contraction by neuronal norepinephrine	
+GO:0003108    negative regulation of the force of heart contraction by chemical signal
+GO:0003109    positive regulation of the force of heart contraction by circulating norepinephrine	
+GO:0003152    morphogenesis of an epithelial fold involved in embryonic heart tube formation	
+GO:0003099    positive regulation of the force of heart contraction by chemical signal
+GO:0003302    transforming growth factor beta receptor signaling pathway involved in heart jogging	
+GO:1905068    positive regulation of canonical Wnt signaling pathway involved in heart development
+GO:1905067    negative regulation of canonical Wnt signaling pathway involved in heart development
+GO:1905313    transforming growth factor beta receptor signaling pathway involved in heart development
+GO:2000160    negative regulation of planar cell polarity pathway involved in heart morphogenesis
+GO:0001997    positive regulation of the force of heart contraction by epinephrine-norepinephrine
+GO:0086093    G protein-coupled acetylcholine receptor signaling pathway involved in heart process	
+GO:0086096    adenylate cyclase-inhibiting adrenergic receptor signaling pathway involved in heart process	
+GO:0086023    adenylate cyclase-activating adrenergic receptor signaling pathway involved in heart process
+GO:0086099    phospholipase C-activating angiotensin-activated signaling pathway involved in heart process
+GO:0044556    envenomation resulting in negative regulation of heart rate of other organism	
+GO:0061049    cell growth involved in cardiac muscle cell development
+GO:1905207    regulation of cardiocyte differentiation
+GO:0060043    regulation of cardiac muscle cell proliferation
+GO:2000725    regulation of cardiac muscle cell differentiation
+GO:0003089    positive regulation of the force of heart contraction by circulating epinephrine-norepinephrine	
+GO:0003262    endocardial progenitor cell migration to the midline involved in heart field formation
+GO:0003270    Notch signaling pathway involved in regulation of secondary heart field cardioblast proliferation
+GO:0003271    smoothened signaling pathway involved in regulation of secondary heart field cardioblast proliferation
+GO:0003269    BMP signaling pathway involved in regulation of secondary heart field cardioblast proliferation	
+GO:0003090    positive regulation of the force of heart contraction by neuronal epinephrine-norepinephrine	
+GO:1905282    regulation of epidermal growth factor receptor signaling pathway involved in heart process
+GO:1901213    regulation of transcription from RNA polymerase II promoter involved in heart development
+GO:2000800    regulation of endocardial cushion to mesenchymal transition involved in heart valve formation
+GO:0055009    atrial cardiac muscle tissue morphogenesis
+GO:0060924    atrial cardiac muscle cell fate commitment	
+GO:0060925    ventricular cardiac muscle cell fate commitment	
+GO:0090082    positive regulation of heart induction by negative regulation of canonical Wnt signaling pathway
+GO:0003261    cardiac muscle progenitor cell migration to the midline involved in heart field formation
+GO:1905284    positive regulation of epidermal growth factor receptor signaling pathway involved in heart process	
+GO:1905283    negative regulation of epidermal growth factor receptor signaling pathway involved in heart process
+GO:1901228    positive regulation of transcription from RNA polymerase II promoter involved in heart development
+GO:1901227    negative regulation of transcription from RNA polymerase II promoter involved in heart development
+GO:2000801    negative regulation of endocardial cushion to mesenchymal transition involved in heart valve formation	
+GO:2000802    positive regulation of endocardial cushion to mesenchymal transition involved in heart valve formation
+GO:0140193    regulation of adenylate cyclase-inhibiting adrenergic receptor signaling pathway involved in heart process
+GO:0140192    regulation of adenylate cyclase-activating adrenergic receptor signaling pathway involved in heart process
+GO:0140200    adenylate cyclase-activating adrenergic receptor signaling pathway involved in regulation of heart rate
+GO:0055018    regulation of cardiac muscle fiber development
+GO:2000727    positive regulation of cardiac muscle cell differentiation
+GO:2000726    negative regulation of cardiac muscle cell differentiation
+GO:0003267    canonical Wnt signaling pathway involved in positive regulation of secondary heart field cardioblast proliferation	
+GO:0086033    G protein-coupled acetylcholine receptor signaling pathway involved in negative regulation of heart rate	
+GO:0086024    adenylate cyclase-activating adrenergic receptor signaling pathway involved in positive regulation of heart rate
+GO:0061342    regulation of cell adhesion involved in heart morphogenesis by non-canonical Wnt signaling pathway	
+GO:0140199    negative regulation of adenylate cyclase-activating adrenergic receptor signaling pathway involved in heart process
+GO:0140194    negative regulation of adenylate cyclase-inhibiting adrenergic receptor signaling pathway involved in heart process
+GO:0140195    positive regulation of adenylate cyclase-inhibiting adrenergic receptor signaling pathway involved in heart process	
+GO:0140196    positive regulation of adenylate cyclase-activating adrenergic receptor signaling pathway involved in heart process
+GO:0099623    regulation of cardiac muscle cell membrane repolarization
+GO:0003268    fibroblast growth factor receptor signaling pathway involved in regulation of secondary heart field cardioblast proliferation	
+GO:0001985    negative regulation of heart rate involved in baroreceptor response to increased systemic arterial blood pressure
+GO:0001988    positive regulation of heart rate involved in baroreceptor response to decreased systemic arterial blood pressure
+GO:0061310    canonical Wnt signaling pathway involved in cardiac neural crest cell differentiation involved in heart development
+GO:1905304    regulation of cardiac myofibril assembly
+GO:0086102    adenylate cyclase-inhibiting G protein-coupled acetylcholine receptor signaling pathway involved in negative regulation of heart rate	
+GO:0001986    negative regulation of the force of heart contraction involved in baroreceptor response to increased systemic arterial blood pressure
+GO:0001989    positive regulation of the force of heart contraction involved in baroreceptor response to decreased systemic arterial blood pressure	
+GO:1905223    epicardium morphogenesis
+GO:0060976    coronary vasculature development
+GO:0060977    coronary vasculature morphogenesis
+GO:0086095    positive regulation of IKACh channel activity by G protein-coupled acetylcholine receptor signaling pathway involved in negative regulation of heart rate	
+GO:0060978    angiogenesis involved in coronary vascular morphogenesis
+GO:0055022    negative regulation of cardiac muscle tissue growth
+GO:0055026    negative regulation of cardiac muscle tissue development
+GO:0055023    positive regulation of cardiac muscle tissue growth
+GO:0055025    positive regulation of cardiac muscle tissue development
+GO:0055019    negative regulation of cardiac muscle fiber development	
+GO:0055020    positive regulation of cardiac muscle fiber development
+GO:1901220    negative regulation of cardiac chamber morphogenesis	
+GO:1901221    positive regulation of cardiac chamber morphogenesis
+GO:1901211    negative regulation of cardiac chamber formation
+GO:1901212    positive regulation of cardiac chamber formation	
+GO:1905208    negative regulation of cardiocyte differentiation
+GO:1905209    positive regulation of cardiocyte differentiation
+GO:1905306    positive regulation of cardiac myofibril assembly
+GO:1905305    negative regulation of cardiac myofibril assembly
+GO:0005111    type 2 fibroblast growth factor receptor binding
+
