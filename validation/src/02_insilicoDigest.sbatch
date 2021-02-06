@@ -4,8 +4,8 @@
 #SBATCH --partition shortq
 #SBATCH --mem 16000
 #SBATCH --cpus-per-task=4
-#SBATCH --time 02:00:00
-#SBATCH --array=20
+#SBATCH --time 08:00:00
+#SBATCH --array=1
 
 conda activate crossSp
 

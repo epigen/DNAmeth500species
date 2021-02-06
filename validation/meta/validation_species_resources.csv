@@ -1,4 +1,5 @@
 species;ucsc_genome;class;scientific_name;date;name;BSlibrary;genome_id;provider
+Human;hg38;Mammalia;Homo sapiens;Dec. 2013;Genome Reference Consortium GRCm38;BSgenome.Hsapiens.UCSC.hg38;Hsapiens;UCSC
 Mouse;mm10;Mammalia;Mus musculus;Dec. 2011;Genome Reference Consortium GRCm38;BSgenome.Mmusculus.UCSC.mm10;Mmusculus;UCSC
 Zebrafish;danRer11;Actinopteri;Danio rerio;May 2017;Genome Reference Consortium GRCz11;BSgenome.Drerio.UCSC.danRer11;Drerio;UCSC
 Chicken;galGal6;Aves;Gallus gallus;Mar. 2018;GRCg6 Gallus-gallus-6.0;BSgenome.Ggallus.UCSC.galGal6;Ggallus;UCSC

@@ -1,4 +1,5 @@
 species;ucsc_genome;class;scientific_name
+Human;hg38;Mammalia;Homo sapiens
 Mouse;mm10;Mammalia;Mus musculus
 Zebrafish;danRer11;Actinopteri;Danio rerio
 Lancelet;braFlo1;Invertebrata;Cephalochordata

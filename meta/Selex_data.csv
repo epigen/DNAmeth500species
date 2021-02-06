@@ -1,0 +1,703 @@
+﻿Table S3 - bisulfite-SELEX dinucleotide counts and enrichment;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+section a: bisulfite SELEX analysis of mCG enrichment;;;;;;;;;;;;;;;;
+TF name;HGNC name of TF;;;;;;;;;;;;;;;
+clone type;Type of construct used: extended DNA binding domain (eDBD) or full-length (FL);;;;;;;;;;;;;;;
+call;"final classification of CG positions to Little effect, or MethylPlus or MethylMinus; cases where data is inconsistent are labeled as 'inconclusive', asterisk indicates TFs with different bisulfite-SELEX calls in different experiments. final call is based on bisulfite call except for cases where bisulfite experiment had low enrichment, low complexity seed, or no data. ";;;;;;;;;;;;;;;
+methyl-SELEX call;call from methyl-SELEX;;;;;;;;;;;;;;;
+bisulfite call;call from bisulfite-SELEX. Note also that cut-off was set at 10% and 50% to indicate weak effect and strong effect.;;;;;;;;;;;;;;;
+comment;comment field;;;;;;;;;;;;;;;
+seed;seed used to count the dinucleotides (counted dinucleotide position is in bold);;;;;;;;;;;;;;;
+start position of CG;position of the counted dinucleotide;;;;;;;;;;;;;;;
+enrichment of mCG;enrichment of methyl-CG (see Methods for details);;;;;;;;;;;;;;;
+CG frequency;frequency of CG at the position indicated;;;;;;;;;;;;;;;
+TG frequency;frequency of TG at the position indicated;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+section b: replicate experiments;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+section c: TFs for which bisulfite data was not obtained;;;;;;;;;;;;;;;;
+;;;;;;;;; cycle 3 normal seq ;; cycle 3 bisulfite seq ;; cycle 4 normal seq ;; cycle 4 bisulfite seq ;
+TF name;clone type;Call;methyl-SELEX call;bisulfite call;comment;seed used for bisulfite SELEX;start position of CG;enrichment of mCG;CG frequency;TG frequency;CG frequency;TG frequency;CG frequency;TG frequency;CG frequency;TG frequency
+ALX3;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAW;5;50,00%;0,10;0,07;0,04;0,19;0,11;0,07;0,06;0,16
+CDX4;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NGTYGTAAAWN;4;59,23%;0,45;0,03;0,13;0,26;0,52;0,02;0,23;0,17
+CDX4;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NGTYGTAAAAN;4;164,71%;0,27;0,02;0,04;0,16;0,31;0,02;0,12;0,10
+CEBPB;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NRTTGYGYAAYN;6;14,83%;0,54;0,10;0,29;0,44;0,61;0,09;0,37;0,41
+CEBPE;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NRTTGYGYAAYN;6;12,01%;0,60;0,07;0,31;0,41;0,71;0,06;0,40;0,39
+CEBPG;FL;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NTTGYGYAAN;5;20,07%;0,31;0,09;0,17;0,32;0,37;0,10;0,23;0,30
+EGR4;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NHYGYYYAYGYHN;3;20,30%;0,45;0,03;0,21;0,33;0,62;0,02;0,35;0,38
+;;;;weak MethylPlus;;NHYGYYYAYGYHN;9;20,22%;0,49;0,01;0,31;0,29;0,65;0,01;0,49;0,29
+EN1;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAACGAK;5;16,67%;0,18;0,10;0,06;0,29;0,20;0,10;0,07;0,26
+EN2;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAT;5;-18,18%;0,17;0,09;0,07;0,27;0,21;0,10;0,06;0,27
+ESR1;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NAGGTYANNNYGAYYTN;11;81,45%;0,37;0,57;0,12;0,83;0,31;0,66;0,18;0,79
+ESR1;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NAGGTYANNNYGAYYTN;11;91,49%;0,27;0,39;0,06;0,42;0,27;0,60;0,15;0,65
+FOXG1;eDBD;MethylPlus;MethylPlus;low enrichment;;NAYGTAAAYAN;3;-20,44%;0,19;0,09;0,12;0,24;0,29;0,11;0,11;0,24
+FOXJ3;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NYGTAAATA;2;12,64%;0,18;0,13;0,17;0,25;0,26;0,14;0,22;0,20
+GATA3;FL;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;WGATAAYGATYW;7;134,47%;0,36;0,06;0,10;0,36;0,46;0,05;0,29;0,24
+GATA5;FL;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;WGATAAYGATYT;7;87,00%;0,32;0,05;0,12;0,26;0,42;0,05;0,29;0,18
+GBX2;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;88,41%;0,12;0,09;0,03;0,20;0,12;0,08;0,05;0,14
+GRHL1;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NAAYYGGTTN;5;15,40%;0,41;0,06;0,21;0,40;0,46;0,05;0,26;0,36
+GSX2;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;83,49%;0,24;0,13;0,11;0,37;0,32;0,13;0,26;0,31
+HLF;FL;MethylPlus;MethylMinus;weak MethylPlus;effect revealed by bisulfite;NRTTAYGYAAYN;6;38,18%;0,20;0,11;0,11;0,32;0,27;0,12;0,19;0,31
+HOXA1;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAT;5;156,70%;0,22;0,17;0,07;0,34;0,28;0,18;0,25;0,29
+HOXA10;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NRTYGTAAAAN;4;72,91%;0,45;0,01;0,17;0,28;0,56;0,01;0,36;0,18
+HOXA10;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NGTYGTAAAAN;4;36,56%;0,41;0,02;0,13;0,30;0,51;0,01;0,21;0,26
+HOXA11;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NGTYGTAAAAN;4;62,32%;0,77;0,01;0,33;0,32;0,90;0,00;0,68;0,21
+HOXA13;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NYTYGTAAAAN;4;128,00%;0,59;0,05;0,20;0,40;0,82;0,03;0,66;0,20
+HOXA13;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NYTYGTAAAAN;4;73,57%;0,84;0,02;0,40;0,40;0,95;0,01;0,81;0,14
+HOXA2;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;76,92%;0,18;0,20;0,07;0,41;0,21;0,21;0,14;0,38
+HOXA4;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;2,62%;0,18;0,18;0,07;0,37;0,21;0,21;0,08;0,41
+HOXA5;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAT;5;71,11%;0,16;0,14;0,05;0,28;0,19;0,18;0,11;0,33
+HOXA5;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;-2,56%;0,15;0,13;0,07;0,29;0,17;0,14;0,07;0,29
+HOXA6;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;21,31%;0,20;0,13;0,06;0,24;0,37;0,12;0,12;0,24
+HOXA7;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAT;5;18,11%;0,22;0,11;0,17;0,27;0,27;0,12;0,23;0,25
+HOXB1;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;-16,67%;0,17;0,15;0,06;0,29;0,19;0,16;0,05;0,29
+HOXB13;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NYTYGTAAAAN;4;91,03%;0,79;0,03;0,32;0,44;0,93;0,01;0,74;0,18
+HOXB2;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;105,56%;0,15;0,19;0,03;0,38;0,16;0,22;0,06;0,36
+HOXB5;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;15,00%;0,12;0,17;0,05;0,23;0,14;0,22;0,06;0,26
+HOXB5;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGWK;5;-22,42%;0,14;0,14;0,05;0,27;0,16;0,17;0,04;0,30
+HOXB6;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;2,82%;0,22;0,10;0,09;0,18;0,31;0,08;0,14;0,22
+HOXB7;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;16,36%;0,20;0,11;0,09;0,30;0,24;0,11;0,12;0,30
+HOXB8;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;123,81%;0,21;0,13;0,07;0,32;0,27;0,14;0,20;0,27
+HOXB9;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;GTYGTAAAA;3;53,01%;0,42;0,02;0,19;0,19;0,55;0,01;0,41;0,15
+HOXC10;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NGTYGTAAAAN;4;79,15%;0,56;0,01;0,22;0,34;0,71;0,00;0,49;0,18
+HOXC10;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NRTYGTAAAWN;4;35,53%;0,37;0,02;0,13;0,26;0,45;0,02;0,20;0,21
+HOXC11;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NRTYGTAAAAN;4;65,56%;0,48;0,03;0,17;0,27;0,64;0,02;0,37;0,18
+HOXC11;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NRTYGTAAAWN;4;29,51%;0,46;0,03;0,15;0,29;0,57;0,03;0,23;0,26
+HOXC12;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NGTYGTAAAAN;4;66,10%;0,50;0,06;0,12;0,28;0,65;0,04;0,28;0,29
+HOXC13;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NYTYGTAAAAN;4;91,21%;0,72;0,03;0,30;0,46;0,91;0,01;0,72;0,20
+HOXC4;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;-4,26%;0,17;0,15;0,07;0,36;0,21;0,17;0,07;0,36
+HOXC8;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;135,37%;0,24;0,14;0,09;0,28;0,31;0,15;0,32;0,23
+HOXC9;FL;MethylPlus;MethylPlus;MethylPlus;concordant;GTYGTAAAAN;3;85,57%;0,40;0,01;0,15;0,21;0,51;0,00;0,36;0,10
+HOXD1;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAACGAK;5;-35,29%;0,14;0,13;0,06;0,26;0,17;0,15;0,04;0,28
+HOXD10;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NRTYGTAAAAN;4;61,17%;0,56;0,01;0,21;0,34;0,67;0,01;0,40;0,24
+HOXD11;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NGTYGTAAAAN;4;119,37%;0,64;0,02;0,13;0,35;0,78;0,01;0,35;0,23
+HOXD12;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NRTYGTAAAAN;4;37,25%;0,44;0,04;0,17;0,33;0,55;0,02;0,28;0,27
+HOXD13;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NYTYGTAAAAN;4;107,45%;0,75;0,04;0,28;0,49;0,92;0,01;0,73;0,22
+HOXD3;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;-8,33%;0,16;0,20;0,04;0,44;0,19;0,23;0,04;0,48
+HOXD4;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAACGAK;5;69,70%;0,13;0,13;0,03;0,25;0,16;0,16;0,06;0,27
+HOXD8;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;77,97%;0,22;0,10;0,07;0,30;0,27;0,11;0,15;0,28
+HOXD9;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NRTYGTAAAAN;4;96,27%;0,39;0,01;0,15;0,24;0,50;0,01;0,39;0,14
+IRF2;FL;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NYGAAAGYGAAAGN;2;32,61%;0,33;0,16;0,16;0,38;0,42;0,18;0,26;0,37
+;;;;weak MethylPlus;;NYGAAAGYGAAAGN;8;37,89%;0,39;0,31;0,21;0,56;0,44;0,37;0,31;0,53
+IRF6;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;RGTWTYGNNNNNNYGAWAYY;6;18,18%;0,53;0,01;0,33;0,36;0,56;0,01;0,39;0,27
+;;;;weak MethylPlus;;RGTWTYGNNNNNNYGAWAYY;14;19,67%;0,63;0,21;0,33;0,56;0,67;0,20;0,41;0,48
+IRX1;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NAYGYGNNNNNNYGYGTN;3;42,86%;0,21;0,05;0,09;0,20;0,27;0,04;0,16;0,17
+;;;;weak MethylPlus;;NAYGYGNNNNNNYGYGTN;5;10,40%;0,12;0,06;0,05;0,12;0,13;0,08;0,06;0,14
+;;;;weak MethylPlus;;NAYGYGNNNNNNYGYGTN;13;17,23%;0,14;0,05;0,07;0,15;0,16;0,05;0,09;0,14
+;;;;MethylPlus;;NAYGYGNNNNNNYGYGTN;15;88,34%;0,22;0,06;0,07;0,15;0,20;0,03;0,17;0,15
+IRX3;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NAYGYGNNNNNNYGYGTN;3;181,20%;0,54;0,01;0,18;0,40;0,58;0,00;0,57;0,10
+;;;;MethylPlus;;NAYGYGNNNNNNYGYGTN;5;163,27%;0,21;0,11;0,07;0,26;0,20;0,13;0,18;0,17
+;;;;MethylPlus;;NAYGYGNNNNNNYGYGTN;13;222,69%;0,21;0,07;0,07;0,27;0,22;0,07;0,24;0,12
+;;;;MethylPlus;;NAYGYGNNNNNNYGYGTN;15;93,38%;0,74;0,07;0,33;0,38;0,87;0,06;0,80;0,12
+IRX5;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NYRYGWNNNWYGYGN;2;78,57%;0,12;0,05;0,06;0,12;0,14;0,05;0,12;0,07
+;;;;MethylPlus;;NYRYGWNNNWYGYGN;4;59,18%;0,18;0,08;0,12;0,17;0,23;0,10;0,24;0,12
+;;;;MethylPlus;;NYRYGWNNNWYGYGN;11;77,02%;0,19;0,05;0,11;0,18;0,23;0,05;0,24;0,11
+;;;;MethylPlus;;NYRYGWNNNWYGYGN;13;50,00%;0,13;0,07;0,10;0,14;0,15;0,08;0,17;0,10
+ISX;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;50,00%;0,08;0,07;0,04;0,13;0,08;0,06;0,04;0,06
+ISX;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAR;5;48,81%;0,10;0,09;0,04;0,20;0,10;0,09;0,05;0,15
+KLF10;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;RYYAYGYYYHNNYYAYGYYYHY;5;12,75%;0,49;0,01;0,34;0,33;0,52;0,01;0,38;0,25
+;;;;weak MethylPlus;;RYYAYGYYYHNNYYAYGYYYHY;16;17,90%;0,55;0,01;0,41;0,37;0,63;0,01;0,52;0,28
+KLF11;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NRYYAYGYYYAYN;6;19,16%;0,40;0,01;0,31;0,36;0,55;0,01;0,46;0,32
+KLF12;FL;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NRYYAYGYYYW;6;14,77%;0,66;0,01;0,28;0,45;0,73;0,01;0,34;0,40
+KLF12;FL;MethylPlus;MethylPlus;not available;;NGYYGAYGYYYW;;;;;;;;;;
+KLF13;FL;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NRYYAYGYYYAYYN;6;20,16%;0,65;0,00;0,45;0,40;0,79;0,00;0,62;0,31
+KLF13;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NRYYAYGYYYHYN;6;30,30%;0,36;0,02;0,22;0,30;0,45;0,01;0,37;0,30
+KLF14;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NRYYAYGYYYHYN;6;27,74%;0,38;0,01;0,25;0,30;0,51;0,01;0,42;0,29
+KLF15;FL;MethylPlus;MethylPlus;weak MethylPlus;concordant;RYYAYGYYYHYN;5;37,58%;0,44;0,02;0,26;0,33;0,65;0,01;0,51;0,29
+KLF16;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NYYAYGYYYWN;5;14,13%;0,30;0,04;0,15;0,34;0,39;0,03;0,21;0,35
+KLF17;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NGYYAYGYYYWN;6;44,39%;0,32;0,02;0,17;0,23;0,29;0,02;0,27;0,23
+KLF6;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NRYYAYGYYYN;6;25,71%;0,17;0,05;0,10;0,22;0,24;0,05;0,18;0,26
+LBX2;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAG;5;4,44%;0,24;0,07;0,05;0,25;0,29;0,07;0,06;0,26
+LHX4;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAACGAK;5;6,90%;0,12;0,09;0,04;0,24;0,14;0,09;0,04;0,20
+LHX5;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;60,39%;0,19;0,09;0,07;0,21;0,22;0,09;0,13;0,18
+LHX6;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;148,44%;0,26;0,08;0,11;0,28;0,31;0,08;0,35;0,15
+LHX9;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;125,93%;0,32;0,10;0,12;0,27;0,30;0,11;0,32;0,21
+LHX9;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAG;5;126,67%;0,26;0,09;0,06;0,25;0,29;0,10;0,17;0,24
+LMX1A;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAG;5;172,73%;0,14;0,08;0,02;0,22;0,15;0,08;0,06;0,20
+LMX1B;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;YTYGTWAA;3;57,89%;0,05;0,01;0,08;0,12;0,03;0,01;0,30;0,25
+MEIS2;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;YGAYANNYGTYA;1;114,62%;0,13;0,53;0,05;0,66;0,10;0,65;0,09;0,72
+;;;;MethylPlus;;YGAYANNYGTYA;8;75,00%;0,12;0,76;0,06;0,79;0,08;0,84;0,08;0,84
+MEIS3;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;YGAYANNYGTYA;1;65,71%;0,11;0,12;0,04;0,26;0,12;0,14;0,08;0,29
+;;;;weak MethylPlus;;YGAYANNYGTYA;8;33,57%;0,15;0,15;0,07;0,27;0,17;0,18;0,11;0,30
+MSX1;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;-3,57%;0,12;0,08;0,04;0,19;0,13;0,08;0,04;0,19
+MSX1;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;10,29%;0,14;0,07;0,04;0,19;0,16;0,07;0,05;0,20
+MSX2;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;24,08%;0,15;0,08;0,07;0,24;0,17;0,09;0,08;0,19
+MYF6;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NRAYANNTGAYGYN;11;18,18%;0,45;0,03;0,11;0,51;0,50;0,02;0,14;0,50
+NANOG;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGA;5;-34,88%;0,17;0,07;0,06;0,26;0,20;0,07;0,04;0,26
+NFAT5;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NYGGAAANNTAYN;2;22,36%;0,39;0,23;0,13;0,47;0,43;0,26;0,18;0,51
+NFATC1;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NTTTYYGTNNNYGGAAAW;6;51,85%;0,35;0,00;0,18;0,29;0,34;0,00;0,26;0,18
+;;;;MethylPlus;;NTTTYYGTNNNYGGAAAW;12;92,41%;0,52;0,41;0,18;0,77;0,50;0,46;0,33;0,64
+NFATC1;eDBD;MethylPlus;MethylPlus;not available;;NTTTYYGYGGAAAN;;;;;;;;;;
+NFATC2;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NKTTYYGTNNNYGGAAWN;6;20,47%;0,40;0,00;0,24;0,31;0,41;0,00;0,28;0,23
+;;;;weak MethylPlus;;NKTTYYGTNNNYGGAAWN;12;33,33%;0,50;0,42;0,21;0,72;0,51;0,44;0,28;0,66
+NFATC2;eDBD;MethylPlus;MethylPlus;not available;;NTTTYYGYGGAAAN;;;;;;;;;;
+NFATC3;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NAYGGAAAHN;3;77,99%;0,49;0,38;0,18;0,71;0,50;0,41;0,33;0,61
+NFATC3;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NYGGAAANNNNNNNTTYYGN;2;57,71%;0,44;0,30;0,18;0,56;0,46;0,33;0,30;0,50
+;;;;MethylPlus;;NYGGAAANNNNNNNTTYYGN;18;76,66%;0,20;0,01;0,07;0,13;0,21;0,01;0,13;0,08
+NFATC3;eDBD;MethylPlus;MethylPlus;not available;;NTTTYYRYGGAAAN;;;;;;;;;;
+NKX2-3;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAT;5;139,08%;0,13;0,05;0,03;0,15;0,14;0,04;0,08;0,11
+NKX2-3;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAACGAK;5;29,17%;0,13;0,05;0,03;0,20;0,15;0,05;0,04;0,18
+NKX2-5;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAT;5;33,33%;0,12;0,05;0,03;0,16;0,14;0,05;0,04;0,13
+NKX3-1;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;40,00%;0,15;0,07;0,05;0,20;0,16;0,07;0,07;0,17
+NKX3-2;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;115,38%;0,11;0,05;0,03;0,15;0,10;0,04;0,07;0,13
+NR1I3;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NYGAAYTWN;2;110,44%;0,20;0,11;0,12;0,29;0,37;0,19;0,50;0,31
+NR2C1;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NRGGTYRYGAYYYN;6;96,86%;0,24;0,01;0,07;0,23;0,22;0,01;0,13;0,16
+;;;;MethylPlus;;NRGGTYRYGAYYYN;8;80,35%;0,31;0,41;0,11;0,70;0,31;0,49;0,19;0,67
+NR2F1;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NRGGTYAYGAYYYN;8;123,42%;0,26;0,25;0,09;0,52;0,31;0,30;0,24;0,49
+NR2F6;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NRGGTYRNYGAYYYN;6;136,54%;0,18;0,02;0,04;0,21;0,17;0,02;0,09;0,15
+;;;;MethylPlus;;NRGGTYRNYGAYYYN;9;162,07%;0,25;0,29;0,06;0,55;0,25;0,34;0,16;0,51
+NR2F6;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NRGGTYRNYGAYYYN;6;53,09%;0,25;0,01;0,09;0,29;0,23;0,00;0,12;0,19
+;;;;MethylPlus;;NRGGTYRNYGAYYYN;9;84,08%;0,34;0,52;0,12;0,80;0,32;0,59;0,20;0,74
+NR3C2;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NGNAYGNNNYGTNYN;5;69,23%;0,22;0,01;0,13;0,21;0,20;0,00;0,20;0,10
+;;;;MethylPlus;;NGNAYGNNNYGTNYN;10;67,76%;0,35;0,40;0,17;0,57;0,37;0,49;0,31;0,56
+PAX1;eDBD;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;NYGTYAYGYWTBANYGN;2;76,92%;0,20;0,07;0,07;0,26;0,26;0,09;0,14;0,21
+;;;;MethylPlus;;NYGTYAYGYWTBANYGN;7;78,99%;0,39;0,15;0,14;0,51;0,50;0,17;0,29;0,41
+;;;;MethylPlus;;NYGTYAYGYWTBANYGN;15;137,87%;0,17;0,09;0,05;0,30;0,20;0,12;0,13;0,26
+PAX2;eDBD;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;NYGTYAYGYWTBANYGNNYN;2;73,55%;0,36;0,09;0,13;0,34;0,41;0,09;0,25;0,25
+;;;;MethylPlus;;NYGTYAYGYWTBANYGNNYN;7;83,70%;0,60;0,15;0,21;0,58;0,67;0,15;0,42;0,41
+;;;;MethylPlus;;NYGTYAYGYWTBANYGNNYN;15;158,75%;0,29;0,20;0,08;0,46;0,32;0,22;0,23;0,37
+PAX3;FL;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;NWAAGYGTGAYGN;6;58,44%;0,29;0,06;0,10;0,29;0,41;0,07;0,23;0,33
+;;;;weak MethylPlus;;NWAAGYGTGAYGN;11;40,00%;0,18;0,03;0,05;0,22;0,25;0,03;0,09;0,23
+PAX6;FL;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;NYAYGYNTBANYGNNYN;4;115,57%;0,49;0,15;0,15;0,55;0,58;0,16;0,37;0,40
+;;;;MethylPlus;;NYAYGYNTBANYGNNYN;12;184,44%;0,21;0,19;0,05;0,41;0,24;0,22;0,16;0,36
+PAX6;eDBD;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;NYAYGYNTBANYGNNYN;4;78,87%;0,41;0,15;0,12;0,47;0,49;0,15;0,25;0,40
+;;;;MethylPlus;;NYAYGYNTBANYGNNYN;12;139,89%;0,19;0,17;0,04;0,35;0,22;0,19;0,11;0,33
+PAX7;eDBD;MethylPlus;Little effect and MethylMinus;MethylPlus;effect revealed by bisulfite;NTAAYWNGYGTGAYKN;9;89,88%;0,62;0,04;0,23;0,43;0,79;0,03;0,56;0,27
+;;;;MethylPlus;;NTAAYWNGYGTGAYKN;14;146,84%;0,30;0,01;0,09;0,27;0,36;0,00;0,27;0,16
+PAX8;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NYGTYAYGYWTGANYGNNYN;2;55,62%;0,59;0,07;0,20;0,47;0,66;0,05;0,34;0,35
+;;;;MethylPlus;;NYGTYAYGYWTGANYGNNYN;7;56,00%;0,91;0,08;0,35;0,64;0,95;0,05;0,57;0,43
+;;;;MethylPlus;;NYGTYAYGYWTGANYGNNYN;15;208,33%;0,35;0,40;0,08;0,71;0,40;0,44;0,28;0,60
+PAX9;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NYGTYAYGYWTBANYGN;2;83,42%;0,33;0,10;0,10;0,36;0,40;0,09;0,21;0,27
+;;;;MethylPlus;;NYGTYAYGYWTBANYGN;7;111,24%;0,67;0,18;0,19;0,67;0,74;0,16;0,44;0,46
+;;;;MethylPlus;;NYGTYAYGYWTBANYGN;15;211,11%;0,25;0,21;0,06;0,46;0,28;0,25;0,20;0,37
+PBX1;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NTGATTGAYGN;9;50,00%;0,30;0,14;0,09;0,29;0,37;0,14;0,18;0,31
+PDX1;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAACGAK;5;74,36%;0,13;0,09;0,04;0,26;0,15;0,10;0,08;0,26
+PKNOX1;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;YGAYANNYGTYA;1;79,49%;0,14;0,38;0,06;0,46;0,13;0,58;0,10;0,61
+;;;;MethylPlus;;YGAYANNYGTYA;8;200,00%;0,08;0,57;0,04;0,51;0,05;0,80;0,04;0,73
+PKNOX2;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;YGAYANNYGTYA;1;53,85%;0,12;0,20;0,05;0,33;0,13;0,27;0,10;0,43
+;;;;weak MethylPlus;;YGAYANNYGTYA;8;47,32%;0,15;0,32;0,07;0,40;0,15;0,47;0,11;0,53
+POU2F2;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NYATGYGYATAN;6;60,11%;0,35;0,08;0,17;0,28;0,40;0,08;0,31;0,19
+POU2F3;eDBD;MethylPlus;MethylPlus;low enrichment;;NYATGYGYATRN;6;39,64%;0,14;0,06;0,06;0,17;0,17;0,06;0,10;0,16
+POU3F1;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NTATGYGYATWN;6;102,63%;0,47;0,05;0,12;0,23;0,53;0,04;0,30;0,16
+POU3F1;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NTAATTWATGYGN;11;106,70%;0,26;0,03;0,09;0,23;0,31;0,03;0,23;0,17
+POU3F1;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NTAATGAKATGYGN;12;96,97%;0,30;0,03;0,11;0,27;0,37;0,02;0,27;0,19
+POU3F2;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NTAATGAKATGYGN;12;49,26%;0,30;0,02;0,17;0,25;0,35;0,02;0,29;0,18
+POU3F2;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NTATGYGYATAN;6;46,02%;0,55;0,05;0,21;0,28;0,62;0,05;0,35;0,21
+POU3F2;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NYGYATAAATTAN;2;72,15%;0,31;0,18;0,14;0,41;0,37;0,21;0,28;0,35
+POU3F4;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NTATGYGYATWN;6;67,53%;0,65;0,05;0,18;0,29;0,65;0,05;0,31;0,19
+POU3F4;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NTAATGAKATGYGN;12;97,48%;0,42;0,02;0,15;0,31;0,42;0,02;0,31;0,19
+POU3F4;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NYGYATAAATTAN;2;119,69%;0,43;0,20;0,13;0,47;0,49;0,22;0,32;0,34
+POU5F1;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NTAATTATGYGY;10;65,16%;0,69;0,01;0,32;0,21;0,92;0,00;0,76;0,06
+POU5F1;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NTATGYGYATAN;6;77,33%;0,54;0,04;0,10;0,16;0,61;0,03;0,21;0,11
+PPARD;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NRAGGTYAYGAYYYYN;9;165,04%;0,37;0,52;0,14;0,80;0,32;0,57;0,31;0,60
+PRDM4;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;GGGNNNHYTYGAAAYYGYYR;10;62,16%;0,35;0,34;0,15;0,59;0,36;0,40;0,24;0,54
+;;;;MethylPlus;;GGGNNNHYTYGAAAYYGYYR;16;62,88%;0,34;0,29;0,13;0,59;0,37;0,33;0,22;0,54
+;;;;MethylPlus;;GGGNNNHYTYGAAAYYGYYR;19;80,42%;0,19;0,15;0,08;0,39;0,21;0,16;0,15;0,33
+RARA;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NRGGTYRYGAYYYN;6;86,39%;0,27;0,02;0,06;0,30;0,26;0,01;0,11;0,24
+;;;;MethylPlus;;NRGGTYRYGAYYYN;8;80,39%;0,29;0,35;0,09;0,66;0,30;0,43;0,16;0,65
+RARB;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NRGGTYAYGAYYYN;8;163,28%;0,33;0,43;0,10;0,63;0,32;0,55;0,28;0,62
+RARG;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NRGGTYRYGAYYYN;6;95,66%;0,26;0,02;0,07;0,28;0,24;0,01;0,13;0,20
+;;;;MethylPlus;;NRGGTYRYGAYYYN;8;94,70%;0,30;0,41;0,09;0,69;0,29;0,49;0,17;0,68
+RFX5;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NYGTTGYYRNRN;2;50,49%;0,32;0,12;0,10;0,21;0,36;0,12;0,18;0,19
+;;;;MethylPlus;;NYGTTGYYRNRN;8;53,13%;0,11;0,05;0,04;0,11;0,12;0,05;0,07;0,10
+RORB;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NWWNTRGGTYRYGAYYYWNWWN;10;161,54%;0,30;0,01;0,08;0,31;0,27;0,00;0,20;0,18
+;;;;MethylPlus;;NWWNTRGGTYRYGAYYYWNWWN;12;152,94%;0,43;0,46;0,12;0,77;0,43;0,52;0,30;0,64
+RXRB;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NRGGTYAYGAYYYN;8;57,14%;0,40;0,41;0,14;0,72;0,41;0,47;0,22;0,69
+RXRG;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NRGGTYAYGAYYYN;8;190,11%;0,30;0,46;0,07;0,75;0,29;0,47;0,20;0,63
+SCRT1;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;HAYYTGTYGYN;8;153,85%;0,13;0,76;0,04;0,81;0,08;0,85;0,06;0,84
+SCRT2;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NGYRAYAGGTN;3;128,57%;0,10;0,00;0,04;0,10;0,06;0,00;0,08;0,07
+SNAI1;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NAYAGGTGYR;9;66,25%;0,16;0,02;0,08;0,16;0,16;0,02;0,14;0,12
+SNAI1;eDBD;MethylPlus;MethylPlus;weak MethylPlus;concordant;NRYAGGTGYG;9;20,43%;0,13;0,04;0,06;0,17;0,14;0,04;0,07;0,14
+SNAI2;FL;MethylPlus;MethylPlus;weak MethylPlus;concordant;NAYAGGTGYR;9;28,03%;0,16;0,03;0,09;0,17;0,16;0,03;0,13;0,18
+SP1;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NRKGGGYGTGGYYWN;7;28,30%;0,77;0,09;0,18;0,57;0,84;0,09;0,26;0,60
+SP2;eDBD;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;NTWAGYYYYGYYYHYYN;9;58,44%;0,97;0,00;0,43;0,50;0,99;0,00;0,71;0,28
+TBX20;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NAGGYGTGAN;5;62,88%;0,31;0,47;0,13;0,61;0,32;0,63;0,23;0,71
+TFCP2;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;AWYYGGTTNNAAYYGGWT;4;39,34%;0,21;0,08;0,12;0,26;0,27;0,09;0,20;0,23
+;;;;MethylPlus;;AWYYGGTTNNAAYYGGWT;14;51,32%;0,22;0,11;0,12;0,29;0,28;0,12;0,22;0,25
+TFCP2L1;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;AWYYGGTTNNAAYYGGWT;4;42,18%;0,15;0,10;0,06;0,27;0,19;0,09;0,11;0,28
+;;;;MethylPlus;;AWYYGGTTNNAAYYGGWT;14;66,28%;0,15;0,10;0,06;0,28;0,16;0,13;0,11;0,29
+TGIF2LY;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;YGAYANNYGTYA;1;55,00%;0,12;0,27;0,05;0,41;0,13;0,39;0,10;0,56
+;;;;weak MethylPlus;;YGAYANNYGTYA;8;29,31%;0,15;0,40;0,06;0,44;0,14;0,57;0,09;0,63
+THRB;eDBD;MethylPlus;MethylPlus;not available;;NRRGGTYRTGAYYYYN;;;;;;;;;;
+UBP1;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;AWYYGGTTNNAAYYGGWT;4;15,08%;0,42;0,07;0,21;0,34;0,53;0,05;0,29;0,31
+;;;;weak MethylPlus;;AWYYGGTTNNAAYYGGWT;14;23,29%;0,42;0,11;0,22;0,36;0,52;0,11;0,32;0,32
+UNCX;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;92,31%;0,08;0,10;0,02;0,20;0,11;0,07;0,05;0,17
+VSX1;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;112,14%;0,14;0,09;0,04;0,24;0,15;0,09;0,09;0,20
+VSX1;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;51,58%;0,14;0,08;0,05;0,21;0,16;0,08;0,09;0,21
+VSX2;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;27,27%;0,07;0,04;0,01;0,10;0,06;0,02;0,01;0,06
+VSX2;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;70,00%;0,14;0,10;0,04;0,26;0,15;0,11;0,06;0,20
+ZBTB20;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NYAAYGTATRKN;5;27,25%;0,28;0,27;0,16;0,52;0,30;0,27;0,18;0,40
+ZNF12;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;GGKGHTRYTYGTTATAGYGYN;10;55,41%;0,62;0,35;0,57;0,41;0,63;0,36;0,90;0,10
+;;;;MethylPlus;;GGKGHTRYTYGTTATAGYGYN;18;84,81%;0,26;0,00;0,37;0,36;0,22;0,00;0,67;0,08
+ZNF174;eDBD;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;NGNYGATYAYTYGNYN;4;56,86%;0,54;0,01;0,17;0,50;0,58;0,01;0,28;0,41
+;;;;weak MethylPlus;;NGNYGATYAYTYGNYN;12;49,72%;0,51;0,31;0,20;0,62;0,55;0,32;0,32;0,54
+ZNF23;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NNNYGYGGYYATGGGYGN;4;36,33%;0,67;0,01;0,34;0,34;0,82;0,00;0,55;0,22
+;;;;weak MethylPlus;;NNNYGYGGYYATGGGYGN;6;40,75%;0,97;0,00;0,51;0,46;1,00;0,00;0,74;0,26
+;;;;weak MethylPlus;;NNNYGYGGYYATGGGYGN;16;29,63%;0,16;0,46;0,09;0,63;0,15;0,61;0,10;0,72
+ZNF274;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NRTRTGAGTTYTYRYN;13;13,09%;0,31;0,07;0,18;0,35;0,34;0,06;0,23;0,36
+ZNF32;FL;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;NYGTAAYNYGAYAYN;2;71,43%;0,36;0,24;0,14;0,46;0,40;0,27;0,27;0,41
+;;;;MethylPlus;;NYGTAAYNYGAYAYN;9;76,81%;0,34;0,25;0,15;0,53;0,40;0,29;0,31;0,48
+ZSCAN31;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NGYATAAYYGYYYYGYKKYN;9;379,49%;0,16;0,63;0,03;0,78;0,12;0,75;0,11;0,78
+;;;;MethylPlus;;NGYATAAYYGYYYYGYKKYN;14;211,11%;0,56;0,37;0,13;0,80;0,54;0,44;0,39;0,59
+;;;;MethylPlus;;NGYATAAYYGYYYYGYKKYN;16;106,28%;0,23;0,01;0,12;0,27;0,25;0,00;0,28;0,16
+ZNF444;FL;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NYGWYYYYYYYYYYYN;2;32,68%;0,25;0,09;0,11;0,33;0,31;0,09;0,18;0,34
+ZNF524;FL;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;NYTYGAAYYYKN;4;63,82%;0,89;0,04;0,39;0,51;0,95;0,02;0,69;0,27
+;;;;MethylPlus;;NYTYGAAYYYKN;10;70,69%;0,46;0,00;0,22;0,31;0,52;0,00;0,44;0,20
+ZNF713;eDBD;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;NHGAYGAYTGYYAYGAAAN;2;83,82%;0,31;0,11;0,13;0,32;0,33;0,10;0,25;0,20
+;;;;MethylPlus;;NHGAYGAYTGYYAYGAAAN;5;115,86%;0,81;0,04;0,30;0,58;0,91;0,02;0,73;0,24
+;;;;MethylPlus;;NHGAYGAYTGYYAYGAAAN;14;83,43%;0,82;0,01;0,35;0,50;0,89;0,01;0,70;0,23
+ZNF740;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NYGYYYYYYYYAY;2;13,62%;0,28;0,16;0,21;0,32;0,35;0,22;0,29;0,37
+ZNF771;FL;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NGYGYTAAYYATTRN;3;40,36%;0,80;0,01;0,32;0,48;0,89;0,01;0,50;0,39
+ZNF771;eDBD;MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;NRYGYTAAYYATTRN;3;26,00%;0,75;0,01;0,35;0,44;0,85;0,01;0,49;0,37
+ZNF784;FL;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;GTAYYTAYYKY;9;54,21%;0,42;0,01;0,17;0,39;0,47;0,01;0,30;0,35
+ZNF821;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NRGAYAGAYGGAYRN;9;87,52%;0,44;0,06;0,17;0,39;0,53;0,04;0,39;0,27
+;;;;MethylPlus;;NRGAYAGAYGGAYRN;13;128,57%;0,24;0,01;0,07;0,26;0,23;0,01;0,16;0,18
+ARNT2;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;RTYAYGTGAY;5;-95,43%;0,99;0,00;0,65;0,33;1,00;0,00;0,03;0,96
+ARNTL;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;GTYAYGTGAY;5;-78,97%;0,59;0,10;0,43;0,40;0,70;0,07;0,10;0,73
+ATF2;FL;MethylMinus;MethylMinus;low enrichment;;NRTGAYGTYAYN;6;10,08%;0,30;0,11;0,14;0,40;0,39;0,11;0,19;0,43
+ATF2;eDBD;MethylMinus;MethylMinus;low enrichment;;NRTGAYGTYAYN;6;11,31%;0,24;0,13;0,12;0,32;0,31;0,15;0,17;0,37
+ATF3;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRTGAYGTYAYN;6;-20,96%;0,65;0,11;0,42;0,46;0,71;0,11;0,36;0,58
+ATF3;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRTGAYGTYAYN;6;-25,03%;0,63;0,14;0,41;0,46;0,67;0,13;0,33;0,59
+ATF6;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NGRTGAYGTYAYN;7;-67,50%;0,97;0,01;0,57;0,41;0,99;0,00;0,19;0,81
+ATF6;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NGRTGAYGTGGYAN;7;-76,82%;0,96;0,01;0,46;0,50;0,98;0,00;0,11;0,88
+ATF6B;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;TGYYAYGTYAYN;6;-52,20%;0,84;0,01;0,39;0,44;0,95;0,00;0,21;0,71
+ATF6B;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NRTGAYGTYAYN;6;-60,28%;0,90;0,03;0,42;0,48;0,97;0,01;0,18;0,77
+ATF7;eDBD;MethylMinus;MethylMinus;low enrichment;;NRTGAYGTYAYN;6;-0,78%;0,40;0,13;0,17;0,33;0,52;0,11;0,23;0,41
+BARHL2;FL;MethylMinus;MethylMinus;low complexity motif;low complexity motif;NTAAAYGN;6;21,90%;0,36;0,34;0,17;0,67;0,37;0,43;0,20;0,69
+BARHL2;eDBD;MethylMinus;MethylMinus;low complexity motif;low complexity motif;NTAAAYGN;6;-1,51%;0,31;0,23;0,20;0,49;0,38;0,23;0,22;0,49
+BCL6;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NTGYTTTYKAGGAAN;8;-21,65%;0,27;0,00;0,21;0,33;0,24;0,00;0,13;0,27
+BCL6B;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NTGYTTTYKAGGAAN;8;-37,64%;0,31;0,00;0,24;0,28;0,25;0,00;0,11;0,25
+BHLHE40;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;GTYAYGTGAY;5;-73,49%;0,97;0,00;0,52;0,42;0,99;0,00;0,14;0,81
+BHLHE41;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;GTYAYGTGAY;5;-93,94%;1,00;0,00;0,66;0,34;1,00;0,00;0,04;0,96
+BSX;eDBD;MethylMinus;MethylMinus;low complexity motif;low complexity motif;TTAAYGAK;5;63,14%;0,22;0,13;0,08;0,38;0,26;0,14;0,14;0,33
+CREB1;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRTGAYGTYAYN;6;-48,66%;0,62;0,13;0,33;0,51;0,75;0,09;0,20;0,71
+CREB1;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NRTGAYGTYAYN;6;-63,33%;0,54;0,18;0,31;0,54;0,69;0,12;0,14;0,78
+CREB3;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NRTGAYGTYAYN;6;-56,35%;0,75;0,10;0,39;0,51;0,85;0,07;0,19;0,76
+CREB3;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NRTGAYGTGGYN;6;-57,76%;0,87;0,09;0,37;0,56;0,94;0,04;0,17;0,79
+CREB3;FL;MethylMinus;MethylMinus;not available;;NGYYAYGTGKMN;;;;;;;;;;
+CREB3L1;eDBD;MethylMinus;Little effect;weak MethylMinus;effect revealed by bisulfite;NTGYYAYGTGGYN;7;-17,71%;0,71;0,04;0,23;0,54;0,87;0,02;0,23;0,67
+CREB3L1;eDBD;MethylMinus;MethylMinus;low enrichment;;NRTGAYGTGGYAN;6;-5,41%;0,60;0,16;0,12;0,56;0,77;0,11;0,15;0,67
+CREB3L1;FL;MethylMinus;Little effect;weak MethylMinus;effect revealed by bisulfite;NTGYYAYGTGGYAN;7;-32,70%;0,74;0,05;0,29;0,50;0,88;0,03;0,24;0,73
+CREB3L1;FL;MethylMinus;MethylMinus;low enrichment;;NTGAYGTGGYAN;5;10,77%;0,54;0,23;0,17;0,54;0,66;0,23;0,24;0,63
+CREB5;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRTGAYGTYAYN;6;-14,96%;0,42;0,17;0,22;0,51;0,49;0,16;0,21;0,56
+CREM;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRTGAYGTYAYN;6;-49,75%;0,57;0,13;0,23;0,56;0,72;0,10;0,14;0,73
+CUX1;eDBD;MethylMinus;MethylMinus;low enrichment;;NATYGATYN;4;-4,76%;0,29;0,15;0,09;0,22;0,26;0,16;0,08;0,24
+DMRTC2;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NAAYGATAYA;4;-35,42%;0,16;0,15;0,04;0,26;0,20;0,17;0,03;0,30
+E2F2;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NGYGYGYGYGYB;3;-100,00%;0,08;0,00;0,02;0,02;0,07;0,00;0,00;0,05
+;;;;MethylMinus;;NGYGYGYGYGYB;5;-100,00%;0,12;0,00;0,04;0,03;0,10;0,00;0,00;0,14
+;;;;MethylMinus;;NGYGYGYGYGYB;7;-100,00%;0,15;0,00;0,05;0,05;0,17;0,00;0,00;0,17
+;;;;MethylMinus;;NGYGYGYGYGYB;9;-87,56%;0,19;0,00;0,05;0,04;0,25;0,00;0,01;0,19
+E2F4;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;AAAATGGYGYYAAAA;8;-95,34%;1,00;0,00;0,64;0,35;1,00;0,00;0,03;0,97
+E2F7;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;WTTTYYYGYYAAAW;7;-52,86%;1,00;0,00;0,42;0,55;1,00;0,00;0,20;0,79
+ELF1;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYYGGAAGTN;5;-86,73%;0,59;0,00;0,27;0,34;0,59;0,00;0,04;0,71
+ELF2;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYYGGAAGTN;5;-83,77%;0,68;0,00;0,35;0,39;0,68;0,00;0,06;0,76
+ELF2;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAHBHGGAAGTN;5;-83,16%;0,66;0,00;0,38;0,34;0,72;0,00;0,07;0,72
+ELF3;FL;MethylMinus;MethylMinus;MethylMinus;concordant;AYYHGGAAGTNNNNNNNNWWWWW;4;-75,25%;0,66;0,00;0,26;0,41;0,60;0,00;0,06;0,58
+ELF3;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYHGGAAGTNNNNNNNNNWWWWWN;5;-82,68%;0,15;0,00;0,07;0,18;0,13;0,00;0,01;0,19
+ELF4;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYHGGAAGTN;5;-85,89%;0,42;0,00;0,23;0,28;0,37;0,00;0,03;0,46
+ELF5;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAYRHGGAAGTN;5;-68,72%;0,16;0,00;0,09;0,13;0,14;0,00;0,02;0,11
+ELK1;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAAGTN;4;-79,09%;0,41;0,01;0,12;0,35;0,47;0,00;0,03;0,54
+ELK3;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAAGTN;4;-74,21%;0,80;0,00;0,25;0,58;0,85;0,00;0,07;0,85
+ELK3;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAAGTN;4;-81,80%;0,64;0,00;0,29;0,46;0,73;0,00;0,06;0,79
+ERG;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYHGGAARTN;4;-92,62%;0,39;0,00;0,34;0,34;0,53;0,00;0,03;0,72
+ERG;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NAYYGGAWATYYGGTN;4;-95,47%;0,90;0,00;0,42;0,47;0,95;0,00;0,02;0,91
+;;;;MethylMinus;;NAYYGGAWATYYGGTN;12;-63,93%;0,90;0,00;0,42;0,46;0,95;0,00;0,16;0,77
+ERG;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAYHGGAAGYN;4;-92,44%;0,60;0,00;0,25;0,34;0,63;0,00;0,02;0,61
+ERG;FL;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NAYYGGATATYYGGTN;4;-94,36%;0,89;0,00;0,33;0,54;0,95;0,00;0,02;0,92
+;;;;MethylMinus;;NAYYGGATATYYGGTN;12;-55,24%;0,91;0,00;0,36;0,55;0,96;0,00;0,17;0,79
+ETS2;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAANNNNNTYYGGTN;4;-95,58%;0,76;0,00;0,41;0,39;0,83;0,00;0,02;0,87
+;;;;MethylMinus;;NAYYGGAANNNNNTYYGGTN;16;-72,07%;0,82;0,00;0,51;0,37;0,87;0,00;0,15;0,77
+ETV1;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAAGTN;4;-78,66%;0,52;0,02;0,13;0,32;0,70;0,01;0,04;0,64
+ETV2;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAARTN;4;-89,29%;0,56;0,00;0,28;0,40;0,56;0,00;0,03;0,65
+ETV3;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAARTN;4;-75,70%;0,50;0,01;0,23;0,37;0,49;0,01;0,06;0,63
+ETV3;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NAYYGGATATYYGGTN;4;-89,74%;0,86;0,00;0,26;0,48;0,91;0,00;0,03;0,86
+;;;;MethylMinus;;NAYYGGATATYYGGTN;12;-65,04%;0,86;0,00;0,31;0,51;0,93;0,00;0,12;0,81
+ETV4;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAAGTN;4;-89,41%;0,70;0,00;0,35;0,47;0,75;0,00;0,04;0,85
+ETV5;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NRYYGGAAGTN;4;-76,22%;0,31;0,01;0,11;0,27;0,35;0,01;0,03;0,41
+FEV;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAAGTKN;4;-90,26%;0,81;0,00;0,29;0,52;0,85;0,00;0,03;0,84
+FLI1;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAARTN;4;-94,34%;0,72;0,00;0,34;0,45;0,74;0,00;0,02;0,81
+FLI1;FL;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NAYYGGATATYYGGTN;4;-93,68%;0,97;0,00;0,31;0,61;0,98;0,00;0,02;0,93
+;;;;weak MethylMinus;;NAYYGGATATYYGGTN;12;-29,65%;0,98;0,00;0,35;0,63;0,99;0,00;0,25;0,75
+FLI1;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYHGGAARTN;4;-91,11%;0,56;0,00;0,33;0,44;0,60;0,00;0,03;0,73
+FLI1;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NAYYGGAWATYYGGTN;4;-94,34%;0,92;0,00;0,34;0,56;0,95;0,00;0,02;0,92
+;;;;MethylMinus;;NAYYGGAWATYYGGTN;12;-66,64%;0,92;0,00;0,35;0,54;0,94;0,00;0,12;0,80
+FOS;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRTGAYGTYAYN;6;-43,02%;0,40;0,07;0,09;0,21;0,61;0,06;0,07;0,24
+FOXP3;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAWTTGTAYGAYAAATN;9;-100,00%;0,06;0,66;0,03;0,77;0,03;0,76;0,00;0,83
+GABPA;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAAGTN;4;-83,49%;0,69;0,00;0,29;0,37;0,68;0,00;0,05;0,68
+GFI1;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NHAATYABNGYNNNNYAYT;8;-27,37%;0,09;0,00;0,05;0,09;0,08;0,00;0,03;0,08
+GLIS1;eDBD;MethylMinus;Little effect and MethylMinus;weak MethylMinus;effect revealed by bisulfite;KAYYYYYYRYRRHG;10;-10,28%;0,29;0,03;0,20;0,22;0,33;0,02;0,19;0,22
+;;;;MethylMinus;concordant;KAYYYYYYRYRRHG;13;-58,39%;0,17;0,19;0,10;0,35;0,15;0,22;0,03;0,35
+GLIS2;eDBD;MethylMinus;Little effect and MethylMinus;weak MethylMinus;effect revealed by bisulfite;NAYYYYYYRYRNYGN;8;-48,17%;0,15;0,12;0,07;0,29;0,12;0,08;0,04;0,35
+;;;;weak MethylMinus;effect revealed by bisulfite;NAYYYYYYRYRNYGN;10;-45,84%;0,23;0,12;0,11;0,34;0,18;0,09;0,05;0,33
+;;;;weak MethylMinus;concordant;NAYYYYYYRYRNYGN;13;-29,41%;0,04;0,16;0,01;0,23;0,05;0,14;0,01;0,25
+GMEB1;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NKAYGTANNNTAYGTHN;4;-82,61%;0,69;0,02;0,35;0,18;0,95;0,00;0,07;0,36
+;;;;MethylMinus;;NKAYGTANNNTAYGTHN;13;-80,20%;0,70;0,01;0,35;0,19;0,96;0,00;0,08;0,38
+GMEB2;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;TAYGTNNNNTAYGT;3;-94,46%;0,89;0,00;0,49;0,23;0,96;0,00;0,03;0,79
+;;;;MethylMinus;;TAYGTNNNNTAYGT;12;-92,68%;0,71;0,01;0,41;0,19;0,60;0,00;0,03;0,67
+HES1;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;GGYRYGTGNY;3;-78,40%;0,18;0,04;0,09;0,12;0,21;0,02;0,02;0,15
+;;;;MethylMinus;;GGYRYGTGNY;5;-89,55%;0,33;0,07;0,19;0,21;0,78;0,06;0,04;0,57
+HES2;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;GGYAYGTGYN;5;-53,83%;0,30;0,05;0,09;0,25;0,39;0,04;0,05;0,31
+HES5;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;GGYAYGTGYY;5;-88,09%;0,96;0,01;0,57;0,40;0,99;0,00;0,07;0,92
+HES7;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;GGYAYGTGYN;5;-96,71%;0,96;0,01;0,59;0,36;0,99;0,00;0,02;0,95
+HEY1;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NGYAYGTGYN;5;-36,05%;0,32;0,05;0,12;0,27;0,46;0,04;0,10;0,34
+HEY2;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NGYAYGTGYN;5;-38,05%;0,37;0,05;0,14;0,27;0,55;0,04;0,12;0,38
+HEY2;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NYAYGTGYN;4;-53,23%;0,16;0,03;0,06;0,10;0,19;0,03;0,03;0,12
+HSF5;eDBD;MethylMinus;MethylMinus;not available;;NRYGTTYTAGAAYGYN;;;;;;;;;;
+HSFY1;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NTTYGAANNNTTYGAAN;4;-94,18%;0,80;0,00;0,48;0,35;0,87;0,00;0,03;0,85
+;;;;MethylMinus;;NTTYGAANNNTTYGAAN;13;-89,40%;0,78;0,00;0,54;0,33;0,84;0,00;0,06;0,83
+HSFY1;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;TYGAAYGTTTYGAAYGY;2;-97,29%;0,53;0,00;0,33;0,24;0,62;0,00;0,01;0,60
+;;;;MethylMinus;;TYGAAYGTTTYGAAYGY;6;-91,38%;0,49;0,19;0,29;0,46;0,63;0,18;0,03;0,78
+;;;;MethylMinus;;TYGAAYGTTTYGAAYGY;11;-96,51%;0,75;0,00;0,53;0,31;0,85;0,00;0,02;0,85
+;;;;MethylMinus;;TYGAAYGTTTYGAAYGY;15;-83,09%;0,39;0,17;0,26;0,54;0,53;0,20;0,05;0,78
+HSFY2;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NTYGAAYGTTTYGAAYGN;3;-94,68%;0,51;0,00;0,17;0,36;0,60;0,00;0,01;0,54
+;;;;MethylMinus;;NTYGAAYGTTTYGAAYGN;7;-84,10%;0,44;0,24;0,15;0,58;0,58;0,22;0,03;0,78
+;;;;MethylMinus;;NTYGAAYGTTTYGAAYGN;12;-93,81%;0,73;0,00;0,29;0,48;0,84;0,00;0,02;0,81
+;;;;MethylMinus;;NTYGAAYGTTTYGAAYGN;16;-72,65%;0,37;0,17;0,11;0,57;0,54;0,15;0,04;0,74
+HSFY2;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NTTYGAANNNTTYGAAN;4;-88,99%;0,76;0,00;0,25;0,55;0,84;0,00;0,03;0,83
+;;;;MethylMinus;;NTTYGAANNNTTYGAAN;13;-83,89%;0,76;0,00;0,29;0,51;0,81;0,00;0,05;0,81
+IRF7;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NYGAAANYGAAANYN;2;-45,74%;0,34;0,12;0,20;0,31;0,36;0,12;0,11;0,39
+;;;;MethylMinus;;NYGAAANYGAAANYN;8;-53,77%;0,49;0,38;0,29;0,59;0,48;0,43;0,13;0,78
+LEF1;FL;MethylMinus;Little effect;weak MethylMinus;effect revealed by bisulfite;WYATYGRGRYGYTGW;5;-28,59%;1,00;0,00;0,38;0,62;1,00;0,00;0,27;0,72
+;;;;weak MethylMinus;;WYATYGRGRYGYTGW;10;-35,46%;1,00;0,00;0,36;0,63;1,00;0,00;0,23;0,74
+LEF1;eDBD;MethylMinus;Little effect;weak MethylMinus;effect revealed by bisulfite;WYATYGRGRYGYTGW;5;-40,02%;0,99;0,00;0,32;0,66;0,99;0,00;0,19;0,77
+;;;;weak MethylMinus;;WYATYGRGRYGYTGW;10;-48,12%;0,99;0,00;0,31;0,67;0,99;0,00;0,16;0,81
+LIN28B;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NYGYGANNNNNYAGYGN;2;-40,86%;0,34;0,03;0,11;0,32;0,50;0,03;0,08;0,36
+;;;;MethylMinus;;NYGYGANNNNNYAGYGN;4;-61,39%;0,36;0,03;0,10;0,35;0,57;0,03;0,05;0,42
+;;;;weak MethylMinus;;NYGYGANNNNNYAGYGN;15;-44,74%;0,28;0,03;0,09;0,29;0,39;0,02;0,06;0,33
+MAFF;eDBD;MethylMinus;MethylMinus;low enrichment;;NTGYTGAYRTYAGYAN;8;67,84%;0,16;0,08;0,06;0,27;0,24;0,10;0,14;0,29
+MAX;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;RNYAYGTGYN;5;-24,92%;0,39;0,22;0,34;0,46;0,41;0,23;0,25;0,52
+MAX;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NYYAYGTGYN;5;-24,42%;0,45;0,21;0,32;0,46;0,45;0,23;0,23;0,52
+MBNL2;FL;MethylMinus;Little effect;weak MethylMinus;effect revealed by bisulfite;AAGYGAAGYG;4;-38,38%;0,20;0,03;0,07;0,20;0,22;0,03;0,05;0,27
+;;;;weak MethylMinus;;AAGYGAAGYG;9;-44,15%;0,19;0,02;0,08;0,17;0,20;0,03;0,05;0,25
+MLX;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NYAYGTGN;4;-78,08%;0,95;0,02;0,67;0,29;0,98;0,01;0,15;0,81
+MLX;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NYAYGTGN;4;-43,51%;0,89;0,05;0,56;0,33;0,95;0,02;0,32;0,50
+MYBL2;eDBD;MethylMinus;Little effect;weak MethylMinus;effect revealed by bisulfite;NTAAYBGTTRN;5;-26,10%;0,24;0,00;0,20;0,23;0,26;0,00;0,15;0,27
+;;;;weak MethylMinus;;NTAAYBGTTRN;6;-14,10%;0,39;0,08;0,14;0,22;0,44;0,07;0,14;0,27
+MYCN;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NYAYGTGNNNNNYAYGYGN;4;-57,41%;0,89;0,01;0,40;0,49;0,98;0,00;0,18;0,71
+;;;;MethylMinus;;NYAYGTGNNNNNYAYGYGN;15;-56,72%;0,88;0,01;0,42;0,48;0,95;0,00;0,19;0,71
+;;;;weak MethylMinus;;NYAYGTGNNNNNYAYGYGN;17;-36,63%;0,69;0,19;0,38;0,50;0,79;0,19;0,26;0,63
+ONECUT1;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NYATYGATYN;5;-39,04%;0,41;0,41;0,16;0,63;0,41;0,44;0,10;0,74
+ONECUT1;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NTATYGATYN;5;-34,84%;0,26;0,56;0,13;0,41;0,19;0,61;0,06;0,53
+ONECUT2;FL;MethylMinus;MethylMinus;MethylMinus;concordant;AAAATYRATAWN;6;-58,24%;0,23;0,00;0,23;0,27;0,13;0,00;0,05;0,20
+ONECUT2;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NATYGATYGATAN;4;-70,53%;0,44;0,02;0,20;0,34;0,55;0,02;0,07;0,54
+;;;;MethylMinus;;NATYGATYGATAN;8;-69,95%;0,62;0,03;0,37;0,43;0,72;0,02;0,12;0,68
+ONECUT2;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NTATYGATYN;5;-50,07%;0,27;0,61;0,15;0,63;0,27;0,64;0,08;0,76
+ONECUT3;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NYATYGATYN;5;-13,49%;0,19;0,40;0,05;0,47;0,25;0,36;0,06;0,48
+OVOL1;FL;MethylMinus;Little effect;weak MethylMinus;effect revealed by bisulfite;NRWAYYGTTATNYN;6;-33,33%;0,98;0,00;0,42;0,52;0,99;0,01;0,28;0,66
+OVOL2;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NWWYYGTTAYNYN;5;-55,63%;0,90;0,01;0,41;0,31;0,95;0,00;0,20;0,62
+PAX3;FL;MethylMinus;MethylMinus;not available;;NTAATYGATTAN;;;;;;;;;;
+PAX7;eDBD;MethylMinus;MethylMinus;low complexity motif;low complexity motif;NTAATYGATTAN;6;53,95%;0,30;0,22;0,17;0,49;0,33;0,23;0,29;0,43
+PROX1;eDBD;MethylMinus;MethylMinus;low enrichment;;NAAGRYGTYTTN;6;31,72%;0,36;0,10;0,13;0,34;0,43;0,10;0,19;0,29
+RUNX2;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;WAAYYRYAA;5;-33,80%;0,37;0,01;0,10;0,41;0,39;0,00;0,07;0,46
+RUNX3;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NRAYYGYAAAAAYYGTARN;5;-70,30%;0,14;0,00;0,35;0,49;0,50;0,00;0,14;0,68
+;;;;MethylMinus;;NRAYYGYAAAAAYYGTARN;14;-58,94%;0,14;0,00;0,33;0,37;0,22;0,00;0,15;0,56
+RUNX3;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NWAAYYGYAAAAAYYGYARN;6;-96,60%;0,90;0,00;0,56;0,38;0,95;0,00;0,02;0,96
+;;;;MethylMinus;;NWAAYYGYAAAAAYYGYARN;15;-96,49%;0,84;0,00;0,53;0,38;0,92;0,00;0,02;0,94
+SOHLH2;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NGYAYGTGYN;5;-70,63%;0,19;0,04;0,06;0,16;0,23;0,04;0,02;0,21
+SPDEF;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAHYYGGATGYN;5;-88,71%;0,25;0,00;0,18;0,20;0,10;0,00;0,01;0,20
+SPDEF;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;AHYYGGATGTNNYATYYGGKT;4;-95,71%;0,97;0,00;0,45;0,47;0,99;0,00;0,02;0,95
+;;;;weak MethylMinus;;AHYYGGATGTNNYATYYGGKT;17;-45,99%;0,95;0,00;0,58;0,34;0,99;0,00;0,33;0,65
+SPIB;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAAAAGNGGAAGTN;7;-69,52%;0,14;0,00;0,07;0,11;0,07;0,00;0,01;0,07
+SPIB;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;AWWKNGGAAGTN;5;-49,58%;0,19;0,02;0,07;0,16;0,17;0,01;0,03;0,15
+SREBF1;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;RTYAYGTGAY;5;-37,50%;0,12;0,07;0,08;0,23;0,14;0,06;0,05;0,23
+SREBF1;eDBD;MethylMinus;MethylMinus;not available;;NTYAYGYYAY;;;;;;;;;;
+TCF4;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NYAYSTGN;4;-33,33%;0,06;0,01;0,05;0,05;0,04;0,00;0,02;0,03
+TCF7L1;eDBD;MethylMinus;Little effect;weak MethylMinus;effect revealed by bisulfite;NYATYGRGRYGYTGWN;5;-42,02%;0,92;0,00;0,29;0,59;0,97;0,00;0,17;0,68
+;;;;weak MethylMinus;;NYATYGRGRYGYTGWN;10;-49,42%;0,90;0,00;0,29;0,58;0,95;0,00;0,15;0,71
+TCFL5;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NYAYGYGYAN;4;-93,73%;0,87;0,01;0,59;0,30;0,57;0,00;0,03;0,82
+;;;;MethylMinus;;NYAYGYGYAN;6;-67,73%;0,61;0,24;0,39;0,43;0,25;0,08;0,11;0,76
+TFE3;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;RNYAYGTGAYN;5;-17,53%;0,44;0,21;0,37;0,42;0,55;0,17;0,35;0,44
+TFEC;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;RTYAYGTGAY;5;-14,11%;0,39;0,18;0,33;0,42;0,46;0,16;0,31;0,44
+USF1;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRYYAYGTGAYN;6;-36,34%;0,54;0,15;0,33;0,49;0,69;0,09;0,25;0,59
+USF2;eDBD;MethylMinus;MethylMinus;weak MethylMinus;concordant;NYAYGTGAYN;4;-46,52%;0,70;0,14;0,44;0,44;0,76;0,11;0,25;0,63
+XBP1;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NTGAYGTGKYN;5;-30,70%;0,44;0,16;0,12;0,39;0,57;0,15;0,10;0,43
+XBP1;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRTGAYGTYAYN;6;-29,18%;0,40;0,11;0,13;0,35;0,52;0,11;0,11;0,40
+YY1;FL;MethylMinus;MethylMinus;not available;;NMGTATNNNNNGTTWAARATGGTN;;;;;;;;;;
+ZBED1;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NTGTYGYGAYATN;5;-77,07%;0,43;0,04;0,08;0,27;0,72;0,02;0,03;0,48
+;;;;MethylMinus;;NTGTYGYGAYATN;7;-88,25%;0,49;0,05;0,11;0,29;0,77;0,03;0,02;0,54
+ZBTB14;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NTGYGYGTGYAYGYGN;4;-89,72%;0,83;0,01;0,34;0,36;0,93;0,00;0,04;0,77
+;;;;MethylMinus;;NTGYGYGTGYAYGYGN;6;-83,87%;0,92;0,01;0,41;0,39;0,99;0,00;0,07;0,75
+;;;;MethylMinus;;NTGYGYGTGYAYGYGN;12;-81,01%;0,88;0,04;0,37;0,45;0,99;0,01;0,08;0,83
+;;;;weak MethylMinus;;NTGYGYGTGYAYGYGN;14;-43,75%;0,27;0,43;0,16;0,46;0,25;0,60;0,09;0,72
+ZBTB2;eDBD;MethylMinus;Little effect;weak MethylMinus;effect revealed by bisulfite;WAYYGGAAA;4;-24,17%;0,31;0,03;0,15;0,22;0,55;0,01;0,21;0,45
+ZBTB7A;eDBD;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NYGAYYHYYGN;2;-70,89%;0,25;0,04;0,09;0,32;0,32;0,04;0,03;0,40
+;;;;weak MethylMinus;;NYGAYYHYYGN;9;-38,92%;0,16;0,03;0,08;0,22;0,17;0,03;0,05;0,25
+ZBTB7B;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NYGAYYAYYN;2;-52,94%;0,20;0,04;0,08;0,24;0,23;0,03;0,04;0,27
+ZNF460;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYGYYYYYYGN;3;-66,97%;0,38;0,04;0,29;0,28;0,47;0,01;0,10;0,39
+;;;;MethylMinus;;NAYGYYYYYYGN;10;-63,37%;0,32;0,03;0,25;0,22;0,41;0,01;0,10;0,33
+ZNF704;FL;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NRYYGGYYGGYN;4;-94,63%;0,78;0,01;0,32;0,44;0,93;0,00;0,02;0,83
+;;;;MethylMinus;;NRYYGGYYGGYN;8;-94,59%;0,78;0,01;0,31;0,47;0,95;0,00;0,02;0,88
+BCL6;eDBD;Little effect and MethylMinus;Little effect and MethylMinus;not available;;NYGTAATYKAGGAATN;;;;;;;;;;
+BCL6B;eDBD;Little effect and MethylMinus;Little effect and MethylMinus;Little effect;concordant;RYGTAATYKAGGAATN;2;4,79%;0,68;0,23;0,32;0,59;0,73;0,21;0,36;0,58
+;;;;MethylMinus;;RYGTAATYKAGGAATN;8;-52,48%;0,60;0,00;0,36;0,42;0,58;0,00;0,15;0,48
+CLOCK;eDBD;MethylMinus and MethylPlus;MethylMinus and MethylPlus;weak MethylMinus;concordant;NAYAYGYGKN;5;-49,92%;0,61;0,26;0,50;0,42;0,69;0,22;0,28;0,67
+;;;;MethylPlus;;NAYAYGYGKN;7;95,83%;0,21;0,61;0,08;0,79;0,16;0,73;0,12;0,81
+CREB3L1;eDBD;MethylMinus and MethylPlus;MethylMinus and MethylPlus;not available;;NTGYYAYGYGTAYN;;;;;;;;;;
+CREB3L1;FL;MethylMinus and MethylPlus;MethylMinus and MethylPlus;not available;;NTGYYAYGYGTAYN;;;;;;;;;;
+GLI2;eDBD;Little effect and MethylMinus;Little effect and MethylMinus;Little effect;concordant;RGAYYAYYYAYGWYG;11;-7,94%;0,35;0,05;0,28;0,30;0,43;0,04;0,29;0,31
+;;;;weak MethylMinus;;RGAYYAYYYAYGWYG;14;-40,37%;0,13;0,32;0,07;0,44;0,11;0,41;0,03;0,50
+HSF2;eDBD;MethylMinus and MethylPlus;MethylMinus and MethylPlus;MethylMinus;concordant;NGAANNTTYNNGAA;1;-54,41%;0,14;0,02;0,08;0,11;0,09;0,01;0,02;0,07
+;;;;MethylPlus;;NGAANNTTYNNGAA;10;85,96%;0,17;0,10;0,10;0,21;0,18;0,10;0,23;0,16
+IRF4;FL;Little effect and MethylPlus;MethylMinus;Little effect;effect revealed by bisulfite;NYGAAAYYGAAAYY;2;9,76%;0,50;0,22;0,21;0,56;0,60;0,24;0,27;0,60
+;;;;weak MethylPlus;;NYGAAAYYGAAAYY;8;10,76%;0,59;0,29;0,24;0,67;0,66;0,29;0,29;0,66
+IRF9;FL;MethylPlus and Little effect;MethylMinus;weak MethylPlus;effect revealed by bisulfite;NYGAAANYGAAAYY;2;10,53%;0,36;0,21;0,19;0,43;0,42;0,23;0,24;0,45
+;;;;Little effect;;NYGAAANYGAAAYY;8;8,19%;0,39;0,44;0,21;0,65;0,39;0,51;0,23;0,71
+NPAS2;eDBD;MethylMinus and MethylPlus;MethylMinus and MethylPlus;weak MethylMinus;concordant;WWAYAYGYGYN;6;-46,72%;0,51;0,26;0,37;0,46;0,60;0,25;0,23;0,68
+;;;;MethylPlus;;WWAYAYGYGYN;8;131,82%;0,21;0,68;0,11;0,53;0,17;0,79;0,15;0,57
+PAX3;FL;MethylMinus and Little effect;MethylMinus and Little effect;not available;;NRATTHGTYAYGBTN;;;;;;;;;;
+PAX7;eDBD;MethylMinus and Little effect;MethylMinus and Little effect;not available;;NNATTHGTYAYGBTN;;;;;;;;;;
+YY2;FL;MethylPlus and MethylMinus;MethylPlus and MethylMinus;weak MethylMinus;concordant;WWYAAAATGGYBGHN;11;-19,55%;0,57;0,00;0,32;0,32;0,70;0,00;0,30;0,41
+;;;;MethylPlus;;WWYAAAATGGYBGHN;12;113,18%;0,37;0,03;0,12;0,21;0,28;0,01;0,21;0,07
+ZFP42;eDBD;MethylPlus and MethylMinus;MethylPlus and MethylMinus;weak MethylMinus;concordant;NYAAKATGGYBGYYN;10;-14,29%;0,05;0,00;0,02;0,05;0,03;0,00;0,01;0,03
+;;;;MethylPlus;;NYAAKATGGYBGYYN;11;78,10%;0,53;0,23;0,18;0,61;0,58;0,26;0,35;0,52
+ZNF343;eDBD;Little effect and MethylPlus;Little effect and MethylPlus;Little effect;concordant;NYGYTTYAYYRYGGYHN;2;9,35%;0,42;0,17;0,21;0,45;0,51;0,18;0,27;0,47
+;;;;weak MethylPlus;;NYGYTTYAYYRYGGYHN;10;25,81%;0,22;0,05;0,10;0,25;0,27;0,05;0,15;0,25
+;;;;Little effect;;NYGYTTYAYYRYGGYHN;12;4,48%;0,56;0,06;0,26;0,42;0,68;0,06;0,32;0,45
+ZNF345;eDBD;MethylPlus and MethylMinus;MethylPlus and MethylMinus;MethylPlus;concordant;NTYGYAAYNNNNNYAAYYGKAYN;3;58,95%;0,38;0,54;0,21;0,74;0,33;0,59;0,30;0,67
+;;;;MethylMinus;;NTYGYAAYNNNNNYAAYYGKAYN;18;-84,62%;0,06;0,83;0,02;0,79;0,08;0,84;0,01;0,88
+ZSCAN29;eDBD;Little effect and MethylPlus;Little effect;weak MethylPlus;effect revealed by bisulfite;HHGYRTAGHYGKYTAYRYN;2;22,22%;0,25;0,18;0,08;0,41;0,29;0,19;0,11;0,42
+;;;;Little effect;;HHGYRTAGHYGKYTAYRYN;4;9,33%;0,32;0,32;0,16;0,53;0,35;0,31;0,18;0,49
+;;;;MethylPlus;;HHGYRTAGHYGKYTAYRYN;10;51,01%;0,98;0,00;0,30;0,67;0,99;0,00;0,46;0,53
+;;;;weak MethylPlus;;HHGYRTAGHYGKYTAYRYN;16;22,64%;0,21;0,08;0,11;0,31;0,22;0,07;0,13;0,25
+CEBPD;eDBD;Little effect;Little effect;low enrichment;;NRTTGYGYAAYN;6;2,53%;0,30;0,08;0,20;0,32;0,37;0,08;0,23;0,31
+E2F2;eDBD;Little effect;Little effect;Little effect;concordant;WWWTGGYGYYAAAA;7;-10,00%;0,76;0,00;0,51;0,26;0,81;0,00;0,48;0,31
+E2F3;eDBD;Little effect;Little effect;Little effect;concordant;NTTTTGGYGYYAAAAN;8;7,04%;0,72;0,00;0,41;0,42;0,79;0,00;0,47;0,40
+E2F8;eDBD;Little effect;Little effect;Little effect;concordant;TTTYYYGYYAAA;6;4,06%;0,91;0,00;0,58;0,38;0,92;0,00;0,61;0,36
+EGR1;eDBD;Little effect;Little effect;Little effect;concordant;NHYGYYYAYGYHN;3;-1,09%;0,26;0,06;0,12;0,31;0,30;0,06;0,13;0,32
+;;;;Little effect;;NHYGYYYAYGYHN;9;-8,04%;0,43;0,02;0,29;0,33;0,50;0,01;0,29;0,34
+EGR2;FL;Little effect;Little effect;Little effect;concordant;NHYGYYYAYGYAN;3;-1,47%;0,84;0,01;0,39;0,50;0,92;0,00;0,42;0,54
+;;;;Little effect;;NHYGYYYAYGYAN;9;5,28%;0,76;0,00;0,45;0,43;0,86;0,00;0,52;0,42
+EGR3;FL;Little effect;Little effect;Little effect;concordant;NYYGYYYAYGYAN;3;3,17%;0,92;0,00;0,49;0,45;0,97;0,00;0,53;0,45
+;;;;Little effect;;NYYGYYYAYGYAN;9;-1,45%;0,85;0,00;0,57;0,37;0,92;0,00;0,59;0,37
+IRF5;FL;Little effect;MethylMinus;Little effect;effect revealed by bisulfite;NYGAAAYYGAAAYYN;2;-6,07%;0,62;0,18;0,28;0,56;0,72;0,15;0,30;0,59
+;;;;Little effect;;NYGAAAYYGAAAYYN;8;-6,50%;0,73;0,10;0,34;0,54;0,85;0,07;0,36;0,57
+IRF5;eDBD;Little effect;MethylMinus;Little effect;effect revealed by bisulfite;NYGAAAYYGAAAYYN;2;-9,01%;0,56;0,14;0,32;0,46;0,66;0,13;0,33;0,50
+;;;;Little effect;;NYGAAAYYGAAAYYN;8;-7,82%;0,67;0,10;0,39;0,46;0,77;0,08;0,40;0,49
+KLF17;eDBD;Little effect;Little effect;not available;;NMYYAYGYWYYYMYY;;;;;;;;;;
+KLF2;eDBD;Little effect;Little effect;low enrichment;;NGGGYGTGGYN;5;-41,18%;0,25;0,18;0,07;0,28;0,29;0,19;0,05;0,36
+KLF4;eDBD;Little effect;Little effect;low enrichment;;NGGGYGTGGY;5;-22,08%;0,36;0,15;0,07;0,32;0,39;0,18;0,06;0,39
+MTF1;eDBD;Little effect;Little effect;Little effect;concordant;NYTTTGYAYAYGRYNYN;11;-0,63%;0,90;0,00;0,47;0,46;0,95;0,00;0,49;0,48
+MYOD1;FL;Little effect;Little effect;low enrichment;;YGTYAGYTGTYN;1;57,16%;0,39;0,18;0,09;0,37;0,47;0,19;0,19;0,43
+MYOG;FL;Little effect;Little effect;low enrichment;;NYGTYAGYTGTYN;2;44,99%;0,69;0,15;0,21;0,45;0,73;0,16;0,34;0,43
+NHLH1;FL;Little effect;Little effect;low enrichment;;NYGYAGYTGYK;2;-15,79%;0,23;0,02;0,04;0,23;0,28;0,02;0,04;0,27
+;;;;low enrichment;;NYGYAGYTGYK;10;10,73%;0,24;0,06;0,06;0,25;0,28;0,06;0,08;0,29
+NHLH2;FL;Little effect;Little effect;Little effect;concordant;NYGYAGYTGYGN;2;-8,87%;0,41;0,01;0,15;0,33;0,50;0,01;0,16;0,38
+;;;;Little effect;;NYGYAGYTGYGN;10;7,14%;0,44;0,06;0,20;0,32;0,51;0,05;0,25;0,34
+NR2F1;eDBD;MethylPlus;MethylPlus;low enrichment;;NRGGTYRNYGAYYYN;6;-2,70%;0,16;0,05;0,03;0,22;0,17;0,04;0,03;0,21
+OSR1;eDBD;Little effect;MethylMinus;Little effect;effect revealed by bisulfite;NGYTAYYGTN;7;7,61%;0,26;0,39;0,08;0,38;0,31;0,50;0,12;0,53
+PAX4;eDBD;Little effect;Little effect;low enrichment;;WWGYGTGWAATY;4;142,02%;0,54;0,05;0,09;0,38;0,64;0,04;0,27;0,32
+PAX4;eDBD;Little effect;Little effect;not available;;NYAYGYTAATTAN;;;;;;;;;;
+PAX4;eDBD;Little effect;Little effect;not available;;NATTTYAYGYWTBANYGNNYN;;;;;;;;;;
+RFX5;eDBD;Little effect;Little effect;not available;;NRRYAAYBGTTGYYAN;;;;;;;;;;
+SP3;eDBD;Little effect;Little effect;low enrichment;;NKGGGYGTGGYN;6;-26,03%;0,32;0,07;0,06;0,23;0,45;0,08;0,06;0,30
+TGIF2LX;eDBD;MethylPlus;MethylPlus;low enrichment;;YGAYANNYGTYA;1;51,58%;0,12;0,15;0,05;0,30;0,13;0,17;0,09;0,33
+;;;;low enrichment;;YGAYANNYGTYA;8;19,05%;0,15;0,21;0,07;0,29;0,17;0,23;0,10;0,32
+ZNF140;eDBD;Little effect;Little effect;Little effect;concordant;NRYAATTYYGYTYN;9;6,95%;0,96;0,02;0,62;0,36;0,97;0,02;0,67;0,32
+BATF3*;eDBD;inconclusive;MethylMinus;weak MethylMinus;concordant;NRTGAYGTYATN;6;-22,14%;0,58;0,15;0,28;0,38;0,68;0,13;0,25;0,45
+BATF3*;FL;inconclusive;MethylMinus;weak MethylPlus;inconclusive direction;NRTGAYGTYAYN;6;20,93%;0,59;0,13;0,29;0,41;0,64;0,12;0,39;0,38
+DBP*;FL;inconclusive;MethylMinus;weak MethylPlus;inconclusive direction;NRTTAYGTAAYN;6;25,33%;0,45;0,09;0,33;0,41;0,54;0,07;0,47;0,31
+DBP*;eDBD;inconclusive;MethylMinus;Little effect;effect revealed by bisulfite;NRTTAYGTAAYN;6;2,41%;0,37;0,12;0,25;0,48;0,48;0,12;0,29;0,46
+FOSB;eDBD;inconclusive;MethylMinus;Little effect;inconclusive direction;NRTGAYGTYAYN;6;9,89%;0,57;0,12;0,13;0,42;0,69;0,10;0,18;0,49
+GCM1;FL;inconclusive;MethylMinus;Little effect;inconclusive direction;ATGYKGGTN;4;0,00%;0,21;0,05;0,10;0,24;0,20;0,05;0,09;0,21
+GCM2;FL;inconclusive;MethylMinus;weak MethylPlus;inconclusive direction;ATGYGGGTN;4;13,73%;0,27;0,07;0,09;0,29;0,30;0,07;0,12;0,33
+HSF1;FL;inconclusive;MethylMinus and MethylPlus;Little effect;inconclusive direction;NGAANNTTYYGGAAN;1;4,76%;0,10;0,03;0,03;0,12;0,07;0,02;0,02;0,07
+;;;;MethylPlus;;NGAANNTTYYGGAAN;10;153,02%;0,15;0,12;0,05;0,24;0,17;0,12;0,17;0,21
+HSF5;eDBD;inconclusive;MethylMinus;MethylPlus;inconclusive direction;NYRGAAYNNNNNNNNNNNNNRYRTTYYR;2;120,00%;0,18;0,16;0,05;0,36;0,19;0,18;0,11;0,31
+;;;;MethylPlus;;NYRGAAYNNNNNNNNNNNNNRYRTTYYR;22;60,17%;0,22;0,07;0,08;0,31;0,27;0,08;0,14;0,26
+;;;;MethylPlus;;NYRGAAYNNNNNNNNNNNNNRYRTTYYR;27;107,22%;0,24;0,09;0,11;0,36;0,25;0,09;0,25;0,27
+IRF3*;eDBD;inconclusive;MethylMinus;weak MethylMinus;concordant;NYRGTTTYYNSGAAAYYGN;11;-16,27%;0,32;0,08;0,32;0,18;0,28;0,08;0,21;0,17
+;;;;weak MethylMinus;;NYRGTTTYYNSGAAAYYGN;17;-11,11%;0,38;0,19;0,36;0,25;0,39;0,20;0,30;0,26
+IRF3*;FL;inconclusive;MethylMinus;MethylPlus;inconclusive direction;NGGAAANYGAAANYGAAAN;8;53,85%;0,21;0,21;0,08;0,32;0,17;0,30;0,08;0,31
+;;;;weak MethylPlus;;NGGAAANYGAAANYGAAAN;14;39,54%;0,40;0,14;0,16;0,44;0,53;0,12;0,27;0,36
+IRF8*;FL;inconclusive;MethylMinus;weak MethylMinus;inconclusive direction;NYGAAAYYGAAAYYN;2;-13,59%;0,53;0,26;0,26;0,56;0,66;0,23;0,27;0,61
+;;;;Little effect;;NYGAAAYYGAAAYYN;8;-8,62%;0,54;0,38;0,26;0,68;0,62;0,34;0,27;0,70
+JDP2;FL;inconclusive;MethylMinus;weak MethylPlus;inconclusive direction;NRTGAYGTYAYN;6;33,33%;0,37;0,15;0,17;0,46;0,46;0,14;0,28;0,45
+OSR2;eDBD;inconclusive;MethylMinus;MethylPlus;inconclusive direction;NGYTWYYGHRGWAGYN;7;133,33%;0,12;0,27;0,03;0,44;0,09;0,30;0,07;0,46
+;;;;MethylPlus;;NGYTWYYGHRGWAGYN;9;82,00%;0,11;0,02;0,05;0,12;0,08;0,01;0,07;0,06
+YY1;FL;inconclusive;MethylMinus and MethylPlus;MethylPlus;inconclusive direction;NYAAAATGGYNGYY;10;61,76%;0,27;0,01;0,08;0,26;0,23;0,00;0,11;0,17
+;;;;MethylPlus;;NYAAAATGGYNGYY;11;208,94%;0,51;0,06;0,08;0,42;0,62;0,04;0,32;0,33
+ZFP41;FL;inconclusive;MethylMinus;MethylPlus;inconclusive direction;NGYTAAYTYTYYRYRN;12;60,16%;0,50;0,00;0,27;0,46;0,52;0,00;0,45;0,31
+;;;;MethylPlus;;NGYTAAYTYTYYRYRN;14;56,11%;0,26;0,05;0,17;0,31;0,28;0,04;0,30;0,24
+ZIC1*;eDBD;inconclusive;MethylMinus;Little effect;inconclusive direction;NRYYYYYYGYTGYKN;8;2,99%;0,29;0,26;0,17;0,49;0,30;0,28;0,17;0,48
+;;;MethylMinus;weak MethylMinus;;NRYYYYYYGYTGYKN;13;-17,46%;0,09;0,26;0,06;0,37;0,10;0,30;0,04;0,37
+ZIC1*;FL;inconclusive;MethylMinus;weak MethylPlus;inconclusive direction;NRYYYYYYGYTGYGN;8;28,85%;0,34;0,27;0,17;0,56;0,36;0,31;0,23;0,56
+;;;;Little effect;;NRYYYYYYGYTGYGN;13;-2,50%;0,09;0,28;0,04;0,41;0,08;0,36;0,03;0,45
+ZIC3*;eDBD;inconclusive;MethylMinus;weak MethylPlus;inconclusive direction;NGAYYYYYYGYTGYGH;9;15,63%;0,20;0,77;0,09;0,85;0,16;0,84;0,09;0,91
+;;;;MethylMinus;;NGAYYYYYYGYTGYGH;14;-100,00%;0,01;0,93;0,01;0,92;0,00;0,98;0,00;0,99
+ZIC3*;FL;inconclusive;MethylMinus;Little effect;inconclusive direction;NGAYYYYYYGYTGYGN;9;-6,17%;0,34;0,30;0,20;0,56;0,36;0,35;0,19;0,61
+;;;;weak MethylMinus;;NGAYYYYYYGYTGYGN;14;-46,67%;0,09;0,31;0,05;0,41;0,07;0,40;0,02;0,49
+ZIC4;eDBD;inconclusive;MethylMinus;Little effect;inconclusive direction;NRYYYYYYGYTGYGN;8;6,25%;0,29;0,21;0,16;0,47;0,30;0,21;0,17;0,45
+;;;;weak MethylMinus;;NRYYYYYYGYTGYGN;13;-15,15%;0,09;0,18;0,06;0,31;0,08;0,20;0,04;0,30
+ZIC5;eDBD;inconclusive;MethylMinus;weak MethylPlus;inconclusive direction;NGAYYYYYYGYTGYGH;9;15,91%;0,31;0,38;0,16;0,59;0,34;0,40;0,21;0,62
+;;;;;;NGAYYYYYYGYTGYGH;14;-nan%;0,01;0,48;0,00;0,53;0,01;0,53;0,00;0,57
+ZNF177;eDBD;inconclusive;MethylMinus;weak MethylPlus;inconclusive direction;NTYGRTYKNNNNNNNNAGTYATN;3;15,71%;0,19;0,32;0,07;0,51;0,20;0,32;0,09;0,53
+;;;;Little effect;;NTYGRTYKNNNNNNNNAGTYATN;7;2,12%;0,28;0,00;0,10;0,21;0,29;0,00;0,09;0,14
+ZNF597;FL;inconclusive;MethylMinus and MethylPlus;MethylPlus;inconclusive direction;GGYBGYYATYTTGN;3;115,76%;0,44;0,02;0,11;0,36;0,50;0,01;0,28;0,28
+;;;;weak MethylPlus;;GGYBGYYATYTTGN;4;34,55%;0,18;0,02;0,05;0,16;0,17;0,02;0,06;0,12
+ZNF76;eDBD;inconclusive;MethylMinus;weak MethylMinus;inconclusive direction;NWYYYAYAATGYANYGYGN;15;-10,26%;0,30;0,34;0,16;0,62;0,27;0,40;0,13;0,67
+;;;;Little effect;;NWYYYAYAATGYANYGYGN;17;5,22%;0,54;0,02;0,33;0,40;0,57;0,01;0,35;0,35
+ZSCAN1;eDBD;inconclusive;Little effect;MethylPlus;inconclusive direction;NYRYAYAYNYTGHAAHN;2;85,07%;0,26;0,28;0,10;0,54;0,26;0,32;0,20;0,53
+;;;;Little effect;;NYRYAYAYNYTGHAAHN;8;8,33%;0,04;0,02;0,03;0,08;0,03;0,02;0,02;0,05
+ZSCAN4;eDBD;inconclusive;Little effect;MethylPlus;inconclusive direction;NYGYAYAYNYTGAAAHN;2;100,50%;0,22;0,29;0,07;0,50;0,24;0,33;0,16;0,50
+;;;;weak MethylPlus;;NYGYAYAYNYTGAAAHN;8;22,22%;0,04;0,03;0,02;0,08;0,03;0,02;0,02;0,06
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+section b: replicate experiment;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+GATA3;FL;MethylPlus;Little effect;MethylPlus;effect revealed by bisulfite;WGATAAYGATYW;7;151,85%;0,41;0,05;0,09;0,40;0,51;0,04;0,28;0,30
+GBX2;eDBD;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;132,50%;0,17;0,07;0,04;0,17;0,18;0,07;0,09;0,10
+HOXD3;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;71,11%;0,17;0,19;0,06;0,38;0,18;0,21;0,11;0,37
+IRX5;eDBD;MethylPlus;MethylPlus;MethylPlus;concordant;NYGYGTNNNAYGYGN;2;91,25%;0,17;0,06;0,08;0,17;0,18;0,06;0,17;0,11
+;;;;MethylPlus;;NYGYGTNNNAYGYGN;4;67,93%;0,39;0,09;0,18;0,22;0,47;0,10;0,38;0,13
+;;;;MethylPlus;;NYGYGTNNNAYGYGN;11;114,39%;0,35;0,03;0,18;0,28;0,40;0,03;0,47;0,11
+;;;;MethylPlus;;NYGYGTNNNAYGYGN;13;68,18%;0,17;0,09;0,11;0,18;0,18;0,11;0,20;0,13
+ISX;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAY;5;110,00%;0,08;0,08;0,02;0,13;0,09;0,07;0,07;0,16
+KLF15;eDBD;MethylPlus;MethylPlus;low enrichment;;RKGGGYGTGGY;6;-1,33%;0,43;0,15;0,07;0,31;0,53;0,16;0,09;0,40
+LHX9;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;-22,76%;0,31;0,08;0,15;0,18;0,38;0,08;0,12;0,16
+LHX9;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAK;5;89,56%;0,32;0,07;0,12;0,22;0,41;0,08;0,32;0,18
+NKX2-5;FL;MethylPlus;MethylPlus;low complexity motif;low complexity motif;TTAAYGAG;5;110,48%;0,14;0,05;0,05;0,20;0,16;0,05;0,13;0,18
+POU5F1;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NYTAATTATGYGYA;11;72,93%;0,48;0,01;0,27;0,28;0,69;0,01;0,65;0,09
+POU5F1;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NTATGYGYATAN;6;50,15%;0,61;0,05;0,17;0,24;0,72;0,03;0,30;0,15
+RXRG;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NRGGTYAYGAYYYN;8;145,24%;0,35;0,35;0,11;0,69;0,39;0,40;0,29;0,58
+SNAI1;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NRYAGGTGYG;9;73,54%;0,17;0,02;0,09;0,17;0,16;0,02;0,16;0,12
+ZSCAN31;FL;MethylPlus;MethylPlus;MethylPlus;concordant;NGYATAAYYGYYYYGYKKYN;9;188,89%;0,16;0,65;0,06;0,75;0,12;0,77;0,13;0,76
+;;;;MethylPlus;;NGYATAAYYGYYYYGYKKYN;14;152,82%;0,51;0,45;0,17;0,78;0,47;0,52;0,40;0,59
+;;;;MethylPlus;;NGYATAAYYGYYYYGYKKYN;16;80,82%;0,27;0,01;0,13;0,27;0,29;0,00;0,26;0,18
+CREB3;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRTGAYGTYAYN;6;-40,98%;0,70;0,12;0,32;0,53;0,78;0,09;0,21;0,69
+CREB3;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRTGAYGTGGYN;6;-41,56%;0,81;0,13;0,29;0,60;0,89;0,08;0,19;0,76
+CREB3;FL;MethylMinus;MethylMinus;not available;;NGYYAYGTGKMN;;;;;;;;;;
+CREB3;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRTGAYGTYAYN;6;-41,69%;0,80;0,08;0,42;0,48;0,86;0,06;0,26;0,66
+CREB3;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NRTGAYGTGGYN;6;-40,74%;0,88;0,08;0,41;0,52;0,92;0,06;0,25;0,67
+CREB3;FL;MethylMinus;MethylMinus;not available;;NGYYAYGTGKMN;;;;;;;;;;
+CREB5;FL;MethylMinus;MethylMinus;low enrichment;;NRTGAYGTYAYN;6;-6,71%;0,39;0,17;0,19;0,51;0,47;0,17;0,21;0,58
+ELF3;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYHGGAAGTNNNNNNNNNWWWWW;5;-68,37%;0,51;0,00;0,24;0,30;0,43;0,00;0,06;0,34
+ELF5;FL;MethylMinus;MethylMinus;weak MethylMinus;concordant;NANNHGGAAGTN;5;-40,54%;0,26;0,00;0,12;0,15;0,25;0,00;0,07;0,20
+FEV;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAARTN;4;-58,28%;0,62;0,00;0,20;0,45;0,67;0,00;0,09;0,61
+FLI1;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAYYGGAARTN;4;-92,52%;0,85;0,00;0,25;0,62;0,91;0,00;0,02;0,91
+FLI1;FL;MethylMinus;Little effect;MethylMinus;effect revealed by bisulfite;NAYYGGATATYYGGTN;4;-88,59%;0,97;0,00;0,18;0,73;0,97;0,00;0,02;0,84
+;;;;weak MethylMinus;;NAYYGGATATYYGGTN;12;-30,71%;0,98;0,00;0,20;0,78;0,99;0,00;0,14;0,85
+GMEB1;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NKTAYGTNNNNAYGTAN;5;-100,00%;0,72;0,01;0,23;0,28;0,91;0,00;0,00;0,68
+;;;;MethylMinus;;NKTAYGTNNNNAYGTAN;13;-100,00%;0,74;0,03;0,26;0,31;0,88;0,03;0,00;0,88
+HES5;eDBD;MethylMinus;MethylMinus;MethylMinus;concordant;GGYAYGTGYY;5;-69,86%;0,24;0,06;0,10;0,27;0,36;0,05;0,04;0,38
+SPIB;FL;MethylMinus;MethylMinus;MethylMinus;concordant;NAAAAGNGGAAGTN;7;-73,57%;0,16;0,00;0,07;0,14;0,09;0,00;0,01;0,10
+EGR3;FL;Little effect;Little effect;Little effect;concordant;NYYGYYYAYGYAN;3;0,91%;0,80;0,01;0,43;0,40;0,87;0,01;0,45;0,37
+;;;;Little effect;;NYYGYYYAYGYAN;9;2,73%;0,80;0,01;0,48;0,38;0,87;0,00;0,52;0,35
+BATF3*;FL;inconclusive;MethylMinus;Little effect;inconclusive direction;NRTGAYGTYAYN;6;-0,98%;0,56;0,13;0,18;0,40;0,64;0,13;0,21;0,47
+DBP*;eDBD;inconclusive;MethylMinus;Little effect;effect revealed by bisulfite;NRTTAYGTAAYN;6;-2,65%;0,34;0,13;0,25;0,47;0,45;0,12;0,28;0,46
+GCM1*;eDBD;inconclusive;MethylMinus;low enrichment;;RTGNGGGTA;4;19,79%;0,12;0,05;0,04;0,12;0,12;0,05;0,05;0,12
+IRF3*;FL;inconclusive;MethylMinus;weak MethylPlus;effect revealed by bisulfite;NGGAAANYGAAANYGAAAYN;8;44,93%;0,35;0,10;0,12;0,38;0,34;0,08;0,16;0,27
+;;;;Little effect;;NGGAAANYGAAANYGAAAYN;14;9,44%;0,50;0,12;0,18;0,50;0,57;0,09;0,21;0,44
+IRF8*;FL;inconclusive;MethylMinus;Little effect;effect revealed by bisulfite;NYGAAANYGAAAYYN;2;-6,51%;0,49;0,21;0,25;0,48;0,60;0,21;0,28;0,54
+;;;;Little effect;;NYGAAANYGAAAYYN;8;-8,77%;0,51;0,37;0,27;0,63;0,56;0,38;0,27;0,69
+YY1;FL;inconclusive;MethylMinus and MethylPlus;MethylPlus;inconclusive direction;NYAAAATGGYNGYY;10;81,91%;0,26;0,01;0,06;0,26;0,22;0,01;0,09;0,17
+;;;;MethylPlus;;NYAAAATGGYNGYY;11;176,88%;0,42;0,06;0,07;0,39;0,54;0,05;0,26;0,35
+ZIC3;FL;inconclusive;MethylMinus;weak MethylPlus;inconclusive direction;KRYYYYYYGYTGHGN;8;21,42%;0,37;0,31;0,22;0,55;0,38;0,35;0,28;0,56
+;;;;weak MethylMinus;;KRYYYYYYGYTGHGN;13;-22,98%;0,12;0,30;0,07;0,42;0,09;0,37;0,04;0,47
+ZNF76;eDBD;inconclusive;MethylMinus;MethylPlus;inconclusive direction;NWYYYAYAATGYAYYRYGN;15;50,18%;0,15;0,47;0,07;0,66;0,14;0,48;0,10;0,63
+;;;;MethylPlus;;NWYYYAYAATGYAYYRYGN;17;56,08%;0,29;0,01;0,20;0,29;0,27;0,01;0,30;0,18
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+section c: TFs missing in bisulfite data;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+TF name;;Call;methyl-SELEX call;;comment;seed for methyl-SELEX;;;;;;;;;;
+MNX1;;MethylPlus;MethylPlus;;no data from bisulfite;NTCGTTAN;;;;;;;;;;
+BARHL1;;MethylMinus;MethylMinus;;no data from bisulfite;NTAAACGN;;;;;;;;;;
+DLX6;;MethylPlus;MethylPlus;;no data from bisulfite;NTCGTTAN;;;;;;;;;;
+DLX4;;MethylPlus;MethylPlus;;no data from bisulfite;NTCGTTAN;;;;;;;;;;
+DLX3;;MethylPlus;MethylPlus;;no data from bisulfite;NTCGTTAN;;;;;;;;;;
+DLX5;;MethylPlus;MethylPlus;;no data from bisulfite;NTCGTTAN;;;;;;;;;;
+NKX2-8;;MethylPlus;MethylPlus;;no data from bisulfite;NATGTCGTTAYTGN;;;;;;;;;;
+;;MethylPlus;MethylPlus;;no data from bisulfite; NTCGTTSAN;;;;;;;;;;
+VENTX;;MethylMinus;MethylMinus;;no data from bisulfite;CGATTATCG;;;;;;;;;;
+HOXB4;;MethylPlus;MethylPlus;;no data from bisulfite;RTCGTTAR;;;;;;;;;;
+GSX1;;MethylPlus;MethylPlus;;no data from bisulfite;MTCGTTAN;;;;;;;;;;
+MEOX1;;Little effect;Little effect;;no data from bisulfite;NTCGTTAN;;;;;;;;;;
+MEOX2;;Little effect;Little effect;;no data from bisulfite;NTCGTTAN;;;;;;;;;;
+HOXA9;;MethylPlus;MethylPlus;;no data from bisulfite;RTCGTAAANN;;;;;;;;;;
+CDX2;;MethylPlus;MethylPlus;;no data from bisulfite;NRTCGTAAANNN;;;;;;;;;;
+CDX1;;MethylPlus;MethylPlus;;no data from bisulfite;NGTCGTAAAAN;;;;;;;;;;
+EVX1;;MethylPlus;MethylPlus;;no data from bisulfite;RTCGTTAN;;;;;;;;;;
+EVX2;;MethylPlus;MethylPlus;;no data from bisulfite;STCGTTAN;;;;;;;;;;
+ALX4;;MethylPlus;MethylPlus;;no data from bisulfite;NTCGTTAN;;;;;;;;;;
+PRRX2;;MethylPlus;MethylPlus;;no data from bisulfite;NTCGTTAN;;;;;;;;;;
+SHOX;;MethylPlus;MethylPlus;;no data from bisulfite;STCGTTAN;;;;;;;;;;
+PROP1;;MethylPlus;MethylPlus;;no data from bisulfite;TAAYNTCGTTA;;;;;;;;;;
+MIXL1;;MethylPlus;MethylPlus;;no data from bisulfite;TAAYNKCGTTA;;;;;;;;;;
+RAX;;MethylPlus;MethylPlus;;no data from bisulfite;CTCGTTAN;;;;;;;;;;
+LHX1;;MethylPlus;MethylPlus;;no data from bisulfite;NTCGTTAN;;;;;;;;;;
+SIX4;;Little effect;Little effect;;no data from bisulfite;NCGTATCATN;;;;;;;;;;
+SIX1;;Little effect;Little effect;;no data from bisulfite;NSRTATCRYN;;;;;;;;;;
+SIX3;;Little effect;Little effect;;no data from bisulfite;NSRTATCRYN;;;;;;;;;;
+SIX6;;Little effect;Little effect;;no data from bisulfite;NYRTATCRYN;;;;;;;;;;
+HES6;;MethylMinus;MethylMinus;;no data from bisulfite;GGCACGTGTN;;;;;;;;;;
+SREBF2;;MethylMinus;MethylMinus;;no data from bisulfite;ATCACGTGAY;;;;;;;;;;
+;;MethylMinus;MethylMinus;;no data from bisulfite;ATCACGCCAY;;;;;;;;;;
+TFEB;;MethylMinus;MethylMinus;;no data from bisulfite;NNCACGTGAYN;;;;;;;;;;
+TCF12;;MethylMinus;MethylMinus;;no data from bisulfite;NCACSTGN;;;;;;;;;;
+PTF1A;;Little effect;Little effect;;no data from bisulfite;NYGTCAGCTGNY;;;;;;;;;;
+ASCL2;;MethylMinus;MethylMinus;;no data from bisulfite;ACACGACGCN;;;;;;;;;;
+CREB3L4;;MethylMinus;MethylMinus;;no data from bisulfite;YGCCACGTCAYN;;;;;;;;;;
+;;MethylMinus;MethylMinus;;no data from bisulfite;NRTGACGTCAYN;;;;;;;;;;
+;;MethylMinus;MethylMinus;;no data from bisulfite;YGCCACGTGGCA ;;;;;;;;;;
+BACH2;;MethylMinus;MethylMinus;;no data from bisulfite;NTAAACGN;;;;;;;;;;
+JUN;;MethylMinus;MethylMinus;;no data from bisulfite;NATGACGTCAYN;;;;;;;;;;
+;;MethylMinus;MethylMinus;;no data from bisulfite;NATGACKCATN;;;;;;;;;;
+JUND;;MethylMinus;MethylMinus;;no data from bisulfite;NRTGACGTCATN;;;;;;;;;;
+;;MethylMinus;MethylMinus;;no data from bisulfite;NRTGACGCATN;;;;;;;;;;
+JUNB;;MethylMinus;MethylMinus;;no data from bisulfite;NATGACGTCAYN;;;;;;;;;;
+FOSL1;;MethylMinus;MethylMinus;;no data from bisulfite;NRTGAYGTCAYN;;;;;;;;;;
+;;Little effect;Little effect;;no data from bisulfite;RATGAYACG;;;;;;;;;;
+TEF;;MethylMinus;MethylMinus;;no data from bisulfite;NRTTAYGTAAYN;;;;;;;;;;
+ATF4;;MethylMinus;MethylMinus;;no data from bisulfite;GGATGACGTCATCC;;;;;;;;;;
+MAFG;;MethylMinus;MethylMinus;;no data from bisulfite;NYGCTGAYRTCAGCRN;;;;;;;;;;
+MAF;;MethylMinus;MethylMinus;;no data from bisulfite;NYGCTGAYGTCAGCRN;;;;;;;;;;
+MAFA;;MethylMinus;MethylMinus;;no data from bisulfite;NYGCTGAYGTCAGCRN;;;;;;;;;;
+ELK4;;MethylMinus;MethylMinus;;no data from bisulfite;NRCCGGAWGTN;;;;;;;;;;
+ETV7;;MethylMinus;MethylMinus;;no data from bisulfite;NMGGAARNNYTTCCKN;;;;;;;;;;
+;;MethylMinus;MethylMinus;;no data from bisulfite;NYTTCCSGGAARN;;;;;;;;;;
+TFAP2E;;MethylMinus;MethylMinus;;no data from bisulfite;NGCCNNNGGCN;;;;;;;;;;
+;;MethylMinus;MethylMinus;;no data from bisulfite;TGCCCNNNGGCN;;;;;;;;;;
+TFAP2B;;MethylMinus;MethylMinus;;no data from bisulfite;NGCCNNNGGCN;;;;;;;;;;
+TFAP2A;;MethylMinus;MethylMinus;;no data from bisulfite;NSCCYNRGGSN;;;;;;;;;;
+TFAP2C;;MethylMinus;MethylMinus;;no data from bisulfite;NGCCYNMGGCN;;;;;;;;;;
+E2F1;;MethylMinus;MethylMinus;;no data from bisulfite;NWTTTGGCGCCAWWWN;;;;;;;;;;
+FOXN2;;MethylMinus;MethylMinus;;no data from bisulfite;NNGCGTSNNNNNSACGCNN;;;;;;;;;;
+FOXL2;;MethylPlus;MethylPlus;;no data from bisulfite;NAYRTMAACAN;;;;;;;;;;
+TCF7;;MethylMinus;MethylMinus;;no data from bisulfite;WCATCGRGRCGCTGW;;;;;;;;;;
+SOX14;;MethylMinus;MethylMinus;;no data from bisulfite;CCGAACAATN;;;;;;;;;;
+SOX12;;MethylMinus;MethylMinus;;no data from bisulfite;ACCGAACAATN;;;;;;;;;;
+HSF4;;MehylMinus and MethylPlus;MehylMinus and MethylPlus;;no data from bisulfite;NGAANNTTCNNGAAN;;;;;;;;;;
+SMAD5;;MethylPlus;MethylPlus;;no data from bisulfite;YGTCTAGACA;;;;;;;;;;
+NR1I2;;MethylPlus;MethylPlus;;no data from bisulfite;NYGAACYNNNYGAACYN;;;;;;;;;;
+NR3C1;;MethylPlus;MethylPlus;;no data from bisulfite;NGWACANNNYGTWCN;;;;;;;;;;
+POU1F1;;MethylPlus;MethylPlus;;no data from bisulfite;NTAATGAKATGCGN;;;;;;;;;;
+;;MethylPlus;MethylPlus;;no data from bisulfite;NTAATTTATGCGN;;;;;;;;;;
+POU6F1;;MethylPlus;MethylPlus;;no data from bisulfite;NTAATGAKATGCRN;;;;;;;;;;
+NFATC4;;MethylPlus;MethylPlus;;no data from bisulfite;NAYGGAAAAN;;;;;;;;;;
+;;MethylPlus;MethylPlus;;no data from bisulfite;NTTTCCRYGGAAAN;;;;;;;;;;
+BCL11B;;Little effect;Little effect;;no data from bisulfite;GTGAACRNNNNNNYTACAC;;;;;;;;;;
+ZNF501;;MethylMinus;MethylMinus;;no data from bisulfite;NSSCGACGCGAACMN;;;;;;;;;;
+ZNF449;;MethylMinus;MethylMinus;;no data from bisulfite;MAGCCCAACC;;;;;;;;;;
+;;Little effect;Little effect;;no data from bisulfite;NTCGCGNGCMARCAN;;;;;;;;;;
+ZNF396;;Little effect;Little effect;;no data from bisulfite;RCGCCCAACC;;;;;;;;;;
+;;MethylMinus;MethylMinus;;no data from bisulfite;NTCGCGNGCMARCAN;;;;;;;;;;
+SP8;;Little effect;Little effect;;no data from bisulfite;NCCACGCCCMYN;;;;;;;;;;
+SP9;;Little effect;Little effect;;no data from bisulfite;NCCACGCCCMYN;;;;;;;;;;
+KLF3;;MethylPlus;MethylPlus;;no data from bisulfite;NRCCGCAGCCCN;;;;;;;;;;
+;;Little effect;Little effect;;no data from bisulfite;NRCCACGCCCN;;;;;;;;;;
+KLF5;;Little effect;Little effect;;no data from bisulfite;NMCACGCCCN;;;;;;;;;;
+GATA6;;Little effect;Little effect;;no data from bisulfite;NGATAACGATCW;;;;;;;;;;
+GLI3;;Little effect and MethylMinus;Little effect and MethylMinus;;no data from bisulfite;RGACCACCCACRWYG;;;;;;;;;;
+SNAI3;;MethylPlus;MethylPlus;;no data from bisulfite;NRCAGGTGCR;;;;;;;;;;
+ZNF385D;;Little effect;Little effect;;no data from bisulfite;NCGTCGCGACGN;;;;;;;;;;
+ZNF454;;Little effect;Little effect;;no data from bisulfite;TRGCGCCGGCGCYN;;;;;;;;;;
+;;Little effect;Little effect;;no data from bisulfite;NRGCGCCNGGCGCYN;;;;;;;;;;
+ZNF684;;MethylPlus;MethylPlus;;no data from bisulfite;NYACAGTCCRCCCCTTKN;;;;;;;;;;
+ZBTB33;;MethylPlus;MethylPlus;;no data from bisulfite;NRCGCNNWTTTAACATAAYN;;;;;;;;;;
+ZBTB12;;Little effect;Little effect;;no data from bisulfite;NGCTGNNCCGCGYN;;;;;;;;;;
+;;MethylMinus;MethylMinus;;no data from bisulfite;NGGCCTGCCGTCNN;;;;;;;;;;
+ZBTB37;;MethylPlus;MethylPlus;;no data from bisulfite;NTGCCGNNTTRGCCGWN;;;;;;;;;;
+CUX2;;inconclusive;MethylPlus;;no data from bisulfite;NTGATCGATYRN;;;;;;;;;;
