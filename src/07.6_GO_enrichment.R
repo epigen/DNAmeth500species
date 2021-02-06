@@ -13,7 +13,10 @@ gene_clusters <- read.table("summary/clusters_and_selex.csv", sep = " ", header 
 
 
 ##reading annotations:
+geneID2Name <- read.table("/scratch/lab_bock/dromanovskaia/resources/NCBI/gene2ID_homo_sapiens", sep=";", fill = F, quote="\"")
 
+colnames(geneID2Name) <- c("id", "symbol")
+geneName2ID <- setNames(geneID2Name$id, geneID2Name$symbol)
 
 
 ##applying it to our TFs (all on the human level)
@@ -21,19 +24,19 @@ all_tf <- as.character(tf_db$Name)
 
 all_tf <- as.character(sapply(all_tf, function(x) strsplit(x, "[(]")[[1]][1]))
 
-
 require("biomaRt")
 human = useMart("ensembl", dataset = "hsapiens_gene_ensembl")
 mouse = useMart("ensembl", dataset = "mmusculus_gene_ensembl")
 musGenes <- all_tf[sapply(all_tf, function(x) x!=toupper(x))]
 genesV2 = getLDS(attributes = c("mgi_symbol"), filters = "mgi_symbol", musGenes, mart = mouse, attributesL = c("hgnc_symbol"), martL = human, uniqueRows=T)
 humanx <- setNames(genesV2[, 2], genesV2[, 1])
-
+                          
+                          
 all_tfs_id <- geneName2ID[c(all_tf[sapply(all_tf, function(x) x==toupper(x))], humanx)]
 all_tfs_id <- unique(all_tfs_id[!is.na(all_tfs_id)])
 
 gene_clusters$geneID <- geneName2ID[as.character(gene_clusters$TF_upd)]
-
+                                          
 ###uploading gene2go
 if(!file.exists("/scratch/lab_bock/dromanovskaia/resources/NCBI/gene2go_right_format_HS.csv")){
   gene2go <- read.table("/scratch/lab_bock/dromanovskaia/resources/NCBI/geneID2go_homo_sapiens", sep="\t", fill = F, quote="\"")
@@ -73,10 +76,15 @@ runGOEA <- function(gene_set, NAME){
   df$logP <- -log10(df$Fisher)
   df <- df[order(df$logP, decreasing = F),]
   df$TERM_nice <- factor(df$TERM_nice, levels = df$TERM_nice)
+  ## getting the TF names:
+  AnnotatedGenes = lapply(df$GO.ID, function(x) as.character(unlist(genesInTerm(object = GOdata, whichGO = x))))
+  SignificantGenes = lapply(AnnotatedGenes, function(x) intersect(x, gene_set)) # where INT.GENES$V1 is your list of interesting genes
+  df["sig_genes"] <- sapply(SignificantGenes, function(x) {gene_name_list <- geneID2Name[geneID2Name$id %in% x,]$symbol; 
+                                      return(paste0(gene_name_list, collapse = ";"))})  
   ggplot(df, aes(x = as.factor(TERM_nice), y = logP)) + geom_bar(stat = "identity") + 
     coord_flip() + labs(y = "-log10(p.Value)", x = "") 
   ggsave(file.path(outdir, paste0(NAME,"_bars.pdf")), width = 8, height = 5)
-  write.table(GenTable(GOdata,  elim = resultFisher.elim), 
+  write.table(df, 
               file.path(outdir, paste0(NAME,".csv")), quote = F, row.names = F) 
   pdf(file.path(outdir, paste0(NAME,".pdf")), width = 15, height = 15)
   showSigOfNodes(GOdata, score(resultFisher.elim), firstSigNodes = 5, useInfo = 'all')
@@ -86,14 +94,16 @@ runGOEA <- function(gene_set, NAME){
 
 
 
-runGOEA(gene_clusters[gene_clusters$cl == 1 & gene_clusters$Call_upd!="MethylPlus",]$geneID, "liver_act")
-runGOEA(gene_clusters[gene_clusters$cl == 2 & gene_clusters$Call_upd!="MethylPlus",]$geneID, "heart_act")
 
-runGOEA(gene_clusters[gene_clusters$cl == 1 & gene_clusters$Call_upd=="MethylPlus",]$geneID, "liver_methylPlus")
 
-sapply(seq(NROW(gene_clusters)), 
-       function(x) runGOEA(gene_clusters[x, "clusters"], as.character(x)))
+runGOEA(gene_clusters[gene_clusters$cl == 1 & gene_clusters$Call_upd!="MethylPlus",]$geneID, "liver_act3")
+runGOEA(gene_clusters[gene_clusters$cl == 2 & gene_clusters$Call_upd!="MethylPlus",]$geneID, "heart_act3")
 
-runGOEA(paste(as.character(gene_clusters[2,]), as.character(gene_clusters[3,]), sep=", "), "all_orange")
-runGOEA(paste(c(as.character(gene_clusters[1,]), as.character(gene_clusters[5,]), as.character(gene_clusters[4,])), collapse=", "), "all_blue")
+#runGOEA(gene_clusters[gene_clusters$cl == 1 & gene_clusters$Call_upd=="MethylPlus",]$geneID, "liver_methylPlus")
+
+#sapply(seq(NROW(gene_clusters)), 
+    #   function(x) runGOEA(gene_clusters[x, "clusters"], as.character(x)))
+
+#runGOEA(paste(as.character(gene_clusters[2,]), as.character(gene_clusters[3,]), sep=", "), "all_orange")
+#runGOEA(paste(c(as.character(gene_clusters[1,]), as.character(gene_clusters[5,]), as.character(gene_clusters[4,])), collapse=", "), "all_blue")
 

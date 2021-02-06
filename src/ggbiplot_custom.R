@@ -133,4 +133,8 @@ ggbiplot=function (pcobj, choices = 1:2, scale = 1, pc.biplot = TRUE,
   }
 
   return(g)
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

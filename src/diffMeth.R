@@ -562,3 +562,7 @@ write.table(stats,paste0(out_dir,"/",species,"_diffMeth_stats.tsv"),quote=FALSE,
 }
 
 system(paste0("echo '' >",wd,"/",motif,"_diffMeth.done"))
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes

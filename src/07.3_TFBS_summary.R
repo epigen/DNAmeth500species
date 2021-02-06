@@ -8,7 +8,7 @@ dir.create("summary")
 jaspar_path = <your path to jaspar database>
 motif_list <- names(readJASPARMatrix(fn =jaspar_path, 
           type = "all"))
-
+jaspar_annot <- read.csv("JASPAR.csv", sep = ';')
 
 ###reading in the stats files (results of 03.2) - should be performed only once:
 if(!file.exists("03_summary/TF_count_per_species_normalized_2020.csv")){
@@ -27,9 +27,15 @@ if(!file.exists("03_summary/TF_count_per_species_normalized_2020.csv")){
   TF_norm_df <- read.csv( "/03_motifAnalysis/03_summary/TF_count_per_species_normalized.csv", row.names=1)
 }
 
+                                 
 ##assigning the TF ids as row.names 
 row.names(TF_norm_df) <- TF_norm_df$TF
 TF_norm_df <- TF_norm_df[motif_list, -1]
+                           
+human_tfs <- jaspar_annot[sapply(jaspar_annot$Species, function(x) "Homo sapiens" %in% x),]$Name
+human <- intersect(human_tfs, row.names(TF_norm_df))
+TF_norm_df <- TF_norm_df[human, ]
+
 
 ##NA indicates, that none of the TFBS where detected (i.e. no file created) -> replacing with 0s
 TF_norm_df[is.na(TF_norm_df)] <- 0
@@ -51,7 +57,13 @@ pheatmap(t(TF_norm_df_upd)[sp_df[sp_df$species %in% sp_list,]$species,],
          annotation_legend = F,  color = colorRampPalette(c("white", "blue"))(50)) 
 dev.off()
 
-
+##stats summary
+TF_norm_df_melted <- left_join(TF_norm_df_melted, sp_df)
+TF_norm_df_melted[TF_norm_df_melted$species == "BLC", ]$color_class <- "Actinopteri"
+TF_norm_df_melted_summary <- TF_norm_df_melted %>% 
+    group_by(color_class) %>%
+    summarize(mean_fr = mean(freq), sd = sd(freq))
+my_wt(TF_norm_df_melted_summary, "summary/TF_frequency_stats_per_class_human.tsv")                             
 
 ##scaling each TF across species, so that they would be comparable
 TF_norm_df_scaled<-scale(t(TF_norm_df), center = T, scale = T)
@@ -63,8 +75,43 @@ pheatmap(TF_norm_df_scaled[sp_df[sp_df$species %in% sp_list,]$species,],
          annotation_legend = F,
          name = "freq. z-score") 
 dev.off()
+                             
+range <- max(abs(TF_norm_df_scaled))
+paletteLength <- 50
+myColor <- colorRampPalette(c("blue", "white", "red"))(paletteLength)
+#myBreaks <- c(seq(min(TF_norm_df_scaled), 0, length.out=ceiling(paletteLength/2) + 1), 
+ #             seq(max(TF_norm_df_scaled)/paletteLength, max(TF_norm_df_scaled), length.out=floor(paletteLength/2)))
+
+myBreaks <- c(seq(-5, 0, length.out=ceiling(paletteLength/2) + 1), 
+              seq(5/paletteLength, 5, length.out=floor(paletteLength/2)))
 
 
+dev.off()
+pdf("summary/TF_frequency_z_score_withthr_white_human.pdf", width = 15, height = 10)
+pheatmap(TF_norm_df_scaled[sp_df[sp_df$species %in% colnames(TF_norm_df),]$species,],
+         cluster_rows = F, show_rownames = F, fontsize_col = 3,
+         annotation_row = col_annot, annotation_colors = list(phyl.group=class_colors),
+         annotation_legend = F,
+         breaks = myBreaks,
+         color = myColor,
+         name = "freq. z-score") 
+dev.off()
+                
+
+                             
+
+TF_norm_df_scaled[TF_norm_df_scaled>5] <- 5
+TF_norm_df_scaled[TF_norm_df_scaled<-5] <- -5
+                             
+try(dev.off())
+pdf("summary/TF_frequency_z_score_withthr.pdf", width = 20, height = 10)
+pheatmap(TF_norm_df_scaled[sp_df[sp_df$species %in% colnames(TF_norm_df),]$species,],
+         cluster_rows = F, show_rownames = F, fontsize_col = 5,
+         annotation_row = col_annot, annotation_colors = list(phyl.group=class_colors),
+         annotation_legend = F,
+         name = "freq. z-score") 
+dev.off()
+                             
 ## how many species have heart and liver and more than one replica? 
 replicas <- stats_annot[, c("species", "Tissue", "Sample_Name", "color_class", "conversion_type")] %>%
   filter(conversion_type == "converted") %>%
@@ -94,3 +141,27 @@ write.table(as.data.frame(sp_two_repl),
             file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/meta/species_list_TF_analysis.txt"), 
             row.names = F, quote = F, col.names = F)
 
+
+#### only mouse TFs:
+mouse_tfs <- jaspar_annot[sapply(jaspar_annot$Species, function(x) "Mus musculus" %in% x),]$Name
+mouse <- intersect(mouse_tfs, row.names(TF_norm_df))
+TF_norm_df_scaled_mouse <- scale(t(TF_norm_df[mouse, ]), center = T, scale = T)
+
+                                 
+paletteLength <- 50
+myColor <- colorRampPalette(c("blue", "white", "red"))(paletteLength)
+
+myBreaks <- c(seq(-5, 0, length.out=ceiling(paletteLength/2) + 1), 
+              seq(5/paletteLength, 5, length.out=floor(paletteLength/2)))
+
+
+dev.off()
+pdf("summary/TF_frequency_z_score_withthr_white_mouse.pdf", width = 15, height = 10)
+pheatmap(TF_norm_df_scaled_mouse[sp_df[sp_df$species %in% row.names(TF_norm_df_scaled_mouse),]$species,],
+         cluster_rows = F, show_rownames = F, fontsize_col = 10,
+         annotation_row = col_annot, annotation_colors = list(phyl.group=class_colors),
+         annotation_legend = F,
+         breaks = myBreaks,
+         color = myColor,
+         name = "freq. z-score") 
+dev.off()
