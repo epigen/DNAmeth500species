@@ -18,11 +18,11 @@ stats=fread("all_stats.tsv")
 get_db_anno=function(sci_name,db){
   print(sci_name)
   Sys.sleep(2)  
-  tax=try(as.data.table(classification(gsub(" NBRC.*","",trimws(sci_name)),db)[[1]]),silent=TRUE)
+  tax=try(as.data.table(classification(gsub(" NBRC.*","",trimws(sci_name)),db, rows = 1)[[1]]),silent=TRUE) # if double UID -  we need an extra parameter, selected rows = 1 as the latest):
   #for those species still without annotation, try only the first part of the scientific name (=genus)
-   if(is.null(ncol(tax))){
+   if(is.na(tax[1, 1])){
       tax=try(as.data.table(classification(gsub(" .*","",trimws(sci_name)),db)[[1]]),silent=TRUE)}
-  if(is.null(ncol(tax))){return()}
+  if(is.na(tax[1, 1])){return()}
   
   group=ifelse("Metazoa"%in%tax$name,ifelse("Vertebrata"%in%tax$name,"Vertebrata","Invertebrata"),as.character(NA))
   species=tail(tax,n=1)
@@ -41,8 +41,19 @@ get_db_anno=function(sci_name,db){
   return(list(species_name,species_id,order,class,group))
 }
 
+## addition to fix the non-ambiguity of clades
+split_clades <- function(ncbi_id){
+    print("specifying clade")
+    df <- classification(ncbi_id,db='ncbi')[[1]]
+    m <- max(which(df$rank !="clade"))
+    new_id <- paste0("below", (NROW(df) -m), "_",  df[m,]$rank)
+    return(new_id)
+}
+
+
 lowest_common_custom=function(ids,db="ncbi"){
   lc=try(lowest_common(ids,db=db),silent=TRUE)
+   
   if (any(grepl("Error",lc))){
     lc=as.character(NA)
     return(lc)
@@ -52,6 +63,7 @@ lowest_common_custom=function(ids,db="ncbi"){
     lcr=lc$name
     return(lcr)
   }else{
+      if(lcr == "clade") lcr = split_clades(lc$id) 
     return(lcr)
   } 
 }
@@ -62,6 +74,7 @@ lowest_common_custom=function(ids,db="ncbi"){
 species_annot=data.table(scientific_name=unique(c(stats$scientific_name,stats$blast_species1,stats$blast_species2)),ncbi_name=as.character(NA))
 
 #should not fail with error. If it does (probably random server connection loss or similar) just rerun on yet unannotated using "is.na(ncbi_name)"
+## sometimes needs to be restarted (server interaction mistakes...)
 simpleCache(cacheName="taxonomic_annotation",instruction="species_annot[is.na(ncbi_name),c('ncbi_name','ncbi_id','ncbi_order','ncbi_class','ncbi_group'):=get_db_anno(scientific_name,'ncbi'),by='scientific_name']",recreate=FALSE,assignToVariable="species_annot")
 
 #check which are not yet annotated from ncbi (~1)
@@ -70,6 +83,10 @@ species_annot[is.na(ncbi_name)]
 #add ncbi_name by hand (use higher ranking)
 species_annot[scientific_name=="Colurodontis paxmani",ncbi_name:="Monacanthidae",]
 species_annot[scientific_name=="Colurodontis paxmani",c("ncbi_name","ncbi_id","ncbi_order","ncbi_class","ncbi_group"):=get_db_anno(ncbi_name,"ncbi"),]
+
+## Xenopus (Silurana) tropicalis -> Xenopus tropicalis
+species_annot[scientific_name=="Xenopus (Silurana) tropicalis",ncbi_name:="Xenopus tropicalis",]
+species_annot[scientific_name=="Xenopus (Silurana) tropicalis",c("ncbi_name","ncbi_id","ncbi_order","ncbi_class","ncbi_group"):=get_db_anno(ncbi_name,"ncbi"),]
 
 
 #add Reptilia, Hyperoartia and Leptocardii as class (although not in ncbi taxonomy)
@@ -94,7 +111,7 @@ species_annot[,ncbi_order:=ifelse(scientific_name%in%names(manual_orders),manual
 species_annot[is.na(ncbi_id)]
 species_annot[is.na(ncbi_order)]
 species_annot[is.na(ncbi_class)] #14
-
+## all other NAs are coming from the blast species - we can ignore them
 #now save annotation
 my_wt(species_annot,"species_annot.tsv")
 
@@ -116,20 +133,47 @@ stats_annot=merge(stats_annot,setnames(species_annot[,c("scientific_name","ncbi_
 stats_annot=merge(stats_annot,setnames(species_annot[,c("scientific_name","ncbi_id","ncbi_name"),],c("ncbi_id","ncbi_name"),c("ncbi_id_blastS2","ncbi_name_blastS2")),by.x="blast_species2",by.y="scientific_name",all.x=TRUE)
 
 #check species (comparison with blast species through lowest_common())
-stats_annot[,lowest_common_blastS1:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS1)),by=c("ncbi_id","ncbi_id_blastS1")]
-stats_annot[,lowest_common_blastS2:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS2)),by=c("ncbi_id","ncbi_id_blastS2")]
 
-#IMPORTANT:repeat to fix NAs due to server timeout
-stats_annot[is.na(lowest_common_blastS1),lowest_common_blastS1:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS1)),by=c("ncbi_id","ncbi_id_blastS1")]
-stats_annot[is.na(lowest_common_blastS2),lowest_common_blastS2:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS2)),by=c("ncbi_id","ncbi_id_blastS2")]
 
+simpleCache(cacheName="taxonomic_lowest_common",instruction={stats_annot[,lowest_common_blastS1:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS1)),by=c("ncbi_id","ncbi_id_blastS1")]},recreate=FALSE,assignToVariable="stats_annot") 
+simpleCache(cacheName="taxonomic_lowest_commonS2",instruction={stats_annot[,lowest_common_blastS2:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS2)),by=c("ncbi_id","ncbi_id_blastS2")]},recreate=FALSE,assignToVariable="stats_annot")
+
+print(head(stats_annot[, c("lowest_common_blastS1", "lowest_common_blastS2")]))
+
+print(NROW(stats_annot[is.na(lowest_common_blastS1)]))
+
+if(NROW(stats_annot[is.na(lowest_common_blastS1)]>1)){
+    #IMPORTANT:repeat to fix NAs due to server timeout
+simpleCache(cacheName="taxonomic_lowest_common",instruction={stats_annot[is.na(lowest_common_blastS1),lowest_common_blastS1:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS1)),by=c("ncbi_id","ncbi_id_blastS1")]},
+            recreate=FALSE,assignToVariable="stats_annot")
+}
+
+print(NROW(stats_annot[is.na(lowest_common_blastS2)]))
+      
+if(NROW(stats_annot[is.na(lowest_common_blastS2)]>4)){
+simpleCache(cacheName="taxonomic_lowest_common",instruction={stats_annot[is.na(lowest_common_blastS2),lowest_common_blastS2:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS2)),by=c("ncbi_id","ncbi_id_blastS2")]},
+            recreate=FALSE,assignToVariable="stats_annot")
+}
+            
 stopifnot(nrow(stats_annot[is.na(lowest_common_blastS1)])<=1) #1 NA row
 stopifnot(nrow(stats_annot[is.na(lowest_common_blastS2)])<=4) #4 NA rows
+## fixing by hand annotations that went wrong (ncbi mistakes):
+## GCF and BCL mapped to the same actinopteri nbci id
 
 #create rank hierarchy
 sort(unique(c(stats_annot$lowest_common_blastS1,stats_annot$lowest_common_blastS2)))
 
-tax_hierarchy=c("cellular organisms","superkingdom","kingdom","below-kingdom","phylum","below-phylum","below-subphylum","superclass","below-superclass","class","below-class","subclass","infraclass","below-infraclass","superorder","below-superorder","order","below-order","suborder","below-suborder","infraorder","parvorder","superfamily","family","subfamily","tribe","genus","subgenus","species","subspecies")
+tax_hierarchy=c("cellular organisms","superkingdom","below1_superkingdom", "kingdom","below1_kingdom","below2_kingdom","below3_kingdom", "below4_kingdom","below5_kingdom",
+                "phylum","below1_phylum","below2_phylum","subphylum","below1_subphylum", "below2_subphylum","below3_subphylum","below4_subphylum",
+                "superclass","below1-superclass", "below2_superclass", "below3_superclass", "below4_superclass", "below5_superclass", "below6_superclass","below7_superclass",
+                "class","below1_class","below2_class","below3_class","below4_class","below5_class","below7_class","subclass", "infraclass", 'below1_infraclass',"below-infraclass", 
+                "cohort","below1_cohort","below2_cohort","below3_cohort","below4_cohort","below5_cohort","below6_cohort","below7_cohort","below-cohort", 
+                "subcohort","below1_subcohort", "below2_subcohort","below3_subcohort","below4_subcohort","below5_subcohort","below6_subcohort","below7_subcohort",
+                "superorder", "order", "below1_order","below2_order","below3_order", "below4_order", 
+                "suborder","below1_suborder", "infraorder","parvorder",
+                "superfamily", "family", "subfamily","tribe","genus","subgenus",
+                "species", "subspecies")
+
 stats_annot[,lowest_common_blastS1:=factor(lowest_common_blastS1,levels=tax_hierarchy),]
 stats_annot[,lowest_common_blastS2:=factor(lowest_common_blastS2,levels=tax_hierarchy),]
 
