@@ -76,11 +76,12 @@ core_inv <- c("Muscle","Tube_feet","Tentacle","Arm","Gills","Gonad","Pharynx")
 core_vert <- c("Liver","Heart","Brain","Spleen","Muscle","Gills","Fin")
 
 #paths (have to be updated)
-RefFreeDMA_dir = <your path to RefFreeDMA>
-convCtr_dir = <???>
-BSF_dir = <your path to samples>
+RefFreeDMA_dir="/home/lv71484/droman/reffreedma/RefFreeDMA" 
+convCtr_dir = "/home/lv71484/droman/reffreedma/conversionCtr"
+bisulfiteBlast_dir = "/home/lv71484/droman/reffreedma/bisulfiteBlast"
+BSF_dir = "/binfl/lv71484/droman/DNAmeth500species/raw_data"
 
-data_dir = <your path where to stire the data>
+data_dir = "/binfl/lv71484/droman/DNAmeth500species/"
 source_dir = file.path(Sys.getenv("CODEBASE"),"DNAmeth500species")
 rrbs_dir = "toSelf_filtered_0.08mm_final_concat"
 
@@ -107,6 +108,11 @@ if (file.exists(stats_annot_file)){
   stats_annot[,color_class:=factor(color_class,levels=classes),]
   #remove "bad" samples
   stats_annot=stats_annot[!grepl("Tumour|Cellline",Tissue)] 
+    stats_annot[, group := class_short[color_class],]
+   stats_annot[, group:=factor(group, levels = class_short)]
+    ### assigning to the JL color_class/group NA (as it is a jawless vertebrate and doesn't fit in any group)
+    stats_annot[species == "JL", color_class := NA,]
+    stats_annot[species == "JL", group := NA,]
   }else{
   print("stats_annot.RData doesn't exist. Run script 01.2 to create. Only loading basic sample annotation.")
 }
@@ -116,7 +122,8 @@ sampleAnnot=fread(file.path(meta_dir,"Patholist_selection.tsv"))
 ##simple helpful dataframe species-class, ordered phylogenetically 
 
 phylo_order_path <- file.path(Sys.getenv("CODEBASE"), "DNAmeth500species/meta/species_list_ordered.txt")
-if(file.exists(phylo_order_path)){
+if(file.exists(phylo_order_path) & file.exists(stats_annot_file)){
+  
   sp_df <- read.table(phylo_order_path)
   colnames(sp_df) <- c("species")
   sp_df <- unique(left_join(sp_df, stats_annot[, c("species", "color_class")]))
