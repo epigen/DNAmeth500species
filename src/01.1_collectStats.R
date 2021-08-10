@@ -65,6 +65,9 @@ stats[,res_mapRate_nonMotifReads:=(others+mapping_efficiency-100)/sqrt(2),]
 stats[,min_overlap_perc:=min_overlap/coveredCpGs*100,]
 stats[,max_overlap_perc:=max_overlap/coveredCpGs*100,]
 
+##calculate mean_PDR!
+stats[, PDR_mean:= PDR_summ/N_sites,]
+
 stats_annot=merge(stats,sampleAnnot[,-c("Sample_Name"),],by="Sample_Name_unif")
 my_wt(stats_annot,"all_stats.tsv")
 
@@ -88,3 +91,6 @@ ref_long=melt(ref[,-c("motifs"),with=FALSE],id.vars=c("species"))
 ref_long[,average:=mean(value,na.rm=TRUE),by="variable"]
 ref_long[,sub_average:=ifelse(value<average,TRUE,FALSE)]
 my_wt(ref_long,"ref_stats_long.tsv")
+
+## saving just the species ids so we can use it for the future across species analysis
+my_wt(unique(stats$species), file.path(meta_dir, "species_list.txt"))
