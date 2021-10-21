@@ -1,0 +1,196 @@
+library(rtracklayer)
+library(data.table)
+library(Rsamtools)
+library(ggplot2)
+
+###This is included in the init file#######
+#plotting settings
+theme_set(theme_bw())
+theme_update(axis.text = element_text(color="black"),
+             panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+             text = element_text(size=12))
+
+pdf.options(useDingbats=FALSE)
+###############################################
+
+#parameters
+species="AST"
+flank=5000
+transcript_factor=200
+flank_factor=100
+cov_thres=5
+frag_thres=10000
+
+
+#paths
+#wd should be where the output is to be saved
+wd="PATH/TO/OUTPUT/DIRECTORY"
+setwd(wd)
+
+#gene annotation file
+bed_file="chrPic1_genscan.bed"
+
+#files needed to find correct genome coordinates from concatenated genomes
+chrom_sizes_file="chrPic1.chrom.sizes"
+chrom_mapping_file="chrPic1_chrom_mapping.tsv"
+
+#files from RefFreeDMA/cross-mapping
+bam_file="toSelf_filtered_0.08mm.bsmap.0.2.mism.1.r.0.n.bam"
+meth_file="AST_mean_meth.tsv"
+
+
+#load gene annotation and bring it in correct form
+bed <- import.bed(bed_file)
+gtf=GRanges(seqnames = seqnames(bed),strand = strand(bed),
+           ranges = ranges(bed),type="transcript",gene_id=bed$name)
+
+#load all other files
+chrom_sizes=fread(chrom_sizes_file)
+chrom_mapping=fread(chrom_mapping_file)
+bam = scanBam(BamFile(bam_file))
+meth=fread(meth_file)
+
+#get what is needed form bam, then delete
+bam_dt=data.table(frag=bam[[1]]$qname,chr=bam[[1]]$rname,strand=bam[[1]]$strand,start=bam[[1]]$pos,width=bam[[1]]$qwidth)
+rm(bam)
+
+#filter out tiny chromosomes
+chrom_mapping[,n:=length(unlist(strsplit(old,";"))),by=1:nrow(chrom_mapping)]
+chrom_mapping=chrom_mapping[n<quantile(chrom_mapping$n,0.9)]
+
+#create long chromosome mapping + sizes (each original chromosome gets a row)
+chrom_mapping_long=chrom_mapping[,.(old = as.character(unlist(tstrsplit(old, ";", type.convert = TRUE)))), by = "new"]
+chrom_mapping_long[,old:=ifelse(!is.na(as.numeric(old)),chrom_sizes[as.numeric(old)]$V1,old),] # this is to use it as index "old" as index if necessary
+chroms=merge(chrom_mapping_long, chrom_sizes, by.x='old',by.y='V1',sort=FALSE)
+chroms[,new_pos:=c(0,cumsum(V2+100)[1:length(V2)-1]),by=new]#add 100 for linker length
+
+
+#filter out unaligned fragments and chromosomes that are not in the mapping
+bam_dt=bam_dt[!is.na(chr)]
+bam_dt=bam_dt[chr%in%chroms$new]
+
+#find correct chrom and pos (undo concatenation)
+bam_dt_cor=merge(bam_dt,chroms, by.x='chr',by.y='new',allow.cartesian=TRUE)
+bam_dt_cor[,dist:=start-new_pos,]
+bam_dt_cor=bam_dt_cor[dist>0]
+bam_dt_cor[,min_dist:=min(dist),by='frag']
+bam_dt_cor=bam_dt_cor[dist==min_dist]
+bam_dt_cor[,chr_cor:=old,]
+bam_dt_cor[,start_cor:=start-new_pos,]
+
+
+#prep meth data
+bam_meth=merge(bam_dt_cor[!is.na(chr_cor)],meth, by.x='frag',by.y='meta')
+bam_gr=GRanges(seqnames = bam_meth$chr_cor,strand = bam_meth$strand,
+               ranges = IRanges(start = bam_meth$start_cor,end=bam_meth$start_cor+bam_meth$width),frag=bam_meth$frag)
+
+#prep gtf/gene annot
+gtf_trans=gtf[gtf$type=='transcript']
+#remove duplicate transcripts
+gtf_trans=gtf_trans[!duplicated(gtf_trans$gene_id)]
+
+#remove overlapping entries (needed mainly for xenoRefseq where there are multiple entries per gene)
+overlaps=findOverlaps(gtf_trans,gtf_trans,minoverlap = 100)
+dupl_overlaps=subjectHits(overlaps[duplicated(queryHits(overlaps))])
+if(length(dupl_overlaps)>0){
+  gtf_trans=gtf_trans[-unique(dupl_overlaps)]
+}
+
+#add upstream and downstream flanks
+gtf_pre=flank(gtf_trans,start=TRUE,width=flank)
+gtf_pre$type='upstream'
+gtf_post=flank(gtf_trans,start=FALSE,width=flank)
+gtf_post$type='downstream'
+gtf_trans_add=c(gtf_trans,gtf_pre,gtf_post)
+
+
+#overlap gtf and bam
+overlap=findOverlaps(bam_gr,gtf_trans_add,type='within',ignore.strand=TRUE)
+
+#annotate each fragment with its overlapping features
+bam_meth[queryHits(overlap),trans_start:=start(gtf_trans_add[subjectHits(overlap)]),]
+bam_meth[queryHits(overlap),trans_end:=end(gtf_trans_add[subjectHits(overlap)]),]
+bam_meth[queryHits(overlap),trans_strand:=as.character(strand(gtf_trans_add[subjectHits(overlap)])),]
+bam_meth[queryHits(overlap),trans_type:=gtf_trans_add[subjectHits(overlap)]$type,]
+bam_meth[queryHits(overlap),trans_id:=gtf_trans_add[subjectHits(overlap)]$gene_id,]
+
+#calculate meth positions/bins
+meth_overlap=bam_meth[!is.na(trans_start)]
+meth_overlap[,trans_dist:=ifelse(trans_strand=='+',start_cor-trans_start,trans_end-start_cor),]
+meth_overlap[,dist_rel:=ifelse(trans_type=='transcript',trans_dist/(trans_end-trans_start)*transcript_factor,trans_dist/flank*flank_factor),]
+meth_overlap[,dist_rel_round:=as.integer(dist_rel),]
+
+#calculate meth averages within bins
+samples=sub(".meth","",grep("*.meth",names(meth_overlap),value = TRUE))
+
+meth_avg=data.table()
+for (sample in samples){
+  tmp=meth_overlap[get(eval(paste0(sample,'.cov')))>5,.(meth=mean(get(eval(paste0(sample,'.meth'))))),by=c('trans_type','trans_id','dist_rel_round')]
+  tmp[,pos:=ifelse(trans_type=='upstream',dist_rel_round-flank_factor,ifelse(trans_type=='downstream',dist_rel_round+transcript_factor,dist_rel_round)),]
+  tmp[,sample:=sample,]
+  meth_avg=rbindlist(list(meth_avg,tmp))
+}
+
+
+#calculate data points per transcript/sample to select the transcripts with the most data points (not used --> use random instead)
+N_trans=meth_avg[,.(N=.N),by=c("trans_id","sample")]
+N_trans[,rank:=rank(-N,ties.method = "random"),by=c("sample")]
+meth_avg=merge(meth_avg,N_trans,by=c("trans_id",  "sample"))
+
+#save average methylation table to plot again in other contexts if needed
+write.table(meth_avg,paste0(species,"_methylation_profile.tsv"),sep="\t",quote=FALSE, row.names=FALSE)
+
+
+
+#subsample transcripts randomly
+set.seed(42)
+sample_transc=sample(unique(meth_avg$trans_id),min(length(unique(meth_avg$trans_id)),4000))
+
+#NOTE: creating the smoothed curves with SE uses a lot of memory
+
+#plot curves - one for each sample
+pl1=ggplot(meth_avg[trans_id%in%sample_transc],aes(x=pos,y=meth,col=sample,fill=sample))+geom_smooth(method='loess',span=0.2)+
+  geom_vline(xintercept = c(-flank_factor,0,transcript_factor,flank_factor+transcript_factor),lty=20)+
+  annotate(geom='label',y=10,x=c(-50,100,250),label=c('Upstraem (5kb)','Transcript','Downstream (5kb)'),hjust=0.5,)+
+  xlab('')+ylab('DNA methylation at CpGs (%)')+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())
+
+pl1.1=ggplot(meth_avg,aes(x=pos,y=meth,col=sample,fill=sample))+geom_smooth(method='loess',span=0.2,se=FALSE)+
+  geom_vline(xintercept = c(-flank_factor,0,transcript_factor,flank_factor+transcript_factor),lty=20)+
+  annotate(geom='label',y=10,x=c(-50,100,250),label=c('Upstraem (5kb)','Transcript','Downstream (5kb)'),hjust=0.5,)+
+  xlab('')+ylab('DNA methylation at CpGs (%)')+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())
+
+pdf(paste0(species,"_methylation_profile.pdf"),width=7,height=4)
+print(pl1)
+print(pl1.1)
+dev.off()
+
+
+#get fitted curves (pl1) to record some stats for summary plots
+build=ggplot_build(pl1.1)
+dat=build$data[[1]]
+labels=data.frame(colour = unique(build$data[[1]]["colour"]), label = build$plot$scales$scales[[4]]$get_labels()) 
+dat=as.data.table(merge(dat,labels,by='colour'))
+dat[,trans_type:=ifelse(x<0,"Upstream",ifelse(x<transcript_factor,"Transcript","Downstream")),]
+
+stats_pre=dat[,.(ymin=y[which.min(y)],xmin=x[which.min(y)],y95=quantile(y,0.95)),by=c("label","trans_type")]
+stats=dcast(stats_pre,label~trans_type,value.var = c("y95","ymin","xmin"))
+stats=stats[,-grep("min_Transcript|min_Downstream",colnames(stats)),with=FALSE]
+
+write.table(stats,paste0(species,"_methylation_profile_stats.tsv"),sep="\t",quote=FALSE, row.names=FALSE)
+
+
+#plot curves - one for all samples
+pl2=ggplot(meth_avg[sample(1:nrow(meth_avg),min(nrow(meth_avg),40000)),],aes(x=pos,y=meth))+geom_smooth(method='loess',span=0.2,se=TRUE)+
+  geom_vline(xintercept = c(-flank_factor,0,transcript_factor,flank_factor+transcript_factor),lty=20)+
+  annotate(geom='label',y=10,x=c(-flank_factor/2,transcript_factor/2,transcript_factor+flank_factor/2),label=c('Upstraem (5kb)','Transcript','Downstream (5kb)'),hjust=0.5,)+
+  xlab('')+ylab('DNA methylation at CpGs (%)')+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())
+
+pl2.1=ggplot(meth_avg,aes(x=pos,y=meth))+geom_smooth(method='loess',span=0.2,se=FALSE)+
+  geom_vline(xintercept = c(-flank_factor,0,transcript_factor,flank_factor+transcript_factor),lty=20)+
+  annotate(geom='label',y=10,x=c(-flank_factor/2,transcript_factor/2,transcript_factor+flank_factor/2),label=c('Upstraem (5kb)','Transcript','Downstream (5kb)'),hjust=0.5,)+
+  xlab('')+ylab('DNA methylation at CpGs (%)')+theme(axis.text.x=element_blank(),axis.ticks.x=element_blank())
+
+pdf(paste0(species,"_methylation_profile_merge.pdf"),width=7,height=4)
+print(pl2)
+print(pl2.1)
+dev.off()
