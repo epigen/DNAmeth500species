@@ -1,18 +1,14 @@
-library(data.table)
-library(ggplot2)
+source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 
-###This is included in the init file#######
-#plotting settings
-theme_set(theme_bw())
-theme_update(axis.text = element_text(color="black"),
-             panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-             text = element_text(size=12))
+## reading in which species we are working with
+options <- commandArgs(trailingOnly = TRUE)  
+species = options[1]
 
-pdf.options(useDingbats=FALSE)
-
-wd="/OUTPUT/DIRECTORY"
+wd=file.path(analysis_dir, "01_basicStats", "01.9_coverage_analysis", species)
+dir.create(wd)
 setwd(wd)
-meth_file="PATH/TO/FILE/DOG_mean_meth.tsv"
+
+meth_file=file.path(processed_dir, species, "toSelf_filtered_0.08mm_final_concat","diffMeth_cpg", paste0(species, "_mean_meth.tsv"))
 meth=fread(meth_file)
 
 
@@ -33,7 +29,7 @@ meth_long[,avg_cov:=sum(cov)/.N,by="sample"]
 
 
 #check how the distribution looks (no easy natural thresholds)
-pdf("cov_distibution.pdf", height=6,width=8)
+pdf("cov_distibution.pdf", height=6,width=10)
 ggplot(meth_long,aes(x=log2(norm_cov+10^-2),fill=sample))+geom_histogram(bins = 100)+facet_wrap(~sample,scale="free")+geom_vline(xintercept = c(-4:5))
 dev.off()
 
