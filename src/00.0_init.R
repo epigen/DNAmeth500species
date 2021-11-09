@@ -15,12 +15,9 @@ suppressMessages(library(ggplot2))
 library(ggrepel)
 library(ggseqlogo)
 library(pheatmap)
-suppressMessages(library(ComplexHeatmap)) ##should be installed directly from gitHub
-suppressMessages(library(circlize))
+#suppressMessages(library(ComplexHeatmap)) ##should be installed directly from gitHub
+#suppressMessages(library(circlize))
 
-##phylogenetic trees
-suppressMessages(library(ape))
-suppressMessages(library(ggtree))
 
 
 #plotting settings
@@ -46,13 +43,16 @@ scientific_10 <- function(x) {
 }
 
 ##abbreviations for plotting
-class_short <- c("Invertebrata" = "Inv.", "Chondrichthyes" = "Ch.",
+class_short <- c("Invertebrata" = "Inv.",
+                 "Jawless_vertebrate" = "Jl.vb.",
+                 "Chondrichthyes" = "Ch.",
                  "Actinopteri" = "Act.", "Amphibia" = "Amp.", 
                  "Reptilia" = "Rep.", "Aves" = "Av.", 
                  "Marsupialia" = "Mar.", "Mammalia" = "Mam.")
 
 #colors
 class_colors <- c("Invertebrata" = "#cfcfcf",
+                  "Jawless_vertebrate" = "#636363",
                   "Chondrichthyes" = "#F68383", 
                   "Actinopteri" = "#EA4142",
                   "Amphibia" = "#5AB349",
@@ -68,11 +68,12 @@ tissue_colors <- c("H" = "#005fb1", "L" = "#e6ab02", "S" = "#a9a900",
 #Useful vectors
 
 #classes
-classes <- c("Invertebrata", "Chondrichthyes", "Actinopteri", "Amphibia",
+classes <- c("Invertebrata", "Jawless_vertebrate", "Chondrichthyes", "Actinopteri", "Amphibia",
            "Reptilia", "Aves", "Marsupialia", "Mammalia")
 
 #core tissues
 core_inv <- c("Muscle","Tube_feet","Tentacle","Arm","Gills","Gonad","Pharynx")
+
 core_vert <- c("Liver","Heart","Brain","Spleen","Muscle","Gills","Fin")
 
 #paths (have to be updated)
@@ -105,14 +106,19 @@ if (file.exists(stats_annot_file)){
   stats_annot[,color_class:=ifelse(ncbi_class %in% c("Mammalia","Amphibia","Reptilia","Actinopteri","Chondrichthyes","Aves"),
                                    ncbi_class,"Invertebrata"),]
   stats_annot[ncbi_order%in%c("Diprotodontia","Dasyuromorphia"),color_class:="Marsupialia",]
+    stats_annot[species == "JL", color_class := "Jawless_vertebrate",]
   stats_annot[,color_class:=factor(color_class,levels=classes),]
   #remove "bad" samples
   stats_annot=stats_annot[!grepl("Tumour|Cellline",Tissue)] 
+    
     stats_annot[, group := class_short[color_class],]
    stats_annot[, group:=factor(group, levels = class_short)]
+    stats_annot[species == "JL", group := "Inv.",] #so that its visualised with inv.
     ### assigning to the JL color_class/group NA (as it is a jawless vertebrate and doesn't fit in any group)
-    stats_annot[species == "JL", color_class := NA,]
-    stats_annot[species == "JL", group := NA,]
+    
+    #
+   
+    ## fixing the 
   }else{
   print("stats_annot.RData doesn't exist. Run script 01.2 to create. Only loading basic sample annotation.")
 }
@@ -121,15 +127,19 @@ sampleAnnot=fread(file.path(meta_dir,"Patholist_selection.tsv"))
 
 ##simple helpful dataframe species-class, ordered phylogenetically 
 
-phylo_order_path <- file.path(Sys.getenv("CODEBASE"), "DNAmeth500species/meta/species_list_ordered.txt")
+phylo_order_path <- file.path(Sys.getenv("CODEBASE"), "DNAmeth500species/meta/species_list_ordered_2021.txt")
+
 if(file.exists(phylo_order_path) & file.exists(stats_annot_file)){
   
   sp_df <- read.table(phylo_order_path)
   colnames(sp_df) <- c("species")
-  sp_df <- unique(left_join(sp_df, stats_annot[, c("species", "color_class")]))
+  sp_df <- unique(left_join(sp_df, stats_annot[, c("species", "color_class", "group")]))
   row.names(sp_df) <- sp_df$species
+  setDT(sp_df)
+
+  
 }else{
-  print("species_list_ordered.txt doesn´t exist. Run 99.3 to create") ##
+  print("species_list_ordered.txt doesn´t exist. Run 01.7 to create") ##
 }
 
 #helper functions
