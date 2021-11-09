@@ -64,7 +64,9 @@ chrom_mapping=chrom_mapping[n<quantile(chrom_mapping$n,0.9)]
 }
 #create long chromosome mapping + sizes (each original chromosome gets a row)
 chrom_mapping_long=chrom_mapping[,.(old = as.character(unlist(tstrsplit(old, ";", type.convert = TRUE)))), by = "new"]
+
 chrom_mapping_long[,old:=ifelse(!is.na(as.numeric(old)),chrom_sizes[as.numeric(old)]$V1,old),] # this is to use it as index "old" as index if necessary
+
 chroms=merge(chrom_mapping_long, chrom_sizes, by.x='old',by.y='V1',sort=FALSE)
 chroms[,new_pos:=c(0,cumsum(V2+100)[1:length(V2)-1]),by=new]#add 100 for linker length
 
@@ -73,12 +75,24 @@ chroms[,new_pos:=c(0,cumsum(V2+100)[1:length(V2)-1]),by=new]#add 100 for linker 
 bam_dt=bam_dt[!is.na(chr)]
 bam_dt=bam_dt[chr%in%chroms$new]
 
+#bam_dt[,name:=paste(chr, start, end, sep = "_"), by = row.names(bam_dt)]
+
+bam_dt_cor = data.table()
+for(chrArt in unique(bam_dt$chr)){
+    print(chrArt)
+    bam_dt_sub = bam_dt[chr == chrArt]
+    chroms_sub = chroms[new == chrArt]
+    print(NROW(bam_dt_sub))
+    bam_dt_cor_sub = merge(bam_dt_sub, chroms_sub, by.x='chr',by.y='new',allow.cartesian=TRUE)
+    bam_dt_cor_sub[,dist:=start-new_pos,]
+    bam_dt_cor_sub=bam_dt_cor_sub[dist>0]
+    bam_dt_cor_sub[,min_dist:=min(dist),by='frag']
+    bam_dt_cor_sub=bam_dt_cor_sub[dist==min_dist]
+    ##combinig for each art chromosome
+    bam_dt_cor = rbind(bam_dt_cor, bam_dt_cor_sub)
+}
+
 #find correct chrom and pos (undo concatenation)
-bam_dt_cor=merge(bam_dt,chroms, by.x='chr',by.y='new',allow.cartesian=TRUE)
-bam_dt_cor[,dist:=start-new_pos,]
-bam_dt_cor=bam_dt_cor[dist>0]
-bam_dt_cor[,min_dist:=min(dist),by='frag']
-bam_dt_cor=bam_dt_cor[dist==min_dist]
 bam_dt_cor[,chr_cor:=old,]
 bam_dt_cor[,start_cor:=start-new_pos,]
 
