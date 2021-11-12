@@ -4,7 +4,7 @@
 #SBATCH --partition vsc3plus_0256
 #SBATCH --qos vsc3plus_0256
 #SBATCH -N 1
-#SBATCH --array=1,6,9,11,13,15,24,26,30,32,36,44,47,54,56,63,66,68,70,76
+#SBATCH --array=9,66,70
 
 source ~/.bashrc
 
