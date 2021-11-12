@@ -6,6 +6,8 @@
 #SBATCH -N 1
 #SBATCH --array=3,8
 
+source ~/.bashrc
+
 export SCRATCH_PATH=/binfl/lv71484/droman/DNAmeth500species/mytmp
 export TMPDIR=$SCRATCH_PATH/Rtmp
 
@@ -19,5 +21,5 @@ echo ${db}
 date
 #/nobackup/lab_bock/users/dromanovskaia/miniconda3/envs/crossSp/bin/Rscript 04_concat_genome.R ${db} ${genome_id}
 
-/home/lv71484/droman/.conda/envs/Zoo_R/bin/Rscript 01.2_concat_genome.R ${db}
+/home/lv71484/droman/.conda/envs/Zoo_R/bin/Rscript ../01.2_concat_genome.R ${db}
 date
