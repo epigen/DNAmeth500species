@@ -33,7 +33,7 @@ pdf.options(useDingbats=FALSE)
 rotate_labels <- function(angle = 60,vjust = 1,hjust = 1)
         {return(theme(axis.text.x = element_text(angle = angle, vjust = vjust,hjust = hjust)))}
 
-
+#use like this: stat_summary(fun.data = give.n,fun.args = c(y=0), geom = "text",size=4)
 give.n <- function(x,y = NULL){
   return(data.frame(y = ifelse(is.null(y),0,y), label = paste0("N=",length(x)))) 
 }
