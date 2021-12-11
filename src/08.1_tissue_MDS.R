@@ -32,6 +32,11 @@ all_mds[,tissue:=unlist(lapply(strsplit(Sample_Name,"_"),"[[",3)),]
 
 all_mds[,tissue_simpl:=ifelse(tissue%in%names(tissue_colors),tissue,"X"),]
 
+
+all_mds=merge(all_mds, stats_annot[,c("Enrichment cycles","Sample_Name"),],by="Sample_Name")
+
+all_mds[,species:=factor(species,levels=c("NSS","WIS","NOP","AX","HE","EAB","KAN","NY")),]
+
 pdf("tissueMDS_repl.pdf",height=6,width=4.5)
 ggplot(all_mds,aes(x=MDS1,y=MDS2,col=tissue_simpl),)+geom_text(aes(label=repl),fontface = "bold")+facet_wrap(~species,ncol=2,scale="free")+scale_color_manual(values = tissue_colors)+theme(axis.text=element_blank(), axis.ticks=element_blank())
 dev.off()
@@ -39,3 +44,10 @@ dev.off()
 pdf("tissueMDS_shape.pdf",height=6,width=4.5)
 ggplot(all_mds,aes(x=MDS1,y=MDS2,col=tissue_simpl,shape=repl),)+geom_point()+facet_wrap(~species,ncol=2,scale="free")+scale_color_manual(values = tissue_colors)+theme(axis.text=element_blank(), axis.ticks=element_blank())
 dev.off()
+
+
+pdf("tissueMDS_cycles.pdf",height=3.5,width=9)
+ggplot(all_mds,aes(x=MDS1,y=MDS2,col=tissue_simpl))+geom_text(aes(label=`Enrichment cycles`),fontface = "bold")+facet_wrap(~species,ncol=4,scale="free")+
+  scale_color_manual(values = tissue_colors)+theme(axis.text=element_blank(), axis.ticks=element_blank())
+dev.off()
+
