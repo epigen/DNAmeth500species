@@ -116,6 +116,27 @@ ggplot(all_dist_annot[rt==TRUE&color_class!="Chondrichthyes"],aes(x=mean_PDR,y=m
   scale_color_manual(values = class_colors)+ylab("Mean variance explained")+xlab("PDR")
 dev.off()
 
+#correlate difference in variance explained with PDR/prefrag --> no consistent/significant signal
+deltas=all_dist_annot[rt==TRUE&color_class!="Chondrichthyes",.(delta_var=meanR2[mode=="replicate"]-meanR2[mode=="tissue"]),by=c("species","color_class","mean_PDR","mean_prefrag")]
+
+cors_delta_pdr=deltas[,get_cor(delta_var,mean_PDR),by="color_class"]
+cors_delta_pdr[,p_adj:=p.adjust(p,"fdr"),]
+
+cors_delta_frag=deltas[,get_cor(delta_var,mean_prefrag),by="color_class"]
+cors_delta_frag[,p_adj:=p.adjust(p,"fdr"),]
+
+
+ggplot(deltas,aes(x=mean_prefrag,y=delta_var,col=color_class))+geom_point(alpha=0.6)+
+  geom_smooth(method="lm",se = T,color="black")+facet_grid(~color_class)+
+  geom_text(data=cors_delta_frag,size=3,vjust=0.5,hjust=0,aes(x=0,y=-0.1,label=paste0('p=',signif(p_adj,3),'\nr=',signif(cor,3))))+
+  scale_color_manual(values = class_colors)+ylab("Delta variance explained")+xlab("DNA prefragmentation (%)")
+
+ggplot(deltas,aes(x=mean_PDR,y=delta_var,col=color_class))+geom_point(alpha=0.6)+
+  geom_smooth(method="lm",se = T,color="black")+facet_grid(~color_class)+
+  geom_text(data=cors_delta_pdr,size=3,vjust=0.5,hjust=0,aes(x=0,y=-0.1,label=paste0('p=',signif(p_adj,3),'\nr=',signif(cor,3))))+
+  scale_color_manual(values = class_colors)+ylab("Delta variance explained")+xlab("PDR")
+
+                                  
 #transform to wide format
 all_dist_annot_wide=dcast(all_dist_annot,species+color_class~mode,value.var="meanR2")
 
