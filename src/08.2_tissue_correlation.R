@@ -84,12 +84,36 @@ if(filter==TRUE){
 #-------------------------
 
 #annotate the species
-sp_annot=stats_annot[conversion_type=="converted",.(scientific_name=scientific_name[1],color_class=color_class[1],ncbi_order=ncbi_order[1],species_check=all(species_check=="pass"),min_overlap=mean(min_overlap_perc),mean_overlap=min(mean_overlap_perc),mean_qual_tier=mean(mean_qual_tier,na.rm=TRUE),max_qual_tier=max(max_qual_tier),max_prefrag=max(others),mean_prefrag=mean(others)),by=species]
+sp_annot=stats_annot[conversion_type=="converted",.(scientific_name=scientific_name[1],color_class=color_class[1],ncbi_order=ncbi_order[1],species_check=all(species_check=="pass"),min_overlap=mean(min_overlap_perc),mean_overlap=min(mean_overlap_perc),mean_qual_tier=mean(mean_qual_tier,na.rm=TRUE),max_qual_tier=max(max_qual_tier),max_prefrag=max(others),mean_prefrag=mean(others),mean_PDR=sum(PDR_summ)/sum(N_sites)),by=species]
 all_dist_annot=merge(all_dist,sp_annot,by="species")
+all_dist_annot[,rt:=ifelse(.N==2,TRUE,FALSE),by="species"]
+                                  
+#check relationship between variance explained and prefragmentation/PDR
+get_cor=function(x,y){
+  if (!length(x)>2){return(list('cor'=0,'p'=1,x=min(x),y=max(y)))}
+  r=cor.test(x,y)
+  return(list('cor'=r$estimate,'p'=r$p.value,x=min(x),y=max(y)))
+}
 
-#check relationship between variance explained and prefragmentation
-pdf("meanR2_prefragmentation.pdf",height=2.5,width=7)
-ggplot(all_dist_annot,aes(x=mean_prefrag,y=meanR2,col=color_class))+geom_point(alpha=0.6)+geom_smooth(method="lm",se = F)+facet_wrap(~mode)+scale_color_manual(values = class_colors)+ylab("Mean variance explained")+xlab("DNA prefragmentation (%)")
+cors_pdr=all_dist_annot[rt==TRUE&color_class!="Chondrichthyes",get_cor(mean_PDR,meanR2),by=c("color_class","mode")]
+cors_pdr[,p_adj:=p.adjust(p,"fdr"),]
+
+cors_frag=all_dist_annot[rt==TRUE&color_class!="Chondrichthyes",get_cor(mean_prefrag,meanR2),by=c("color_class","mode")]
+cors_frag[,p_adj:=p.adjust(p,"fdr"),]
+
+
+pdf("meanR2_prefragmentation.pdf",height=3,width=11)
+ggplot(all_dist_annot[rt==TRUE&color_class!="Chondrichthyes"],aes(x=mean_prefrag,y=meanR2,col=color_class))+geom_point(alpha=0.6)+
+  geom_smooth(method="lm",se = T,color="black")+facet_grid(mode~color_class)+
+  geom_text(data=cors_frag,size=3,vjust=0.5,hjust=0,aes(x=0,y=0.25,label=paste0('p=',signif(p_adj,3),'\nr=',signif(cor,3))))+
+  scale_color_manual(values = class_colors)+ylab("Mean variance explained")+xlab("DNA prefragmentation (%)")
+dev.off()
+
+pdf("meanR2_pdr.pdf",height=3,width=11)
+ggplot(all_dist_annot[rt==TRUE&color_class!="Chondrichthyes"],aes(x=mean_PDR,y=meanR2,col=color_class))+geom_point(alpha=0.6)+
+  geom_smooth(method="lm",se = T,color="black")+facet_grid(mode~color_class)+
+  geom_text(data=cors_pdr,size=3,vjust=0.5,hjust=0,aes(x=0,y=0.25,label=paste0('p=',signif(p_adj,3),'\nr=',signif(cor,3))))+
+  scale_color_manual(values = class_colors)+ylab("Mean variance explained")+xlab("PDR")
 dev.off()
 
 #transform to wide format
