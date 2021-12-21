@@ -84,9 +84,19 @@ if(filter==TRUE){
 #-------------------------
 
 #annotate the species
-sp_annot=stats_annot[conversion_type=="converted",.(scientific_name=scientific_name[1],color_class=color_class[1],ncbi_order=ncbi_order[1],species_check=all(species_check=="pass"),min_overlap=mean(min_overlap_perc),mean_overlap=min(mean_overlap_perc),mean_qual_tier=mean(mean_qual_tier,na.rm=TRUE),max_qual_tier=max(max_qual_tier),max_prefrag=max(others),mean_prefrag=mean(others),mean_PDR=sum(PDR_summ)/sum(N_sites)),by=species]
+sp_annot=stats_annot[conversion_type=="converted",.(scientific_name=scientific_name[1],color_class=color_class[1],ncbi_order=ncbi_order[1],
+                                                    species_check=all(species_check=="pass"),min_overlap=mean(min_overlap_perc),
+                                                    mean_overlap=min(mean_overlap_perc),mean_qual_tier=mean(mean_qual_tier,na.rm=TRUE),
+                                                    max_qual_tier=max(max_qual_tier),max_prefrag=max(others),mean_prefrag=mean(others),
+                                                    mean_PDR=sum(PDR_summ)/sum(N_sites),mean_meth=mean(CpG_meth)),by=species]
 all_dist_annot=merge(all_dist,sp_annot,by="species")
 all_dist_annot[,rt:=ifelse(.N==2,TRUE,FALSE),by="species"]
+                                  
+#relationship with mean methylation
+pdf("meanR2_mean_meth.pdf",height=2.5,width=7)
+ggplot(all_dist_annot[rt==TRUE],aes(x=mean_meth,y=meanR2,col=color_class))+geom_point(alpha=0.6)+geom_smooth(method="lm",se = F)+facet_wrap(~mode)+scale_color_manual(values = class_colors)+ylab("Mean variance explained")+xlab("CpG methylation (%)")
+ggplot(all_dist_annot[rt==TRUE],aes(x=mean_meth,y=meanR2,col=color_class))+geom_point(alpha=0.6)+geom_smooth(method="lm",se = F,color="black")+facet_wrap(~mode)+scale_color_manual(values = class_colors)+ylab("Mean variance explained")+xlab("CpG methylation (%)")
+dev.off()
                                   
 #check relationship between variance explained and prefragmentation/PDR
 get_cor=function(x,y){
