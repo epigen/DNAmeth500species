@@ -1,11 +1,15 @@
 #!/usr/bin/env Rscript
 #classical initiation
 kmer=NA
-source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/02.0_predict_initialization.R"))
+
+source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/05.0_predict_initialization.R"))
+
 args = commandArgs(trailingOnly=TRUE)
+
 species=args[1]
 subdir_name=args[2]
 kmer=as.numeric(args[3])
+
 if (is.na(kmer)){kmer=c(1:10)}
 
 sessionInfo()
@@ -17,7 +21,7 @@ subdir_name="screen"
 wd=file.path(processed_dir,species)
 setwd(wd)
 
-subdir=file.path(analysis_dir,"02_predict_meth/02.1_within_species",subdir_name,species)
+subdir=file.path(analysis_dir,"05_predict_meth/05.1_within_species",subdir_name,species)
 print(subdir)
 
 dir.create(subdir,recursive=TRUE)
@@ -25,8 +29,7 @@ dir.create(file.path(subdir, "sequences"), recursive=TRUE)
 dir.create(file.path(subdir, "stats"), recursive=TRUE)
 
 #load data
-meth_data_mean=fread(list.files(path="toSelf_filtered_0.08mm_final_concat/diffMeth_cpg/",
-                                pattern=".*_mean_meth.tsv",full.names=TRUE))
+meth_data_mean=fread(list.files(path="toSelf_filtered_0.08mm_final_concat/diffMeth_cpg/",pattern=".*_mean_meth.tsv",full.names=TRUE))
 uc_map=fread(list.files(path="toSelf_filtered_0.08mm_final_concat",
                         pattern=".*_uc.all.aligned.bsmap.0.08.mism.1.r.cov$",
                         recursive=TRUE,full.names=TRUE))
@@ -39,10 +42,12 @@ cgg_names=names(ded_ref[ded_ref_cgg])
 meth_data_mean_long=melt(meth_data_mean,id.vars=c("meta","score","consN","mean_diffNts",
                           "max_diffNts","min_diffNts"),measure=patterns(".cov", ".meth"),variable.factor=FALSE,
                          variable.name="sample",value.name=c("cov","meth"),na.rm=TRUE)
+
 meth_data_mean_cond=meth_data_mean_long[,list(Nsamples=.N,mean_cov=mean(cov),min_cov=min(cov),
                                               max_cov=max(cov),mean_meth=mean(meth),min_meth=min(meth),
                                               max_meth=max(meth)),
                                         by=c("meta","score","consN","mean_diffNts","max_diffNts","min_diffNts")]
+
 meth_data_mean_cond_red=meth_data_mean_cond[Nsamples>(max(Nsamples)*0.5)&mean_cov>10&mean_cov<1000&(min_meth>80|max_meth<20)&meta%in%uc_map[V13==1]$V4&meta%in%cgg_names]
 meth_data_mean_cond_red[,category:=ifelse(min_meth>80,1,ifelse(max_meth<20,-1,NA)),]
 
@@ -58,7 +63,43 @@ simpleCache(cacheName="methPred_noRand_uc",instruction={train_test(x=x,y=y,type=
             cacheDir=paste0(subdir,"/RCache"),assignToVariable="res",recreate=FALSE)
 roc_res=res$roc_dt
 
+#save the key data: PWM and stats
+print("saving stuff")
+if (res$param$k>1){
+    
+pwm_low=makePWM(consensusMatrix(DNAStringSet(as.character(res$feature_weights[order(value,decreasing=FALSE)]$variable[1:10])),as.prob=TRUE)[1:4,])
 
+pwm_high=makePWM(consensusMatrix(DNAStringSet(as.character(res$feature_weights[order(value,decreasing=TRUE)]$variable[1:10])),as.prob=TRUE)[1:4,])
+      
+pdf(paste0(subdir,"/seqLogo_low_", species, ".pdf"), height=3,width=4.5)
+seqLogo(pwm_low)
+dev.off()
+      
+pdf(paste0(subdir,"/seqLogo_high_", species, ".pdf"),height=3,width=4.5)
+seqLogo(pwm_high)
+dev.off()
+
+}
+
+
+
+#create stats overview record to combine with other species
+k_freq=table(unlist(lapply(res$model[[2]]@selGridRow,function(x){x@k})))
+my_wt(t(as.data.frame(k_freq)), paste0(subdir,"/kmerFreq_", species, ".tsv"))
+
+stats <- data.table(Species = species,
+                    k = res$model[[1]]@svmInfo@reqKernel@k,
+                    k_freq=max(k_freq/sum(k_freq)), 
+                    c = res$model[[1]]@svmInfo@selSVMPar$cost,
+                    numSequences=res$model[[1]]@numSequences,
+                    AUC = roc_res$auc[[1]], f1 = roc_res$f1[[1]])
+my_wt(stats, file.path(subdir, paste0(species, "_stats.tsv")))
+
+#grid search with optimal C to test k-AUC relashionship
+simpleCache(cacheName="methPred_gridsearch",instruction={gridSearch_k(x=x,y=y,
+                                                        C_opt = stats$c, k=kmer)},
+            cacheDir=paste0(subdir,"/RCache"),assignToVariable="gridK",recreate=FALSE)
+my_wt(gridK$dt, file.path(subdir, paste0(species, "_AUC_k_grid.tsv")))
 
 #random labels (several iterations)
 rand_labs=lapply(seq_len(5), function(x) {return(list(name=x,y_rand=sample(y)))})
@@ -68,8 +109,10 @@ rand_res_parallel=mclapply(rand_labs,function(labels_rand){simpleCache(cacheName
                                         cacheDir=paste0(subdir,"/RCache"),
                                         buildEnvir=c(labels_rand),recreate=FALSE);return(rand_res)},
         mc.cores=5,mc.preschedule=FALSE)
+
 rand_roc_res_parallel_list=lapply(rand_res_parallel,function(x){return(x$roc_dt)})
 rand_roc_res_parallel=rbindlist(rand_roc_res_parallel_list,idcol="run_id")
+
 rand_roc_res_parallel[,run:=run_id,]
 rand_roc_res_parallel[,run_id:=NULL,]
 

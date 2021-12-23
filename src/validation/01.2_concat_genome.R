@@ -43,7 +43,8 @@ head(chrom_sizes)
 
 if(NROW(chrom_sizes) < 30){
     print("Genome assembly good enough")
-    cmd = paste0("cp ", ref_dir, db, "fa ", ref_dir, db, "_concatinated.fa")
+    cmd = paste0("cp ", ref_dir, db, ".fa ", ref_dir, db, "_concatinated.fa")
+    system(cmd)
     chrom.map = data.table(new = chrom_sizes$V1, old = chrom_sizes$V1, width = chrom_sizes$V2)
     write.table(chrom.map, paste0( db, "_chrom_mapping.tsv"), sep = "\t", row.names = F, quote = F)
     stop()
@@ -84,9 +85,12 @@ for(chrom_id in c(1:NROW(chrom_sizes[V2>0.8*tile_size]))){
     
     seq_obj <- DNAStringSet(as.character(fa_file[[chrom_sizes$V1[[chrom_id]]]]))
     names(seq_obj) <- paste0("chrArt",chrom_id)
-    writeXStringSet(seq_obj,paste0(db, "_concatinated.fa") , append=TRUE)
+    writeXStringSet(seq_obj,paste0(db, "_more_chr_concatinated.fa") , append=TRUE)
 }}
 
+print(chrom.map)
+
+print("...now saving joined chromosomes")
 ## joined chromosomes should be separated by a linker
 linker = paste(rep("N", 100), collapse = "")
 
@@ -100,7 +104,7 @@ while(j < NROW(chrom_sizes)){
     used_length = chrom_sizes[i]$V2
     print(as.character(chrom_sizes[i]$V1))
     
-    while(used_length < tile_size && i  < NROW(chrom_sizes)){
+    while(used_length < tile_size && i  < NROW(chrom_sizes) && i <1000){
         i = i+1
         used_length = used_length + chrom_sizes[i]$V2 ## next chromosome to add
     }
@@ -110,7 +114,7 @@ while(j < NROW(chrom_sizes)){
     seq = paste(as.character(fa_file[chrom_sizes[c(j:i)]$V1]), collapse = linker)
     seq_obj <- DNAStringSet(seq, use.names = T)
     names(seq_obj) <- paste0("chrArt",chrom_id)
-    writeXStringSet(seq_obj,paste0(db, "_concatinated.fa") , append=TRUE)
+    writeXStringSet(seq_obj,paste0(db, "_more_chr_concatinated.fa") , append=TRUE)
     
     j = i + 1 ## moving on to the next chromosome(that is not included yet)
     print(j)

@@ -39,10 +39,20 @@ meth_file=file.path(processed_dir, species, "toSelf_filtered_0.08mm_final_concat
 
 
 #load gene annotation and bring it in correct form
-bed <- import.bed(bed_file)
-
-gtf=GRanges(seqnames = seqnames(bed),strand = strand(bed),
-           ranges = ranges(bed),type="transcript",gene_id=bed$name)
+if(strsplit(bed_file, "\\.")[[1]][length(strsplit(bed_file, "\\.")[[1]])] == "bed"){
+    bed <- import.bed(bed_file)
+    
+    gtf=GRanges(seqnames = seqnames(bed),strand = strand(bed), ranges = ranges(bed),type="transcript",gene_id=bed$name)
+}else if(strsplit(bed_file, "\\.")[[1]][length(strsplit(bed_file, "\\.")[[1]])] == "gtf"){
+    gtf <- import(bed_file)
+}else if(strsplit(bed_file, "\\.")[[1]][length(strsplit(bed_file, "\\.")[[1]])] == "gp"){
+    genes=fread(bed_file)
+    gtf=GRanges(seqnames = genes$V2,strand = genes$V3,
+            ranges = IRanges(start = genes$V4,end=genes$V5),type="transcript",gene_id=genes$V1)
+}else{
+    print("file is neither gtf nor bed nor gp, exiting")
+    stop()
+}
 
 #load all other files
 chrom_sizes=fread(chrom_sizes_file)
@@ -60,7 +70,7 @@ rm(bam)
 
 chrom_mapping[,n:=length(unlist(strsplit(old,";"))),by=1:nrow(chrom_mapping)]
 if(max(chrom_mapping$n)>10){
-chrom_mapping=chrom_mapping[n<quantile(chrom_mapping$n,0.9)]
+chrom_mapping=chrom_mapping[n<quantile(chrom_mapping$n,0.8)]
 }
 #create long chromosome mapping + sizes (each original chromosome gets a row)
 chrom_mapping_long=chrom_mapping[,.(old = as.character(unlist(tstrsplit(old, ";", type.convert = TRUE)))), by = "new"]
