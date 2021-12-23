@@ -68,7 +68,7 @@ tissue_colors <- c("H" = "#005fb1", "L" = "#e6ab02", "S" = "#a9a900",
 #Useful vectors
 
 #classes
-classes <- c("Invertebrata", "Jawless_vertebrate", "Chondrichthyes", "Actinopteri", "Amphibia",
+classes <- c("Invertebrata","Jawless_vertebrate",  "Chondrichthyes", "Actinopteri", "Amphibia",
            "Reptilia", "Aves", "Marsupialia", "Mammalia")
 
 #core tissues
@@ -106,7 +106,7 @@ if (file.exists(stats_annot_file)){
   stats_annot[,color_class:=ifelse(ncbi_class %in% c("Mammalia","Amphibia","Reptilia","Actinopteri","Chondrichthyes","Aves"),
                                    ncbi_class,"Invertebrata"),]
   stats_annot[ncbi_order%in%c("Diprotodontia","Dasyuromorphia"),color_class:="Marsupialia",]
-    stats_annot[species == "JL", color_class := "Jawless_vertebrate",]
+    stats_annot[species == "JL",color_class:="Jawless_vertebrate", ]
   stats_annot[,color_class:=factor(color_class,levels=classes),]
   #remove "bad" samples
   stats_annot=stats_annot[!grepl("Tumour|Cellline",Tissue)] 
