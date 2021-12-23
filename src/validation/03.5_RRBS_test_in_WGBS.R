@@ -9,7 +9,7 @@ args = commandArgs(trailingOnly=TRUE)
 species=args[[1]]
 
 read_data <- function(species_name, genomeid, cov_min, N = 1000){
-    
+    print(species_name)
     ##loading data
     meth_data_mean = fread(file.path(path_to_data,species_name, "mean_meth_per_fragment.tsv"))
 
@@ -69,6 +69,8 @@ path_to_folder <- file.path(analysis_dir, "validation", "03_WGBS", "03.5_RRBS_te
 dir.create(path_to_folder, recursive = T)
 setwd(path_to_folder)
                         
+
+                        
 path_to_data <- file.path(analysis_dir, "validation", "03_WGBS", "03.3_fragments")
                         
                         
@@ -83,15 +85,16 @@ simpleCache(cacheName="methPred_noRand_uc",instruction={train_test(x=x,y=y,type=
 ##loading test data
 annot_WGBS <- fread( file.path(analysis_dir, "validation", "03_WGBS", "WGBS_prediction_selection.tsv"))
 
-test_data <- sapply(1:NROW(annot_WGBS), function(x) read_data(annot_WGBS$Species[x], annot_WGBS$genomeId[x], annot_WGBS$thr[x]))
-                    
+test_data <- lapply(1:NROW(annot_WGBS), function(x) read_data(annot_WGBS$Species[x], annot_WGBS$genomeId[x], annot_WGBS$thr[x]))
+#saveRDS(object = test_data, file = "test_data.RDS")
+#print(test_data)
 test_data_x <- lapply(test_data, function(x) x$x)
 test_data_y <- lapply(test_data, function(x) x$y)
 rm(test_data)
          
 #predicting on other species
-simpleCache(cacheName = "methTest_noRand_uc",instruction = {test_on_other(fit = model, test_data_x = test_data_x, test_data_y = test_data_y, ifRand = "noRand",test_species = annot_WGBS$Species)},
-            cacheDir = paste0(subdir,"/RCache"),assignToVariable = "resTest",recreate = FALSE)
+simpleCache(cacheName = "methTest_noRand_uc",instruction = {test_on_other(fit = res$model[[1]], test_data_x = test_data_x, test_data_y = test_data_y, ifRand = "noRand",test_species = annot_WGBS$Species)},
+            cacheDir = paste0("RCache"),assignToVariable = "resTest",recreate = FALSE)
                       
 my_wt(resTest$roc_dt, "roc_dt.tsv")
 unique_auc <- unique(resTest$roc_dt[, c("type", "auc", "ifRand")])
