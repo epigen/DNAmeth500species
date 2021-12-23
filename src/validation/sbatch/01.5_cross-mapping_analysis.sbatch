@@ -4,7 +4,7 @@
 #SBATCH --partition vsc3plus_0256
 #SBATCH --qos vsc3plus_0256
 #SBATCH -N 1
-#SBATCH --array=42,50,967
+#SBATCH --array=70
 
 export SCRATCH_PATH=/binfl/lv71484/droman/DNAmeth500species/mytmp
 export TMPDIR=$SCRATCH_PATH/Rtmp
@@ -12,7 +12,9 @@ export TMPDIR=$SCRATCH_PATH/Rtmp
 ANNOT_TABLE="/binfl/lv71484/droman/DNAmeth500species/results_analysis/validation/01_crossMapping/01.4_crossMapping_stats/cross_mapping_stats.tsv"
 
 species=`awk -F"\t" 'NR=='$SLURM_ARRAY_TASK_ID'{print $9}' ${ANNOT_TABLE}`
-genome_id=`awk -F"\t" 'NR=='$SLURM_ARRAY_TASK_ID'{print $10}' ${ANNOT_TABLE}`
+#genome_id=`awk -F"\t" 'NR=='$SLURM_ARRAY_TASK_ID'{print $10}' ${ANNOT_TABLE}`
+genome_id="AmexG_v3.0.0"
+
 echo "$species"
 
 source ~/.bashrc

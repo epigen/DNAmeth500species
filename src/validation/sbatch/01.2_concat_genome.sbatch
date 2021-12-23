@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name concat
 #SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/concat_%A_%a.txt
-#SBATCH --partition vsc3plus_0064
-#SBATCH --qos vsc3plus_0064
+#SBATCH --partition vsc3plus_0256
+#SBATCH --qos vsc3plus_0256
 #SBATCH -N 1
-#SBATCH --array=3,8
+#SBATCH --array=1
 
 source ~/.bashrc
 
@@ -19,7 +19,7 @@ db=`awk -F"\t" 'NR=='$SLURM_ARRAY_TASK_ID'{print $1}' ${ANNOT_TABLE}`
 echo ${db}
 
 date
-#/nobackup/lab_bock/users/dromanovskaia/miniconda3/envs/crossSp/bin/Rscript 04_concat_genome.R ${db} ${genome_id}
 
-/home/lv71484/droman/.conda/envs/Zoo_R/bin/Rscript ../01.2_concat_genome.R ${db}
+/home/lv71484/droman/.conda/envs/Zoo_R/bin/Rscript ../01.2_concat_genome.R AmexG_v3.0.0
+#/home/lv71484/droman/.conda/envs/Zoo_R/bin/Rscript ../01.2_concat_genome.R ${db}
 date
