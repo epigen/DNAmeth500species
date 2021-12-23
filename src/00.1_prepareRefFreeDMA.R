@@ -8,9 +8,10 @@ dir.create(wd,recursive=TRUE)
 setwd(wd)
 dir.create("00_RefFreeDMA_log")
 
+print(wd)
 #set configurations for RefFreeDMA
 config="
-tool_path=/data/groups/lab_bock/jklughammer/resources/RefFreeDMA_resources/tools/
+tool_path=/home/lv71484/droman/reffreedma/tools/
 picard_path=$tool_path/picard-tools_1.118/
 trim_galore_path=$tool_path/trim_galore_0.3.3/
 cutadapt_path=$tool_path/cutadapt_1.8.3/
@@ -20,7 +21,7 @@ samtools_path=$tool_path/samtools_1.2/bin/
 bedtools_path=$tool_path/bedtools_2.26.0/bin/
 bwa_path=$tool_path/bwa_0.7.8/bin/
 bwameth_path=$tool_path/bwa-meth-0.10/
-decon_reference=/data/groups/lab_bock/jklughammer/resources/RefFreeDMA_resources/decon_reference/bacterial_extracted_add
+decon_reference=/binfl/lv71484/droman/DNAmeth500species/resources/decon_reference/bacterial_extracted_add
 cross_genome_fa=-
 sample_annotation=$working_dir/meta/sampleAnnotation.tsv
 compCol=comp
@@ -40,6 +41,8 @@ mapToSelf_filter=0.08
 consensus_dist=0.05
 crossMap_mismatchRate=0.2
 nTopDiffMeth=500
+conversionCtr_path=/home/lv71484/droman/reffreedma/conversionCtr/
+bisulfiteBlast_path=/home/lv71484/droman/reffreedma/bisulfiteBlast/
 "
 
 ##Functions
@@ -55,6 +58,14 @@ getBamPath=function(FlowCell,lane,Abbreviation,alternative){
   }
   if (length(path)==0){message(paste0(Abbreviation," bam not found!"))}
   return(path)
+} ###not needed in the current setup
+
+getNewBamPath=function(Abbreviation, abbreviation_sp){
+	print(Abbreviation)
+	path=file.path(BSF_dir, sampleAnnot$abbreviation_sp, sampleAnnot$Abbreviation, paste0(sampleAnnot$Abbreviation, ".bam"))
+	print(path)
+	return(path)
+
 }
 
 makeLink=function(bam_path,run_species,Abbreviation){
@@ -119,39 +130,46 @@ sampleAnnot_complete=sampleAnnot[as.logical(complete)&FlowCell!="failed"&lane!="
 #calculate number of used lanes and sequnced species (for keeping track)
 message(paste0("Lanes used: ",nrow(sampleAnnot_complete[,.N,by=c("lane","FlowCell")]),"\nSpecies sequenced: ",length(unique(sampleAnnot_complete$scientific_name)),"\nSamples sequenced: ",length(unique(sampleAnnot_complete$Abbreviation))))
 
+print(tail(sampleAnnot_complete))
 #get paths to bams
-sampleAnnot_complete[,bam_path:=getBamPath(FlowCell,lane,ifelse(!is.na(renamed),gsub("__","_",renamed),Abbreviation),`Fortlaufende Nr`),by=1:nrow(sampleAnnot_complete)]
-sampleAnnot_complete[,bam_path_uc:=getBamPath(Flowcell_uc,lane_uc,ifelse(!is.na(renamed_uc),renamed_uc,unconverted),"skip"),by=1:nrow(sampleAnnot_complete)]
+print(NROW(sampleAnnot_complete))
+sampleAnnot_complete[,bam_path:=file.path(BSF_dir, abbreviation_sp, Abbreviation, paste0(Abbreviation, ".bam")), by=1:nrow(sampleAnnot_complete)]
+#sampleAnnot_complete[,bam_path:=getBamPath(FlowCell,lane,ifelse(!is.na(renamed),gsub("__","_",renamed),Abbreviation),`Fortlaufende Nr`),by=1:nrow(sampleAnnot_complete)]
+sampleAnnot_complete[,bam_path_uc:=file.path(BSF_dir, abbreviation_sp, unconverted, paste0(unconverted, ".bam")),by=1:nrow(sampleAnnot_complete)]
+#sampleAnnot_complete[,bam_path_uc:=getBamPath(Flowcell_uc,lane_uc,ifelse(!is.na(renamed_uc),renamed_uc,unconverted),"skip"),by=1:nrow(sampleAnnot_complete)]
 sampleAnnot_complete[sampleAnnot_complete=="NA"]=NA
 
 #only select subset
-#sampleAnnot_complete=sampleAnnot_complete[abbreviation_sp=="TD"]
-#sampleAnnot_complete=sampleAnnot_complete[abbreviation_sp%in%abbreviation_sp[!is.na(bam_path_uc)]]
+#sampleAnnot_complete=sampleAnnot_complete[abbreviation_sp%in%c("CHK")]
+sampleAnnot_complete=sampleAnnot_complete[abbreviation_sp%in%abbreviation_sp[!is.na(bam_path_uc)]]
 
 #delete preexisting command file
-overwrite=FALSE
+overwrite=TRUE
 commands_only=FALSE
 run_wait=10
-max_pending=5
+max_pending=30
 
 dir.create("00_commands")
 
 run_file_name="00_commands/RefFreeDMA_run_1.sh"
-convCtr_file_name="00_commands/RefFreeDMA_convCtr_1.sh"
+#convCtr_file_name="00_commands/RefFreeDMA_convCtr_1.sh"
 parse_file_name="00_commands/RefFreeDMA_parse_1.sh"
+#bisulfiteBlast_file_name="00_commands/RefFreeDMA_bisulfiteBlast_1.sh"
 
 #make extra scripts for the new data (makes running easier)
 run_file_name_new="00_commands/RefFreeDMA_run_new.sh"
-convCtr_file_name_new="00_commands/RefFreeDMA_convCtr_new.sh"
+#convCtr_file_name_new="00_commands/RefFreeDMA_convCtr_new.sh"
 parse_file_name_new="00_commands/RefFreeDMA_parse_new.sh"
+#bisulfiteBlast_file_name_new="00_commands/RefFreeDMA_bisulfiteBlast_new.sh"
 cat("#!/bin/bash\n",file=run_file_name_new,append=FALSE)
-cat("#!/bin/bash\n",file=convCtr_file_name_new,append=FALSE)
+#cat("#!/bin/bash\n",file=convCtr_file_name_new,append=FALSE)
 cat("#!/bin/bash\n",file=parse_file_name_new,append=FALSE)
-
+#cat("#!/bin/bash\n",file=bisulfiteBlast_file_name_new,append=FALSE)
 if (overwrite==TRUE){
   cat("#!/bin/bash\n",file=run_file_name,append=FALSE)
-  cat("#!/bin/bash\n",file=convCtr_file_name,append=FALSE)
+  #cat("#!/bin/bash\n",file=convCtr_file_name,append=FALSE)
   cat("#!/bin/bash\n",file=parse_file_name,append=FALSE)
+  #cat("#!/bin/bash\n",file=bisulfiteBlast_file_name,append=FALSE)
   }
 counter=0
 for(run_species in unique(sampleAnnot_complete$abbreviation_sp)){
@@ -185,10 +203,11 @@ for(run_species in unique(sampleAnnot_complete$abbreviation_sp)){
 
   
   #create and store excecute command
-  command_run=paste0("#",run_species,"\t",as.character(nrow(annot)),"\necho ",run_species,"\n",RefFreeDMA_dir,"/RefFreeDMA.sh ",wd,"/",run_species,"/meta/",run_species,"_RefFreeDMA.cfg > ",wd,"/00_RefFreeDMA_log/",run_species,".log&\nwhile [  `sacct --parsable --long|grep '|PENDING|'|wc -l` -gt ",max_pending," ]; do echo Too many pending!; sleep 5m; done\n")
+  command_run=paste0("#",run_species,"\t",as.character(nrow(annot)),"\necho ",run_species,"\n",RefFreeDMA_dir,"/RefFreeDMA_VSC_expanded.sh ",wd,"/",run_species,"/meta/",run_species,"_RefFreeDMA.cfg > ",wd,"/00_RefFreeDMA_log/",run_species,".log&\nwhile [  `sacct --parsable --long|grep '|PENDING|'|wc -l` -gt ",max_pending," ]; do echo Too many pending!; sleep 5m; done\n")
 
 
-  command_convCtr=paste0("#",run_species,"\t",as.character(nrow(annot)),"\necho ",run_species,"\n",convCtr_dir,"submit_conversionCtr.sh ",wd,"/",run_species," > ",wd,"/00_RefFreeDMA_log/",run_species,"_convCrt.log","&\nsleep 5m\n")
+  #command_convCtr=paste0("#",run_species,"\t",as.character(nrow(annot)),"\necho ",run_species,"\n",convCtr_dir,"submit_conversionCtr.sh ",wd,"/",run_species," > ",wd,"/00_RefFreeDMA_log/",run_species,"_convCrt.log","&\nsleep 5m\n")
+  #command_bisulfiteBlast=paste0("#",run_species,"\t",as.character(nrow(annot)),"\necho ",run_species,"\n",bisulfiteBlast_dir,"submit_bisulfiteBlast.sh ", wd ," ",run_species," > ",wd,"/00_RefFreeDMA_log/",run_species,"_bisulfiteBlast.log","&\nsleep 5m\n")
   command_parse=paste0("#",run_species,"\t",as.character(nrow(annot)),"\necho ",run_species,"\n",RefFreeDMA_dir,"/scripts/parse_stats.sh ",wd,"/",run_species,"/meta/",run_species,"_RefFreeDMA.cfg\n")
   
   
@@ -213,23 +232,27 @@ for(run_species in unique(sampleAnnot_complete$abbreviation_sp)){
     #command
     #write to the existing scripts at the proper spot Attention: this makes them contain more than 30 commands
     cat(command_run,file=run_file_name,append=TRUE)
-    cat(command_convCtr,file=convCtr_file_name,append=TRUE)
+    #cat(command_convCtr,file=convCtr_file_name,append=TRUE)
+    #cat(command_bisulfiteBlast,file=bisulfiteBlast_file_name,append=TRUE)
     cat(command_parse,file=parse_file_name,append=TRUE)
     #write to the "new" scripts
     cat(command_run,file=run_file_name_new,append=TRUE)
-    cat(command_convCtr,file=convCtr_file_name_new,append=TRUE)
+    #cat(command_convCtr,file=convCtr_file_name_new,append=TRUE)
+    #cat(command_convCtr,file=bisulfiteBlast_file_name_new,append=TRUE)
     cat(command_parse,file=parse_file_name_new,append=TRUE) 
   }else{print(paste0(run_species," Already setup!"))}
 
   
   if (counter%%30==0){
     run_file_name=paste0("00_commands/RefFreeDMA_run_",as.character(counter/30+1),".sh")
-    convCtr_file_name=paste0("00_commands/RefFreeDMA_convCtr_",as.character(counter/30+1),".sh")
+    #convCtr_file_name=paste0("00_commands/RefFreeDMA_convCtr_",as.character(counter/30+1),".sh")
+   # bisulfiteBlast_file_name=paste0("00_commands/RefFreeDMA_bisulfiteBlast_",as.character(counter/30+1),".sh")
     parse_file_name=paste0("00_commands/RefFreeDMA_parse_",as.character(counter/30+1),".sh")
     
     if (overwrite==TRUE){
       cat("#!/bin/bash\n",file=run_file_name,append=FALSE)
-      cat("#!/bin/bash\n",file=convCtr_file_name,append=FALSE)
+      #cat("#!/bin/bash\n",file=convCtr_file_name,append=FALSE)
+      #cat("#!/bin/bash\n",file=bisulfiteBlast_file_name,append=FALSE)
       cat("#!/bin/bash\n",file=parse_file_name,append=FALSE)
     }
   }

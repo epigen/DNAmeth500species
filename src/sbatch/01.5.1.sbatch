@@ -1,16 +1,14 @@
-mkdir  $LOGDIR/compEpi/
-
 #!/bin/bash
+#SBATCH --job-name filterSequnces
+#SBATCH --output ../../log/01.5.1_%A_%a.log
+#SBATCH --partition vsc3plus_0064
+#SBATCH --qos vsc3plus_0064
+#SBATCH -N 1
+#SBATCH --array=1-580
 
-#SBATCH --job-name compEpiQC
-#SBATCH --output $LOGDIR/compEpi/00.21_%A_%a.txt
-#SBATCH --partition shortq
-#SBATCH --mem 80000
-#SBATCH --cpus-per-task=16
-#SBATCH --time 8:00:00
-#SBATCH --array=4-582
-
-#module load R/3.5.1
+#setup
+source ~/.bashrc
+conda activate Zoo_R
 
 export SCRATCH_PATH=$LOGDIR/mytmp
 export TMPDIR=$SCRATCH_PATH/Rtmp
@@ -21,5 +19,5 @@ SP=`awk 'NR=='$SLURM_ARRAY_TASK_ID'{print $0}' ../../meta/species_list.txt`
 echo "$SP"
 
 date
-Rscript ${CODEBASE}/compEpi/src/01.5.1_prefilter_for_kmer_count.R $SP
+Rscript ${CODEBASE}/DNAmeth500species/src/01.5.1_prefilter_for_kmer_count.R $SP
 date
