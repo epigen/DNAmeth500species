@@ -1,6 +1,6 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 
-wd=file.path(analysis_dir,"01_basicStats/01.9_stats_methylation")
+wd=file.path(analysis_dir,"02_vizStats/02.5_stats_methylation")
 dir.create(wd)
 setwd(wd)
 

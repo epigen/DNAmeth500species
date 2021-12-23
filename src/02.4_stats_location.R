@@ -2,7 +2,8 @@ source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 library(maps)
 library(sf)
 
-wd=file.path(analysis_dir,"01_basicStats")
+wd=file.path(analysis_dir,"02_vizStats/02.4_stats_location")
+dir.create(wd)
 setwd(wd)
 
 locations=fread(file.path(meta_dir,"locations.csv"))

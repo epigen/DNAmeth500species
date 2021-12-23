@@ -19,9 +19,12 @@ get_db_anno=function(sci_name,db){
   print(sci_name)
   Sys.sleep(2)  
   tax=try(as.data.table(classification(gsub(" NBRC.*","",trimws(sci_name)),db, rows = 1)[[1]]),silent=TRUE) # if double UID -  we need an extra parameter, selected rows = 1 as the latest):
-  #for those species still without annotation, try only the first part of the scientific name (=genus)
+  print(tax)
+    #for those species still without annotation, try only the first part of the scientific name (=genus)
+    
    if(is.na(tax[1, 1])){
       tax=try(as.data.table(classification(gsub(" .*","",trimws(sci_name)),db)[[1]]),silent=TRUE)}
+    
   if(is.na(tax[1, 1])){return()}
   
   group=ifelse("Metazoa"%in%tax$name,ifelse("Vertebrata"%in%tax$name,"Vertebrata","Invertebrata"),as.character(NA))
@@ -73,6 +76,7 @@ lowest_common_custom=function(ids,db="ncbi"){
 #annotate species
 species_annot=data.table(scientific_name=unique(c(stats$scientific_name,stats$blast_species1,stats$blast_species2)),ncbi_name=as.character(NA))
 
+
 #should not fail with error. If it does (probably random server connection loss or similar) just rerun on yet unannotated using "is.na(ncbi_name)"
 ## sometimes needs to be restarted (server interaction mistakes...)
 simpleCache(cacheName="taxonomic_annotation",instruction="species_annot[is.na(ncbi_name),c('ncbi_name','ncbi_id','ncbi_order','ncbi_class','ncbi_group'):=get_db_anno(scientific_name,'ncbi'),by='scientific_name']",recreate=FALSE,assignToVariable="species_annot")
@@ -97,6 +101,8 @@ species_annot[grep("Branchiostoma",ncbi_name),c("ncbi_order", "ncbi_class"):=lis
 #add missing orders for included species
 species_annot[is.na(ncbi_order)&!is.na(scientific_name)&!grepl("virus|[0-9]",scientific_name),ncbi_order:=get_db_anno(scientific_name,'ncbi')[3],by='scientific_name',]
 
+
+
 #add still missing relevant orders by hand
 manual_orders=c("Batoidea"="Batoidea","Amblyglyphidodon leucogaster"="Perciformes",
                 "Dascyllus aruanus"="Perciformes","Pomacentrus coelestis"="Perciformes",
@@ -113,6 +119,16 @@ species_annot[is.na(ncbi_order)]
 species_annot[is.na(ncbi_class)] #14
 ## all other NAs are coming from the blast species - we can ignore them
 #now save annotation
+
+
+##now fixing the two names that were assigned wrong
+species_annot[scientific_name == "Ostorhinchus monospilus"]$ncbi_name <- "Ostorhinchus moluccensis"
+species_annot[scientific_name == "Ostorhinchus monospilus",c("ncbi_name","ncbi_id","ncbi_order","ncbi_class","ncbi_group"):=get_db_anno(ncbi_name,"ncbi"),]
+
+
+species_annot[scientific_name == "Ostorhinchus gracilis"]$ncbi_name <- "Rhabdamia gracilis"
+species_annot[scientific_name == "Ostorhinchus gracilis",c("ncbi_name","ncbi_id","ncbi_order","ncbi_class","ncbi_group"):=get_db_anno(ncbi_name,"ncbi"),]
+
 my_wt(species_annot,"species_annot.tsv")
 
 #Add missing orders to stats_annot if it already exists (fixin order retrospectively without recreating everything)
@@ -132,9 +148,17 @@ stats_annot=merge(stats,species_annot,by="scientific_name",all.x=TRUE)
 stats_annot=merge(stats_annot,setnames(species_annot[,c("scientific_name","ncbi_id","ncbi_name"),],c("ncbi_id","ncbi_name"),c("ncbi_id_blastS1","ncbi_name_blastS1")),by.x="blast_species1",by.y="scientific_name",all.x=TRUE)
 stats_annot=merge(stats_annot,setnames(species_annot[,c("scientific_name","ncbi_id","ncbi_name"),],c("ncbi_id","ncbi_name"),c("ncbi_id_blastS2","ncbi_name_blastS2")),by.x="blast_species2",by.y="scientific_name",all.x=TRUE)
 
+
+
+### fixing mismatches in annotation:
+ ## hand-replacing the annotations (where species were merged into one higher-level):
+stats_annot[species == "WFA" ]$ncbi_id <- "12929"
+stats_annot[species == "WFA" ]$ncbi_name <- "Amazona"
+
+stats_annot[species == "GRE" ]$ncbi_id <- "30389"
+stats_annot[species == "GRE" ]$ncbi_name <- "Ardea"
+
 #check species (comparison with blast species through lowest_common())
-
-
 simpleCache(cacheName="taxonomic_lowest_common",instruction={stats_annot[,lowest_common_blastS1:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS1)),by=c("ncbi_id","ncbi_id_blastS1")]},recreate=FALSE,assignToVariable="stats_annot") 
 simpleCache(cacheName="taxonomic_lowest_commonS2",instruction={stats_annot[,lowest_common_blastS2:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS2)),by=c("ncbi_id","ncbi_id_blastS2")]},recreate=FALSE,assignToVariable="stats_annot")
 
@@ -142,16 +166,16 @@ print(head(stats_annot[, c("lowest_common_blastS1", "lowest_common_blastS2")]))
 
 print(NROW(stats_annot[is.na(lowest_common_blastS1)]))
 
-if(NROW(stats_annot[is.na(lowest_common_blastS1)]>1)){
+if(NROW(stats_annot[is.na(lowest_common_blastS1)])>1){
     #IMPORTANT:repeat to fix NAs due to server timeout
-simpleCache(cacheName="taxonomic_lowest_common",instruction={stats_annot[is.na(lowest_common_blastS1),lowest_common_blastS1:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS1)),by=c("ncbi_id","ncbi_id_blastS1")]},
+simpleCache(cacheName="taxonomic_lowest_commonS2",instruction={stats_annot[is.na(lowest_common_blastS1),lowest_common_blastS1:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS1)),by=c("ncbi_id","ncbi_id_blastS1")]},
             recreate=FALSE,assignToVariable="stats_annot")
 }
 
 print(NROW(stats_annot[is.na(lowest_common_blastS2)]))
       
-if(NROW(stats_annot[is.na(lowest_common_blastS2)]>4)){
-simpleCache(cacheName="taxonomic_lowest_common",instruction={stats_annot[is.na(lowest_common_blastS2),lowest_common_blastS2:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS2)),by=c("ncbi_id","ncbi_id_blastS2")]},
+if(NROW(stats_annot[is.na(lowest_common_blastS2)])>4){
+simpleCache(cacheName="taxonomic_lowest_commonS2",instruction={stats_annot[is.na(lowest_common_blastS2),lowest_common_blastS2:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS2)),by=c("ncbi_id","ncbi_id_blastS2")]},
             recreate=FALSE,assignToVariable="stats_annot")
 }
             
@@ -190,5 +214,6 @@ stats_annot=merge(stats_annot,anage[,-c("HAGRID","Kingdom","Phylum","Class","Ord
 #patho_anno
 stats_annot=merge(stats_annot,unique(patho_anno),by.x=c("Fortlaufende Nr","Patho-Nr"),by.y=c("Nr","Patho-Nr"),all.x=TRUE)
 
+print(stats_annot[species == "WFA" ]$ncbi_id )
 my_wt(stats_annot,"stats_annot.tsv")
 save(stats_annot,file="stats_annot.RData")

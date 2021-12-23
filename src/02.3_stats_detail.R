@@ -1,7 +1,7 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
-library(maps)
+#library(maps)
 
-wd=file.path(analysis_dir,"01_basicStats/01.6_stats_detail")
+wd=file.path(analysis_dir,"02_vizStats/02.3_stats_detail")
 dir.create(wd,recursive=TRUE)
 setwd(wd)
 

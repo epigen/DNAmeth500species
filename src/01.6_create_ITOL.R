@@ -1,6 +1,8 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
+library(phylobase)
+library(tidytree)
 
-wd=file.path(analysis_dir,"99.2_ITOL")
+wd=file.path(analysis_dir,"01_basicStats/01.6_ITOL")
 dir.create(wd,recursive=TRUE)
 setwd(wd)
 
@@ -73,27 +75,55 @@ make_stats_per_species=function(stats){
 #save tree as species_tree_unranked.phy in the meta directory
 
 #read tree to set NCBI ids and fix internal nodes
-tree=readLines(paste0(source_dir, "/meta/species_tree_unranked.phy"))
+#tree=readLines(paste0(source_dir, "/meta/species_tree_unranked.phy"))
+
 =======
 
 
 #read tree to set NCBI ids and fix internal nodes
-tree=readLines(paste0("species_tree_unranked.phy"))
+#tree=readLines(paste0("species_tree_unranked.phy"))
+tree=readLines(paste0(meta_dir, "/species_tree_unranked_2021.phy"))
 >>>>>>> Stashed changes
 tree=paste0(gsub("'","",tree),collapse="")
-writeLines(tree,con="species_tree_unranked_names.phy")
+writeLines(tree,con="species_tree_unranked_names_2021.phy")
 
 replace=unique(stats_annot[,c("ncbi_id","ncbi_name"),])
+
+for(nameid in replace$ncbi_name){
+    if(!grepl(paste0(nameid,":"), tree)){
+        print(nameid)
+    }
+}
+
+
 for (i in 1:nrow(replace)){
   tree=with(replace[i,],gsub(paste0(")",ncbi_name,":"),paste0(")INT",ncbi_id,":"),tree,))
   tree=with(replace[i,],gsub(paste0(ncbi_name,":"),paste0(ncbi_id,":"),tree,))
 }
-writeLines(tree,con="species_tree_unranked_id.phy")
+writeLines(tree,con="species_tree_unranked_id_2021.phy")
+
+
+##checking which species are missing and/or which labels are not present
+tree_df <- read.tree("species_tree_unranked_id_2021.phy")
+
+labels<-tree_df$tip.label
+nodes<-tree_df$node.label
+
+df <- as_tibble(tree_df)
+
+stopifnot(length(setdiff(labels, stats_annot$ncbi_id))==0)
+
+int_mapped <- paste0("INT", setdiff(stats_annot$ncbi_id, labels))
+stopifnot(length(setdiff(int_mapped, nodes))==0)
+
 
 #needed if tree is built on ncbi ids (instead of names)
 stats_annot[,ncbi_id_int:=ifelse(any(grepl(paste0("INT",ncbi_id[1],":"),tree)),paste0("INT",ncbi_id[1]),as.character(ncbi_id[1])),by=ncbi_id]
 
+                            
 
+                            
+                            
 #for unconverted
 stats_per_species_unconv=make_stats_per_species(stats_annot[conversion_type=="unconverted"])
 #for converted
@@ -145,7 +175,7 @@ for (sel_set in set_list) {
 
   cat(create_annot_bar(label=paste0("Average methylation ",suffix),colors="#ff9e15",fields="avg_meth",scale="0,10,20,30,40,50,60,70,80,90,100",width=200*max(stats_per_species$avg_meth)/100,legend_col=legend_col,internal=1,data=stats_per_species[,paste(ncbi_name,avg_meth,sep=","),]),file=paste0("annot_avg_meth_",suffix,".txt"))
 
-  cat(create_annot_bar(label=paste0("Contamination ratio ",suffixi),colors="#10ea77",fields="contamination",scale="0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1",width=200*max(stats_per_species$contamination)/1,legend_col=legend_col,internal=1,data=stats_per_species[,paste(ncbi_name,contamination,sep=","),]),file=paste0("annot_contamination_",suffix,".txt"))
+  cat(create_annot_bar(label=paste0("Contamination ratio ",suffix),colors="#10ea77",fields="contamination",scale="0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1",width=200*max(stats_per_species$contamination)/1,legend_col=legend_col,internal=1,data=stats_per_species[,paste(ncbi_name,contamination,sep=","),]),file=paste0("annot_contamination_",suffix,".txt"))
 
   cat(create_annot_bar(label=paste0("Conversion rate ",suffix),colors="#10ea77",fields="conversionRate",scale="0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1",width=200*max(stats_per_species$conversionRate)/1,legend_col=legend_col,internal=1,data=stats_per_species[,paste(ncbi_name,conversionRate,sep=","),]),file=paste0("annot_conversionRate_",suffix,".txt"))
 

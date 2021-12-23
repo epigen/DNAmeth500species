@@ -2,10 +2,9 @@ source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 library(tableHTML)
 
 wd=file.path(analysis_dir,"01_basicStats")
-dir.create(wd,recursive=TRUE)
 setwd(wd)
 
-
+## reading the nessecary dataframes in
 stats_annot=fread("all_stats.tsv")
 stats_long_annot=fread("all_stats_long.tsv")
 ref_long=fread("ref_stats_long.tsv")
@@ -13,6 +12,9 @@ ref_long=fread("ref_stats_long.tsv")
 stats_annot=stats_annot[grep("_uc",Sample_Name,invert=TRUE)]
 stats_long_annot=stats_long_annot[grep("_uc",Sample_Name,invert=TRUE)]
 
+wd=file.path(analysis_dir,"02_vizStats/02.2_stats_general")
+dir.create(wd, recursive = TRUE)
+setwd(wd)
 
 #plot all sample stats
 pdf("sampleStats.pdf",width=180,height=48)
@@ -26,7 +28,7 @@ dev.off()
 
 #plot correlation between mapping rate and non motif reads
 pdf("mappingRateVSnonMotif.pdf",width=30,height=12)
-ggplot(stats_annot,aes(x=mapping_efficiency,y=others,col=species))+geom_point(alpha=0.6)+geom_abline(intercept=100,slope=-1)+ylab("% non-motif reads")+xlim(c(0,100))+ylim(c(0,100))
+ggplot(stats_annot,aes(x=mapping_efficiency,y=others,col=species))+geom_point(alpha=0.6)+geom_abline(intercept=100,slope=-1)+ylab("% non-motif reads")+xlim(c(0,100))+ylim(c(0,100)) + theme(legend.position = "none")
 dev.off()
 
 #plot specific stats as boxplot
