@@ -84,6 +84,7 @@ ggplot(all_stats_annot[color_class!="Jawless_vertebrate"],aes(x=color_class,y=AU
 
 #saving the table 
 write.csv(all_stats_annot, "summary/all_aucs.csv", quote = F)
+all_stats_annot <- fread("summary/all_aucs.csv")
 
 pdf("summary/auc_final.pdf", width=4, height=4)
 ggplot(all_stats_annot[color_class!="Jawless_vertebrate"],aes(x=group,y=AUC, fill=color_class))+
@@ -95,6 +96,19 @@ ggplot(all_stats_annot[color_class!="Jawless_vertebrate"],aes(x=group,y=AUC, fil
              aes(x=group,y=AUC, fill=color_class), shape = 21)
 dev.off()
 
+
+###AUC plot for JL
+JL_stats <- all_stats_annot
+JL_stats[,plot_group:=ifelse(species=="JL","Lamprey",ifelse(color_class=="Invertebrata","Invertebrata","Vertebrata")),]
+
+
+#cap outliers for better plotting
+#JL_stats[,AUC:=ifelse(value>quantile(value,0.99),quantile(value,0.99),value),by=c("variable")]
+
+pdf("summary/Lamprey_auc.pdf",2,2)
+ggplot(JL_stats,aes(x=AUC,fill=plot_group,col=plot_group))+geom_density(lwd=1,alpha=0.3)+
+  geom_point(data=JL_stats[species=="JL"],y=0, size=3) + xlim(c(0.4, 1)) + theme(legend.position = "None")
+dev.off()
 
 ##selected examples, that have AUC closest to the mean value:
 selected <- all_stats_annot %>% 
