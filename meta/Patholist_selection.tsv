@@ -656,7 +656,7 @@ V1	Fortlaufende Nr	Patho-Nr	English	Tierart	scientific_name	sex	age	Entnahme	Tis
 659	1816	Z/774/12	Orangutan	Orang-Utan	Pongo borneo	NA	juvenil	12.11.2012	Heart	D	6	OU_1_H	99,2	100	02.06.2016		9	prepped	AK22	6,65	9	1	TruSeq LT Index 6	244	1					OU_1_H_uc		AK_uc_14	5	329	3
 660	1833	AC/844/12	Sloth	Faultier	Folivora	m	juvenil	28.11.2012	Heart	D	7	SL_1_H	0,7	100	02.06.2016	redone box10	9	failed DNA						failed	failed								NA	NA	NA
 661	1910	CB/929/12	Garganey	Knaekente	Anas querquedula	f	adult	13.12.2012	Heart	D	8	GA_1_H	5,8	100	02.06.2016		9	prepped	AK22	8,42	9	1	TruSeq LT Index 7	244	1								NA	NA	NA
-662	1980	Z/78/13	Elephant	Elefant	Elephantidae	f	adult	07.02.2013	Heart	D	9	EL_1_H	18,7	100	02.06.2016		9	prepped	AK22	11,62	13	7	TruSeq LT Index 8	246	4		AK_uc_newprep	11,125	TruSeq LT Index 9	EL_1_H_uc		AK_uc_32	10	391	6
+662	1980	Z/78/13	Indian elephant	Elefant	Elephas maximus indicus	f	adult	07.02.2013	Heart	D	9	EL_1_H	18,7	100	02.06.2016		9	prepped	AK22	11,62	13	7	TruSeq LT Index 8	246	4		AK_uc_newprep	11,125	TruSeq LT Index 9	EL_1_H_uc		AK_uc_32	10	391	6
 663	2053	AC/157/13	Kleinmann's tortoise	aegypt. Landschildkroete	Testudo kleinmanni	f	adult	19.03.2013	Heart	D	10	KT_1_H	29,4	100	02.06.2016		9	prepped	AK22	9,36	9	3	TruSeq LT Index 9	244	3					KT_1_H_uc		AK_uc_02	5	274	6
 664	2063	AC/170/13	Ostrich	StrauÃŸ	Struthio camelus	f	adult	02.04.2013	Heart	D	11	OS_1_H	6,2	100	02.06.2016		9	prepped	AK22	8,22	9	1	TruSeq LT Index 10	244	1					OS_1_H_uc		AK_uc_07	6	298	6
 665	2073	AC/181/13	Village weaver	Textorweber	Ploceus cucullatus	f	adult	03.04.2013	Heart	D	12	VW_1_H	29,2	100	02.06.2016		9	prepped	AK22	9,83	10	4	TruSeq LT Index 11	244	4								NA	NA	NA
@@ -749,7 +749,7 @@ V1	Fortlaufende Nr	Patho-Nr	English	Tierart	scientific_name	sex	age	Entnahme	Tis
 752	1816	Z/774/12	Orangutan	Orang-Utan	Pongo borneo	NA	juvenil	12.11.2012	Liver	D	4	OU_1_L	84,4	100	28.06.2016		10	prepped	AK25	9,68	10	9	TruSeq LT Index 4	254	6								NA	NA	NA
 753	1833	AC/844/12	Sloth	Faultier	Folivora	m	juvenil	28.11.2012	Liver	D	5	SL_1_L	35,9	100	28.06.2016		10	prepped	AK25	9,56	9	8	TruSeq LT Index 5	254	5					SL_1_L_uc		AK_uc_02	5	274	6
 754	1910	CB/929/12	Garganey	Knaekente	Anas querquedula	f	adult	13.12.2012	Liver	D	6	GA_1_L	98,7	100	28.06.2016		10	prepped	AK25	6,70	10	7	TruSeq LT Index 6	254	4								NA	NA	NA
-755	1980	Z/78/13	Elephant	Elefant	Elephantidae	f	adult	07.02.2013	Liver	D	7	EL_1_L	89,0	100	28.06.2016		10	prepped	AK25	9,98	10	9	TruSeq LT Index 7	254	6								NA	NA	NA
+755	1980	Z/78/13	Indian elephant	Elefant	Elephas maximus indicus	f	adult	07.02.2013	Liver	D	7	EL_1_L	89,0	100	28.06.2016		10	prepped	AK25	9,98	10	9	TruSeq LT Index 7	254	6								NA	NA	NA
 756	2053	AC/157/13	Kleinmann's tortoise	aegypt. Landschildkroete	Testudo kleinmanni	f	adult	19.03.2013	Liver	D	8	KT_1_L	99,6	100	28.06.2016		10	prepped	AK25	10,90	12	10	TruSeq LT Index 8	254	7								NA	NA	NA
 757	2063	AC/170/13	Ostrich	StrauÃŸ	Struthio camelus	f	adult	02.04.2013	Liver	D	9	OS_1_L	30,7	100	28.06.2016		10	prepped	AK25	8,58	8	6	TruSeq LT Index 9	254	3								NA	NA	NA
 758	2073	AC/181/13	Village weaver	Textorweber	Ploceus cucullatus	f	adult	03.04.2013	Liver	D	10	VW_1_L	38,7	100	28.06.2016		10	prepped	AK25	8,54	10	7	TruSeq LT Index 10	254	4								NA	NA	NA
