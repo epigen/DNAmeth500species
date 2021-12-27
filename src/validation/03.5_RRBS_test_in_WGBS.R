@@ -12,17 +12,16 @@ read_data <- function(species_name, genomeid, cov_min, N = 1000){
     print(species_name)
     ##loading data
     meth_data_mean = fread(file.path(path_to_data,species_name, "mean_meth_per_fragment.tsv"))
-
+  
     ##formatting
     meth_data_mean_long <- melt(meth_data_mean, measure=patterns("cov", "mean_meth"),
                             variable.factor=TRUE,
                          variable.name="sample",
                             value.name=c("cov","meth"),na.rm=TRUE)
                             
-    meth_data_mean_cond <- meth_data_mean_long[,list(Nsamples=.N, mean_cov=mean(cov), min_cov=min(cov),
-                                              max_cov=max(cov), mean_meth=mean(meth), min_meth=min(meth),
-                                              max_meth=max(meth)),
+    meth_data_mean_cond <- meth_data_mean_long[,list(Nsamples=.N, mean_cov=mean(cov), min_cov=min(cov), max_cov=max(cov), mean_meth=mean(meth), min_meth=min(meth), max_meth=max(meth)),
                                         by=c("name")]
+    
     meth_data_mean_cond_red=meth_data_mean_cond[Nsamples>(max(Nsamples)*0.5)&mean_cov>cov_min & mean_cov<1000 &(min_meth>80|max_meth<20)]
     
     print(NROW(meth_data_mean_cond_red))

@@ -16,6 +16,11 @@ wd=file.path(analysis_dir,"02_vizStats/02.2_stats_general")
 dir.create(wd, recursive = TRUE)
 setwd(wd)
 
+## printing out numbers:
+
+cat(paste0("total samples (converted):", NROW(stats_annot[conversion_type == "converted"])), file="stats_for_paper.txt")
+stats_annot %>% filter(conversion_type == "converted") %>% group_by(color_class) %>% summarise(n = n())
+
 #plot all sample stats
 pdf("sampleStats.pdf",width=180,height=48)
 ggplot(stats_long_annot,aes(x=species,y=value,col=sub_average))+geom_point(alpha=0.5,position=position_jitter(width = .5))+facet_wrap(~variable,scale="free",ncol=1)+scale_color_manual(values=c("FALSE"="black","TRUE"="red"))
