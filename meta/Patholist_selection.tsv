@@ -631,7 +631,7 @@ V1	Fortlaufende Nr	Patho-Nr	English	Tierart	scientific_name	sex	age	Entnahme	Tis
 634	741	AC/763/10	Borneo eared frog	Ohrruderfrosch	Polypedates otilophus	m	adult	28.12.2010	Liver	B	5	BF_1_L	49,9	100	02.06.2016		9	prepped	AK22	6,79	8	2	TruSeq LT Index 6	244	2					BF_1_L_uc		AK_uc_09	6	298	7
 635	884	Z/287/11	Gekko	Gecko	Gekkonidae	f	adult	15.04.2011	Liver	B	6	GE_1_L	20,9	100	02.06.2016		9	prepped	AK22	9,40	9	3	TruSeq LT Index 7	244	3								NA	NA	NA
 636	924	AC/445/11	Ball python	Koenigspython	Python regius	m	adult	17.06.2011	Heart	B	7	BP_1_H	11,4	100	02.06.2016		9	prepped	AK22	9,69	10	4	TruSeq LT Index 8	244	4					BP_1_H_uc		AK_uc_11	6	315	5
-637	995	Z/596/11	Elephant bird	Elefantenvogel	Aepyornithidae	m	juvenil	26.07.2011	Heart	B	8	ELB_1_H	6,4	100	02.06.2016		9	prepped	AK22	7,84	9	1	TruSeq LT Index 9	244	1					ELB_1_H_uc		AK_uc_05	6	295	5
+637	995	Z/596/11	Asian fairy-bluebird	Elfenblauvogel	Irena puella	m	juvenil	26.07.2011	Heart	B	8	AFB_3_H	6,4	100	02.06.2016		9	prepped	AK22	7,84	9	1	TruSeq LT Index 9	244	1					NA		NA	NA	NA	NA
 638	1057	Z/810/11	Roan antelope	Pferde-Antilope	Hippotragus equinus	f	adult	18.08.2011	Heart	B	9	ROA_1_H	6,6	100	02.06.2016		9	prepped	AK22	8,35	8	2	TruSeq LT Index 10	244	2					ROA_1_H_uc		AK_uc_03	6	283	5
 639	1109	AC/894/11	Dalmatian pelican	Krauskopfpelikan	Pelecanus crispus	f	adult	03.10.2011	Lung	B	10	DP_1_L	5,3	100	02.06.2016		9	prepped	AK22	7,86	9	1	TruSeq LT Index 11	244	1					DP_1_L_uc		AK_uc_05	6	295	5
 640	1173	AC/964/11	Squirrel monkey	Totenkopfaffe	Saimiriinae	f	adult	13.10.2011	Heart	B	11	SQM_1_H	14,5	100	02.06.2016		9	prepped	AK22	9,58	9	3	TruSeq LT Index 12	244	3								NA	NA	NA
@@ -725,7 +725,7 @@ V1	Fortlaufende Nr	Patho-Nr	English	Tierart	scientific_name	sex	age	Entnahme	Tis
 728	741	AC/763/10	Borneo eared frog	Ohrruderfrosch	Polypedates otilophus	m	adult	28.12.2010	Lung	B	4	BF_1_LU	15,5	100	28.06.2016		10	prepped	AK24	8,18	9	11	TruSeq LT Index 11	250	8								NA	NA	NA
 729	884	Z/287/11	Gekko	Gecko	Gekkonidae	f	adult	15.04.2011	Lung	B	5	GE_1_LU	33,0	100	28.06.2016		10	prepped	AK24	13,29	12	12	TruSeq LT Index 12	251	1					GE_1_L_uc		AK_uc_02	5	274	6
 730	924	AC/445/11	Ball python	Koenigspython	Python regius	m	adult	17.06.2011	Liver	B	6	BP_1_L	68,8	100	28.06.2016		10	prepped	AK24	9,68	12	12	TruSeq LT Index 13	251	1								NA	NA	NA
-731	995	Z/596/11	Elephant bird	Elefantenvogel	Aepyornithidae	m	juvenil	26.07.2011	Liver	B	7	ELB_1_L	14,3	100	28.06.2016		10	prepped	AK24	8,53	9	11	TruSeq LT Index 14	250	8								NA	NA	NA
+731	995	Z/596/11	Asian fairy-bluebird	Elfenblauvogel	Irena puella	m	juvenil	26.07.2011	Liver	B	7	AFB_3_L	14,3	100	28.06.2016		10	prepped	AK24	8,53	9	11	TruSeq LT Index 14	250	8								NA	NA	NA
 732	1057	Z/810/11	Roan antelope	Pferde-Antilope	Hippotragus equinus	f	adult	18.08.2011	Liver	B	8	ROA_1_L	71,6	100	28.06.2016		10	prepped	AK25	7,12	9	8	TruSeq LT Index 6	254	5								NA	NA	NA
 733	1173	AC/964/11	Squirrel monkey	Totenkopfaffe	Saimiriinae	f	adult	13.10.2011	Liver	B	9	SQM_1_L	78,3	100	28.06.2016		10	prepped	AK25	10,33	12	10	TruSeq LT Index 7	254	7								NA	NA	NA
 734	1231	AC/1032/11	African spurred tortoise	Sternschildkroete	Geochelone	f	adult	25.10.2011	Liver	B	10	AST_1_L	40,4	100	28.06.2016		10	prepped	AK25	9,23	10	7	TruSeq LT Index 8	254	4								NA	NA	NA
