@@ -49,7 +49,7 @@ read_data  <- function(SP){
   }
 }
 
-test_on_other <- function(fit,test_data_x, test_data_y, run, ifRand, kmer, subdir){
+test_on_other <- function(fit,test_data_x, test_data_y,test_species, run, ifRand, kmer, subdir){
   preddec_list <- mclapply(test_data_x, predict, object = fit)
   
   pref <- mapply(evaluatePrediction, preddec_list, test_data_y, SIMPLIFY = FALSE,  
@@ -75,12 +75,12 @@ test_on_other <- function(fit,test_data_x, test_data_y, run, ifRand, kmer, subdi
 simpleCache(cacheName=paste0("methPred_noRand_uc_1234"), instruction={ train_test(x_train=split_ds$x_train,
             x_test = split_ds$x_test, y_train = split_ds$y_train, y_test = split_ds$y_test,
                                                         ifRand='noRand', k=kmer, runid = 0)},
-            cacheDir=paste0("../../03.4_prediction/Branchiostoma_lanceolatum/kebabs_model/RCache"), assignToVariable="res", recreate=FALSE)
+            cacheDir=paste0("../../03.4_prediction/", species, "/kebabs_model/RCache"), assignToVariable="res", recreate=FALSE)
 
-t <- read_data("AB")
 ## load data to train on:
 test_data <- lapply(sp_df$species, read_data)
-
+test_species <- sp_df$species
+                        
 ## delete the empty datasets
 a <- lapply(test_data, function(x) (length(x$y)==1))
 
@@ -88,17 +88,19 @@ if (length(which(unlist(a)))>0){
   test_data <- test_data[-which(unlist(a))]
   test_species <- test_species[-which(unlist(a))]
 }
-
+            
 test_data_x <- lapply(test_data, function(x) x$x)
 test_data_y <- lapply(test_data, function(x) x$y)
+                      
 rm(test_data)
                       
 ## predicting
                       
 #predicting on other species
-simpleCache(cacheName = "methPred_noRand_uc",instruction = {test_on_other(fit = model, test_data_x = test_data_x, 
-            test_data_y = test_data_y, ifRand = "noRand",run = 0,subdir = subdir,k = kmer)},
-            cacheDir = paste0(subdir,"/RCache"),assignToVariable = "resTest",recreate = FALSE)
+simpleCache(cacheName = "methPred_noRand_uc",instruction = {test_on_other(fit = res$model[[1]], test_data_x = test_data_x, 
+            test_data_y = test_data_y,test_species, ifRand = "noRand",run = 0,subdir = subdir,k = kmer)},
+            cacheDir = "RCache",
+            assignToVariable = "resTest",recreate = FALSE)
                       
 my_wt(resTest$roc_dt, "roc_dt.tsv")
                       
