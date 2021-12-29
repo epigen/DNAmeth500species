@@ -1791,8 +1791,8 @@ V1	Fortlaufende Nr	Patho-Nr	English	Tierart	scientific_name	sex	age	Entnahme	Tis
 1794	3997	AC/777/15	Brown-mantled tamarin	Braunruecken-Affe	Saguinus fuscicollis	f	adult	08.09.2015	Liver	C	3	BMT_2_L	88,7	100	29.11.2016		19	prepped	AK36	11,34	12	3	TruSeq LT Index 9	303	4								NA	NA	NA
 1795	4007	AC/790/15	Hazel grouse	Haselhenne	Tetrastes bonasia	f	adult	11.09.2015	Heart	C	4	HAG_1_H	60,0	100	29.11.2016		19	prepped	AK36	10,27	12	3	TruSeq LT Index 10	303	4					HAG_1_H_uc		AK_uc_30	8	391	4
 1796	4007	AC/790/15	Hazel grouse	Haselhenne	Tetrastes bonasia	f	adult	11.09.2015	Liver	C	5	HAG_1_L	81,9	100	29.11.2016		19	prepped	AK36	9,95	11	2	TruSeq LT Index 11	301	5								NA	NA	NA
-1797	4051	AC/856/15	Squirrel monkey	Squirrel monkey	Saimiri sciureus	m	adult	15.10.2015	Heart	C	6	SMO_1_H	93,9	100	29.11.2016		19	prepped	AK36	10,91	14	5	TruSeq LT Index 12	303	6					SMO_1_H_uc		AK_uc_19	6	363	8
-1798	4051	AC/856/15	Squirrel monkey	Squirrel monkey	Saimiri sciureus	m	adult	15.10.2015	Liver	C	7	SMO_1_L	99,1	100	29.11.2016		19	prepped	AK38	13,39	14	6	TruSeq LT Index 13	313	6								NA	NA	NA
+1797	4051	AC/856/15	Squirrel monkey	Squirrel monkey	Saimiri sciureus	m	adult	15.10.2015	Heart	C	6	SQM_3_H	93,9	100	29.11.2016		19	prepped	AK36	10,91	14	5	TruSeq LT Index 12	303	6					SMO_1_H_uc		AK_uc_19	6	363	8
+1798	4051	AC/856/15	Squirrel monkey	Squirrel monkey	Saimiri sciureus	m	adult	15.10.2015	Liver	C	7	SQM_3_L	99,1	100	29.11.2016		19	prepped	AK38	13,39	14	6	TruSeq LT Index 13	313	6								NA	NA	NA
 1799	4133	AC/951/15	Tamarin	Goldkopftamarin	Saguinus	m	adult	11.11.2015	Heart	C	8	TAM_2_H	39,2	100	29.11.2016		19	prepped	AK36	10,29	12	3	TruSeq LT Index 14	303	4								NA	NA	NA
 1800	4133	AC/951/15	Tamarin	Goldkopftamarin	Saguinus	m	adult	11.11.2015	Liver	C	9	TAM_2_L	72,3	100	29.11.2016		19	prepped	AK36	11,10	12	3	TruSeq LT Index 15	303	4								NA	NA	NA
 1801	4192	AC/1011/15	Emperor tamarin	Kaiserschnurrbarttamarin	Saguinus imperator	f	adult	24.11.2015	Heart	C	10	ET_2_H	19,2	100	29.11.2016		19	prepped	AK36	9,63	12	3	TruSeq LT Index 16	303	4					ET_2_H_uc		AK_uc_25	9	378	2
