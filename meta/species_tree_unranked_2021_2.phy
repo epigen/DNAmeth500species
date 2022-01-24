@@ -1,0 +1,2664 @@
+(
+(
+(
+(
+(
+(
+'Saccoglossus kowalevskii':4)
+Saccoglossus:4)
+Harrimaniidae:4)
+Enteropneusta:4)
+Hemichordata:4,
+(
+(
+(
+(
+(
+(
+(
+(
+'Lethenteron camtschaticum':4)
+Lethenteron:4)
+Petromyzontidae:4)
+Petromyzontiformes:4)
+Hyperoartia:4)
+Cyclostomata:4,
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+'Elephas maximus indicus':4)
+'Elephas maximus':4)
+Elephas:4)
+Elephantidae:4)
+Proboscidea:4,
+(
+(
+(
+'Macroscelides proboscideus':4)
+Macroscelides:4)
+Macroscelididae:4)
+Macroscelidea:4
+)Afrotheria:4,
+(
+(
+(
+(
+(
+Castoridae:4)
+Castorimorpha:4,
+(
+(
+Erethizon:4)
+Erethizontidae:4,
+(
+(
+'Capromys pilorides':4)
+Capromys:4)
+Capromyidae:4,
+(
+Heterocephalus:4)
+Bathyergidae:4,
+(
+(
+'Myocastor coypus':4)
+Myocastor:4)
+Myocastoridae:4,
+(
+(
+'Lagostomus maximus':4)
+Lagostomus:4)
+Chinchillidae:4,
+(
+(
+'Hydrochoerus hydrochaeris':4)
+Hydrochoerus:4)
+Hydrochaeridae:4,
+(
+(
+'Dolichotis patagonum':4)
+Dolichotis:4)
+Caviidae:4,
+Hystricidae:4
+)Hystricomorpha:4,
+(
+(
+(
+(
+Jaculus:4)
+Dipodinae:4)
+Dipodidae:4)
+Dipodoidea:4,
+(
+(
+Cricetomyinae:4)
+Nesomyidae:4,
+(
+(
+Pachyuromys:4,
+(
+'Psammomys obesus':4)
+Psammomys:4
+)Gerbillinae:4,
+(
+Phloeomys:4,
+(
+(
+'Apodemus flavicollis':4,
+'Apodemus sylvaticus':4
+)'Sylvaemus group':4)
+Apodemus:4,
+(
+'Rattus rattus':4,
+'Rattus norvegicus':4
+)Rattus:4,
+(
+(
+'Mus musculus':4)
+Mus:4)
+Mus:4
+)Murinae:4,
+(
+Acomys:4)
+Deomyinae:4
+)Muridae:4,
+(
+(
+(
+'Phodopus campbelli':4)
+Phodopus:4,
+Cricetus:4
+)Cricetinae:4)
+Cricetidae:4
+)Muroidea:4
+)Myomorpha:4,
+(
+(
+(
+(
+'Eliomys quercinus':4)
+Eliomys:4)
+Leithiinae:4,
+(
+(
+'Glis glis':4)
+Glis:4)
+Glirinae:4
+)Gliridae:4,
+(
+(
+(
+Tamiops:4)
+Callosciurini:4)
+Callosciurinae:4,
+(
+(
+(
+'Sciurus vulgaris':4)
+Sciurus:4)
+Sciurini:4)
+Sciurinae:4,
+(
+(
+Cynomys:4,
+Tamias:4,
+Spermophilus:4,
+Marmota:4
+)Marmotini:4)
+Xerinae:4
+)Sciuridae:4
+)Sciuromorpha:4
+)Rodentia:4,
+(
+(
+(
+'Oryctolagus cuniculus':4)
+Oryctolagus:4,
+(
+'Lepus timidus':4,
+'Lepus europaeus':4
+)Lepus:4
+)Leporidae:4)
+Lagomorpha:4
+)Glires:4,
+(
+(
+(
+(
+(
+(
+(
+Pongo:4)
+Ponginae:4)
+Hominidae:4)
+Hominoidea:4,
+(
+(
+(
+(
+'Colobus guereza':4,
+'Colobus polykomos':4
+)Colobus:4)
+Colobinae:4,
+(
+(
+'Theropithecus gelada':4)
+Theropithecus:4,
+(
+'Papio hamadryas':4)
+Papio:4,
+(
+'Macaca silenus':4,
+'Macaca sylvanus':4
+)Macaca:4,
+Cercopithecus:4
+)Cercopithecinae:4
+)Cercopithecidae:4)
+Cercopithecoidea:4
+)Catarrhini:4,
+(
+Aotidae:4,
+(
+(
+(
+'Pithecia pithecia':4)
+Pithecia:4)
+Pitheciinae:4)
+Pitheciidae:4,
+(
+Saimiriinae:4,
+Cebinae:4,
+(
+(
+'Leontopithecus chrysomelas':4)
+Leontopithecus:4,
+(
+'Leontocebus fuscicollis':4)
+Leontocebus:4,
+(
+'Saguinus imperator':4,
+'Saguinus oedipus':4,
+'Saguinus mystax':4
+)Saguinus:4,
+(
+(
+'Callithrix jacchus':4)
+Callithrix:4)
+Callithrix:4
+)Callitrichinae:4
+)Cebidae:4
+)Platyrrhini:4
+)Simiiformes:4)
+Haplorrhini:4,
+(
+(
+(
+Varecia:4,
+Lemur:4
+)Lemuridae:4)
+Lemuriformes:4)
+Strepsirrhini:4
+)Primates:4,
+(
+(
+Tupaia:4)
+Tupaiidae:4)
+Scandentia:4
+)Euarchontoglires:4,
+(
+(
+(
+(
+(
+(
+'Giraffa giraffa':4)
+Giraffa:4)
+Giraffidae:4,
+(
+(
+(
+'Nanger dama':4)
+Nanger:4,
+Antilope:4,
+Antidorcas:4
+)Antilopinae:4,
+(
+(
+'Hippotragus equinus':4)
+Hippotragus:4)
+Hippotraginae:4,
+(
+(
+'Kobus leche':4)
+Kobus:4)
+Reduncinae:4,
+(
+Connochaetes:4)
+Alcelaphinae:4,
+(
+Taurotragus:4,
+(
+'Tragelaphus spekii':4,
+'Tragelaphus angasii':4
+)Tragelaphus:4,
+Bubalus:4,
+(
+'Boselaphus tragocamelus':4)
+Boselaphus:4,
+Bos:4,
+(
+'Bison bonasus':4)
+Bison:4
+)Bovinae:4,
+(
+Hemitragus:4,
+(
+'Rupicapra rupicapra':4)
+Rupicapra:4,
+Capricornis:4,
+(
+'Ovis orientalis':4,
+'Ovis aries':4
+)Ovis:4,
+(
+'Capra aegagrus':4)
+Capra:4,
+Ammotragus:4
+)Caprinae:4
+)Bovidae:4,
+(
+(
+Muntiacus:4)
+Muntiacinae:4,
+(
+(
+'Dama dama':4)
+Dama:4,
+(
+'Axis axis':4)
+Axis:4,
+(
+'Cervus nippon':4,
+'Cervus elaphus':4
+)Cervus:4
+)Cervinae:4,
+(
+(
+'Rangifer tarandus':4)
+Rangifer:4,
+(
+'Capreolus capreolus':4)
+Capreolus:4
+)Odocoileinae:4
+)Cervidae:4
+)Pecora:4,
+(
+(
+(
+'Tragulus javanicus':4)
+Tragulus:4)
+Tragulidae:4)
+Tragulina:4
+)Ruminantia:4,
+(
+(
+(
+'Vicugna pacos':4)
+Vicugna:4,
+(
+'Lama glama':4)
+Lama:4,
+(
+'Camelus ferus':4,
+'Camelus dromedarius':4
+)Camelus:4
+)Camelidae:4)
+Tylopoda:4,
+(
+Tayassuidae:4,
+(
+(
+'Potamochoerus porcus':4)
+Potamochoerus:4,
+(
+(
+'Sus scrofa domesticus':4)
+'Sus scrofa':4)
+Sus:4
+)Suidae:4
+)Suina:4
+)Artiodactyla:4,
+(
+Rhinocerotidae:4,
+(
+Tapirus:4)
+Tapiridae:4,
+(
+(
+(
+(
+'Equus asinus asinus':4)
+'Equus asinus':4)
+Asinus:4,
+Equus:4,
+(
+'Equus zebra':4)
+Hippotigris:4
+)Equus:4)
+Equidae:4
+)Perissodactyla:4,
+(
+(
+(
+(
+'Mungos mungo':4)
+Mungos:4,
+Cynictis:4,
+Suricata:4
+)Herpestidae:4,
+(
+(
+Acinonyx:4)
+Acinonychinae:4,
+(
+(
+'Panthera tigris':4,
+'Panthera pardus':4,
+'Panthera onca':4,
+'Panthera leo':4
+)Panthera:4)
+Pantherinae:4,
+(
+Leptailurus:4,
+(
+'Lynx lynx':4)
+Lynx:4,
+(
+'Puma concolor':4)
+Puma:4,
+(
+'Felis catus':4,
+'Felis silvestris':4
+)Felis:4
+)Felinae:4
+)Felidae:4
+)Feliformia:4,
+(
+(
+Otaria:4)
+Otariidae:4,
+Phocidae:4,
+(
+(
+(
+'Mustela putorius':4)
+Mustela:4)
+Mustelinae:4,
+(
+(
+'Meles meles':4)
+Meles:4)
+Melinae:4,
+(
+(
+'Martes foina':4)
+Martes:4)
+Guloninae:4,
+(
+(
+'Aonyx cinereus':4)
+Aonyx:4,
+(
+'Lutra lutra':4)
+Lutra:4
+)Lutrinae:4
+)Mustelidae:4,
+(
+(
+'Procyon lotor':4)
+Procyon:4,
+Nasua:4
+)Procyonidae:4,
+(
+(
+'Ailurus fulgens':4)
+Ailurus:4)
+Ailuridae:4,
+(
+(
+'Ursus arctos':4)
+Ursus:4)
+Ursidae:4,
+(
+Nyctereutes:4,
+(
+'Vulpes vulpes':4)
+Vulpes:4,
+(
+'Canis aureus':4,
+(
+'Canis lupus lycaon':4,
+'Canis lupus familiaris':4
+)'Canis lupus':4
+)Canis:4
+)Canidae:4
+)Caniformia:4
+)Carnivora:4,
+(
+(
+(
+(
+(
+'Carollia perspicillata':4)
+Carollia:4)
+Carolliinae:4)
+Phyllostomidae:4)
+Microchiroptera:4,
+(
+(
+(
+Pteropus:4)
+Pteropodinae:4)
+Pteropodidae:4)
+Megachiroptera:4
+)Chiroptera:4,
+(
+Erinaceidae:4)
+Eulipotyphla:4
+)Laurasiatheria:4
+)Boreoeutheria:4,
+(
+(
+Folivora:4,
+Vermilingua:4
+)Pilosa:4,
+(
+Dasypodidae:4)
+Cingulata:4
+)Xenarthra:4
+)Eutheria:4,
+(
+(
+(
+(
+'Phascolarctos cinereus':4)
+Phascolarctos:4)
+Phascolarctidae:4,
+(
+(
+'Petaurus breviceps':4)
+Petaurus:4)
+Petauridae:4,
+(
+(
+'Notamacropus rufogriseus':4,
+'Notamacropus parma':4
+)Notamacropus:4,
+Macropus:4
+)Macropodidae:4
+)Diprotodontia:4,
+(
+(
+Sarcophilus:4)
+Dasyuridae:4)
+Dasyuromorphia:4
+)Metatheria:4
+)Theria:4)
+Mammalia:4,
+(
+(
+(
+(
+(
+(
+(
+(
+(
+'Correlophus ciliatus':4)
+Correlophus:4)
+Diplodactylidae:4)
+Pygopoidea:4,
+(
+(
+(
+'Paroedura picta':4)
+Paroedura:4)
+Gekkoninae:4)
+Gekkonidae:4
+)Gekkota:4,
+(
+(
+(
+(
+Hemisphaeriodon:4,
+(
+'Corucia zebrata':4)
+Corucia:4,
+(
+'Tiliqua scincoides':4,
+'Tiliqua rugosa':4
+)Tiliqua:4
+)Egerniinae:4)
+Scincidae:4)
+Scinciformata:4,
+(
+(
+(
+(
+(
+'Dracaena guianensis':4)
+Dracaena:4)
+Teiidae:4)
+Teiioidea:4)
+Laterata:4,
+(
+(
+(
+(
+Erpeton:4)
+Homalopsidae:4,
+(
+(
+(
+'Bothriechis schlegelii':4)
+Bothriechis:4,
+Crotalus:4
+)Crotalinae:4,
+(
+(
+'Vipera berus':4,
+'Vipera ammodytes':4
+)Vipera:4)
+Viperinae:4
+)Viperidae:4,
+(
+(
+Naja:4)
+Elapinae:4)
+Elapidae:4,
+(
+(
+Chrysopelea:4)
+Ahaetuliinae:4,
+(
+(
+'Coronella austriaca':4)
+Coronella:4,
+(
+'Zamenis longissimus':4)
+Zamenis:4,
+Lampropeltis:4
+)Colubrinae:4,
+(
+(
+'Natrix tessellata':4)
+Natrix:4)
+Natricinae:4
+)Colubridae:4
+)Colubroidea:4,
+(
+(
+(
+'Python regius':4,
+'Python molurus':4
+)Python:4)
+Pythonidae:4,
+(
+(
+Eunectes:4,
+(
+'Boa constrictor':4)
+Boa:4
+)Boinae:4)
+Boidae:4
+)Henophidia:4
+)Serpentes:4,
+(
+(
+(
+(
+'Shinisaurus crocodilurus':4)
+Shinisaurus:4)
+Shinisauridae:4,
+(
+(
+(
+'Varanus gouldii':4,
+'Varanus exanthematicus':4
+)Varanus:4)
+Varanidae:4)
+Varanoidea:4
+)Paleoanguimorpha:4,
+(
+(
+(
+(
+'Abronia anzuetoi':4)
+Abronia:4)
+Anguidae:4)
+Anguioidea:4,
+(
+Heloderma:4)
+Helodermatidae:4
+)Neoanguimorpha:4
+)Anguimorpha:4,
+(
+(
+(
+(
+(
+'Xenagama wilmsi':4)
+Xenagama:4)
+Agaminae:4,
+(
+Acanthosaura:4)
+Draconinae:4,
+(
+(
+'Pogona barbata':4)
+Pogona:4)
+Amphibolurinae:4,
+(
+(
+'Uromastyx ocellata':4)
+Uromastyx:4)
+Uromastycinae:4
+)Agamidae:4,
+(
+(
+'Furcifer pardalis':4)
+Furcifer:4,
+(
+'Chamaeleo calyptratus':4)
+Chamaeleo:4,
+(
+'Trioceros jacksonii':4)
+Trioceros:4
+)Chamaeleonidae:4
+)Acrodonta:4,
+(
+(
+'Polychrus marmoratus':4)
+Polychrus:4)
+Polychrotidae:4,
+(
+(
+Laemanctus:4)
+Corytophaninae:4,
+(
+Sauromalus:4,
+(
+'Cyclura cornuta':4)
+Cyclura:4,
+Brachylophus:4
+)Iguaninae:4,
+(
+Oplurus:4)
+Oplurinae:4,
+(
+Leiocephalus:4)
+Tropidurinae:4
+)Iguanidae:4
+)Iguania:4
+)Toxicofera:4
+)Episquamata:4
+)Unidentata:4
+)Bifurcata:4)
+Squamata:4)
+Lepidosauria:4,
+(
+(
+(
+(
+(
+(
+'Caiman yacare':4)
+Caiman:4)
+Caimaninae:4)
+Alligatoridae:4)
+Crocodylia:4,
+(
+(
+(
+(
+(
+(
+(
+(
+(
+'Merops bullockoides':4,
+'Merops apiaster':4
+)Merops:4)
+Meropidae:4,
+(
+(
+'Coracias cyanogaster':4,
+'Coracias garrulus':4
+)Coracias:4)
+Coraciidae:4
+)Coraciiformes:4,
+(
+(
+(
+'Rhyticeros narcondami':4)
+Rhyticeros:4,
+(
+'Bycanistes bucinator':4)
+Bycanistes:4,
+(
+'Tockus flavirostris':4,
+'Tockus deckeni':4,
+'Tockus alboterminatus':4,
+'Tockus nasutus':4
+)Tockus:4
+)Bucerotidae:4)
+Bucerotiformes:4,
+(
+(
+(
+'Trachyphonus erythrocephalus':4)
+Trachyphonus:4)
+Lybiidae:4,
+(
+(
+'Picus viridis':4)
+Picus:4)
+Picidae:4
+)Piciformes:4,
+(
+(
+(
+'Upupa epops':4)
+Upupa:4)
+Upupidae:4)
+Upupiformes:4,
+Coliiformes:4,
+(
+(
+Musophaga:4)
+Musophagidae:4)
+Musophagiformes:4,
+(
+Cariamidae:4)
+Cariamiformes:4,
+(
+(
+(
+'Athene noctua':4)
+Athene:4,
+(
+'Asio otus':4)
+Asio:4,
+(
+'Strix aluco':4,
+'Strix uralensis':4
+)Strix:4,
+(
+'Bubo bubo':4)
+Bubo:4
+)Strigidae:4)
+Strigiformes:4,
+(
+Eurypygidae:4,
+(
+(
+'Grus paradisea':4,
+'Grus japonensis':4
+)Grus:4,
+(
+'Balearica pavonina':4)
+Balearica:4
+)Gruidae:4
+)Gruiformes:4,
+(
+(
+(
+'Eudyptes chrysocome':4)
+Eudyptes:4,
+(
+'Spheniscus humboldti':4)
+Spheniscus:4,
+(
+'Aptenodytes patagonicus':4)
+Aptenodytes:4
+)Spheniscidae:4)
+Sphenisciformes:4,
+(
+(
+(
+'Probosciger aterrimus':4)
+Probosciger:4,
+(
+'Cacatua alba':4)
+Cacatua:4,
+(
+'Nymphicus hollandicus':4)
+Nymphicus:4
+)Cacatuidae:4,
+(
+Melopsittacus:4)
+Psittaculidae:4,
+(
+(
+'Callocephalon fimbriatum':4)
+Callocephalon:4,
+(
+'Cyclopsitta diophthalma':4)
+Cyclopsitta:4,
+(
+'Cyanoliseus patagonus':4)
+Cyanoliseus:4,
+(
+'Loriculus galgulus':4)
+Loriculus:4,
+(
+'Agapornis taranta':4,
+'Agapornis personatus':4,
+'Agapornis lilianae':4,
+'Agapornis canus':4
+)Agapornis:4,
+Psittacus:4,
+(
+'Amazona agilis':4)
+Amazona:4,
+(
+'Ara ararauna':4)
+Ara:4
+)Psittacidae:4
+)Psittaciformes:4,
+Phoenicopteriformes:4,
+(
+(
+(
+'Geronticus eremita':4)
+Geronticus:4,
+(
+'Plegadis falcinellus':4)
+Plegadis:4
+)Threskiornithidae:4,
+(
+(
+'Pelecanus crispus':4)
+Pelecanus:4)
+Pelecanidae:4,
+(
+Ardea:4)
+Ardeidae:4,
+(
+(
+'Phalacrocorax carbo':4)
+Phalacrocorax:4)
+Phalacrocoracidae:4
+)Pelecaniformes:4,
+(
+(
+(
+'Copsychus malabaricus':4)
+Copsychus:4)
+Muscicapidae:4,
+(
+(
+'Chiroxiphia pareola':4)
+Chiroxiphia:4)
+Pipridae:4,
+(
+(
+'Pitta moluccensis':4)
+Pitta:4)
+Pittidae:4,
+(
+(
+'Psarisomus dalhousiae':4)
+Psarisomus:4)
+Eurylaimidae:4,
+(
+(
+'Mimus polyglottos':4)
+Mimus:4)
+Mimidae:4,
+(
+(
+(
+'Pycnonotus barbatus':4)
+Pycnonotus:4)
+Pycnonotidae:4,
+(
+(
+(
+'Sylvia atricapilla':4)
+Sylvia:4)
+Sylviinae:4)
+Sylviidae:4,
+Zosteropidae:4
+)Sylvioidea:4,
+(
+(
+(
+'Irena puella':4)
+Irena:4,
+Chloropsis:4
+)Irenidae:4,
+(
+(
+'Garrulus glandarius':4)
+Garrulus:4,
+(
+'Corvus frugilegus':4,
+'Corvus corax':4,
+'Corvus corone':4
+)Corvus:4
+)Corvidae:4
+)Corvoidea:4,
+(
+(
+'Lamprotornis chalcurus':4)
+Lamprotornis:4,
+(
+'Aplonis panayensis':4)
+Aplonis:4,
+(
+'Sturnus vulgaris':4)
+Sturnus:4
+)Sturnidae:4,
+(
+(
+'Parus major':4)
+Parus:4)
+Paridae:4,
+(
+(
+(
+'Euplectes orix':4)
+Euplectes:4,
+(
+Dinemellia:4,
+(
+'Ploceus cucullatus':4)
+Ploceus:4
+)Ploceinae:4
+)Ploceidae:4,
+Nectariniidae:4,
+(
+(
+'Padda oryzivora':4)
+Padda:4,
+(
+'Passer domesticus':4)
+Passer:4
+)Passeridae:4,
+(
+(
+'Uraeginthus bengalus':4)
+Uraeginthus:4,
+(
+'Pytilia melba':4)
+Pytilia:4,
+(
+'Amandava subflava':4)
+Amandava:4,
+Erythrura:4,
+(
+(
+'Vidua paradisaea':4)
+Vidua:4)
+Viduinae:4
+)Estrildidae:4,
+(
+(
+(
+(
+'Cyanocompsa brissonii':4)
+Cyanocompsa:4)
+Cardinalini:4)
+Emberizinae:4,
+(
+(
+'Spinus spinus':4)
+Spinus:4,
+Coccothraustes:4,
+(
+'Chloris chloris':4)
+Chloris:4,
+Serinus:4
+)Carduelinae:4
+)Fringillidae:4
+)Passeroidea:4
+)Passeriformes:4,
+(
+(
+(
+(
+'Aquila heliaca':4)
+Aquila:4,
+(
+'Milvus milvus':4)
+Milvus:4,
+Gypaetus:4,
+(
+'Buteo lagopus':4,
+'Buteo buteo':4
+)Buteo:4,
+(
+'Haliaeetus leucocephalus':4,
+'Haliaeetus albicilla':4
+)Haliaeetus:4,
+(
+'Circus cyaneus':4,
+'Circus aeruginosus':4
+)Circus:4,
+(
+'Accipiter nisus':4,
+'Accipiter gentilis':4
+)Accipiter:4
+)Accipitrinae:4)
+Accipitridae:4)
+Accipitriformes:4,
+(
+(
+(
+'Falco cherrug':4,
+'Falco tinnunculus':4,
+'Falco peregrinus':4
+)Falco:4)
+Falconidae:4)
+Falconiformes:4,
+(
+(
+(
+'Geopelia placida':4)
+Geopelia:4,
+Gallicolumba:4,
+(
+'Caloenas nicobarica':4)
+Caloenas:4,
+(
+'Ptilinopus pulchellus':4)
+Ptilinopus:4,
+(
+'Ducula bicolor':4)
+Ducula:4,
+(
+'Columba livia':4)
+Columba:4
+)Columbidae:4)
+Columbiformes:4,
+(
+(
+(
+'Scopus umbretta':4)
+Scopus:4)
+Scopidae:4,
+(
+(
+'Leptoptilos crumeniferus':4)
+Leptoptilos:4,
+(
+'Ciconia ciconia':4)
+Ciconia:4
+)Ciconiidae:4
+)Ciconiiformes:4,
+(
+(
+(
+'Recurvirostra avosetta':4)
+Recurvirostra:4)
+Recurvirostridae:4,
+(
+Philomachus:4,
+(
+'Tringa totanus':4)
+Tringa:4
+)Scolopacidae:4,
+Jacanidae:4,
+(
+(
+'Vanellus armatus':4)
+Vanellus:4)
+Charadriidae:4
+)Charadriiformes:4,
+(
+(
+(
+(
+(
+'Lyrurus tetrix':4)
+Lyrurus:4,
+(
+'Tetrastes bonasia':4)
+Tetrastes:4,
+(
+'Tetrao urogallus':4)
+Tetrao:4
+)Tetraoninae:4,
+(
+Rollulus:4,
+(
+'Coturnix delegorguei':4,
+'Coturnix coturnix':4
+)Coturnix:4,
+(
+'Perdix perdix':4)
+Perdix:4
+)Perdicinae:4,
+(
+(
+'Phasianus colchicus':4)
+Phasianus:4,
+(
+'Gallus gallus':4)
+Gallus:4
+)Phasianinae:4
+)Phasianidae:4,
+(
+(
+'Acryllium vulturinum':4)
+Acryllium:4)
+Numididae:4
+)Galliformes:4,
+(
+(
+(
+'Chauna torquata':4)
+Chauna:4)
+Anhimidae:4,
+(
+(
+(
+'Cygnus cygnus':4,
+'Cygnus melancoryphus':4
+)Cygnus:4)
+Anserinae:4,
+(
+(
+'Dendrocygna viduata':4)
+Dendrocygna:4)
+Dendrocygninae:4,
+(
+(
+'Spatula querquedula':4)
+Spatula:4,
+(
+'Anas platyrhynchos':4)
+Anas:4
+)Anatinae:4
+)Anatidae:4
+)Anseriformes:4
+)Galloanserae:4
+)Neognathae:4,
+(
+(
+(
+(
+'Struthio camelus':4)
+Struthio:4)
+Struthionidae:4)
+Struthioniformes:4,
+(
+(
+(
+'Rhea americana':4)
+Rhea:4)
+Rheidae:4)
+Rheiformes:4,
+(
+(
+(
+'Dromaius novaehollandiae':4)
+Dromaius:4)
+Dromaiidae:4,
+(
+(
+'Casuarius casuarius':4)
+Casuarius:4)
+Casuariidae:4
+)Casuariiformes:4
+)Palaeognathae:4
+)Aves:4)
+Coelurosauria:4)
+Theropoda:4)
+Saurischia:4)
+Dinosauria:4
+)Archosauria:4,
+(
+(
+(
+(
+(
+(
+'Lissemys punctata':4)
+Lissemys:4)
+Trionychidae:4)
+Trionychia:4,
+(
+(
+(
+(
+(
+'Cuora mouhotii':4,
+'Cuora mccordi':4
+)Cuora:4,
+(
+'Geoemyda spengleri':4)
+Geoemyda:4
+)Geoemydinae:4)
+Geoemydidae:4,
+(
+Malacochersus:4,
+(
+'Testudo kleinmanni':4,
+'Testudo hermanni':4
+)Testudo:4,
+(
+'Astrochelys yniphora':4,
+'Astrochelys radiata':4
+)Astrochelys:4,
+Geochelone:4
+)Testudinidae:4,
+(
+Terrapene:4,
+(
+(
+'Trachemys scripta scripta':4,
+'Trachemys scripta elegans':4
+)'Trachemys scripta':4)
+Trachemys:4,
+Graptemys:4
+)Emydidae:4
+)Testudinoidea:4,
+(
+(
+(
+(
+'Chelydra serpentina':4)
+Chelydra:4)
+Chelydridae:4)
+Chelydroidea:4)
+Americhelydia:4
+)Durocryptodira:4
+)Cryptodira:4)
+Testudines:4)
+Testudinata:4
+)Archelosauria:4
+)Sauria:4)
+Sauropsida:4
+)Amniota:4,
+(
+(
+(
+(
+(
+(
+(
+'Calyptocephallela gayi':4)
+Calyptocephallela:4)
+Calyptocephalellidae:4)
+Myobatrachoidea:4,
+(
+(
+(
+(
+'Rhacophorus reinwardtii':4)
+Rhacophorus:4,
+(
+'Polypedates otilophus':4)
+Polypedates:4,
+Theloderma:4
+)Rhacophorinae:4)
+Rhacophoridae:4,
+(
+(
+(
+'Hoplobatrachus tigerinus':4)
+Hoplobatrachus:4)
+Dicroglossinae:4)
+Dicroglossidae:4,
+(
+(
+(
+'Cornufer guentheri':4)
+Cornufer:4)
+Ceratobatrachinae:4)
+Ceratobatrachidae:4
+)Ranoidea:4,
+(
+Heleophrynidae:4,
+(
+(
+'Duttaphrynus melanostictus':4)
+Duttaphrynus:4,
+(
+'Incilius alvarius':4)
+Incilius:4
+)Bufonidae:4
+)Hyloidea:4
+)Neobatrachia:4)
+Anura:4,
+(
+(
+(
+(
+Neurergus:4)
+Pleurodelinae:4)
+Salamandridae:4,
+(
+(
+'Ambystoma andersoni':4,
+'Ambystoma mexicanum':4
+)Ambystoma:4)
+Ambystomatidae:4
+)Salamandroidea:4)
+Caudata:4
+)Batrachia:4)
+Amphibia:4
+)Tetrapoda:4)
+Dipnotetrapodomorpha:4)
+Sarcopterygii:4,
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+'Gymnothorax moringa':4)
+Gymnothorax:4)
+Muraeninae:4)
+Muraenidae:4)
+Anguilliformes:4,
+(
+(
+(
+'Elops affinis':4)
+Elops:4)
+Elopidae:4)
+Elopiformes:4
+)Elopomorpha:4)
+Elopocephala:4)
+Elopocephalai:4,
+(
+(
+(
+(
+(
+(
+'Osteoglossum bicirrhosum':4)
+Osteoglossum:4)
+Osteoglossidae:4)
+Osteoglossiformes:4)
+Osteoglossomorpha:4)
+Osteoglossocephala:4,
+(
+(
+(
+(
+(
+(
+(
+(
+(
+'Loweina rara':4,
+'Loweina terminata':4
+)Loweina:4)
+Myctophidae:4)
+Myctophiformes:4)
+Myctophata:4,
+(
+(
+(
+(
+(
+(
+'Photoblepharon palpebratum':4)
+Photoblepharon:4)
+Anomalopidae:4)
+Trachichthyiformes:4)
+Berycimorphaceae:4,
+(
+(
+(
+(
+(
+'Neoniphon sammara':4)
+Neoniphon:4)
+Holocentrinae:4)
+Holocentridae:4)
+Holocentriformes:4)
+Holocentrimorphaceae:4,
+(
+(
+(
+(
+(
+(
+(
+'Onuxodon fowleri':4)
+Onuxodon:4)
+Carapinae:4)
+Ophidiidae:4)
+Ophidioidei:4)
+Ophidiiformes:4)
+Ophidiaria:4,
+(
+(
+(
+(
+(
+(
+'Cheilodipterus quinquelineatus':4)
+Cheilodipterus:4,
+(
+'Rhabdamia gracilis':4)
+Rhabdamia:4,
+(
+'Ostorhinchus moluccensis':4,
+'Ostorhinchus rueppellii':4,
+'Ostorhinchus aureus':4
+)Ostorhinchus:4
+)Apogoninae:4)
+Apogonidae:4)
+Apogonoidei:4)
+Kurtiformes:4,
+(
+(
+(
+(
+(
+'Rhinogobiops nicholsii':4)
+Rhinogobiops:4)
+Gobiinae:4)
+Gobiidae:4)
+Gobioidei:4)
+Gobiiformes:4
+)Gobiaria:4,
+(
+(
+(
+(
+(
+'Fistularia commersonii':4)
+Fistularia:4)
+Fistulariidae:4)
+'Syngnathiformes incertae sedis':4,
+(
+(
+(
+(
+'Phyllopteryx taeniolatus':4)
+Phyllopteryx:4)
+Syngnathinae:4)
+Syngnathidae:4)
+Syngnathoidei:4,
+(
+(
+(
+'Parupeneus spilurus':4)
+Parupeneus:4,
+(
+'Mullus surmuletus':4)
+Mullus:4
+)Mullidae:4)
+Mulloidea:4
+)Syngnathiformes:4)
+Syngnathiaria:4,
+(
+(
+(
+(
+(
+(
+(
+'Cheilopogon pinnatibarbatus californicus':4)
+'Cheilopogon pinnatibarbatus':4)
+Cheilopogon:4)
+Exocoetidae:4)
+Belonoidei:4)
+Beloniformes:4,
+(
+(
+(
+(
+'Atherinomorus vaigiensis':4)
+Atherinomorus:4)
+Atherininae:4)
+Atherinidae:4)
+Atheriniformes:4,
+(
+(
+(
+(
+'Nothobranchius furzeri':4)
+Nothobranchius:4)
+Nothobranchiidae:4)
+Aplocheiloidei:4)
+Cyprinodontiformes:4
+)Atherinomorphae:4,
+(
+(
+(
+(
+'Oxycercichthys veliferus':4)
+Oxycercichthys:4)
+Pseudochrominae:4)
+Pseudochromidae:4,
+(
+(
+'Embiotoca jacksoni':4)
+Embiotoca:4)
+Embiotocidae:4,
+(
+(
+'Chromis punctipinnis':4)
+Chromis:4,
+(
+'Amblyglyphidodon leucogaster':4)
+Amblyglyphidodon:4,
+(
+'Pomacentrus coelestis':4)
+Pomacentrus:4,
+(
+'Dascyllus aruanus':4)
+Dascyllus:4
+)Pomacentridae:4
+)'Ovalentaria incertae sedis':4,
+(
+(
+(
+(
+(
+(
+(
+'Hypselecara coryphaenoides':4)
+Hypselecara:4)
+Heroini:4)
+Cichlasomatinae:4)
+'New World cichlids':4)
+Cichlidae:4)
+Cichliformes:4)
+Cichlomorphae:4,
+(
+(
+(
+(
+(
+Ecsenius:4)
+Salariinae:4)
+Blenniidae:4)
+Blennioidei:4)
+Blenniiformes:4)
+Blenniimorphae:4
+)Ovalentaria:4,
+(
+(
+(
+(
+'Alectis ciliaris':4)
+Alectis:4)
+Carangidae:4)
+Carangiformes:4,
+(
+(
+(
+'Centropomus robalito':4)
+Centropomus:4)
+Centropomidae:4)
+'Carangaria incertae sedis':4,
+(
+(
+(
+(
+'Scophthalmus aquosus':4)
+Scophthalmus:4)
+Scophthalmidae:4,
+(
+(
+'Hippoglossina oblonga':4)
+Hippoglossina:4,
+(
+'Paralichthys dentatus':4)
+Paralichthys:4
+)Paralichthyidae:4,
+(
+(
+'Lepidopsetta polyxystra':4)
+Lepidopsetta:4,
+(
+'Glyptocephalus zachirus':4,
+'Glyptocephalus cynoglossus':4
+)Glyptocephalus:4,
+(
+'Hippoglossoides platessoides':4,
+'Hippoglossoides elassodon':4
+)Hippoglossoides:4,
+(
+'Myzopsetta ferruginea':4)
+Myzopsetta:4
+)Pleuronectidae:4
+)Pleuronectoidei:4)
+Pleuronectiformes:4,
+(
+(
+(
+'Xiphias gladius':4)
+Xiphias:4)
+Xiphiidae:4)
+Istiophoriformes:4
+)Carangaria:4,
+(
+(
+(
+(
+'Pomatomus saltatrix':4)
+Pomatomus:4)
+Pomatomidae:4,
+(
+(
+(
+(
+'Thunnus albacares':4)
+Thunnus:4)
+Thunnini:4)
+Scombrinae:4)
+Scombridae:4
+)Scombriformes:4)
+Pelagiaria:4,
+(
+(
+(
+(
+'Pristigenys alta':4)
+Pristigenys:4)
+Priacanthidae:4)
+Priacanthiformes:4,
+(
+(
+(
+'Parapercis xanthozona':4)
+Parapercis:4)
+Pinguipedidae:4,
+(
+(
+'Ammodytes dubius':4,
+'Ammodytes hexapterus':4
+)Ammodytes:4)
+Ammodytidae:4
+)Uranoscopiformes:4,
+(
+(
+(
+'Platax teira':4)
+Platax:4)
+Ephippidae:4)
+Ephippiformes:4,
+(
+(
+(
+'Cirrhilabrus lineatus':4,
+'Cirrhilabrus roseafascia':4
+)Cirrhilabrus:4,
+(
+'Bodianus diana':4)
+Bodianus:4,
+(
+'Oxycheilinus digramma':4)
+Oxycheilinus:4,
+(
+'Semicossyphus pulcher':4)
+Semicossyphus:4,
+(
+'Labroides bicolor':4)
+Labroides:4,
+(
+'Coris caudimacula':4,
+'Coris gaimard':4
+)Coris:4,
+(
+'Choerodon fasciatus':4)
+Choerodon:4,
+(
+'Halichoeres trimaculatus':4)
+Halichoeres:4
+)Labridae:4)
+Labriformes:4,
+(
+(
+(
+(
+(
+'Sphoeroides maculatus':4)
+Sphoeroides:4)
+Tetraodontidae:4)
+Tetradontoidea:4,
+(
+(
+'Diodon hystrix':4)
+Diodon:4)
+Diodontidae:4
+)Tetraodontoidei:4,
+(
+(
+(
+'Sufflamen chrysopterum':4)
+Sufflamen:4,
+(
+'Pseudobalistes fuscus':4)
+Pseudobalistes:4,
+(
+'Rhinecanthus aculeatus':4)
+Rhinecanthus:4
+)Balistidae:4,
+(
+(
+'Cantherhines pardalis':4)
+Cantherhines:4,
+(
+'Pseudomonacanthus peroni':4)
+Pseudomonacanthus:4
+)Monacanthidae:4
+)Balistoidea:4
+)Tetraodontiformes:4,
+(
+(
+(
+'Chaetodon lunula':4,
+'Chaetodon lineolatus':4
+)Chaetodon:4)
+Chaetodontidae:4)
+Chaetodontiformes:4,
+(
+(
+(
+(
+'Paracirrhites forsteri':4)
+Paracirrhites:4)
+Cirrhitidae:4)
+Cirrhitioidei:4)
+Centrarchiformes:4,
+(
+(
+(
+(
+'Ctenochaetus striatus':4)
+Ctenochaetus:4,
+(
+'Acanthurus triostegus':4)
+Acanthurus:4,
+(
+'Paracanthurus hepatus':4)
+Paracanthurus:4
+)Acanthurinae:4)
+Acanthuridae:4)
+Acanthuriformes:4,
+(
+(
+(
+'Haemulon flavolineatum':4)
+Haemulon:4)
+Haemulidae:4,
+(
+(
+(
+'Pterocaesio marri':4)
+Pterocaesio:4)
+Caesioninae:4,
+(
+(
+'Lutjanus quinquelineatus':4,
+'Lutjanus mahogoni':4
+)Lutjanus:4)
+Lutjaninae:4
+)Lutjanidae:4
+)Lutjaniformes:4,
+(
+(
+(
+'Scolopsis bilineata':4)
+Scolopsis:4)
+Nemipteridae:4,
+(
+(
+(
+'Lethrinus atkinsoni':4)
+Lethrinus:4)
+Lethrininae:4)
+Lethrinidae:4,
+(
+(
+'Stenotomus chrysops':4)
+Stenotomus:4)
+Sparidae:4
+)Spariformes:4,
+(
+(
+(
+'Centropyge heraldi':4)
+Centropyge:4)
+Pomacanthidae:4,
+(
+(
+'Cynoscion regalis':4)
+Cynoscion:4)
+Sciaenidae:4,
+(
+(
+'Morone saxatilis':4)
+Morone:4)
+Moronidae:4
+)'Eupercaria incertae sedis':4,
+(
+(
+(
+(
+'Prionotus carolinus':4)
+Prionotus:4)
+Triglidae:4)
+Triglioidei:4,
+(
+(
+(
+(
+(
+'Cephalopholis miniata':4)
+Cephalopholis:4)
+Epinephelini:4)
+Epinephelinae:4,
+(
+(
+'Pseudanthias ventralis':4)
+Pseudanthias:4)
+Anthiinae:4,
+(
+(
+'Centropristis striata':4)
+Centropristis:4)
+Serraninae:4
+)Serranidae:4)
+Serranoidei:4,
+(
+(
+(
+(
+'Sebastolobus alascanus':4)
+Sebastolobus:4)
+Sebastolobinae:4,
+(
+(
+'Sebastes norvegicus':4,
+'Sebastes chrysomelas':4,
+'Sebastes borealis':4,
+'Sebastes semicinctus':4,
+'Sebastes paucispinis':4,
+'Sebastes ovalis':4,
+'Sebastes mystinus':4,
+'Sebastes miniatus':4,
+'Sebastes hopkinsi':4,
+'Sebastes constellatus':4,
+'Sebastes caurinus':4,
+'Sebastes atrovirens':4
+)Sebastes:4)
+Sebastinae:4
+)Sebastidae:4)
+Scorpaenoidei:4,
+(
+(
+(
+(
+'Anoplopoma fimbria':4)
+Anoplopoma:4)
+Anoplopomatidae:4)
+Anoplopomatales:4,
+(
+(
+(
+'Oxylebius pictus':4)
+Oxylebius:4,
+(
+'Pleurogrammus monopterygius':4)
+Pleurogrammus:4
+)Hexagrammidae:4)
+Hexagrammales:4,
+(
+(
+(
+'Cryptacanthodes maculatus':4)
+Cryptacanthodes:4)
+Cryptacanthodidae:4,
+(
+(
+(
+'Lumpenus lampretaeformis':4)
+Lumpenus:4,
+(
+'Leptoclinus maculatus':4)
+Leptoclinus:4
+)Lumpeninae:4)
+Stichaeidae:4,
+(
+(
+'Zaprora silenus':4)
+Zaprora:4)
+Zaproridae:4,
+(
+(
+'Bathymaster signatus':4)
+Bathymaster:4)
+Bathymasteridae:4,
+(
+(
+(
+'Zoarces americanus':4)
+Zoarces:4)
+Zoarcinae:4)
+Zoarcidae:4
+)Zoarcales:4,
+(
+(
+(
+'Triglops scepticus':4)
+Triglops:4,
+(
+'Hemilepidotus jordani':4)
+Hemilepidotus:4,
+(
+'Myoxocephalus octodecemspinosus':4)
+Myoxocephalus:4
+)Cottidae:4,
+(
+(
+(
+'Cyclopterus lumpus':4)
+Cyclopterus:4)
+Cyclopterinae:4)
+Cyclopteridae:4,
+(
+(
+(
+'Podothecus accipenserinus':4)
+Podothecus:4)
+Agoninae:4,
+(
+(
+'Hemitripterus americanus':4)
+Hemitripterus:4)
+Hemitripterinae:4
+)Agonidae:4
+)Cottales:4
+)Cottioidei:4
+)Perciformes:4,
+(
+(
+(
+(
+'Histrio histrio':4)
+Histrio:4)
+Antennariidae:4)
+Antennarioidei:4,
+(
+(
+(
+'Lophius piscatorius':4)
+Lophius:4)
+Lophiidae:4)
+Lophioidei:4
+)Lophiiformes:4
+)Eupercaria:4
+)Percomorphaceae:4
+)Euacanthomorphacea:4,
+(
+(
+(
+(
+(
+(
+'Zenopsis conchifer':4)
+Zenopsis:4)
+Zeidae:4)
+Zeiformes:4)
+Zeariae:4,
+(
+(
+(
+(
+(
+(
+'Coryphaenoides acrolepis':4)
+Coryphaenoides:4)
+Macrourinae:4)
+Macrouridae:4)
+Macrouroidei:4,
+(
+(
+(
+'Urophycis tenuis':4)
+Urophycis:4)
+Phycidae:4,
+(
+(
+'Pollachius virens':4)
+Pollachius:4,
+(
+'Gadus chalcogrammus':4,
+'Gadus morhua':4
+)Gadus:4
+)Gadidae:4
+)Gadoidei:4
+)Gadiformes:4)
+Gadariae:4
+)Zeiogadaria:4)
+Paracanthopterygii:4
+)Acanthomorphata:4
+)Ctenosquamata:4)
+Eurypterygia:4)
+Neoteleostei:4,
+(
+(
+(
+(
+(
+'Salvelinus umbla':4,
+'Salvelinus alpinus':4
+)Salvelinus:4,
+(
+'Salmo trutta':4,
+'Salmo salar':4
+)Salmo:4
+)Salmoninae:4)
+Salmonidae:4)
+Salmoniformes:4,
+(
+(
+(
+'Esox lucius':4)
+Esox:4)
+Esocidae:4)
+Esociformes:4
+)Protacanthopterygii:4
+)Euteleosteomorpha:4,
+(
+(
+(
+(
+(
+(
+(
+(
+'Ariopsis felis':4)
+Ariopsis:4)
+Ariidae:4)
+Siluroidei:4)
+Siluriformes:4)
+Characiphysae:4,
+(
+(
+(
+(
+(
+'Tinca tinca':4)
+Tinca:4)
+Tincidae:4,
+(
+(
+(
+'Cyprinus carpio':4)
+Cyprinus:4)
+Cyprininae:4)
+Cyprinidae:4,
+(
+(
+(
+'Danio rerio':4)
+Danio:4)
+Danioninae:4)
+Danionidae:4
+)Cyprinoidei:4)
+Cypriniformes:4)
+Cypriniphysae:4
+)Otophysi:4)
+Ostariophysi:4,
+(
+(
+(
+(
+(
+(
+'Clupea harengus':4)
+Clupea:4)
+Clupeinae:4)
+Clupeidae:4)
+Clupeoidei:4)
+Clupeiformes:4)
+Clupei:4
+)Otomorpha:4
+)Clupeocephala:4
+)Osteoglossocephalai:4
+)Teleostei:4)
+Neopterygii:4)
+Actinopteri:4)
+Actinopterygii:4
+)Euteleostomi:4)
+Teleostomi:4,
+(
+(
+(
+(
+(
+'Callorhinchus milii':4)
+Callorhinchus:4)
+Callorhinchidae:4)
+Chimaeriformes:4)
+Holocephali:4,
+(
+(
+(
+(
+(
+(
+(
+'Carcharias taurus':4)
+Carcharias:4)
+Odontaspididae:4)
+Lamniformes:4,
+(
+(
+(
+'Scyliorhinus retifer':4)
+Scyliorhinus:4)
+Scyliorhinidae:4,
+(
+(
+'Negaprion brevirostris':4)
+Negaprion:4,
+(
+'Galeocerdo cuvier':4)
+Galeocerdo:4
+)Carcharhinidae:4,
+(
+(
+'Mustelus canis':4)
+Mustelus:4)
+Triakidae:4
+)Carcharhiniformes:4
+)Galeoidea:4)
+Galeomorphii:4,
+(
+(
+(
+(
+'Squalus acanthias':4)
+Squalus:4)
+Squalidae:4)
+Squaliformes:4)
+Squalomorphii:4
+)Selachii:4,
+(
+(
+(
+(
+(
+'Hypanus americanus':4)
+Hypanus:4)
+Dasyatidae:4)
+Dasyatoidea:4,
+(
+(
+(
+'Rhinoptera bonasus':4)
+Rhinoptera:4)
+Rhinopterinae:4)
+Myliobatidae:4
+)Myliobatiformes:4,
+(
+(
+(
+'Leucoraja ocellata':4,
+'Leucoraja erinacea':4
+)Leucoraja:4)
+Rajidae:4)
+Rajiformes:4
+)Batoidea:4
+)Elasmobranchii:4
+)Chondrichthyes:4
+)Gnathostomata:4
+)Vertebrata:4)
+Craniata:4,
+(
+(
+(
+(
+(
+'Branchiostoma floridae':4)
+Branchiostoma:4)
+Branchiostomidae:4)
+Amphioxiformes:4)
+Leptocardii:4)
+Cephalochordata:4,
+(
+(
+(
+(
+(
+'Clavelina picta':4)
+Clavelina:4)
+Clavelinidae:4)
+Aplousobranchia:4,
+(
+(
+(
+'Boltenia echinata':4,
+'Boltenia ovifera':4
+)Boltenia:4,
+(
+'Halocynthia pyriformis':4)
+Halocynthia:4
+)Pyuridae:4,
+(
+(
+'Botryllus schlosseri':4)
+Botryllus:4,
+(
+'Styela montereyensis':4)
+Styela:4
+)Styelidae:4,
+(
+(
+'Molgula citrina':4)
+Molgula:4)
+Molgulidae:4
+)Stolidobranchia:4,
+(
+(
+(
+'Ecteinascidia turbinata':4)
+Ecteinascidia:4)
+Perophoridae:4,
+(
+(
+'Ascidiella aspersa':4)
+Ascidiella:4)
+Ascidiidae:4,
+(
+(
+'Ciona intestinalis':4)
+Ciona:4)
+Cionidae:4
+)Phlebobranchia:4
+)Ascidiacea:4)
+Tunicata:4
+)Chordata:4,
+(
+(
+(
+(
+(
+(
+(
+(
+'Thyonella gemmata':4)
+Thyonella:4,
+(
+'Cucumaria frondosa':4)
+Cucumaria:4
+)Cucumariidae:4)
+Dendrochirotida:4)
+Dendrochirotacea:4,
+(
+(
+(
+(
+'Apostichopus parvimensis':4)
+Apostichopus:4,
+(
+'Stichopus chloronotus':4)
+Stichopus:4
+)Stichopodidae:4,
+(
+(
+'Holothuria cinerascens':4,
+'Holothuria atra':4
+)Holothuria:4)
+Holothuriidae:4
+)Aspidochirotida:4)
+Aspidochirotacea:4
+)Holothuroidea:4,
+(
+(
+(
+(
+(
+(
+'Echinarachnius parma':4)
+Echinarachnius:4)
+Echinarachniidae:4)
+Clypeasteroida:4)
+Gnathostomata:4,
+(
+(
+(
+(
+(
+'Strongylocentrotus droebachiensis':4,
+'Strongylocentrotus purpuratus':4
+)Strongylocentrotus:4)
+Strongylocentrotidae:4)
+Echinidea:4)
+Camarodonta:4,
+(
+(
+(
+'Lytechinus variegatus':4)
+Lytechinus:4)
+Toxopneustidae:4)
+Temnopleuroida:4
+)Echinacea:4
+)Euechinoidea:4)
+Echinoidea:4
+)Echinozoa:4,
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+'Ophioderma panamensis':4)
+Ophioderma:4)
+Ophiodermatinae:4)
+Ophiodermatidae:4)
+Ophiodermatina:4,
+(
+(
+(
+(
+'Ophiothrix spiculata':4)
+Ophiothrix:4)
+Ophiotrichidae:4,
+(
+(
+(
+'Ophiopteris papillosa':4)
+Ophiopteris:4)
+Ophiocominae:4)
+Ophiocomidae:4
+)Ophiactoidea:4)
+Gnathophiurina:4
+)Ophiurina:4)
+Amphilepidida:4)
+Ophintegrida:4)
+Metophiurida:4)
+Myophiuroidea:4)
+Ophiuroidea:4,
+(
+(
+(
+(
+(
+'Nardoa novaecaledoniae':4)
+Nardoa:4,
+(
+'Fromia indica':4)
+Fromia:4
+)Ophidiasteridae:4,
+(
+(
+'Patiria miniata':4)
+Patiria:4)
+Asterinidae:4
+)Valvatida:4)
+Valvatacea:4,
+(
+(
+(
+(
+'Pisaster giganteus':4,
+'Pisaster brevispinus':4
+)Pisaster:4)
+Asteriidae:4)
+Forcipulatida:4)
+Forcipulatacea:4
+)Asteroidea:4
+)Asterozoa:4
+)Eleutherozoa:4)
+Echinodermata:4
+)Deuterostomia:4,
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+'Lepas anatifera':4)
+Lepas:4)
+Lepadidae:4)
+Lepadoidea:4)
+Scalpellomorpha:4)
+Thoracicalcarea:4)
+Thoracica:4)
+Cirripedia:4)
+Thecostraca:4,
+(
+(
+(
+(
+(
+(
+(
+(
+'Pleoticus muelleri':4)
+Pleoticus:4)
+Solenoceridae:4,
+(
+Penaeus:4)
+Penaeidae:4
+)Penaeoidea:4)
+Dendrobranchiata:4,
+(
+(
+(
+(
+(
+'Homarus americanus':4)
+Homarus:4)
+Nephropidae:4)
+Nephropoidea:4)
+Astacidea:4)
+Pleocyemata:4
+)Decapoda:4)
+Eucarida:4)
+Eumalacostraca:4)
+Malacostraca:4
+)Multicrustacea:4)
+Crustacea:4)
+Pancrustacea:4)
+Mandibulata:4)
+Arthropoda:4)
+Panarthropoda:4)
+Ecdysozoa:4,
+(
+(
+(
+(
+(
+(
+(
+(
+(
+(
+'Octopus vulgaris':4)
+Octopus:4)
+Octopodidae:4)
+Incirrata:4)
+Octopoda:4)
+Octopodiformes:4,
+(
+(
+(
+(
+(
+'Illex illecebrosus':4)
+Illex:4)
+Ommastrephidae:4)
+Oegopsina:4,
+(
+(
+(
+'Doryteuthis pealeii':4)
+Doryteuthis:4,
+(
+'Loligo vulgaris':4)
+Loligo:4
+)Loliginidae:4)
+Myopsina:4
+)Teuthida:4)
+Decapodiformes:4
+)Coleoidea:4)
+Cephalopoda:4,
+(
+(
+(
+(
+(
+(
+(
+'Ostrea edulis':4)
+Ostrea:4,
+(
+'Crassostrea gigas':4)
+Crassostrea:4
+)Ostreidae:4)
+Ostreoidea:4)
+Ostreida:4)
+Pteriomorphia:4,
+(
+(
+(
+(
+(
+(
+(
+'Mya arenaria':4)
+Mya:4)
+Myidae:4)
+Myoidea:4)
+Myida:4)
+Imparidentia:4)
+Euheterodonta:4)
+Heteroconchia:4
+)Autobranchia:4)
+Bivalvia:4
+)Mollusca:4,
+(
+(
+(
+(
+(
+(
+'Alitta succinea':4)
+Alitta:4)
+Nereididae:4)
+Phyllodocida:4)
+Errantia:4,
+(
+(
+(
+(
+(
+'Riftia pachyptila':4)
+Riftia:4)
+Siboglinidae:4)
+Sabellida:4)
+Canalipalpata:4)
+Sedentaria:4
+)Polychaeta:4)
+Annelida:4
+)Lophotrochozoa:4)
+Spiralia:4
+)Protostomia:4
+)Bilateria:4;
