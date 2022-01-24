@@ -42,6 +42,7 @@ read_data  <- function(SP){
   if (min(table(meth_data_mean_cond_red$category)) > 10){
     a <- create_datasets(meth_data_mean_cond_red, ded_ref, SP, FALSE, N)
     print("dataset formed")
+      
     return(a) 
   }else{
     print("with current thresholds can not create a test dataset")
@@ -50,18 +51,17 @@ read_data  <- function(SP){
 }
 
 test_on_other <- function(fit,test_data_x, test_data_y,test_species, run, ifRand, kmer, subdir){
-  preddec_list <- mclapply(test_data_x, predict, object = fit)
+  preddec_list <- lapply(test_data_x, predict, object = fit)
   
-  pref <- mapply(evaluatePrediction, preddec_list, test_data_y, SIMPLIFY = FALSE,  
-                 MoreArgs = (list(allLabels = unique(test_data_y[[1]]), print = FALSE)))
-  f1_list <- lapply(pref, function(x) {get_f1(x$SENS, x$PREC)})
+  pref <- mapply(evaluatePrediction, preddec_list, test_data_y, SIMPLIFY = FALSE, MoreArgs = (list(allLabels = unique(test_data_y[[1]]), print = FALSE)))
+
   
-  preddec_list_dec <- mclapply(test_data_x, predict, object = fit, predictionType = "decision")
-  rocdata_list <- mapply(computeROCandAUC, preddec_list_dec, test_data_y, 
-                         MoreArgs = (list(allLabels = unique(test_data_y[[1]]))))
+  preddec_list_dec <- lapply(test_data_x, predict, object = fit, predictionType = "decision")
+    
+  rocdata_list <- mapply(computeROCandAUC, preddec_list_dec, test_data_y, MoreArgs = (list(allLabels = unique(test_data_y[[1]]))))
   
   roc_dt_list <- lapply(seq_along(rocdata_list), function(i) data.table(fdr = unlist(rocdata_list[[i]]@FPR),
-                      tpr = unlist(rocdata_list[[i]]@TPR),auc = unlist(rocdata_list[[i]]@AUC),f1 = f1_list[[i]], 
+                      tpr = unlist(rocdata_list[[i]]@TPR),auc = unlist(rocdata_list[[i]]@AUC), 
                       run = run, type = test_species[[i]],ifRand = paste0(ifRand, "Test"), k = 0, C = 0,
                       min_motif = "NN",max_motif = "NN"))
   
@@ -91,7 +91,8 @@ if (length(which(unlist(a)))>0){
             
 test_data_x <- lapply(test_data, function(x) x$x)
 test_data_y <- lapply(test_data, function(x) x$y)
-                      
+saveRDS(object = test_data_x, file = "test_data_x.RDS")
+saveRDS(object = test_data_x, file = "test_data_y.RDS")
 rm(test_data)
                       
 ## predicting

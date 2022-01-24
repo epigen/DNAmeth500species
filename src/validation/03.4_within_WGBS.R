@@ -216,7 +216,7 @@ if(matched_species == "ALL FROGS"){
 }else{
 auc_res <- rbind(auc_res, list(ifRand="RRBS", auc = auc_table[species == matched_species, ]$AUC, x = 0.9, y = 0.17))}
 
-pdf(paste0(outdir,"/", assembly, "ROC.pdf"), height=4, width=5)
+pdf(paste0(outdir,"/", genome_id, "ROC.pdf"), height=4, width=5)
 ggplot(roc_res, aes(x=fdr,y=tpr,col=ifRand)) + geom_line(aes(group=run, alpha=ifRand)) + 
     geom_text(data=auc_res,aes(x=x,y=y,label=paste0("auc=",round(auc,3)))) +
     scale_color_manual(values=c("rand"="grey","noRand"="blue", "RRBS" = "red"))+

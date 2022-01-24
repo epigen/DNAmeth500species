@@ -74,9 +74,7 @@ path_to_data <- file.path(analysis_dir, "validation", "03_WGBS", "03.3_fragments
                         
                         
 ## loading the train model
-simpleCache(cacheName="methPred_noRand_uc",instruction={train_test(x=x,y=y,type=species, 
-                                                        ifRand='noRand',run=0,k=kmer, subdir=subdir)},
-            cacheDir=paste0(file.path(analysis_dir, "05_predict_meth","05.1_within_species","screen",species,"RCache")),
+simpleCache(cacheName="methPred_noRand_uc",instruction={train_test(x=x,y=y,type=species, ifRand='noRand',run=0,k=kmer, subdir=subdir)}, cacheDir=paste0(file.path(analysis_dir, "05_predict_meth","05.1_within_species","screen",species,"RCache")),
             assignToVariable="res",recreate=FALSE)
 
 
@@ -84,7 +82,9 @@ simpleCache(cacheName="methPred_noRand_uc",instruction={train_test(x=x,y=y,type=
 ##loading test data
 annot_WGBS <- fread( file.path(analysis_dir, "validation", "03_WGBS", "WGBS_prediction_selection.tsv"))
 
-test_data <- lapply(1:NROW(annot_WGBS), function(x) read_data(annot_WGBS$Species[x], annot_WGBS$genomeId[x], annot_WGBS$thr[x]))
+##test data is already uploaded for most of the species, except the turtle (and)
+#test_data <- lapply(1:NROW(annot_WGBS), function(x) read_data(annot_WGBS$Species[x], annot_WGBS$genomeId[x], annot_WGBS$thr[x]))
+test_data <- lapply(8:NROW(annot_WGBS), function(x) read_data(annot_WGBS$Species[x], annot_WGBS$genomeId[x], annot_WGBS$thr[x]))
 #saveRDS(object = test_data, file = "test_data.RDS")
 #print(test_data)
 test_data_x <- lapply(test_data, function(x) x$x)
@@ -95,8 +95,15 @@ rm(test_data)
 simpleCache(cacheName = "methTest_noRand_uc",instruction = {test_on_other(fit = res$model[[1]], test_data_x = test_data_x, test_data_y = test_data_y, ifRand = "noRand",test_species = annot_WGBS$Species)},
             cacheDir = paste0("RCache"),assignToVariable = "resTest",recreate = FALSE)
                       
-my_wt(resTest$roc_dt, "roc_dt.tsv")
-unique_auc <- unique(resTest$roc_dt[, c("type", "auc", "ifRand")])
+#predicting on the missing species 
+simpleCache(cacheName = "methTest_noRand_uc_missing",instruction = {test_on_other(fit = res$model[[1]], test_data_x = test_data_x, test_data_y = test_data_y, ifRand = "noRand",test_species = annot_WGBS$Species[8:NROW(annot_WGBS)])},
+            cacheDir = paste0("RCache"),assignToVariable = "resTest_add",recreate = FALSE)
+                      
+full_dt <- rbind(resTest$roc_dt, resTest_add$roc_dt)   
+                      
+my_wt(full_dt, "roc_dt.tsv")
+                      
+unique_auc <- unique(full_dt[, c("type", "auc", "ifRand")])
 unique_auc$AUC_train <- res$roc_dt$auc[[1]]
 unique_auc$species_train <- species                     
 my_wt(unique_auc, "auc_test.tsv")
