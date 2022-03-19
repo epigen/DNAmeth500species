@@ -240,3 +240,27 @@ ggplot(rel_long,aes(x=MLTAW,y=value))+
   facet_wrap(variable~color_class, scale='free',nrow=3)
 dev.off()
 
+
+#association with cancer risk phyloglm
+library(phylolm)
+
+group="Aves"
+#group="Mammalia"
+
+tree=ape::read.tree(paste0(analysis_dir,"/01_basicStats/01.6_ITOL/tree_species_as_tips.phy"))
+
+data=data.frame(rel_long[variable=="CpG_meth"&color_class==group&!duplicated(abbreviation_sp),c("abbreviation_sp","value","MLTAW"),],row.names = "abbreviation_sp")
+colnames(data)[1]="CpG_meth"
+head(data)
+
+tree=drop.tip(tree,tip = tree$tip.label[!tree$tip.label%in%row.names(data)])
+str(tree)
+
+#check distribution. Here looks like gaussian
+hist(data$MLTAW)
+
+fit = compar.gee(MLTAW~CpG_meth,data=data,family="gaussian",phy=tree)
+fit_nophy= glm(MLTAW~CpG_meth,data=data,family="gaussian")
+
+fit
+summary(fit_nophy)
