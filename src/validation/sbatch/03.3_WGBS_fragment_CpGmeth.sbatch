@@ -4,7 +4,7 @@
 #SBATCH --partition vsc3plus_0256
 #SBATCH --qos vsc3plus_0256
 #SBATCH -N 1
-#SBATCH --array=4
+#SBATCH --array=9
 
 source ~/.bashrc
 conda activate Zoo_R

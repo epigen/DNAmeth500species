@@ -1,7 +1,11 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 library(treeio)
+library(circilize)
+library(ComplexHeatmap)
+wd = file.path(analysis_dir, "05_predict_meth", "05.2_test_on_other_species")
+setwd(wd)
 
-
+dir.create("summary")
 all_sp=unique(stats_annot$species)
 
 all_id<-lapply(all_sp, function(x) stats_annot[stats_annot$species==x]$ncbi_id[[1]])
@@ -12,32 +16,44 @@ all_class_sp<-setNames(all_class, all_sp)
 
 ##aucs need to be load for the class - specific mss score
 
-stats_files=system("ls /scratch/lab_bock/shared/projects/compEpi/results_analysis/02_predict_meth/02.2_test_on_other_species/screen/*/all_aucs.csv",intern=TRUE)
+stats_files=system(paste0("ls ", analysis_dir, "/05_predict_meth/05.2_test_on_other_species/screen/*/all_aucs.csv"),intern=TRUE)
+                  
 sp_list<-unlist(lapply(stats_files, function(x) strsplit(x, "/")[[1]][11] ))
 
 ##check if there are some missing:
-missed <- setdiff(all_sp, sp_list)
+missed <- setdiff(sp_df$species, sp_list)
 length(missed)
 missed
-if (length(missed) > 0){
+if (length(missed) > 5){
   write.table(as.data.frame(missed), file.path(Sys.getenv("CODEBASE"), "compEpi/meta/to_run_cross.txt"), 
               col.names = F, quote = F, row.names = F)
 }
 
 ##collecting the stats data
-auc_file <- paste0(analysis_dir, "/02_predict_meth/02.2_test_on_other_species/summary/all_aucs_full.csv")
+auc_file <- file.path("summary", "all_aucs_full.csv")
 if(!(file.exists(auc_file))){
-  aucs <- lapply(stats_files, read.csv, sep="\t")
-  aucs <- lapply(aucs, function(auc){auc$class<-sapply(as.character(auc$type), 
-                                            function(x) stats_annot[stats_annot$species==x,]$color_class[[1]]); return(auc)})
-  aucs <- lapply(aucs, function(auc)  {auc$train_species<-auc[auc$ifRand=="noRandTrain", "type"]; return (auc)})
-  aucs <- lapply(aucs, function(auc)  {auc$train_class<-auc[auc$ifRand=="noRandTrain", "class"]; return (auc)})
-  all_aucs <- rbindlist(aucs)
+    
+    all_aucs = data.table()
+    for (i in 1:length(stats_files)){
+        df <- fread(stats_files[i])
+        df$train_species <- sp_list[i]
+        all_aucs <- rbind(all_aucs, df)
+    }
+    
+    all_aucs <- left_join(all_aucs, sp_df, by = c("type" = "species"))
+    
+    colnames(all_aucs)[5] <- "color_class_test"
+    colnames(all_aucs)[6] <- "group_test"
+    
+    all_aucs <- left_join(all_aucs, sp_df, by = c("train_species" = "species"))
+    colnames(all_aucs)[7] <- "color_class_train"
+    colnames(all_aucs)[8] <- "group_train"
+          
   all_aucs <- all_aucs[!all_aucs$type %in% missed,]
-  write.csv(all_aucs, auc_file)
+  my_wt(all_aucs, auc_file)
 }
 
-all_aucs<-read.csv(auc_file, row.names = 1)
+all_aucs <- fread(auc_file)
 
 #tree with the species we explore, saving separately
 tree <- read.tree(paste0(analysis_dir, "/99.2_ITOL/tree_species_as_tips.phy"))
@@ -83,7 +99,8 @@ dev.off()
 td_out <- tre1e_rotated$data
 td_out <- dplyr::arrange(td_out, y)
 sp_full_order <- td_out %>% filter(isTip) %>% pull(label)
-
+sp_full_order <- fread(file.path(meta_dir, "species_list_ordered_2021_2.txt"), header = F)$V1
+                                    
 ##annotation the heatmap
 col_annot <- data.frame( sapply(sp_full_order, function(x) as.character(all_class[x])))
 colnames(col_annot) <- c("class")
@@ -94,7 +111,7 @@ seq_count<-seq_count[row.names(col_annot), c("color_class", "numSequences")]
 colnames(seq_count)[[1]] <- "class"
 
 all_auc_m<-all_aucs %>% 
-  filter(ifRand=="noRandTest"|ifRand=="noRandTrain" ) %>%
+  filter(ifRand=="noRandTest"|ifRand=="noRand" ) %>%
   select(c("train_species", "type", "auc")) %>% 
   spread(type, auc)
 
@@ -102,10 +119,14 @@ all_auc_m<-all_aucs %>%
 all_auc_m <- as.data.frame(all_auc_m)
 row.names(all_auc_m) <- all_auc_m$train_species
 
+sp_full_order <- sp_full_order[sp_full_order %in% all_auc_m$train_species]
+
 all_auc_m <- as.matrix(all_auc_m[sp_full_order, sp_full_order])
-write.csv(all_auc_m, paste0(analysis_dir, "/02_predict_meth/02.2_test_on_other_species/summary/all_aucs_full_matrix.csv"))
+
+                                write.csv(all_auc_m, paste0(analysis_dir, "/02_predict_meth/02.2_test_on_other_species/summary/all_aucs_full_matrix.csv"))
 
 ##plotting the annotation
+                                
 col_fun_num = colorRamp2(c(0, 2000), c("white", "darkgrey"))
 ha = columnAnnotation(df = col_annot, col = list("class" = class_colors), 
                       show_legend=c(F), height = unit(0.2, "cm"))

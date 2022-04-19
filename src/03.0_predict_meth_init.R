@@ -37,7 +37,7 @@ draw_feature_correlations<-function(feature_list, name, k){
   res <- cor(m)
   p.mat<-cor.mtest.cust(m)
   
-  pdf(paste0(analysis_dir, "/02_predict_meth/02.6_predictability/", name, ".pdf"), width = k, height = k)
+  pdf(paste0(analysis_dir, "/03_prediction_lm/03.1_features/", name, ".pdf"), width = k, height = k)
   corrplot(res, method="color", col=col(200), type="upper",order="hclust",
            addCoef.col = "black", addCoefasPercent = TRUE,# Add coefficient of correlation
            tl.col="black", tl.srt=45, #label parametrs

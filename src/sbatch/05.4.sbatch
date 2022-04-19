@@ -1,20 +1,22 @@
 #!/bin/bash
-#SBATCH --job-name compEpi
-#SBATCH --output /scratch/users/dromanovskaia/compEpi/02.2_%j.txt
-#SBATCH --partition longq
-#SBATCH --mem 240000
-#SBATCH --cpus-per-task=16
-#SBATCH --time 24:00:00
-#SBATCH --array=1-6
+#SBATCH --job-name kebab
+#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/05.4_%A_%a.log
+#SBATCH --partition vsc3plus_0256
+#SBATCH --qos vsc3plus_0256
+#SBATCH -N 1
+#SBATCH --array=11-580
 
-module load R/3.5.1
+source ~/.bashrc
+conda activate Zoo_SVM_4.1
 
 export SCRATCH_PATH=${LOGDIR}/mytmp
 export TMPDIR=$SCRATCH_PATH/Rtmp
+echo "$SLURM_ARRAY_TASK_ID"
 
-SP=`awk 'NR=='$SLURM_ARRAY_TASK_ID'{print $0}' ../../meta/species_list.txt`
-echo "species: ${SP}"
+SP=`awk 'NR=='$SLURM_ARRAY_TASK_ID'{print $0}' $CODEBASE/DNAmeth500species/meta/species_list.txt`
+
+echo "$SP"
 
 date
-$CODEBASE/compEpi/src/05.2_predict_crossSp.R ${SP}
+/home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/bin/Rscript ${CODEBASE}/DNAmeth500species/src/05.4_predict_crossSp.R ${SP}
 date

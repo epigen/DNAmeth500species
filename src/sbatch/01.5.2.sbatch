@@ -3,7 +3,7 @@
 #SBATCH --output ../../log/01.5.2_%A_%a.log
 #SBATCH --partition vsc3plus_0064
 #SBATCH --qos vsc3plus_0064
-#SBATCH --array=1-581
+#SBATCH --array=183,472
 #SBATCH -N 1
 
 ANALYSIS_DIR=/binfl/lv71484/droman/DNAmeth500species/results_analysis

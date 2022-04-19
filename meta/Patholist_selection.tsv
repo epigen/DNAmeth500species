@@ -1237,8 +1237,8 @@ V1	Fortlaufende Nr	Patho-Nr	English	Tierart	scientific_name	sex	age	Entnahme	Tis
 1240	2001	AC/101/13	Nilgai	Nigauantilope	Boselaphus tragocamelus	f	old	20.02.2013	Liver	E	1	NIL_1_L	60,2	100	15.09.2016		13	prepped	AK29	10,84	11	7	TruSeq LT Index 6	262	8					NIL_1_L_uc		AK_uc_25	9	378	2
 1241	2032	LS/132/13	Wild goat	Tauernscheckenziege	Capra aegagrus	f	adult	04.03.2013	Heart	E	2	WG_2_H	21,6	100	15.09.2016		13	prepped	AK29	11,21	11	6	TruSeq LT Index 7	278	3								NA	NA	NA
 1242	2032	LS/132/13	Wild goat	Tauernscheckenziege	Capra aegagrus	f	adult	04.03.2013	Liver	E	3	WG_2_L	58,0	100	15.09.2016		13	prepped	AK29	10,47	11	6	TruSeq LT Index 8	278	3					WG_2_L_uc		AK_uc_25	9	378	2
-1243	2082	Z/190/13	Charadriidae 	Regenpfeifer	Charadriidae	m	adult	08.04.2013	Heart	E	4	CHD_1_H	24,0	100	15.09.2016		13	prepped	AK29	9,02	9	2	TruSeq LT Index 9	275	3					CHD_1_H_uc		AK_uc_07	6	298	6
-1244	2082	Z/190/13	Charadriidae 	Regenpfeifer	Charadriidae	m	adult	08.04.2013	Liver	E	5	CHD_1_L	124,6	100	15.09.2016		13	prepped	AK29	10,14	9	5	TruSeq LT Index 10	275	6								NA	NA	NA
+1243	2082	Z/190/13	Charadriidae	Regenpfeifer	Charadriidae	m	adult	08.04.2013	Heart	E	4	CHD_1_H	24,0	100	15.09.2016		13	prepped	AK29	9,02	9	2	TruSeq LT Index 9	275	3					CHD_1_H_uc		AK_uc_07	6	298	6
+1244	2082	Z/190/13	Charadriidae	Regenpfeifer	Charadriidae	m	adult	08.04.2013	Liver	E	5	CHD_1_L	124,6	100	15.09.2016		13	prepped	AK29	10,14	9	5	TruSeq LT Index 10	275	6								NA	NA	NA
 1245	2092	AC/207/13	Western marsh harrier	Rohrweihe	Circus aeruginosus	m	adult	09.04.2013	Heart	E	6	WMH_1_H	14,9	100	15.09.2016		13	prepped	AK29	8,46	6	1	TruSeq LT Index 11	267	4					WMH_1_H_uc		AK_uc_07	6	298	6
 1246	2092	AC/207/13	Western marsh harrier	Rohrweihe	Circus aeruginosus	m	adult	09.04.2013	Liver	E	7	WMH_1_L	46,1	100	15.09.2016		13	prepped	AK29	9,30	10	3	TruSeq LT Index 12	275	4								NA	NA	NA
 1247	2093	AC/208/13	Western marsh harrier	Rohrweihe	Circus aeruginosus	f	adult	09.04.2013	Heart	E	8	WMH_2_H	11,2	100	15.09.2016		13	prepped	AK29	8,37	6	1	TruSeq LT Index 13	267	4								NA	NA	NA
@@ -1444,8 +1444,8 @@ V1	Fortlaufende Nr	Patho-Nr	English	Tierart	scientific_name	sex	age	Entnahme	Tis
 1447	1530	AC/322/12	Waterbuck	Wasserbock	Kobus	f	adult	26.06.2012	Liver	F	4	WAB_1_L	58,1	100	10.10.2016		15	prepped	AK32	12,88	12	7	TruSeq LT Index 12	278	8								NA	NA	NA
 1448	1575	Z/409/12	Bat	Fledermaus	Microchiroptera	f	juvenil	19.07.2012	Heart	F	5	BAT_1_H	23,6	100	10.10.2016		15	prepped	AK33	12,19	13	7	TruSeq LT Index 13	285	6								NA	NA	NA
 1449	1575	Z/409/12	Bat	Fledermaus	Microchiroptera	f	juvenil	19.07.2012	Liver	F	6	BAT_1_L	46,6	100	10.10.2016		15	prepped	AK32	10,65	9	5	TruSeq LT Index 14	278	6					BAT_1_L_uc		AK_uc_23	7	376	6
-1450	1587	AC/425/12	Kangaroo 	Kaenguru	Macropodidae	m	adult	20.07.2012	Heart	F	7	KAN_1_H	52,5	100	10.10.2016		15	prepped	AK34	13,83	12	7	TruSeq LT Index 15	292	5		AK_uc_newprep	13,515	TruSeq LT Index 14	KAN_1_H_uc		AK_uc_30	12	391	4
-1451	1587	AC/425/12	Kangaroo 	Kaenguru	Macropodidae	m	adult	20.07.2012	Liver	F	8	KAN_1_L	56,4	100	10.10.2016		15	prepped	AK32	12,16	12	7	TruSeq LT Index 16	278	8								NA	NA	NA
+1450	1587	AC/425/12	Kangaroo	Kaenguru	Macropodidae	m	adult	20.07.2012	Heart	F	7	KAN_1_H	52,5	100	10.10.2016		15	prepped	AK34	13,83	12	7	TruSeq LT Index 15	292	5		AK_uc_newprep	13,515	TruSeq LT Index 14	KAN_1_H_uc		AK_uc_30	12	391	4
+1451	1587	AC/425/12	Kangaroo	Kaenguru	Macropodidae	m	adult	20.07.2012	Liver	F	8	KAN_1_L	56,4	100	10.10.2016		15	prepped	AK32	12,16	12	7	TruSeq LT Index 16	278	8								NA	NA	NA
 1452	1614	AC/483/12	Cat	Katze	Felis catus	f	adult	13.08.2012	Heart	F	9	CAT_1_H	21,1	100	10.10.2016		15	prepped	AK32	10,90	12	6	TruSeq LT Index 18	278	7								NA	NA	NA
 1453	1614	AC/483/12	Cat	Katze	Felis catus	f	adult	13.08.2012	Liver	F	10	CAT_1_L	42,6	100	10.10.2016		15	prepped	AK32	9,90	10	4	TruSeq LT Index 19	278	5					CAT_1_L_uc		AK_uc_11	6	315	5
 1454	1618	AC/500/12	Mouse	Maus	Mus musculus	m	adult	16.08.2012	Liver	F	11	MOU_1_L	23,7	100	10.10.2016		15	prepped	AK33	11,85	13	6	TruSeq LT Index 20	285	5								NA	NA	NA

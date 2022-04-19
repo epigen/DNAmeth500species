@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name kebabs_WGBS
 #SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/05.1_%A_%a.log
-#SBATCH --partition vsc3plus_0064
-#SBATCH --qos vsc3plus_0064
+#SBATCH --partition vsc3plus_0256
+#SBATCH --qos vsc3plus_0256
 #SBATCH -N 1
-#SBATCH --array=1
+#SBATCH --array=9
 
 source ~/.bashrc
 conda activate compEpi
@@ -12,7 +12,8 @@ conda activate compEpi
 export SCRATCH_PATH=/nobackup/lab_bock/users/dromanovskaia/mytmp
 export TMPDIR=$SCRATCH_PATH/Rtmp
 
-sp="Branchiostoma_lanceolatum"
+ANNOT_TABLE="/binfl/lv71484/droman/DNAmeth500species/results_analysis/validation/03_WGBS/WGBS_prediction_selection.tsv"
+sp=`awk -F";" 'NR=='$SLURM_ARRAY_TASK_ID'{print $1}' ${ANNOT_TABLE}`
 
 echo "$sp"
 

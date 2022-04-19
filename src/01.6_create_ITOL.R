@@ -1,7 +1,7 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 library(phylobase)
 library(tidytree)
-
+library(ape)
 wd=file.path(analysis_dir,"01_basicStats/01.6_ITOL")
 dir.create(wd,recursive=TRUE)
 setwd(wd)
@@ -82,10 +82,12 @@ make_stats_per_species=function(stats){
 
 #read tree to set NCBI ids and fix internal nodes
 #tree=readLines(paste0("species_tree_unranked.phy"))
-tree=readLines(paste0(meta_dir, "/species_tree_unranked_2021.phy"))
+tree_id = "2021_2" ##adjust 
+tree=readLines(paste0(meta_dir, "/species_tree_unranked_", tree_id, ".phy"))
 >>>>>>> Stashed changes
 tree=paste0(gsub("'","",tree),collapse="")
-writeLines(tree,con="species_tree_unranked_names_2021.phy")
+
+writeLines(tree,con=paste0("species_tree_unranked_names_", tree_id, ".phy"))
 
 replace=unique(stats_annot[,c("ncbi_id","ncbi_name"),])
 
@@ -100,11 +102,11 @@ for (i in 1:nrow(replace)){
   tree=with(replace[i,],gsub(paste0(")",ncbi_name,":"),paste0(")INT",ncbi_id,":"),tree,))
   tree=with(replace[i,],gsub(paste0(ncbi_name,":"),paste0(ncbi_id,":"),tree,))
 }
-writeLines(tree,con="species_tree_unranked_id_2021.phy")
+writeLines(tree,con=paste0("species_tree_unranked_id_", tree_id, ".phy"))
 
 
 ##checking which species are missing and/or which labels are not present
-tree_df <- read.tree("species_tree_unranked_id_2021.phy")
+tree_df <- read.tree(paste0("species_tree_unranked_id_", tree_id, ".phy"))
 
 labels<-tree_df$tip.label
 nodes<-tree_df$node.label

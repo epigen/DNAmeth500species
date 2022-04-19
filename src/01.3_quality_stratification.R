@@ -1,8 +1,8 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 library(pheatmap)
 
-wd=file.path(analysis_dir,"01_basicStats/01.3_quality_stratification")
-dir.create(wd)
+wd=file.path(analysis_dir,"01_basicStats/")
+dir.create(file.path(wd, "01.3_quality_stratification"))
 setwd(wd)
 
 
@@ -31,17 +31,17 @@ stats_annot[,mean_qual_tier:=mean(unlist(mget(paste0(quality_measures,"_qual_tie
 cor_mat_conv=cor(stats_annot[conversion_type=="converted",mget(paste0(quality_measures,"_qual_tier")),],use="complete.obs")
 cor_mat_unconv=cor(stats_annot[conversion_type=="unconverted",mget(paste0(quality_measures,"_qual_tier")),],use="complete.obs")
 
-pdf("qual_tier_correlation.pdf",height=6,width=6.5)
+pdf("01.3_quality_stratification/qual_tier_correlation.pdf",height=6,width=6.5)
 pheatmap(cor_mat_conv,main="Correlation matrix converted")
 pheatmap(cor_mat_unconv,main="Correlation matrix unconverted")
 dev.off()
 
 #check potentially discordant species
-pdf("lowest_common_count_distrib.pdf", height=3,width=5.5)
+pdf("01.3_quality_stratification/lowest_common_count_distrib.pdf", height=3,width=5.5)
 ggplot(stats_annot,aes(x=blast_count1,fill=max_lowest_common>=26))+geom_density(alpha=0.5)+xlim(c(0,50))+geom_vline(xintercept=8,lty=2)
 dev.off()
 
-pdf("lowest_common_check.pdf", height=20,width=15)
+pdf("01.3_quality_stratification/lowest_common_check.pdf", height=20,width=15)
 ggplot(stats_annot[scientific_name%in%scientific_name[max_lowest_common<26&blast_count1>8]],aes(x=Sample_Name,y=max_lowest_common,fill=blast_count1))+geom_bar(stat="identity")+geom_hline(yintercept=10,lty=2)+rotate_labels()+facet_wrap(~abbreviation_sp+scientific_name,scale="free_x")+ggtitle("blast_count > 8")
 
 ggplot(stats_annot[scientific_name%in%scientific_name[max_lowest_common<26&blast_count1<=8]],aes(x=Sample_Name,y=max_lowest_common,fill=blast_count1))+geom_bar(stat="identity")+geom_hline(yintercept=10,lty=2)+rotate_labels()+facet_wrap(~abbreviation_sp+scientific_name,scale="free_x")+ggtitle("blast_count <= 8")
@@ -147,19 +147,18 @@ susp_df <- stats_annot[scientific_name%in%scientific_name[max_lowest_common<26&b
 susp_df[max_lowest_common<26&blast_count1>8, mismatch:="true",] ## marking problematic sample
 
 ## save the suspisious samples into a table and 
-write.csv(susp_df, "problematic_samples.tsv")
+write.csv(susp_df, "01.3_quality_stratification/problematic_samples.tsv")
 print("Stop here and manually explore the table!")
 #stop()
 
 ## by hand checking and using the annitation
-susp_df_curated <- fread("problematic_samples_annotated.csv")
+susp_df_curated <- fread("01.3_quality_stratification/problematic_samples_annotated.csv")
 ## uploading the new version
 #problematic_samples_old=c("ABU_2_L$","AFB_1_L_uc","BL_1","BL_2_H$","CAT_2","CD_2_S$","CHD_1_H$","CTL_1_L$","FPF_1_G_uc","NCL_1_H$","NCL_1_H_uc","PLF","PO_2_S$","RED_1_L$","RI_2_H$", "RI_2_L$","RS_1_H$","SME_1_G$","VIS_2_H$","VIS_1_L$","WA_3_L$","WBD_2_F$","WG_1_H$","YS_1_K$","LOW_1","NCL_1_H$","NCL_1_H_uc","PR_2_L$","RBF_2_G$")
 
 problematic_samples <- susp_df_curated[summary==1]$Sample_Name
 ##added problematic, based on prev runs:
-problematic_samples <- c(problematic_samples, 
-                         "LOW_1_H", "LOW_1_L", "RBF_2_G",  "SME_1_G")
+problematic_samples <- c(problematic_samples, "LOW_1_H", "LOW_1_L", "RBF_2_G",  "SME_1_G")
 
 #LOW_1* has an extremly low blust count and was mapped as problematic last time
 #SME_1_G quite high mapping rate and was also mapped to a distant with a higher rate last time

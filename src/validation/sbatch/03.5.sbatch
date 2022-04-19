@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name kebabs_WGBS
-#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/05.1_%A_%a.log
+#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/03.5_%A_%a.log
 #SBATCH --partition vsc3plus_0064
 #SBATCH --qos vsc3plus_0064
 #SBATCH -N 1
-#SBATCH --array=1
+#SBATCH --array=6-580
 
 source ~/.bashrc
 conda activate compEpi
@@ -12,7 +12,7 @@ conda activate compEpi
 export SCRATCH_PATH=/nobackup/lab_bock/users/dromanovskaia/mytmp
 export TMPDIR=$SCRATCH_PATH/Rtmp
 
-sp="DOG"
+sp=`awk 'NR=='$SLURM_ARRAY_TASK_ID'{print $0}' $CODEBASE/DNAmeth500species/meta/species_list.txt`
 
 echo "$sp"
 

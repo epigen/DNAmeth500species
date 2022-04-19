@@ -73,8 +73,8 @@ classes <- c("Invertebrata","Jawless_vertebrate",  "Chondrichthyes", "Actinopter
 
 #core tissues
 core_inv <- c("Muscle","Tube_feet","Tentacle","Arm","Gills","Gonad","Pharynx")
-
 core_vert <- c("Liver","Heart","Brain","Spleen","Muscle","Gills","Fin")
+core <- c("Liver","Heart","Lung", "Brain","Spleen","Muscle","Gills","Fin", "Kidney")
 
 #paths (have to be updated)
 RefFreeDMA_dir="/home/lv71484/droman/reffreedma/RefFreeDMA" 
@@ -108,8 +108,7 @@ if (file.exists(stats_annot_file)){
   stats_annot[ncbi_order%in%c("Diprotodontia","Dasyuromorphia"),color_class:="Marsupialia",]
     stats_annot[species == "JL",color_class:="Jawless_vertebrate", ]
   stats_annot[,color_class:=factor(color_class,levels=classes),]
-  #remove "bad" samples
-  stats_annot=stats_annot[!grepl("Tumour|Cellline",Tissue)] 
+ 
     
     stats_annot[, group := class_short[color_class],]
    stats_annot[, group:=factor(group, levels = class_short)]
@@ -127,7 +126,7 @@ sampleAnnot=fread(file.path(meta_dir,"Patholist_selection.tsv"))
 
 ##simple helpful dataframe species-class, ordered phylogenetically 
 
-phylo_order_path <- file.path(Sys.getenv("CODEBASE"), "DNAmeth500species/meta/species_list_ordered_2021.txt")
+phylo_order_path <- file.path(Sys.getenv("CODEBASE"), "DNAmeth500species/meta/species_list_ordered_2021_2.txt")
 
 if(file.exists(phylo_order_path) & file.exists(stats_annot_file)){
   

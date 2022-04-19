@@ -62,7 +62,8 @@ simpleCache(cacheName="methPred_noRand_uc",instruction={train_test(x=x,y=y,type=
                                                         ifRand='noRand',run=0,k=kmer, subdir=subdir)},
             cacheDir=paste0(subdir,"/RCache"),assignToVariable="res",recreate=FALSE)
 roc_res=res$roc_dt
-
+fit_model <- res$model[[1]]
+saveRDS(fit_model, paste0(subdir, "/", species, "_model.RDS"))
 #save the key data: PWM and stats
 print("saving stuff")
 if (res$param$k>1){
@@ -80,8 +81,6 @@ seqLogo(pwm_high)
 dev.off()
 
 }
-
-
 
 #create stats overview record to combine with other species
 k_freq=table(unlist(lapply(res$model[[2]]@selGridRow,function(x){x@k})))

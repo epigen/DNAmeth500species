@@ -158,30 +158,34 @@ stats_annot[species == "WFA" ]$ncbi_name <- "Amazona"
 stats_annot[species == "GRE" ]$ncbi_id <- "30389"
 stats_annot[species == "GRE" ]$ncbi_name <- "Ardea"
 
+stats_annot[species == "SQM"]$ncbi_id <- "378850"
+stats_annot[species == "SQM"]$ncbi_name <- "Saimiriinae"
+
+##in case of missing samples:
+stats_annot_backup <- stats_annot
 #check species (comparison with blast species through lowest_common())
 simpleCache(cacheName="taxonomic_lowest_common",instruction={stats_annot[,lowest_common_blastS1:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS1)),by=c("ncbi_id","ncbi_id_blastS1")]},recreate=FALSE,assignToVariable="stats_annot") 
 simpleCache(cacheName="taxonomic_lowest_commonS2",instruction={stats_annot[,lowest_common_blastS2:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS2)),by=c("ncbi_id","ncbi_id_blastS2")]},recreate=FALSE,assignToVariable="stats_annot")
+
+## for NA:
+stats_annot <- rbind(stats_annot, stats_annot_backup[!Sample_Name %in% stats_annot$Sample_Name], fill = TRUE)
 
 print(head(stats_annot[, c("lowest_common_blastS1", "lowest_common_blastS2")]))
 
 print(NROW(stats_annot[is.na(lowest_common_blastS1)]))
 
-if(NROW(stats_annot[is.na(lowest_common_blastS1)])>1){
-    #IMPORTANT:repeat to fix NAs due to server timeout
-simpleCache(cacheName="taxonomic_lowest_commonS2",instruction={stats_annot[is.na(lowest_common_blastS1),lowest_common_blastS1:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS1)),by=c("ncbi_id","ncbi_id_blastS1")]},
-            recreate=FALSE,assignToVariable="stats_annot")
-}
+stats_annot[is.na(lowest_common_blastS1),lowest_common_blastS1:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS1)),by=c("ncbi_id","ncbi_id_blastS1")]
+
 
 print(NROW(stats_annot[is.na(lowest_common_blastS2)]))
       
-if(NROW(stats_annot[is.na(lowest_common_blastS2)])>4){
-simpleCache(cacheName="taxonomic_lowest_commonS2",instruction={stats_annot[is.na(lowest_common_blastS2),lowest_common_blastS2:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS2)),by=c("ncbi_id","ncbi_id_blastS2")]},
-            recreate=FALSE,assignToVariable="stats_annot")
-}
-            
+stats_annot[is.na(lowest_common_blastS2),lowest_common_blastS2:=lowest_common_custom(c(ncbi_id,ncbi_id_blastS2)),by=c("ncbi_id","ncbi_id_blastS2")]  
+
+
 stopifnot(nrow(stats_annot[is.na(lowest_common_blastS1)])<=1) #1 NA row
 stopifnot(nrow(stats_annot[is.na(lowest_common_blastS2)])<=4) #4 NA rows
-## fixing by hand annotations that went wrong (ncbi mistakes):
+
+## fixing by hand annotations that went wrong (ncbi mistakes) - depricated:
 ## GCF and BCL mapped to the same actinopteri nbci id
 
 #create rank hierarchy

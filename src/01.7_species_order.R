@@ -9,7 +9,8 @@ library(tidytree)
 library(ape)
 library(ggtree) ##installation note - downgrade rvcheck to 0.1.8, if R < 4.1.1!!!
 #treefile<-
-tree <- read.tree("01_basicStats/01.6_ITOL/species_tree_unranked_id_2021.phy")
+tree_id <- "2021_2"
+tree <- read.tree(paste0("01_basicStats/01.6_ITOL/species_tree_unranked_id_", tree_id,".phy"))
 
 labels<-tree$tip.label
 nodes<-tree$node.label
@@ -132,10 +133,10 @@ df_new<-df_new[, c("parent", "node", "branch.length", "label")]
 
 tree_clean<-as.phylo(df_new)
 
-write.tree(tree_clean, paste0("01_basicStats/01.6_ITOL/tree_species_as_tips.phy"))
+write.tree(tree_clean, paste0("01_basicStats/01.6_ITOL/tree_species_as_tips_",tree_id, ".phy"))
 
 
-write.csv(df_new, "01_basicStats/01.6_ITOL/tree_species_as_tips.csv", row.names = F)
+write.csv(df_new, paste0("01_basicStats/01.6_ITOL/tree_species_as_tips", tree_id, ".csv"), row.names = F)
 
 
 ###saving the tree with the ordered species
@@ -146,11 +147,11 @@ sp_full_order <- with(d, label[order(y, decreasing=T)])
 ##adding the "jawless vertebrata"
 stats_annot$color_class <- as.character(stats_annot$color_class)
                                                        
-stats_annot[species == "JL"]$color_class <-"Jawless_vertebrate" 
+#stats_annot[species == "JL"]$color_class <-"Jawless_vertebrate" 
                                                        
-stats_annot$color_class <- factor(stats_annot$color_class, 
-        levels = c('Invertebrata','Jawless_vertebrate', 'Actinopteri','Chondrichthyes','Amphibia','Reptilia', 'Aves', 'Marsupialia', 'Mammalia'))
-                                                       
+#stats_annot$color_class <- factor(stats_annot$color_class, 
+#        levels = c('Invertebrata','Jawless_vertebrate', 'Actinopteri','Chondrichthyes','Amphibia','Reptilia', 'Aves', 'Marsupialia', 'Mammalia'))
+ stats_annot$color_class <- factor(stats_annot$color_class, names(class_colors))                                                     
 ##now we need to rearrange them, so that we start with invertebrata
 sp_full_order_colors <- sapply(sp_full_order, 
     function(x) stats_annot[stats_annot$species == x, ]$color_class[[1]])
@@ -161,6 +162,5 @@ function(x) names(sp_full_order_colors[sp_full_order_colors == x]))))
 
 
 write.table(as.data.frame(sp_correct_order), file.path(meta_dir, 
-                            "species_list_ordered_2021.txt"), 
-                                            row.names = F, quote=F, col.names = F)
+paste0("species_list_ordered_", tree_id, ".txt")), row.names = F, quote=F, col.names = F)
 

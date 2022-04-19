@@ -22,8 +22,9 @@ getStats=function(files){
 
 
 #remove species to be excluded
-sampleAnnot=sampleAnnot[!grepl("GPA_",Abbreviation)]
+sampleAnnot=sampleAnnot[!grepl("GPA_",Abbreviation)] #excluding the giant panda
 
+ #remove "bad" samples
 
 #fill all blanks with NA
 sampleAnnot[sampleAnnot==""]=NA
@@ -37,7 +38,13 @@ sampleAnnot[,abbreviation_sp:=unlist(lapply(Sample_Name,function(x){unlist(strsp
 sampleAnnot[,replicate:=unlist(lapply(Sample_Name,function(x){unlist(strsplit(x,"_"))[2]}))]
 sampleAnnot[,Sample_Name_unif:=gsub("_uc","",Sample_Name),]
 
+setDT(sampleAnnot)
+sampleAnnot=sampleAnnot[(!grepl("Tumour|Cellline",Tissue)) |  Sample_Name_unif == "TD_3_Tm" ] # keep the uc sample
+
+
 stats_files=list.files(processed_dir,pattern="^summary.txt",recursive=TRUE,full.names=TRUE)
+
+
 overlap_files=system(paste0("ls ",processed_dir,"/*/*/diffMeth_cpg/*overlap*.tsv"),intern=TRUE)
 ref_files=list.files(processed_dir,pattern="^ref_summary.txt",recursive=TRUE,full.names=TRUE)
 
@@ -69,6 +76,8 @@ stats[,max_overlap_perc:=max_overlap/coveredCpGs*100,]
 stats[, PDR_mean:= PDR_summ/N_sites,]
 
 stats_annot=merge(stats,sampleAnnot[,-c("Sample_Name"),],by="Sample_Name_unif")
+##
+stats_annot <- stats_annot[Sample_Name != "TD_3_Tm"]
 my_wt(stats_annot,"all_stats.tsv")
 
 

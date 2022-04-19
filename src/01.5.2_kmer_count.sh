@@ -21,3 +21,4 @@ date
 ##splitting the file into several
 cd $PATH_TO_SAVE_DIR
 csplit -f kmer count.txt -z '/# order/' '{*}'
+rm count.txt

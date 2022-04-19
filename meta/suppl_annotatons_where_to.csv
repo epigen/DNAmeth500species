@@ -2,22 +2,22 @@
 1;Fortlaufende Nr;sample;individual;
 2;Patho-Nr;individual;;Internal ID
 3;scientific_name;species;;Scientific name
-4;blast_species2;sample;sample;BLAST hit 1
-5;blast_species1;sample;sample;BLAST hit 2
+4;blast_species2;sample;sample;BLAST hit 2
+5;blast_species1;sample;sample;BLAST hit 1
 6;Sample_Name_unif;not included;;
 7;Sample_Name;sample;;Sample ID
 8;species;species;merge by;Species abbreviation
 9;total_reads;sample;;Total reads
 10;mapped_reads;sample;;Mapped reads
-11;mapping_efficiency;sample;;Mapping efficiency
+11;mapping_efficiency;sample;;Alignment rate (%)
 12;informative_reads;sample;;
-13;CpG_meth;sample;;Average CpG methylation
+13;CpG_meth;sample;;Average CpG methylation (%)
 14;avg_meth;sample;don't use because confusing;
 15;CpG_measurements;sample;don't use because confusing;
 16;coveredCpGs;sample;;Covered CpGs
-17;conversionRate;sample;;Conversion rate (non-CpG Cs)
-18;k1_unmeth;sample;calculate 1- value;Conversion rate (unmethylated spike-in)
-19;k3_meth;sample;calculate 1- value;Conversion rate (methylated spike-in)
+17;conversionRate;sample;;Conversion rate (%, non-CpGs)
+18;k1_unmeth;sample;calculate 1- value;Conversion rate (%, unmethylated spike-in)
+19;k3_meth;sample;calculate 1- value;Conversion rate (%, methylated spike-in)
 20;totalMeasurements_k1;sample;;
 21;totalMeasurements_k3;sample;;
 22;total_reads_untrimmed;sample;;
@@ -39,7 +39,7 @@
 38;perc_Cs;sample;;Cytosines (%)
 39;perc_Gs;sample;;Guanines (%)
 40;perc_Ns;sample;;Ns(%)
-41;fragments_ref;species;;Deduced reference fragments
+41;fragments_ref;species;;Consensus reference fragments
 42;fragments_uncovered;sample;;
 43;fragments_uncovered_perc;sample;;
 44;max_cont_sp;sample;;Top contaminating species
@@ -88,7 +88,7 @@
 87;Flowcell_uc;sample;;Flowcell unconverted
 88;lane_uc;sample;;Lane unconverted
 89;abbreviation_sp;not included;;
-90;replicate;individual;merge by + species;Replicate
+90;replicate;individual;merge by + species;Individual
 91;ncbi_name;species;;NCBI scientific name
 92;ncbi_id;species;;NCBI ID
 93;ncbi_order;species;;NCBI order
@@ -122,8 +122,8 @@
 121;Body mass (g);species;;
 122;Temperature (K);species;;
 123;preservation;individual;;Preservation
-124;Diagnosis;individual;;Disease
-125;color_class;species;;Practical class
+124;Diagnosis;individual;;Pathological diagnosis
+125;color_class;species;;Taxonomic group
 126;color;not included;;
 127;mapping_efficiency_qual_tier;not included;;
 128;coveredCpGs_qual_tier;not included;;
@@ -136,4 +136,8 @@
 135;max_lowest_common_qual_tier;not included;;
 136;max_qual_tier;not included;;
 137;mean_qual_tier;not included;;
-138;species_check;not included;sample;Species confirmation
+138;species_check;sample;;Species confirmation
+139;coveredCpGs_cphph;sample;;Covered CpHs
+140;CpG_meth_cphph;sample;;Average CpH methylation (%)
+141;PDR_mean;sample;;Average PDR
+142;N_sites;sample;;PDR sites

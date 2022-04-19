@@ -4,7 +4,7 @@
 #SBATCH --partition vsc3plus_0064
 #SBATCH --qos vsc3plus_0064
 #SBATCH -N 1
-#SBATCH --array=1-580%50
+#SBATCH --array=1-580
 
 source ~/.bashrc
 conda activate Zoo_SVM_4.1

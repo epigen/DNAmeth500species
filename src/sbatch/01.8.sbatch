@@ -4,7 +4,7 @@
 #SBATCH --partition vsc3plus_0064
 #SBATCH --qos vsc3plus_0064
 #SBATCH -N 1
-#SBATCH --array=1-581
+#SBATCH --array=183,472
 
 #setup
 source ~/.bashrc
