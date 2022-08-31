@@ -129,7 +129,7 @@ Rscript 06.4_explore_inverted_final_WHH.R
 
 ### 07: TFBS analysis across species and tissues
 As a preparation, the JASPAR matrix of all the TF profiles has to be downloaded: http://jaspar.genereg.net/downloads/
-We used the non-redundant vertebrate TFBS set.
+We used the non-redundant vertebrate TFBS set (additionally download the JASPAR annotation table)
 Calculate and report frequencies of each TFBS in consensus reference of each species.
 ```bash
 sbatch sbatch/07.1.sbatch
