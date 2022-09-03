@@ -166,3 +166,63 @@ Create correlation plots between liver and heart DNA methylattion levels for sel
 ```bash
 08.4_tissue_diffMeth.R
 ```
+
+# Validationon on reference genomes
+
+
+##01 CrossMapping RefFreeDMA analysis to reference genomes
+
+determining which genomes to process, cleaning them up and concatting 
+```bash
+Rscript 01.1_find_mapping_match.R ## finding pairs of genomes to match
+Rscript 01.1.2_axolotl.R ## rearrange and remove small chromosomes of the genome of the axolotl
+sbatch 01.2_concat_genome.sbatch ## running genome concat
+```
+Generating the config files and running the cross-mapping:
+```bash
+Rscript 01.3_save_configs.R
+```
+afterwards run the job-subbmitting bash script same way as for original RefFreeDMA
+
+Summarise the results of crossMapping:
+```bash
+Rscript 01.4_crossMapping_stats.R
+sbatch sbatch/01.5_cross-mapping_analysis.sbatch
+Rscript 01.5.2_crossMappingAnalysis_summary.R
+Rscript 01.5.3_crossMapping_plot.R
+```
+
+##02 Insilico RRBS simulation
+
+In interactive jupyer notebook:
+Run the preparation notebook for genomes:
+02.1_insilico_digest_prepare_genomes.R
+
+```bash
+sbatch 02.2_insilicoDigest.sbatch
+Rscript 02.3_insilicoDigest_summary.R
+```
+##03 WGBS analysis
+
+WGBS data download is described at 03.1_download_WGBS.ipynb
+
+```bash
+Rscript 03.2.process_WGBS_data.R
+Rscript 03.2.2_compare_mean_meth.R
+
+sbatch 03.3_WGBS_fragment_CpGmeth.sbatch ##preparing the data
+```
+
+SVM-modeling in WGBS
+
+```bash
+sbatch 03.4.sbatch
+sbatch 03.5.sbatch
+sbatch 03.6.sbatch
+
+Rscript 03.4.1_WGBS_prediction_summary.R
+Rscript 03.5_summary.R
+Rscript 03.6_summary.R
+```
+
+
