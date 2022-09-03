@@ -1,21 +1,24 @@
 #!/bin/env Rscript
+source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
+
 library(ggdendro)
 library(dendextend)
 library(mclust)
+library(circlize)
 
-source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
+wd = file.path(analysis_dir, "04_phylogeny")
+dir.create(wd)
+setwd(wd)
 
-setwd(paste0(analysis_dir, "/05_phylogeny/"))
 
 
 ##useful annotations
 ##from here we want the coveredCpGs
-stats<-read.csv(file.path(analysis_dir, "01_basicStats/feature_summary_filtered.tsv"), sep = "\t")
+stats<-read.csv(file.path(analysis_dir, "01_basicStats", "01.10_all_seq_features","feature_summary_filtered.tsv"), sep = "\t")
 row.names(stats)<-stats$species
 
 ##number of dedRef fragments
-dedRefsize<-read.csv(file.path(analysis_dir, "01_basicStats/01.6_stats_detail/number_of_dedRef_fragments.csv"), 
-                     row.names = 1)
+dedRefsize<-read.csv(file.path(analysis_dir, "02_vizStats", "02.3_stats_detail", "number_of_dedRef_fragments.csv"), row.names = 1)
 ##color mapping for both of them
 col_fun = colorRamp2(c(min(dedRefsize$counts), max(dedRefsize$counts)),  c( "#efedf5", "#756bb1"))
 col_fun_2 = colorRamp2(c(min(stats$coveredCpGs), max(stats$coveredCpGs)), c("#e5f5e0", "#31a354"))
@@ -29,9 +32,10 @@ annot_blast[is.infinite(annot_blast$rank_blast),]$rank_blast <- 0
 
 ###3mers
 k <- 3
-kmer_table<-read.csv(paste0(analysis_dir, 
-                            "/99.4_kmer_count_filtered/summary/kmer0", k, ".csv"), row.names=1)
+kmer_table<-read.csv(paste0(analysis_dir, "/01_basicStats",
+                            "/01.5_kmercount/summary/kmer0", k, ".csv"), row.names=1)
 kmer_table<-t(kmer_table)
+kmer_table <- kmer_table[unique(stats_annot$species),]
 M <- matrix(nr = 0, nc = NROW(kmer_table))
 
 #annotation (same order as in M) - not used in the final figure
@@ -43,16 +47,19 @@ M <- matrix(nr = 0, nc = NROW(kmer_table))
 #                        col = list(class = class_colors, 
 #                                   dedRef = col_fun, CpGs = col_fun_2), 
 #                        border = T)
+sp_df <- as.data.frame(sp_df)
+row.names(sp_df) <- sp_df$species
+ha <- HeatmapAnnotation(class = sp_df[row.names(kmer_table),"color_class" ], col = list(class = class_colors), border = T)
 
-ha <- HeatmapAnnotation(class = sp_df[row.names(kmer_table),"color_class" ], 
-                                          col = list(class = class_colors), border = T)
 clusters<-hclust(dist(kmer_table))
 dd <- as.dendrogram(clusters)
 print(Heatmap(M, cluster_columns = dd, top_annotation = ha, show_column_names = F))
 which(sapply(labels(dd), 
              function(x) as.character(sp_df[x,]$color_class)) == "Actinopteri")
+             
 
-dd1 <- dendextend::rotate(dd, c(583:332,1:331))
+
+dd1 <- dendextend::rotate(dd, c(580:328,1:327))
 Heatmap(M, cluster_columns = dd1, top_annotation = ha, show_column_names = F)
 
 ##swapping the all red and mixed branches:
@@ -62,19 +69,20 @@ which(sapply(labels(dd1),
 which(sapply(labels(dd1), 
              function(x) as.character(sp_df[x,]$color_class)) == "Amphibia")
 ##1st 40-101 2nd 102 - 252
-dd2 <- dendextend::rotate(dd1, c(1:39, 252:102, 40:101, 253:583))
-
+dd2 <- dendextend::rotate(dd1, c(1:39, 255:105, 40:104, 256:580))
+Heatmap(M, cluster_columns = dd2, top_annotation = ha, show_column_names = F)
+             
 ##swapping the reptilia and aves, forming orange cluster
 which(sapply(labels(dd2), 
              function(x) as.character(sp_df[x,]$color_class)) == "Reptilia")
 which(sapply(labels(dd2), 
              function(x) as.character(sp_df[x,]$color_class)) == "Aves")
 ## start 312-387, 388-476
-dd3 <- dendextend::rotate(dd2, c(1:311, 388:476,387:312,546:583,545:478,477))
+dd3 <- dendextend::rotate(dd2, c(1:311, 388:476,387:312,546:580,545:478,477))
 Heatmap(M, cluster_columns = dd3, top_annotation = ha, show_column_names = F)
 
 pdf(paste0("dendragram_rotated_", k, "_no_annot.pdf"), width = 15, height = 6)
-print(Heatmap(M, cluster_columns = dd3, top_annotation = ha, show_column_names = F))
+print(Heatmap(M, cluster_columns = dd2, top_annotation = ha, show_column_names = F))
 dev.off()
 
 ###for 6-mers
@@ -125,8 +133,7 @@ dev.off()
 ## easier generation of the phylogeny, but without nice arragement
 make_dendr<-function(k){
   #reading the data
-  kmer_table<-read.csv(paste0(analysis_dir, 
-                              "/99.4_kmer_count_filtered/summary/kmer0", k, ".csv"), row.names=1)
+  kmer_table<-read.csv(paste0(analysis_dir, "/01.5_kmercount/summary/kmer0", k, ".csv"), row.names=1)
   kmer_table<-t(kmer_table)
   
   #clustering based on frequency of kmers
