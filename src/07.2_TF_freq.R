@@ -6,6 +6,7 @@ species=args[1]
 
 #load ???he meta table (we need to know the full number of methylated and unmethylated fragments)
 wd=file.path(processed_dir, species)
+print(wd)
 setwd(wd)
 
 meth_data_mean=fread(paste0("toSelf_filtered_0.08mm_final_concat/diffMeth_cpg/",species,"_mean_meth.tsv"))
@@ -15,14 +16,16 @@ meth_data_mean_cond_red=meth_data_mean_cond[Nsamples>(max(Nsamples)*0.5)&mean_co
 meth_data_mean_cond_red[,category:=ifelse(min_meth>80,"meth",ifelse(max_meth<20,"unmeth","amb")),]
 
 #defining the number of methylated/unmethylated fragments
-n<-list(meth=NROW(filter(meth_data_mean_cond_red, category=="meth")), unmeth=NROW(filter(meth_data_mean_cond_red, category=="unmeth")))
-N<-NROW(meth_data_mean_cond_red)
+n <- list(meth=NROW(filter(meth_data_mean_cond_red, category=="meth")), unmeth=NROW(filter(meth_data_mean_cond_red, category=="unmeth")))
+
+N <- NROW(meth_data_mean_cond_red)
 rm(meth_data_mean)
 
 
-wd=file.path(analysis_dir, "03_motifAnalysis/03.1_TFBS_detection_2020", species)
+wd=file.path(analysis_dir, "07_motifAnalysis/07.1_TFBS_detection_2020", species)
 setwd(wd)
-subdir=file.path(analysis_dir, "03_motifAnalysis/03.2_TF_freq_2020", species)
+
+subdir=file.path(analysis_dir, "07_motifAnalysis/07.2_TF_freq_2020", species)
 dir.create(subdir, recursive = TRUE)
 
 #load the results table

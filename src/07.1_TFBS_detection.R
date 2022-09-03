@@ -6,19 +6,20 @@ source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 
 args = commandArgs(trailingOnly=TRUE)
 species=args[1]
-
 print(species)
 
 #specific libraries
 library(Biostrings)
 library(TFBSTools)
-library(JASPAR2014)
+#library(JASPAR2014)
 library(GenomicRanges)
+library(genomeIntervals)
 
 wd=file.path(processed_dir, species)
 setwd(wd)
 
-subdir=file.path(analysis_dir, "03_motifAnalysis/03.1_TFBS_detection_2020", species)
+subdir=file.path(analysis_dir, "07_motifAnalysis/07.1_TFBS_detection_2020", species)
+dir.create(subdir, recursive = T)
 
 #load data
 meth_data_mean=fread(paste0("toSelf_filtered_0.08mm_final_concat/diffMeth_cpg/",species,"_mean_meth.tsv"))
@@ -29,6 +30,7 @@ ded_ref_concat_gr=with(ded_ref_concat_bed,GRanges(seqnames = Rle(V1), IRanges(st
 #select features (methylated/unmethylated)
 meth_data_mean_long=melt(meth_data_mean,id.vars=c("meta","score","consN","mean_diffNts","max_diffNts","min_diffNts"),measure=patterns(".cov", ".meth"),variable.factor=TRUE,variable.name="sample",value.name=c("cov","meth"),na.rm=TRUE)
 sample_names=sub(".meth","",grep(".meth",names(meth_data_mean),value=TRUE))
+
 meth_data_mean_long[,sample_name:=sample_names[sample],]
 meth_data_mean_long[,species:=sub("_.*","",sample_name),]
 meth_data_mean_long[,tissue:=sub(".*_","",sample_name),]
@@ -46,10 +48,10 @@ rm(meth_data_mean)
 #PFMatrixList <- getMatrixSet(JASPAR2014, opts)
 
 
-PFMatrixList <- readJASPARMatrix(fn = "/scratch/lab_bock/dromanovskaia/resources/JASPAR2020_CORE_vertebrates_non-redundant_pfms_jaspar.txt", type = "all")
+PFMatrixList <- readJASPARMatrix(fn = file.path(data_dir, "resources","JASPAR", "JASPAR2020_CORE_vertebrates_non-redundant_pfms_jaspar.txt"))#, type = "all")
 
 modify_set<-function(siteset){
-  gff=as.data.table(writeGFF3(siteset))
+  gff=as.data.table(TFBSTools::writeGFF3(siteset))
   if (NROW(gff)>0){
     siteset_gr=with(gff,GRanges(seqnames = Rle(seqname), IRanges(start=start, end=end),strand=Rle(strand)))
     ol=as.data.table(findOverlaps(siteset_gr,ded_ref_concat_gr,type="within"))
@@ -68,12 +70,14 @@ pwm_list=lapply(PFMatrixList,function(x)
               bg=c(A=0.25, C=0.25, G=0.25, T=0.25)))})
 
 full_searchSeq <- function(pwmat){
-  siteset = simpleCache(cacheName=paste0("TFsites_",pwmat@name),
-             instruction={searchSeq(pwmat, ded_ref_concat, min.score='90%', strand='*')},
-             assignToVariable="siteset",
-             cacheDir=paste0(subdir,"/RCache"),
-             buildEnvir=c(pwmat=pwmat));
-  siteset_annot=modify_set(siteset);
+    filepath <- paste0(subdir, "/", pwmat@name, "_profile_table.tsv")
+    if(file.exists(filepath)){
+        print(paste0(pwmat@name, " done"))
+    }else{
+        siteset = searchSeq(pwmat, ded_ref_concat, min.score='90%', strand='*')
+
+  siteset_annot=modify_set(siteset)
+    
   if(NROW(siteset_annot) > 0){
   siteset_annot[,c("TF","class","sequence") := tstrsplit(gsub("TF=|class=|sequence=","",attributes), ";")]  
   siteset_annot_red=merge(siteset_annot,meth_data_mean_cond_red,
@@ -82,6 +86,7 @@ full_searchSeq <- function(pwmat){
               paste0(subdir, "/", pwmat@name, "_profile_table.tsv"),sep="\t",
               quote=FALSE,row.names=FALSE) }
   else(print(paste0("NONE ", pwmat@name)))
+    }
   }
 
 lapply(pwm_list, full_searchSeq)
