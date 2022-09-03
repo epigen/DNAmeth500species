@@ -167,10 +167,10 @@ Create correlation plots between liver and heart DNA methylattion levels for sel
 08.4_tissue_diffMeth.R
 ```
 
-# Validationon on reference genomes
+# Validation on on reference genomes
 
 
-##01 CrossMapping RefFreeDMA analysis to reference genomes
+## 01 CrossMapping RefFreeDMA analysis to reference genomes
 
 determining which genomes to process, cleaning them up and concatting 
 ```bash
@@ -192,7 +192,7 @@ Rscript 01.5.2_crossMappingAnalysis_summary.R
 Rscript 01.5.3_crossMapping_plot.R
 ```
 
-##02 Insilico RRBS simulation
+## 02 Insilico RRBS simulation
 
 In interactive jupyer notebook:
 Run the preparation notebook for genomes:
@@ -202,7 +202,7 @@ Run the preparation notebook for genomes:
 sbatch 02.2_insilicoDigest.sbatch
 Rscript 02.3_insilicoDigest_summary.R
 ```
-##03 WGBS analysis
+## 03 WGBS analysis
 
 WGBS data download is described at 03.1_download_WGBS.ipynb
 
