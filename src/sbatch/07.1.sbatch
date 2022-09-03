@@ -1,20 +1,37 @@
 #!/bin/bash
-#SBATCH --job-name TFBS_det
-#SBATCH --output $LOGDIR/compEpi/03.1_%A_%a.txt
-#SBATCH --partition mediumq
-#SBATCH --mem 240000
-#SBATCH --cpus-per-task=16
-#SBATCH --time 24:00:00
-#SBATCH --array=404-583%20
+#SBATCH --job-name JASPAR
+#SBATCH --partition vsc3plus_0064
+#SBATCH --qos vsc3plus_0064
+#SBATCH -N 1
+#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/07.1_%A_%a.log
+#SBATCH --array=1-140
 
-module load R/3.5.1
+source ~/.bashrc
+conda activate Zoo_R
+
+
+LOGDIR="/binfl/lv71484/droman/DNAmeth500species/log/mytmp"
 
 export SCRATCH_PATH=${LOGDIR}/mytmp
 export TMPDIR=$SCRATCH_PATH/Rtmp
+
 echo "$SLURM_ARRAY_TASK_ID"
-SP=`awk 'NR=='$SLURM_ARRAY_TASK_ID'{print $0}' ${CODEBASE}/DNAmeth500species/meta/species_list.txt`
+
+SP=`awk 'NR=='$SLURM_ARRAY_TASK_ID'{print $0}' /binfl/lv71484/droman/DNAmeth500species/results_analysis/07_motifAnalysis/missing_species.txt`
+
+#${CODEBASE}/DNAmeth500species/meta/species_list.txt`
 echo "$SP"
 
+
+pwd
 date
-${CODEBASE}/DNAmeth500species/src/07.1_TFBS_detection.R ${SP}
+#find motifs
+
+/home/lv71484/droman/.conda/envs/Zoo_R/bin/Rscript ${CODEBASE}/DNAmeth500species/src/07.1_TFBS_detection.R ${SP}
+##summarize
+/home/lv71484/droman/.conda/envs/Zoo_R/bin/Rscript  ${CODEBASE}/DNAmeth500species/src/07.2_TF_freq.R ${SP}
+
+cd ${CODEBASE}/DNAmeth500species/results_analysis/07_motifAnalysis/07.1_TFBS_detection_2020
+tar -zcvf ${SP}.tar.gz ${SP}
+rm -r ${SP}
 date

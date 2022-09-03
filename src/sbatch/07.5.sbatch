@@ -1,15 +1,13 @@
 #!/bin/bash
-#SBATCH --job-name diffMeth
+#SBATCH --job-name AME
 #SBATCH --partition vsc3plus_0064
 #SBATCH --qos vsc3plus_0064
 #SBATCH -N 1
-#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/07.1_%A_%a.log
-#SBATCH --array=3-580%100
+#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/07.4.2_%A_%a.log
+#SBATCH --array=1-2
 
 source ~/.bashrc
 conda activate Zoo_R
-
-echo "TEST"
 
 LOGDIR="/binfl/lv71484/droman/DNAmeth500species/log/mytmp"
 
@@ -23,5 +21,5 @@ SP=`awk 'NR=='$SLURM_ARRAY_TASK_ID'{print $0}' ${CODEBASE}/DNAmeth500species/met
 echo "$SP"
 
 date
-bash ${CODEBASE}/DNAmeth500species/src/07.4.1_run_diffMeth.sh $SP
+bash ${CODEBASE}/DNAmeth500species/src/07.4.2_ame_run.sh $SP
 date

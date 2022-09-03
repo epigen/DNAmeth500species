@@ -4,7 +4,7 @@
 #SBATCH --partition vsc3plus_0064
 #SBATCH --qos vsc3plus_0064
 #SBATCH -N 1
-#SBATCH --array=1-580
+#SBATCH --array=183
 
 export SCRATCH_PATH=/binfl/lv71484/droman/DNAmeth500species/mytmp
 export TMPDIR=$SCRATCH_PATH/Rtmp

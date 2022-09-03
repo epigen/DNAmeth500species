@@ -1,20 +1,27 @@
 #!/bin/bash
-#SBATCH --job-name TFBS_det
-#SBATCH --output ${LOGDIR}/compEpi/03.2_%A_%a.txt
-#SBATCH --partition shortq
-#SBATCH --mem 8000
-#SBATCH --cpus-per-task=4
-#SBATCH --time 2:00:00
-#SBATCH --array=4-287%20
+#SBATCH --job-name JASPAR
+#SBATCH --partition vsc3plus_0064
+#SBATCH --qos vsc3plus_0064
+#SBATCH -N 1
+#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/07.2_%A_%a.log
+#SBATCH --array=1-2
 
-module load R/3.5.1
+source ~/.bashrc
+conda activate Zoo_R
+
+echo "TEST"
+
+LOGDIR="/binfl/lv71484/droman/DNAmeth500species/log/mytmp"
 
 export SCRATCH_PATH=${LOGDIR}/mytmp
 export TMPDIR=$SCRATCH_PATH/Rtmp
+
+
 echo "$SLURM_ARRAY_TASK_ID"
+
 SP=`awk 'NR=='$SLURM_ARRAY_TASK_ID'{print $0}' ${CODEBASE}/DNAmeth500species/meta/species_list.txt`
 echo "$SP"
 
 date
-${CODEBASE}/DNAmeth500species/src/03.2_TF_freq.R ${SP}
+/home/lv71484/droman/.conda/envs/Zoo_R/bin/Rscript  ${CODEBASE}/DNAmeth500species/src/07.2_TF_freq.R ${SP}
 date
