@@ -1,8 +1,8 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 
-library(rtracklayer)
-library(lubridate)
-library(taxize)
+suppressMessages(library(rtracklayer))
+suppressMessages(library(lubridate))
+suppressMessages(library(taxize))
 
 ## setting the working directory 
 wd=file.path(analysis_dir,"validation", "01_crossMapping")

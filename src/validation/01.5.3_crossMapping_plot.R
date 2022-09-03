@@ -6,16 +6,17 @@ library(rpart)
 library("ROCR")
 library("caret")
 
-wd=file.path(analysis_dir,"SET_PROPER_PATH/01.5_crossMapping")
+wd=file.path(analysis_dir,"validation", "01_crossMapping", "01.5_analysis")
 dir.create(wd,recursive=TRUE)
 setwd(wd)
 
 
-genomes=fread("species_ucsc_matches.tsv")
+genomes=fread("../species_ucsc_matches.tsv")
 genomes[ucsc_db=="canFam4",ucsc_db:="canFam5"]
-profiles=stats=fread("Methylation_profiles_merged.tsv.gz")
-stats=fread("Methylation_profile_stats_summary.tsv")
-ref=fread("tracks_present.tsv")
+
+profiles=fread("summary/Methylation_profiles_merged.tsv")
+stats=fread("summary/Methylation_profile_stats_summary.tsv")
+ref=fread("../tracks_present.tsv")
 ref=unique(ref)
 
 #make sure only one genome per species is used
@@ -44,7 +45,7 @@ mean_profiles[,color_class:=factor(color_class,levels=names(class_colors)),]
 mean_profiles[,color_class2:=ifelse(species=="JL","JL","other"),]
 
 
-pdf("profiles.pdf",h=3,w=8)
+pdf("summary/profiles.pdf",h=3,w=8)
 ggplot(mean_profiles,aes(x=pos,y=meth,color=color_class2))+
   stat_smooth(geom="line",aes(group=species),method='loess',span=0.3,se=FALSE,alpha=0.2)+
   stat_smooth(geom="line",aes(group=color_class2),method='loess',span=0.3,se=FALSE,alpha=1,lwd=1,color="black")+
@@ -61,7 +62,7 @@ dev.off()
 sub_profiles=profiles[species%in%c("ESH","WIS","GSU","ABU")]
 sub_profiles=merge(sub_profiles,stats[,c("label","perc_mapped_passed")],by.x="sample", by.y="label")
 
-pdf("profiles_samples.pdf",h=3,w=4)
+pdf("summary/profiles_samples.pdf",h=3,w=4)
 ggplot(sub_profiles,aes(x=pos,y=meth,color=species))+
   stat_smooth(geom="line",aes(group=sample),method='loess',span=0.3,se=FALSE,alpha=1,lwd=0.5)+
   geom_vline(xintercept = c(-flank_factor,0,transcript_factor,flank_factor+transcript_factor),lty=20,lwd=0.5)+
@@ -70,7 +71,7 @@ ggplot(sub_profiles,aes(x=pos,y=meth,color=species))+
 dev.off()
 
 #####Axolotl analysis##################
-ax_profile=fread("AX_methylation_profile.tsv")
+ax_profile=fread("AX/AX_AmexG_v3.0.0/AX_methylation_profile.tsv")
 ax_profile[,N_samp:=.N,by="sample"]
 ax_profile_mean=ax_profile[,.(meth=mean(meth)),by=c("sample","pos","trans_type","N_samp")]
 
@@ -100,8 +101,7 @@ stats_red=stats[,.(y95_Transcript=mean(y95_Transcript[N>1000]),ymin_Upstream=mea
 stats_red[,median_mapped:=median(perc_mapped_passed),by="mapped_genome"]
 
 #annotate with evolutionary distance
-stats_red_annot=merge(stats_red,genomes[,c("species","ncbi_name","ucsc_species","ucsc_ncbi_name","common_level","ucsc_db")],
-                      by.x="mapped_genome",by.y="ucsc_db",allow.cartesian=TRUE,suffixes=c("",".g"))
+stats_red_annot=merge(stats_red,genomes[,c("species","ncbi_name","ucsc_species","ucsc_ncbi_name","common_level","ucsc_db")],by.x="mapped_genome",by.y="ucsc_db",allow.cartesian=TRUE,suffixes=c("",".g"))
 stats_red_annot=stats_red_annot[species==species.g]
 #simplify levels
 stats_red_annot[,common_level:=gsub("below_|sub|parv|infra|super","",gsub("[0-9]","",common_level))]
@@ -113,20 +113,17 @@ stats_red_annot[,common_level:=factor(common_level,levels=c("class","order","fam
 stats_red_annot[,annot_genome:=paste0(ucsc_species," (",mapped_genome,")"),]
 stats_red_annot[,annot_genome:=factor(annot_genome,levels=unique(annot_genome[order(median_mapped)])),]
 
-
+stats_red_annot[species == "JL", color_class:="Jawless_vertebrate",]
 pdf("mapping_evol_dist.pdf",h=5,w=4.4)
-ggplot(stats_red_annot,aes(x=common_level,y=perc_mapped_passed,color=color_class))+
-  geom_text(aes(label=species),position=position_jitter(width=0.2),size=1.5)+
+ggplot(stats_red_annot,aes(x=common_level,y=perc_mapped_passed,color=color_class))+ geom_text(aes(label=species),position=position_jitter(width=0.2),size=1.5)+
   geom_boxplot(color="black",outlier.color = NA,fill="transparent")+
   rotate_labels()+
-  stat_summary(fun.data = give.n,fun.args = c(y=-4), geom = "text",size=3,color="black")+
-  scale_color_manual(values=class_colors)+xlab("")+ylab("Mapped consensus fragments (%)")
+  stat_summary(fun.data = give.n,fun.args = c(y=-4), geom = "text",size=3,color="black")+ scale_color_manual(values=class_colors)+xlab("")+ylab("Mapped consensus fragments (%)")
 dev.off()
 
 
 pdf("mapping_genome_spec.pdf",h=7,w=12)
-ggplot(stats_red_annot, aes(x=annot_genome,y=perc_mapped_passed))+
-  #geom_point(position=position_jitter(0.3),alpha=0.5,aes(color=color_class))+
+ggplot(stats_red_annot, aes(x=annot_genome,y=perc_mapped_passed))+ #geom_point(position=position_jitter(0.3),alpha=0.5,aes(color=color_class))+
   geom_text(aes(label=species,color=color_class),size=2)+
   geom_boxplot(width=0.6,outlier.color = NA,fill="transparent",lwd=0.4)+
   scale_color_manual(values=class_colors)+
@@ -139,7 +136,7 @@ ggplot(stats_red_annot, aes(x=annot_genome,y=perc_mapped_passed))+
   rotate_labels()+ylab("Mapped consensus fragments (%)")
 dev.off()
 
-
+stats_red[mapped_genome=="petMar3", color_class:= "Jawless_vertebrate",]
 pdf("mapping_vs_dip.pdf",h=3,w=5)
 ggplot(stats_red[Nspec>0], aes(y=log(y95_Transcript/ymin_Upstream),x=perc_mapped_passed))+
   geom_point(alpha=0.7,aes(color=color_class))+
@@ -160,6 +157,7 @@ profiles_prom=profiles[trans_type=="upstream"&pos>-50,.(meth=mean(meth)),by=c("t
 profiles_prom[,rank_high:=rank(-meth),by="sample"]
 profiles_prom[,trans_id_simpl:=sub("\\.[0-9]+","",trans_id)]
 
+## run once 01.5.3.99_refseq_bash.sh
 ##match geneids to gene2refseq db using command line grep
 ##make sure refsqs.txt has unix end of line characters
 #write.table(unique(profiles_prom$trans_id_simpl),"refesqs.txt",row.names = FALSE,col.names = FALSE, quote=FALSE)
