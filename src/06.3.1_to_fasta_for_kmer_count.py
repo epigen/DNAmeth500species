@@ -2,16 +2,17 @@
 import os
 import sys
 #out_pos = open("")
-#CB = os.getenv("CODEBASE")
-data_dir = <your path to data>
-subdir = os.path.join(data_dir, "results_analysis", "/02_predict_meth/02.2_test_on_other_species/screen/")
+CB = os.getenv("CODEBASE")
+print(CB)
+## works only if linked!
+subdir = os.path.join(CB, "DNAmeth500species", "results_analysis", "05_predict_meth", "05.1_within_species", "screen")
 
 
 def save_to_fa(path_table, subdir, SP):
 	print(path_table)
 	if os.path.exists((path_table)):
-		out_pos = open(subdir+SP+"/sequences/"+SP+"_high.fa", "w")
-		out_neg = open(subdir+SP+"/sequences/"+SP+"_low.fa", "w")
+		out_pos = open(subdir+"/"+SP+"/sequences/"+SP+"_high.fa", "w")
+		out_neg = open(subdir+"/"+SP+"/sequences/"+SP+"_low.fa", "w")
 		with open(path_table) as f:
 			for line in f.readlines():
 				line_array = line[:-1].split("\t")
@@ -28,9 +29,9 @@ def save_to_fa(path_table, subdir, SP):
 	else:
 		return 0
 
-with open(os.getenv("CODEBASE")+"/compEpi/meta/species_list.txt", "r") as sp_list:
+with open(os.getenv("CODEBASE")+"/DNAmeth500species/meta/species_list.txt", "r") as sp_list:
 	species = sp_list.readlines()
 
 for sp in species:
 
-	print(save_to_fa(subdir+sp[:-1]+"/sequences/sequence_table_"+sp[:-1]+".tsv", subdir, sp[:-1]))
+	print(save_to_fa(subdir+"/"+sp[:-1]+"/sequences/sequence_table_"+sp[:-1]+".tsv", subdir, sp[:-1]))

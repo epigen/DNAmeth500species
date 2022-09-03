@@ -1,6 +1,7 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 
-mywd = file.path(analysis_dir, "/02_predict_meth/02.4_verify_inverted/")
+mywd = file.path(analysis_dir, "/06_inv/06.2_verify_inverted/")
+dir.create(mywd)
 setwd(mywd)
 
 dir.create(file.path(mywd, "summary"))
@@ -9,6 +10,7 @@ dir.create(file.path(mywd, "summary"))
 tissue_inv <- fread(file.path(mywd,"tissue_check","WHH", "all_data.csv"))
 
 tissue_norm <- fread(file.path(mywd,"tissue_check","AMP", "all_data.csv"))
+
 tissues_common <- intersect(unique(tissue_norm$train_tissue), unique(tissue_inv$train_tissue))
 tissue_inv <- tissue_inv[train_tissue %in% tissues_common]
 tissue_norm <- tissue_norm[train_tissue %in% tissues_common]
@@ -45,8 +47,8 @@ samples_inv$species <- "WHH"
 samples_norm <- fread(file.path(mywd,"sample_check","AMP", "all_data.csv"))
 samples_norm <- unique(samples_norm[, c("fdr", "tpr"):=NULL])
 samples_norm$species <- "AMP"
-
 samples <- rbind(samples_inv, samples_norm)
+
 samples<-samples[ifRand=="noRandTest"]
 samples$id <- paste(samples$species, samples$sample_N, sep = "_")
 ggplot(samples, aes(x = auc,  fill = id)) + geom_density(alpha = 0.5) + 
@@ -59,21 +61,16 @@ ggsave("summary/sample_check.pdf", width = 6, height = 3)
 
 
 ###bootstraping experiment - here I just saved the AUCs
-boot_inv_files  <- system("ls bootstrap/WHH/*_stats.tsv",intern=TRUE)
-boot_inv_list <- sapply(boot_inv_files, read.csv, sep = "\t", simplify = F)
-boot_inv <- rbindlist(boot_inv_list)
+boot_inv <- fread("bootstrap/WHH/bootstrap_AUC.tsv")
 boot_inv$species <- "WHH"
 
-boot_norm_files  <- system("ls bootstrap/AMP/*_stats.tsv",intern=TRUE)
-boot_norm_list <- sapply(boot_norm_files, read.csv, sep = "\t", simplify = F)
-boot_norm <- rbindlist(boot_norm_list)
+
+boot_norm <- fread("bootstrap/AMP/bootstrap_AUC.tsv")
 boot_norm$species <- "AMP"
 
-##############################
-
 boot_df <- rbind(boot_inv, boot_norm)
-
-ggplot(boot_df, aes(x = species, y = AUC, fill = species)) + geom_boxplot() + 
+boot_df <- boot_df[ifRand == "noRandTrain"]
+ggplot(boot_df, aes(x = species, y = auc, fill = species)) + geom_boxplot() + 
           geom_jitter() + scale_fill_manual(values = c("WHH" = "#ca0020", "AMP" = "#0571b0")) +
         theme(text = element_text(size = 15))
 ggsave("summary/bootstrap.pdf", width = 5, height = 5)

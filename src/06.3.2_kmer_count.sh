@@ -3,16 +3,16 @@
 ## 2 - order of the mm (default 4)
 analysis_dir=$3
 
-PATH_TO_FASTA="${analysis_dir}/02_predict_meth/02.2_test_on_other_species/screen/${1}/sequences/"
+PATH_TO_FASTA="${analysis_dir}/05_predict_meth/05.1_within_species/screen/${1}/sequences/"
 
-PATH_TO_SAVE_DIR="${analysis_dir}/99.4_kmer_count_selected/${1}/"
+PATH_TO_SAVE_DIR="${analysis_dir}/06_inv/06.3_kmer_freq/${1}/"
 
-mkdir $PATH_TO_SAVE_DIR
-module load meme/4.10.2 
+#mkdir $PATH_TO_SAVE_DIR
+#module load meme/4.10.2 
 
 date
-fasta-get-markov -m ${2} -norc $PATH_TO_FASTA/${1}_high.fa ${PATH_TO_SAVE_DIR}/high.txt
-fasta-get-markov -m ${2} -norc $PATH_TO_FASTA/${1}_low.fa ${PATH_TO_SAVE_DIR}/low.txt
+#fasta-get-markov -m ${2} -norc #$PATH_TO_FASTA/${1}_high.fa #${PATH_TO_SAVE_DIR}/high.txt
+#fasta-get-markov -m ${2} -norc #$PATH_TO_FASTA/${1}_low.fa #${PATH_TO_SAVE_DIR}/low.txt
 date
 
 

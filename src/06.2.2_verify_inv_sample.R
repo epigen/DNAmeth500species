@@ -2,21 +2,23 @@
 library(pryr)
 
 kmer=NA
-
+isDev=FALSE
 if (is.na(kmer)){kmer=c(1:10)}
 args = commandArgs(trailingOnly=TRUE)
 species=args[1]
 if (is.na(kmer)){kmer=c(1:10)}
 subdir_name="sample_check"
-source(file.path(Sys.getenv("CODEBASE"),"compEpi/src/02.0_predict_initialization.R"))
+source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/05.0_predict_initialization.R"))
 
 
 #species = "WHH"
 wd=file.path(processed_dir)
-mywd="/scratch/lab_bock/shared/projects/compEpi/results_analysis/02_predict_meth"
 setwd(wd)
+
+subdir=file.path(analysis_dir,"06_inv", "06.2_verify_inverted",subdir_name,species)
+
 #previously results were stored in the results_pipeline folder (paste0("/scratch/lab_bock/jklughammer/projects/compEpi_uc/results_pipeline/",species,"/methPred/",subdir_name)), now moving to results_analysis (more appropriate location) 
-subdir=file.path(mywd,"02.4_verify_inverted",subdir_name,species)
+
 dir.create(subdir,recursive=TRUE)
 dir.create(file.path(subdir, "sequences"), recursive=TRUE)
 dir.create(file.path(subdir, "stats"), recursive=TRUE)
@@ -91,7 +93,8 @@ train_models <- mclapply(seq_along(train_samples), function(i) {simpleCache(cach
 train_models_rand<-mclapply(seq_along(train_samples), function(i) {simpleCache(cacheName=paste0("methTrainRand_",train_samples[[i]]),instruction = {train_test(train_data[[i]]$x, sample(train_data[[i]]$y), type=train_sample_ids[[i]][[1]], ifRand=paste0("rand", "Train"), run=0, k=kmer, subdir = subdir, SAVE_TRAIN_IDS = TRUE)},cacheDir=paste0(subdir,"/RCache"),assignToVariable="resRand",recreate=FALSE)}) 
 
 ##test on the average methylation values for all the species (or on a subset for development)
-test_species<-read.table("/scratch/lab_bock/dromanovskaia/CompEpi/compEpi/meta/species_list.txt")$V1
+test_species<-read.table(file.path(Sys.getenv("CODEBASE"),
+                                     "DNAmeth500species/meta/species_list.txt"))$V1
 
 if(isDev){
   #taking random species
@@ -162,16 +165,17 @@ res_rand <- rbindlist(lapply(res_list, function(x) x$pred_rand))
 print(mem_used())
 
 res_full <- rbind(res, res_rand)
+                             
 write.table(res_full, file.path(subdir, "all_data.csv"), row.names = F, quote = F)
 
 res_sum <- res_full %>%
   dplyr::group_by(type, ifRand, sample_N) %>% 
   dplyr::summarise(AUC = first(auc), F1 = first(f1))
 self_auc <- res_sum[res_sum$type==species & res_sum$ifRand=="noRandTest", ]
-res_sum$color_class <- unlist(sapply(res_sum$type, function(x) sp_df[x, ]$color_class))
-res_sum$class_short <- unlist(sapply(res_sum$color_class, function(x) class_short[[x]]))
-res_sum$class_short <- factor(res_sum$class_short, levels = class_short)
-
+                             
+res_sum <- left_join(res_sum, sp_df, by = c("type" = "species")) 
+                             
+                             
 p <- ggplot(res_sum, aes(x = class_short, y = AUC, fill = ifRand)) + geom_boxplot(outlier.shape = 21) +
   facet_wrap(~sample_N, ncol = 1) + xlab("taxonomy group") + 
   scale_fill_manual(values = c("noRandTest"="#4682B4", "RandTest" = "grey")) + 

@@ -5,49 +5,45 @@ library(ggpubr)
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 
 SP <- "WHH"
-wd = file.path(analysis_dir,"02_predict_meth/02.1_within_species")
+wd = file.path(analysis_dir,"05_predict_meth/05.1_within_species")
 setwd(wd)
 
-subdir <- paste0(analysis_dir, "/02_predict_meth/02.8_why_inv/final/")
+subdir <- paste0(analysis_dir, "/06_inv/WHH_final/")
 dir.create(subdir)
 
 ### uploading inverted species:
-invfile <- paste0(Sys.getenv("CODEBASE"), "compEpi/meta/inverted_species.txt")
-if(!file.exists(invfile)) print("inverted list does not exist, run 02.82 first")
+invfile <- paste0(Sys.getenv("CODEBASE"), "DNAmeth500species/meta/inverted_species.txt")
+if(!file.exists(invfile)) print("inverted list does not exist, run 06.1 first")
 inv <- read.table(invfile)$V1
 
-sp_full_order <- read.table(paste0(Sys.getenv("CODEBASE"), 
-                                   "compEpi/meta/species_ordered.txt"), header = 1)$sp_full_order
-sp_df <- as.data.frame(sp_full_order)
-colnames(sp_df) <- c("species")
-sp_df <- unique(left_join(sp_df, stats_annot[, c("species", "color_class")]))
+sp_full_order <- read.table(paste0(Sys.getenv("CODEBASE"), "DNAmeth500species/meta/species_list_ordered_2021_2.txt"), header = 1)$V1
+
 sp_df$inv <- sp_df$species %in% inv
 
 ##reading AUC summary
-aucs <- read.csv("../02.2_test_on_other_species/summary/all_aucs_full.csv")
-self_aucs <- read.csv(file.path(analysis_dir,"02_predict_meth/02.1_within_species/summary/all_aucs.csv"), row.names = 1)
+aucs <- fread(file.path(analysis_dir, "05_predict_meth","/05.2_test_on_other_species/summary/all_aucs_full.csv"))
+self_aucs <- read.csv(file.path(analysis_dir,"05_predict_meth/05.1_within_species/summary/all_aucs.csv"), row.names = 1)
 self_aucs<-unique(self_aucs[, c("species", "k", "AUC", "numSequences", "color_class", "group")])
 row.names(self_aucs)<-self_aucs$species
 
 ##loading the feature weights
-all_kmer3 <- read.csv("summary/all_kmerWeights3.csv", row.names = 1)
+all_kmer3 <- read.table("../05.3_feature_weight_analysis/all_kmerWeights_3.csv", row.names = 1, header = 1)
 
 
 ##draw the heatmap of all the feature weights for the Actionpteri
-sub_auc<-self_aucs[sp_df[sp_df$color_class == "Actinopteri",]$species,]
+sub_auc <- self_aucs[sp_df[sp_df$color_class == "Actinopteri",]$species,]
 
-ha = columnAnnotation(inverted = sp_df[sp_df$color_class == "Actinopteri",]$inv, 
-                      selfAUC = sub_auc$AUC,
-                      col=list(inverted=c("TRUE"="red","FALSE"="grey")))
+ha = columnAnnotation(inverted = sp_df[color_class == "Actinopteri",]$inv,  selfAUC = sub_auc$AUC,
+ col=list(inverted=c("TRUE"="red","FALSE"="grey")))
+
 pdf(paste0(subdir, "Actionpteri_f_weights.pdf"), width = 15, height = 10)
-print(Heatmap(all_kmer3[sp_df[sp_df$color_class=="Actinopteri",]$species], cluster_columns = F,
+print(Heatmap(all_kmer3[sp_df[color_class=="Actinopteri",]$species], cluster_columns = F,
               top_annotation = ha, name="feature weights", column_names_gp = gpar(fontsize = 8), row_names_gp = gpar(fontsize = 8)))
 dev.off()
 
 ##analysing the feature weights
 #identifying, which of the species in the same class showes the most "invertiness"
-most_opp <- as.character(aucs[aucs$auc == min(aucs[aucs$train_species==SP & aucs$class == "Actinopteri" & 
-                                                     aucs$ifRand == "noRandTest", ]$auc),]$type)
+most_opp <- as.character(aucs[aucs$auc == min(aucs[train_species==SP & color_class_test == "Actinopteri" &  ifRand == "noRandTest", ]$auc),]$type)
 sub <- all_kmer3[, c(SP, most_opp)]
 sub$mean<-rowMeans(all_kmer3[, sp_df[sp_df$color_class=="Actinopteri" & !sp_df$inv, ]$species])
 
@@ -59,7 +55,7 @@ sub_m$sd <- 0
 sub_m[sub_m$variable=="mean", ]$sd <- sd_vec
 sub_m$variable <- factor(sub_m$variable, levels=c( "WHH","PLF", "mean"))
 
-##drawing boxplot
+##drawing barplot
 pdf(paste0(subdir, "/kmer_weights_Actinopteri_WHH_PLF.pdf"),
     width = 20, heigh = 10)
 ggplot(sub_m, aes(x = kmer, y = value )) + 
@@ -86,32 +82,34 @@ kmer_neg <- sub %>%
 print(kmer_pos)
 print(kmer_neg)
 
-sub_m_outliers <- sub_m[sub_m$kmer %in% union(kmer_pos, kmer_neg), ]
-
+#sub_m_outliers <- sub_m[sub_m$kmer %in% union(kmer_pos, kmer_neg), ]
+sub_m_outliers <- sub_m[sub_m$kmer %in% kmer_pos, ]
 kmer_levels <- sub_m_outliers[sub_m_outliers$variable == "WHH", ][order(sub_m_outliers[sub_m_outliers$variable == "WHH", ]$value),"kmer" ]
+
 sub_m_outliers$kmer <- factor(sub_m_outliers$kmer, levels = kmer_levels)
+setDT(sub_m_outliers)
 
 pdf(paste0(subdir, "/kmer_weights_Actinopteri_WHH_PLF_different.pdf"),
     width = 3, heigh = 3)
-ggplot(sub_m_outliers, aes(x = kmer, y = value )) + 
+ggplot(sub_m_outliers[variable!="PLF" ], aes(x = kmer, y = value )) + 
   geom_bar(stat = "identity", aes(fill = variable), alpha = 0.7, position = "identity") + rotate_labels()+
   scale_fill_manual(values = c( "mean" = "grey","WHH" = "red", "PLF" = "lightblue")) + 
   geom_errorbar(aes(ymin=value-sd, ymax=value+sd), width=0.6, color = "grey", position=position_dodge())
 dev.off()
-
+##selecting three top kmers
+kmer_pos <- kmer_pos[2:4]
 #first step is to analyze if there are repeats of the direct feature weights, that cause the shift of the svm model
 rep <- paste0(kmer_pos, kmer_pos)
 
-stats_high <- read.csv(paste0(analysis_dir,
-            "/02_predict_meth/02.8_why_inv/repeats/repeat_frequencies_6/kmer_freq_high.csv"), row.names = 1)
+stats_high <- read.csv(paste0(analysis_dir,  "/06_inv/06.3_kmer_freq/repeat_frequencies_6/kmer_freq_high_6.csv"), row.names = 1)
 
 stats_low <- read.csv(paste0(analysis_dir,
-            "/02_predict_meth/02.8_why_inv/repeats/repeat_frequencies_6/kmer_freq_low.csv"), row.names = 1)
+ "/06_inv/06.3_kmer_freq/repeat_frequencies_6/kmer_freq_low_6.csv"), row.names = 1)
 ##as a color I want to use the gradient of "invertiness of the species" in relation to the WHH
 auc_d <- aucs %>%
-  filter( ifRand == "noRandTrain" | ifRand == "noRandTest" ) %>%
-  filter( train_species == "WHH" & class == "Actinopteri" ) %>%
-  mutate ( train_AUC = aucs[aucs$ifRand == "noRandTrain" & aucs$train_species== "WHH", "auc"]) %>%
+  filter( ifRand == "noRand" | ifRand == "noRandTest" ) %>%
+  filter( train_species == "WHH" & color_class_test == "Actinopteri" ) %>%
+  mutate ( train_AUC = as.numeric(aucs[aucs$ifRand == "noRand" & aucs$train_species== "WHH", "auc"])) %>%
   mutate( auc_d = train_AUC - auc) %>%
   select(type, auc_d, auc)
 
@@ -130,11 +128,9 @@ make_df <-function(kmer){
 
 rep3 <- paste0(kmer_pos, kmer_pos, kmer_pos)
 
-stats_high <- read.csv(paste0(analysis_dir,
-                              "/02_predict_meth/02.8_why_inv/repeats/repeat_frequencies_6/kmer_freq_high_9.csv"), row.names = 1)
+stats_high <- read.csv(paste0(analysis_dir,                             "/06_inv/06.3_kmer_freq/repeat_frequencies_6/kmer_freq_high_9.csv"), row.names = 1)
 
-stats_low <- read.csv(paste0(analysis_dir,
-                             "/02_predict_meth/02.8_why_inv/repeats/repeat_frequencies_6/kmer_freq_low_9.csv"), row.names = 1)
+stats_low <- read.csv(paste0(analysis_dir, "/06_inv/06.3_kmer_freq/repeat_frequencies_6/kmer_freq_low_9.csv"), row.names = 1)
 
 
 comp_list3 <- lapply(rep3, make_df)
@@ -162,6 +158,8 @@ ggplot(comp_all3, aes(x = low, y = high, color = auc)) + geom_point() + facet_wr
 dev.off()
 
 
+
+
 pdf(paste0(subdir,"correlations_for_repeats.pdf"), width = 4, height = 4)
 ggplot(comp_corr, aes(x = inv, y = rep_kmer)) + geom_point(aes(size = corr, color = log(cor.pval))) 
 dev.off()
@@ -169,11 +167,13 @@ dev.off()
 
 comp_all3$freq_d<-comp_all3$high - comp_all3$low
 
-pdf(paste0(subdir, "auc_freq_corr.pdf"), width = 20, height = 5)
+pdf(paste0(subdir, "auc_freq_corr.pdf"), width = 18, height = 5)
 ggplot(comp_all3, aes(x = freq_d, y = auc, color = inv)) + geom_point() + 
   stat_cor(method = "pearson", label.x.npc = 0.5, label.y.npc = 0.5) + 
   facet_wrap(~rep_kmer, scales = "free", nrow = 1) +
   scale_color_manual(values = c("TRUE"="red","FALSE"="darkgrey")) +
-  geom_text_repel(data = comp_all3[comp_all3$inv, ], aes(x = freq_d, y = auc, label = rowname), color = "black")
+  geom_text_repel(data = comp_all3[comp_all3$inv, ], aes(x = freq_d, y = auc, label = rowname), color = "black") + 
+    geom_vline(xintercept = 0.0, linetype = "dashed", size = 0.5)+ 
+    geom_hline(yintercept = 0.5, linetype = "dashed", size = 0.5)
 dev.off()
 

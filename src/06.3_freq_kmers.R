@@ -1,33 +1,36 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 library(tibble)
-wd <- paste0(analysis_dir, "/02_predict_meth/02.8_why_inv/repeats/repeat_frequencies_6")
+wd <- file.path(analysis_dir, "06_inv", "06.3_kmer_freq")
+dir.create(file.path(wd, "repeat_frequencies_6"))
 setwd(wd)
 
 read_files <- function(path, k){
-  if(k<10) files_high <- system(paste0("ls */kmer_fr_", path, "/kmer0", k),intern=TRUE)
-  else files_high <- system(paste0("ls */kmer_fr_", path, "/kmer", k),intern=TRUE)
+    if(k < 10) files_high <- list.files(pattern = paste0("kmer_", path, "0", k), recursive = TRUE)
+    else files_high <- list.files(pattern = paste0("kmer_", path, k), recursive = TRUE)
+    
   sp_list<-as.character(sapply(files_high, function(x) strsplit(x, "/")[[1]][1] ))
+                               
   stats_high<-lapply(files_high, read.csv, sep = " ")
   stats_new <- lapply(seq_along(stats_high), function(i){ a <- stats_high[[i]][, c(-3)]; 
-                                            colnames(a) <- c("kmer", sp_list[[i]]); return(a)})
+colnames(a) <- c("kmer", sp_list[[i]]); return(a)})
   stats_high <- Reduce(full_join, stats_new )
   return(stats_high)
 }
 
 stats_high <- read_files("high", 6)
-write.csv(stats_high, paste0(wd,"/kmer_freq_high_6.csv"), quote = F)
+write.csv(stats_high, paste0(wd,"/repeat_frequencies_6/kmer_freq_high_6.csv"), quote = F)
 
 stats_low <- read_files("low", 6)
-write.csv(stats_low, paste0(wd,"/kmer_freq_low_6.csv"), quote = F)
+write.csv(stats_low, paste0(wd,"/repeat_frequencies_6/kmer_freq_low_6.csv"), quote = F)
 
 ##same for k = 9
 stats_high <- read_files("high", 9)
-write.csv(stats_high, paste0(wd,"/kmer_freq_high_9.csv"), quote = F)
+write.csv(stats_high, paste0(wd,"/repeat_frequencies_6/kmer_freq_high_9.csv"), quote = F)
 
 stats_low <- read_files("low", 9)
-write.csv(stats_low, paste0(wd,"/kmer_freq_low_9.csv"), quote = F)
+write.csv(stats_low, paste0(wd,"/repeat_frequencies_6/kmer_freq_low_9.csv"), quote = F)
 
-##same for k = 12
+##same for   12
 stats_high <- read_files("high", 12)
 write.csv(stats_high, paste0(wd,"/kmer_freq_high_12.csv"), quote = F)
 

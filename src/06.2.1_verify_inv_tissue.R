@@ -8,13 +8,13 @@ species=args[1]
 if (is.na(kmer)){kmer=c(1:10)}
 subdir_name="tissue_check"
 
-source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500specis/src/02.0_predict_initialization.R"))
+source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/05.0_predict_initialization.R"))
 
 wd=file.path(processed_dir)
-mywd=file.path(analysis_dir, "/02_predict_meth")
 setwd(wd)
 
-subdir=file.path(mywd,"02.4_verify_inverted",subdir_name,species)
+
+subdir=file.path(analysis_dir,"06_inv", "06.2_verify_inverted",subdir_name,species)
 
 dir.create(subdir,recursive=TRUE)
 dir.create(file.path(subdir, "sequences"), recursive=TRUE)
@@ -23,7 +23,7 @@ dir.create(file.path(subdir, "stats"), recursive=TRUE)
 ##training on each tissue
 load_data<-function(SP){
   #load data
-  meth_data_mean=fread(list.files(path=paste0(SP,"/toSelf_filtered_0.08mm_final_concat/diffMeth_cpg/"),
+    meth_data_mean=fread(list.files(path=paste0(SP,"/toSelf_filtered_0.08mm_final_concat/diffMeth_cpg/"),
                                   pattern=".*_mean_meth.tsv",full.names=TRUE))
   
   uc_map=fread(list.files(path=paste0(SP,"/toSelf_filtered_0.08mm_final_concat"),
@@ -81,7 +81,8 @@ get_dataset<-function(ids, meth_data_mean, ded_ref, cgg_names, uc_map, isTest=FA
 ##CHANGE FOR PARALEL ON THE FULL DATASET
 data <- load_data(species[[1]])
 train_sample_ids <- data$sample_ids
-train_samples - data$samples
+                     
+train_samples <- data$samples
 
 train_data <- mclapply(train_sample_ids, get_dataset, meth_data_mean=data$meth_data_mean, 
                      cgg_names=data$cgg_names, ded_ref=data$ded_ref, uc_map=data$uc_map)
@@ -98,7 +99,7 @@ train_models <- mclapply(seq_along(train_samples), function(i)
 train_models_rand <- mclapply(seq_along(train_samples), function(i) {simpleCache(cacheName=paste0("methTrainRand_",train_samples[[i]]),instruction = {train_test(train_data[[i]]$x, sample(train_data[[i]]$y), type=train_sample_ids[[i]][[1]], ifRand=paste0("rand", "Train"), run=0, k=kmer, subdir = subdir, SAVE_TRAIN_IDS = TRUE)},cacheDir=paste0(subdir,"/RCache"),assignToVariable="resRand",recreate=FALSE)}) 
 
 ##test on the average methylation values for all the species (or on a subset for development)
-test_species <- read.table("/scratch/lab_bock/dromanovskaia/CompEpi/compEpi/meta/species_list.txt")$V1
+test_species <- read.table(file.path(meta_dir, "species_list.txt"))$V1
 
 
 in_other_sample<-function(SP){
@@ -190,11 +191,9 @@ res_sum <- res_full %>%
   dplyr::summarise(AUC = first(auc), F1 = first(f1))
 self_auc <- res_sum[res_sum$type==species & res_sum$ifRand=="noRandTest", ]
 
-res_sum$color_class <- unlist(sapply(res_sum$type, function(x) sp_df[x, ]$color_class))
-res_sum$class_short <- unlist(sapply(res_sum$color_class, function(x) class_short[[x]]))
-res_sum$class_short <- factor(res_sum$class_short, levels = class_short)
-
-p <- ggplot(res_sum, aes(x = class_short, y = AUC, fill = ifRand)) + geom_boxplot(outlier.shape = 21) +
+res_sum <- left_join(res_sum, sp_df, by = c("type" = "species"))                             
+                             
+p <- ggplot(res_sum, aes(x = group, y = AUC, fill = ifRand)) + geom_boxplot(outlier.shape = 21) +
   facet_wrap(~train_tissue, ncol = 1) + xlab("taxonomy group") + 
   scale_fill_manual(values = c("noRandTest"="#4682B4", "RandTest" = "grey")) + 
   geom_hline(data =  self_auc, mapping = aes(yintercept = AUC), linetype = "dashed", color = "red") + 

@@ -1,5 +1,6 @@
 #!/usr/bin/env Rscript
 library(pryr)
+kmer=NA
 
 args = commandArgs(trailingOnly=TRUE)
 species=args[1]
@@ -7,15 +8,12 @@ if (is.na(kmer)){kmer=c(1:10)}
 
 subdir_name="bootstrap"
 
-source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/02.0_predict_initialization.R"))
-
+source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/05.0_predict_initialization.R"))
 
 wd=file.path(processed_dir)
 setwd(wd)
 
-mywd=file.path(analysis_dir, "02_predict_meth")
-
-subdir=file.path(mywd,"02.4_verify_inverted",subdir_name,species)
+subdir=file.path(analysis_dir,"06_inv", "06.2_verify_inverted",subdir_name,species)
 
 dir.create(subdir,recursive=TRUE)
 dir.create(file.path(subdir, "sequences"), recursive=TRUE)
@@ -82,76 +80,16 @@ train_models <- mclapply(seq_along(train_data), function(i) {simpleCache(cacheNa
                 cacheDir=paste0(subdir,"/RCache"), assignToVariable="res", recreate=FALSE)})
 
 
-
-
+train_models_df <- rbindlist(lapply(train_models, function(x) x$roc_dt))
+train_models_df <- unique(train_models_df[, c("type", "auc", "run", "ifRand")])
+                                    
 train_models_rand <- mclapply(seq_along(train_data), function(i) {simpleCache(cacheName=paste0("methTrainRand_",i),
                      instruction = {train_test(train_data[[i]]$x, sample(train_data[[i]]$y), type=i,
                     ifRand=paste0("rand", "Train"), run=0, k=kmer, subdir = subdir, SAVE_TRAIN_IDS = TRUE)},
                     cacheDir=paste0(subdir,"/RCache"), assignToVariable="resRand", recreate=FALSE)}) 
 
+train_models_df_rand <- rbindlist(lapply(train_models_rand, function(x) x$roc_dt))
+train_models_df_rand <- unique(train_models_df_rand[, c("type", "auc", "run", "ifRand")])
 
-
-test_species <- read.table(file.path(Sys.getenv("CODEBASE"),
-                                     "DNAmeth500species/meta/species_list.txt")$V1)
-
-
-train_ids <- unique(sapply(train_models, function(x) x$train_ids))
-
-test_data <- lapply(test_species, read_data, isTest = TRUE, train_ids = train_ids)
-test_data <- test_data[sapply(test_data, length) > 1]
-
-test_data_x <- lapply(test_data, function(x) x$x)
-test_data_y <- lapply(test_data, function(x) x$y)
-rm(test_data)
-
-test_on_other <- function(fit,test_data_x, test_data_y, run, ifRand, kmer, subdir){
-  print(run)
-  preddec_list <- mclapply(test_data_x, predict, object = fit$model[[1]])
-  
-  pref <- mapply(evaluatePrediction, preddec_list, test_data_y, SIMPLIFY = FALSE,  
-                 MoreArgs = (list(allLabels = unique(test_data_y[[1]]), print = FALSE)))
-  f1_list <- lapply(pref, function(x) {get_f1(x$SENS, x$PREC)})
-  
-  preddec_list_dec <- mclapply(test_data_x, predict, object = fit$model[[1]], predictionType = "decision")
-  rocdata_list <- mapply(computeROCandAUC, preddec_list_dec, test_data_y, 
-                         MoreArgs = (list(allLabels = unique(test_data_y[[1]]))))
-  
-  roc_dt_list <- lapply(seq_along(rocdata_list), function(i) data.table(fdr = unlist(rocdata_list[[i]]@FPR),
-                  tpr = unlist(rocdata_list[[i]]@TPR),auc = unlist(rocdata_list[[i]]@AUC),f1 = f1_list[[i]], 
-                  run = run, type = test_species[[i]],ifRand = paste0(ifRand, "Test"), k = 0, C = 0,
-                                                                        min_motif = "NN",max_motif = "NN"))
-  
-  roc_dt_full <- rbindlist(roc_dt_list)
-  
-  return(list(roc_dt = roc_dt_full))
-}
-
-res_list <- sapply(seq_along(train_models), function(i) test_on_other(train_models[[i]],
-                                                                      test_data_x = test_data_x, 
-                    test_data_y = test_data_y, ifRand = "noRand",run = i, subdir = subdir,k = kmer), 
-                          simplify = F)
-
-res <- rbindlist(lapply(res_list, function(x) x$roc_dt ))
-
-test_data_y_rand <- lapply(test_data_y, function(y) y_rand = sample(y))
-res_rand_list <- sapply(seq_along(train_models_rand), function(i) test_on_other(train_models_rand[[i]],
-                      test_data_x = test_data_x, test_data_y = test_data_y_rand, ifRand = "Rand",
-                      run = i, subdir = subdir, k = kmer), simplify = F)
-res_rand <- rbindlist(lapply(res_rand_list, function(x) x$roc_dt ))
-res_full <- rbind(res, res_rand)
-write.table(res_full, file.path(subdir, "all_data.csv"), row.names = F, quote = F)
-
-res_sum <- res_full %>%
-  dplyr::group_by(type, ifRand, run) %>% 
-  dplyr::summarise(AUC = first(auc), F1 = first(f1))
-
-self_auc <- res_sum[res_sum$type==species & res_sum$ifRand=="noRandTest", ]
-
-res_sum$color_class <- unlist(sapply(res_sum$type, function(x) sp_df[x, ]$color_class))
-
-ggplot(res_sum, aes(x = type, y = AUC, fill = ifRand)) + geom_boxplot() +
-  facet_wrap(~color_class, ncol = 1) + xlab("") + 
-  scale_fill_manual(values = c("noRandTest"="#4682B4", "RandTest" = "grey")) + 
-  geom_hline(data =  self_auc, mapping = aes(yintercept = AUC), linetype = "dashed", color = "red")
-
-ggsave(file.path(subdir,  "AUC_in_other_sp.pdf"), width = 20, height = 8)
+df <- rbind(train_models_df, train_models_df_rand)                                         
+my_wt(df, file.path(subdir, "bootstrap_AUC.tsv"))
