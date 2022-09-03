@@ -1,7 +1,7 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 library(MASS)
 
-wd=file.path(analysis_dir,"04_tissue")
+wd=file.path(analysis_dir,"08_tissue")
 dir.create(wd)
 setwd(wd)
 
