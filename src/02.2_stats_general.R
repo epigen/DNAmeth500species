@@ -1,11 +1,10 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 library(tableHTML)
 
-wd=file.path(analysis_dir,"01_basicStats")
-setwd(wd)
+
 
 ## reading the nessecary dataframes in
-stats_annot=fread("all_stats.tsv")
+#stats_annot=fread("all_stats.tsv")
 stats_long_annot=fread("all_stats_long.tsv")
 ref_long=fread("ref_stats_long.tsv")
 #remove unconverted samples
@@ -19,6 +18,7 @@ setwd(wd)
 ## printing out numbers:
 
 cat(paste0("total samples (converted):", NROW(stats_annot[conversion_type == "converted"])), file="stats_for_paper.txt")
+
 stats_annot %>% filter(conversion_type == "converted") %>% group_by(color_class) %>% summarise(n = n())
 
 #plot all sample stats
@@ -42,7 +42,7 @@ ggplot(stats_long_annot,aes(x=variable,y=value))+geom_violin()+geom_boxplot(outl
 dev.off()
 
 #focus on conversion rate
-conversion_problem=stats_annot[conversionRate<98|k1_unmeth>0.02]
+conversion_problem=stats_annot[conversionconversionRate<98|k1_unmeth>0.02]
 stats_annot[conversionRate<98&k1_unmeth>0.02]
 
 pdf("stats_underconv.pdf",height=4,width=7)

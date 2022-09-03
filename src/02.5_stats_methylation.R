@@ -43,14 +43,34 @@ for(file in files){
 write.table(all_means,"all_meth_means.tsv",sep="\t",quote=FALSE,row.names=FALSE)
 write.table(all_histo,"all_meth_histo.tsv",sep="\t",quote=FALSE,row.names=FALSE)
 
+all_means <- fread("all_meth_means.tsv")
+all_histo <- fread("all_meth_histo.tsv")
+
+#remove unconverted and other "bad" samples
+stats_annot=stats_annot[!grepl("_uc$",Sample_Name)&species_check!="fail"&!grepl("Tumour|Cellline",Tissue)&!is.na(Tissue)] 
+
 all_means_annot=merge(all_means,stats_annot,by.x="sample",by.y="Sample_Name")
 all_histo_annot=merge(all_histo,stats_annot,by.x="sample",by.y="Sample_Name")
 
+
 pdf("meth_means_boxpl.pdf",height=5,width=15)
-ggplot(all_means_annot,aes(y=mean,x=color_class,fill=color_class))+geom_boxplot()+rotate_labels()+
+ggplot(all_means_annot,aes(y=mean,x=group,fill=color_class))+
+geom_boxplot(outlier.shape = 21)+rotate_labels()+
+geom_point(data = all_means_annot[species == "JL"], 
+           aes(y=mean,x=group), shape = 21, fill = class_colors["Jawless_vertebrate"]) + 
 facet_wrap(~cov_thres,ncol=5,scale="free")+ylab("% DNA methylation (CpG)")+
 #stat_summary(fun.data = give.n,fun.args = c(y=0), geom = "text",size=4)+
-scale_fill_manual(values = class_colors)+scale_x_discrete(labels=class_short)
+scale_fill_manual(values = class_colors)
+dev.off()
+
+pdf("meth_means_boxpl_withN.pdf",height=6,width=15)
+ggplot(all_means_annot,aes(y=mean,x=group,fill=color_class))+
+geom_boxplot(outlier.shape = 21)+rotate_labels()+
+geom_point(data = all_means_annot[species == "JL"], 
+           aes(y=mean,x=group), shape = 21, fill = class_colors["Jawless_vertebrate"]) + 
+facet_wrap(~cov_thres,ncol=5,scale="free")+ylab("% DNA methylation (CpG)")+
+stat_summary(fun.data = give.n,fun.args = c(y=0), geom = "text",size=4)+
+scale_fill_manual(values = class_colors)
 dev.off()
 
 pdf("meth_hist_boxpl.pdf",height=5,width=20)
@@ -60,7 +80,22 @@ dev.off()
 all_histo_annot[,large_bins:=factor(ifelse(bin<21,"low",ifelse(bin>79,"high","medium")),levels=c("low","medium","high")),]
 all_histo_annot_red=all_histo_annot[,.(frequency=sum(frequency)),by=c("large_bins","color_class","sample","species","cov_thres")]
 
+all_histo_annot_red[species == "JL", color_class:= "Invertebrata"]
+
 pdf("meth_hist_boxpl_grouped.pdf",height=5,width=20)
 ggplot(all_histo_annot_red,aes(y=frequency,x=large_bins,col=color_class))+geom_boxplot()+
-scale_color_manual(values = class_colors)+facet_wrap(~cov_thres,ncol=5,scale="free")+rotate_labels()
+geom_point(data = all_histo_annot_red[species == "JL"], 
+           aes(y=frequency,x=large_bins), color = class_colors["Jawless_vertebrate"]) + 
+scale_color_manual(values = class_colors)+facet_wrap(~cov_thres,ncol=5,scale="free")+
+stat_summary(fun.data = give.n,fun.args = c(y=1.0), geom = "text",size=4)+
+rotate_labels()
+dev.off()
+
+pdf("meth_hist_boxpl_grouped_cov10.pdf",height=4,width=6)
+ggplot(all_histo_annot_red[cov_thres == 10],aes(y=frequency,x=large_bins,col=color_class))+geom_boxplot(outlier.size = 0.5)+
+geom_point(data = all_histo_annot_red[species == "JL" & cov_thres == 10], 
+           aes(y=frequency,x=large_bins), color = class_colors["Jawless_vertebrate"]) + 
+scale_color_manual(values = class_colors)+
+stat_summary(fun.data = give.n,fun.args = c(y=1.0), geom = "text",size=4)+
+rotate_labels()
 dev.off()

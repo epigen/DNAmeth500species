@@ -7,6 +7,11 @@ dir.create(wd)
 setwd(wd)
 
 locations=fread(file.path(meta_dir,"locations.csv"))
+##stats_annot for filtering tumor and GPD samples + excluded
+stats_annot=stats_annot[!grepl("_uc$",Sample_Name)&!grepl("Tumour|Cellline",Tissue)]
+
+locations <- locations[Abbreviation %in% stats_annot$Sample_Name]
+locations <- unique(locations)
 locations[!grepl("USA",Location),Location:=sub(",",", ,",Location)]
 
 locations_red=locations[,.(N_samples=length(unique(Abbreviation))),by=c("Institution","Location")]
@@ -44,3 +49,5 @@ ggplot(locations_red_red)+mapWorld+geom_point(aes(x=as.numeric(lon_c),y=as.numer
 ggplot(locations_red[Country=="Austria"]) + geom_sf(data = shp)+geom_point(aes(x=as.numeric(lon),y=as.numeric(lat),col=N_samples),alpha=0.7,size=8)+geom_text(aes(x=as.numeric(lon),y=as.numeric(lat),label=paste0(Institution,"\n",N_samples)))+scale_color_gradient(low="blue",high="red")+theme_bw()+coord_sf()
 dev.off()
 
+my_wt(locations_red, "locations_red.tsv")
+my_wt(locations_red_red, "locations_red_red.tsv")
