@@ -19,8 +19,16 @@ for (file in stats_files){
 head(all_stats)
 setnames(all_stats,"Species","species")
 
-all_stats_annot=merge(all_stats,stats_annot[,c("species","color_class","scientific_name", "group"),],by="species")
+all_stats_annot=merge(all_stats,unique(stats_annot[,c("species","color_class","group"),]),by="species")
+
 all_stats_annot <- unique(all_stats_annot)
+
+pdf("summary/kC.pdf", width=4, height=2)
+ggplot(melt(all_stats_annot[, c("c", "k", "color_class")]), aes(x=as.factor(value), fill=color_class)) +
+  geom_bar(size=1)+scale_fill_manual(values=class_colors)+
+  facet_grid(~variable, scale="free", space="free")+theme(legend.position = "None")+
+  labs(x="", y="Number of species")
+dev.off()
 
 
 pdf("summary/model_summary.pdf",width=4, height=4)
@@ -35,65 +43,52 @@ ggplot(all_stats_annot,aes(x=as.factor(c),fill=color_class,col=color_class))+geo
   scale_fill_manual(values=class_colors)+scale_color_manual(values=class_colors)+
   theme(legend.position = "None", text=element_text(size=15))+labs(y="", x="C")
 
+#AUCvsF1
+ggplot(all_stats_annot,aes(x=AUC,y=f1, fill=color_class, alpha = 0.7, color = color_class))+
+  geom_point(shape=21)+scale_fill_manual(values=class_colors)+
+  scale_color_manual(values=class_colors)+xlim(0.5, 1)+ylim(0.5, 1) +
+  theme(legend.position = "None", text=element_text(size=15))+labs(y="f1-score", x="ROC-AUC")
+
 #AUC
-ggplot(all_stats_annot[color_class!="Jawless_vertebrate"],aes(x=group,y=AUC, fill=color_class))+
+all_stats_annot[group=="Jl.vb.",group:= "Inv.", ]
+all_stats_annot[color_class=="Jawless_vertebrate",color_class:= "Invertebrata", ]
+
+ggplot(all_stats_annot,aes(x=group,y=AUC, fill=color_class))+
   geom_boxplot(outlier.shape=21)+scale_fill_manual(values=class_colors)+
   scale_color_manual(values=class_colors)+
   theme(legend.position = "None", text=element_text(size=15))+labs(y="ROC-AUC", x="")+
   stat_summary(fun.data = give.n,fun.args = c(y=0.4), geom = "text",size=4) + 
-  geom_point(data = all_stats_annot[color_class=="Jawless_vertebrate"],aes(x=group,y=AUC, fill=color_class), shape = 21)
+  geom_point(data = all_stats_annot[species=="JL"],aes(x=group,y=AUC), fill=class_colors["Jawless_vertebrate"], shape = 21)
 
 #f1
-ggplot(all_stats_annot[color_class!="Jawless_vertebrate"],aes(x=group,y=f1, fill=color_class))+
+ggplot(all_stats_annot,aes(x=group,y=f1, fill=color_class))+
   geom_boxplot(outlier.shape=21)+scale_fill_manual(values=class_colors)+
   scale_color_manual(values=class_colors)+
   theme(legend.position = "None", text=element_text(size=15))+labs(y="f1-score", x="")+
   stat_summary(fun.data = give.n,fun.args = c(y=0.4), geom = "text",size=4) + 
-  geom_point(data = all_stats_annot[color_class=="Jawless_vertebrate"],
-             aes(x=group,y=AUC, fill=color_class), shape = 21)
+  geom_point(data = all_stats_annot[species=="JL"],aes(x=group,y=f1), fill=class_colors["Jawless_vertebrate"], shape = 21)
 
-#AUCvsF1
-ggplot(all_stats_annot,aes(x=AUC,y=f1, fill=color_class, alpha = 0.7, color = color_class))+
-  geom_point(shape=21)+scale_fill_manual(values=class_colors)+
-  scale_color_manual(values=class_colors)+xlim(0.5, 1)+ylim(0.5, 1)+
-  theme(legend.position = "None", text=element_text(size=15))+labs(y="f1-score", x="ROC-AUC")
 
 ##nseq:
-ggplot(all_stats_annot[color_class!="Jawless_vertebrate"],aes(x=group, y=numSequences, fill=color_class))+
+ggplot(all_stats_annot,aes(x=group, y=numSequences, fill=color_class))+
   geom_boxplot(outlier.shape=21)+scale_fill_manual(values=class_colors)+
   scale_color_manual(values=unique(all_stats_annot[order(color_class)]$color))+
   theme(legend.position = "None", text=element_text(size=15))+labs(y="numSequences", x="") + 
-  geom_point(data = all_stats_annot[color_class=="Jawless_vertebrate"],
-             aes(x=group,y=AUC, fill=color_class), shape = 21)
+  geom_point(data = all_stats_annot[species=="JL"],aes(x=group,y=numSequences ), fill=class_colors["Jawless_vertebrate"], shape = 21)
 dev.off()
 
-pdf("summary/kC.pdf", width=4, height=2)
-ggplot(melt(all_stats_annot[, c("c", "k", "color_class")]), aes(x=as.factor(value), fill=color_class)) +
-  geom_bar(size=1)+scale_fill_manual(values=class_colors)+
-  facet_grid(~variable, scale="free", space="free")+theme(legend.position = "None")+
-  labs(x="", y="Number of species")
-dev.off()
-
-pdf("summary/auc_for_pres.pdf", width=6, height=4)
-ggplot(all_stats_annot[color_class!="Jawless_vertebrate"],aes(x=color_class,y=AUC, fill=color_class))+
-  geom_boxplot(outlier.shape=21)+scale_fill_manual(values=class_colors)+
-  scale_color_manual(values=unique(all_stats_annot[order(color_class)]$color))+rotate_labels()+
-  theme(legend.position = "None", text=element_text(size=15))+labs(y="ROC-AUC", x="")+
-  stat_summary(fun.data = give.n,fun.args = c(y=0.4), geom = "text",size=4)
- dev.off()
 
 #saving the table 
 write.csv(all_stats_annot, "summary/all_aucs.csv", quote = F)
 all_stats_annot <- fread("summary/all_aucs.csv")
 
 pdf("summary/auc_final.pdf", width=4, height=4)
-ggplot(all_stats_annot[color_class!="Jawless_vertebrate"],aes(x=group,y=AUC, fill=color_class))+
+ggplot(all_stats_annot,aes(x=group,y=AUC, fill=color_class))+
    geom_boxplot(outlier.shape=21)+scale_fill_manual(values=class_colors)+
    scale_color_manual(values=class_colors)+
    theme(legend.position = "None", text=element_text(size=15))+labs(y="ROC-AUC", x="")+
    stat_summary(fun.data = give.n,fun.args = c(y=0.4), geom = "text",size=4) + 
-  geom_point(data = all_stats_annot[color_class=="Jawless_vertebrate"],
-             aes(x=group,y=AUC, fill=color_class), shape = 21)
+  geom_point(data = all_stats_annot[species=="JL"],aes(x=group,y=AUC), fill=class_colors["Jawless_vertebrate"], shape = 21)
 dev.off()
 
 
@@ -116,7 +111,7 @@ selected <- all_stats_annot %>%
   mutate(mean_auc=mean(AUC), delta = abs(mean_auc-AUC)) %>%
   filter(delta==min(delta))
 colnames(all_stats_annot)
-selected[, c("scientific_name", "color_class")]
+left_join(selected[, c("species", "color_class")], unique(stats_annot[, c("species", "scientific_name")]))
 
 getwd()
 roc_file <- fread("screen/BD/roc_res.csv")
@@ -155,6 +150,7 @@ dev.off()
 ### plotting k-AUC summary
                      
 kauc_df=data.table()
+                     
 files_list=c(system("ls screen/*/??_AUC_k_grid.tsv",intern=TRUE), system("ls screen/*/???_AUC_k_grid.tsv",intern=TRUE))
 
 for(file in files_list){

@@ -1,7 +1,9 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 library(treeio)
-library(circilize)
+library(circlize)
 library(ComplexHeatmap)
+library(ggtree)
+
 wd = file.path(analysis_dir, "05_predict_meth", "05.2_test_on_other_species")
 setwd(wd)
 
@@ -18,12 +20,13 @@ all_class_sp<-setNames(all_class, all_sp)
 
 stats_files=system(paste0("ls ", analysis_dir, "/05_predict_meth/05.2_test_on_other_species/screen/*/all_aucs.csv"),intern=TRUE)
                   
-sp_list<-unlist(lapply(stats_files, function(x) strsplit(x, "/")[[1]][11] ))
+sp_list <- unlist(lapply(stats_files, function(x) strsplit(x, "/")[[1]][11] ))
 
 ##check if there are some missing:
 missed <- setdiff(sp_df$species, sp_list)
 length(missed)
 missed
+
 if (length(missed) > 5){
   write.table(as.data.frame(missed), file.path(Sys.getenv("CODEBASE"), "compEpi/meta/to_run_cross.txt"), 
               col.names = F, quote = F, row.names = F)
@@ -48,7 +51,7 @@ if(!(file.exists(auc_file))){
     all_aucs <- left_join(all_aucs, sp_df, by = c("train_species" = "species"))
     colnames(all_aucs)[7] <- "color_class_train"
     colnames(all_aucs)[8] <- "group_train"
-          
+    all_aucs[ifRand == "noRandTrain", ifRand := "noRand",]
   all_aucs <- all_aucs[!all_aucs$type %in% missed,]
   my_wt(all_aucs, auc_file)
 }
@@ -56,41 +59,44 @@ if(!(file.exists(auc_file))){
 all_aucs <- fread(auc_file)
 
 #tree with the species we explore, saving separately
-tree <- read.tree(paste0(analysis_dir, "/99.2_ITOL/tree_species_as_tips.phy"))
+tree <- read.tree(file.path(analysis_dir, "01_basicStats",
+                            "01.6_ITOL", "tree_species_as_tips_2021_2.phy"))
 p_tree <- ggtree(tree)
 tre1e <- drop.tip(tree, tree$tip.label[!tree$tip.label %in% unique(all_aucs$train_species)])
 p_tree <- ggtree(tre1e, branch.length = "none" )
 
-sapply(tre1e$tip.label, function(x) sp_df[x,]$color_class)
+sp_df <- as.data.frame(sp_df)
+row.names(sp_df) <- sp_df$species
+#sapply(tre1e$tip.label, function(x) sp_df[x,]$color_class)
 
 df <- data.frame(label = tre1e$tip.label,
-                 color_class=sapply(tre1e$tip.label, function(x) sp_df[x,]$color_class)) 
-row.names(df) <- df[,1]
+                 color_class=sapply(tre1e$tip.label, 
+                                    function(x) sp_df[x,]$color_class))
+                                    
+#row.names(df) <- df[,1]
 
 p1 <- ggtree(tre1e, branch.length = "none") %<+% df + geom_tiplab(size = 1, aes(color=color_class)) 
 
-pdf(paste0(analysis_dir, 
-           "/02_predict_meth/02.2_test_on_other_species/summary/tree_full_w_labels.pdf"), height = 18, width = 9)
+pdf(paste0(analysis_dir,   "/05_predict_meth/05.2_test_on_other_species/summary/tree_full_w_labels.pdf"), height = 18, width = 9)
 p1 + scale_color_manual(values = class_colors)
 dev.off()
 
 pdf(paste0(analysis_dir, 
-           "/02_predict_meth/02.2_test_on_other_species/summary/tree_full_w_labels_and_nodes.pdf"), 
-                                                                                      height = 18, width = 9)
+"/05_predict_meth/05.2_test_on_other_species/summary/tree_full_w_labels_and_nodes.pdf"), height = 18, width = 9)
 print(p1 +  geom_nodelab(size = 2) + scale_color_manual(values = class_colors))
 dev.off()
 
 ## now we have to rotate, for this we also need the node labels##first, lets try rotating "Amniota"
 
 tre1e_annot <- tre1e %>% as_tibble
-tre1e_annot[tre1e_annot$label == "Amniota", ] #588 - big rotate
-tre1e_annot[tre1e_annot$label == "Theria", ] #589 ##marsupiala and mammalia
-tre1e_annot[tre1e_annot$label == "Sauria", ] #682
+tre1e_annot[tre1e_annot$label == "Amniota", ] #585 - big rotate
+tre1e_annot[tre1e_annot$label == "Theria", ] #586 ##marsupiala and mammalia
+tre1e_annot[tre1e_annot$label == "Sauria", ] #678
 
-tre1e_rotated <- ggtree(tre1e, branch.length = "none") %>% rotate(588)  %>%
-                                                    rotate(589) %>% rotate(682) 
+tre1e_rotated <- ggtree(tre1e, branch.length = "none") %>% rotate(585)  %>%
+                                    rotate(586) %>% rotate(678) 
 
-pdf(paste0(analysis_dir, "/02_predict_meth/02.2_test_on_other_species/summary/tree_full_right_order.pdf"), height = 18, width = 9)
+pdf(paste0(analysis_dir, "/05_predict_meth/05.2_test_on_other_species/summary/tree_full_right_order.pdf"), height = 18, width = 9)
 tre1e_rotated %<+% df + geom_tiplab(size = 1, aes(color=color_class)) + scale_color_manual(values = class_colors)
 dev.off()
 
@@ -99,16 +105,11 @@ dev.off()
 td_out <- tre1e_rotated$data
 td_out <- dplyr::arrange(td_out, y)
 sp_full_order <- td_out %>% filter(isTip) %>% pull(label)
+                                    
 sp_full_order <- fread(file.path(meta_dir, "species_list_ordered_2021_2.txt"), header = F)$V1
                                     
-##annotation the heatmap
-col_annot <- data.frame( sapply(sp_full_order, function(x) as.character(all_class[x])))
-colnames(col_annot) <- c("class")
 
-seq_count <- unique(read.csv(paste0(analysis_dir, "/02_predict_meth/02.1_within_species/summary/all_aucs.csv"), row.names = 1)[, c("species", "numSequences", "color_class")])
-row.names(seq_count) <- seq_count$species
-seq_count<-seq_count[row.names(col_annot), c("color_class", "numSequences")]
-colnames(seq_count)[[1]] <- "class"
+
 
 all_auc_m<-all_aucs %>% 
   filter(ifRand=="noRandTest"|ifRand=="noRand" ) %>%
@@ -121,9 +122,14 @@ row.names(all_auc_m) <- all_auc_m$train_species
 
 sp_full_order <- sp_full_order[sp_full_order %in% all_auc_m$train_species]
 
+##annotation the heatmap
+col_annot <- data.frame( sapply(sp_full_order, function(x) as.character(all_class[x])))
+colnames(col_annot) <- c("class")
+                                
+                                
 all_auc_m <- as.matrix(all_auc_m[sp_full_order, sp_full_order])
 
-                                write.csv(all_auc_m, paste0(analysis_dir, "/02_predict_meth/02.2_test_on_other_species/summary/all_aucs_full_matrix.csv"))
+write.table(all_auc_m, "summary/all_aucs_full_matrix.csv", sep = "\t", quote = FALSE) ##need to save rownames!
 
 ##plotting the annotation
                                 
@@ -131,14 +137,14 @@ col_fun_num = colorRamp2(c(0, 2000), c("white", "darkgrey"))
 ha = columnAnnotation(df = col_annot, col = list("class" = class_colors), 
                       show_legend=c(F), height = unit(0.2, "cm"))
 
-ra = rowAnnotation(df = seq_count, col = list("class" = class_colors, "numSequences" = col_fun_num),
-                   show_legend=c(F, T), width = unit(0.4, "cm"))
+ra = rowAnnotation(df = col_annot, col = list("class" = class_colors), show_legend=c(F), width = unit(0.2, "cm"))
+                                
 col_fun = colorRamp2(c(0, 0.4,0.5,0.6, 1), c("#2b83ba","#abd9e9", "#ffffbf", "#fdae61","#d7191c"))
 
 Heatmap(all_auc_m,
         cluster_columns = F, cluster_rows = F)
 
-pdf(paste0(analysis_dir, "/02_predict_meth/02.2_test_on_other_species/summary/aucs_full_small.pdf"), height=4, width=5)
+pdf(paste0(analysis_dir, "/05_predict_meth/05.2_test_on_other_species/summary/aucs_full_small.pdf"), height=4, width=5)
 ra + Heatmap(all_auc_m,
         cluster_columns = F, cluster_rows = F,
         column_order = sp_full_order, row_order = sp_full_order, 
@@ -149,41 +155,49 @@ dev.off()
 #summary boxplots
 
 all_auc_test <- all_aucs[all_aucs$ifRand == "noRandTest",]
-all_auc_test$class <- factor(all_auc_test$class, levels = names(class_colors))
-all_auc_test$train_class <- factor(all_auc_test$train_class, levels = names(class_colors))
 
+                                all_auc_test$color_class_test <- factor(all_auc_test$color_class_test, levels = names(class_colors))
+                                
+                                
+all_auc_test$color_class_train <- factor(all_auc_test$color_class_train, levels = names(class_colors))
+                                
+all_auc_test[color_class_test=="Jawless_vertebrate", group_test := "Jl.vb.",] 
+                                
+all_auc_test$group_test <- factor(all_auc_test$group_test, levels = class_short)                                
+                                
 all_auc_test %>%
-  group_by(.dots = c("train_class", "class")) %>%
+  group_by(.dots = c("color_class_test", "color_class_train")) %>%
   summarize(n=n())
 
-all_auc_test$class_short <- sapply(all_auc_test$class, function(x) class_short[[x]])
-all_auc_test$class_short <- factor(all_auc_test$class_short, levels = class_short)
+#all_auc_test[color_class_test=="Jawless_vertebrate", color_class_test := "Invertebrata",]
+#all_auc_test[color_class_train=="Jawless_vertebrate", color_class_train := "Invertebrata",]
 
-pdf(paste0(analysis_dir, "/02_predict_meth/02.2_test_on_other_species/summary/aucs_by_class_lines.pdf"), height=4, width=10)
-ggplot(all_auc_test, aes(x = class_short, y = auc, fill = class)) + geom_boxplot(outlier.shape = 21)  + 
-  scale_fill_manual(values=c(class_colors)) + facet_wrap(~train_class, ncol = 4) + 
+#all_auc_test[group_test=="Jl.vb.", group_test := "Inv.",]
+#all_auc_test[group_train=="Jl.vb.", group_train := "Inv.",]
+                                
+pdf(paste0(analysis_dir, "/05_predict_meth/05.2_test_on_other_species/summary/aucs_by_class_lines.pdf"), height=4, width=12)
+ggplot(all_auc_test[color_class_train!="Jawless_vertebrate"], aes(x = group_test, y = auc, fill = color_class_test)) + geom_boxplot(outlier.shape = 21)  + 
+  scale_fill_manual(values=c(class_colors)) + facet_wrap(~color_class_train, ncol = 4) + 
   theme(legend.position = "None") + labs(x = "class, tested on", y = "ROC-AUC") + 
+                      rotate_labels()+  
+stat_summary(fun.data = give.n,fun.args = c(y=0.1), geom = "text",size=4) +
   geom_hline(yintercept = 0.5, linetype = "dashed", size= 0.1) + 
   geom_hline(yintercept = 0.25, linetype = "dashed", size= 0.1) + 
   geom_hline(yintercept = 0.75, linetype = "dashed", size= 0.1)
 dev.off()
 
-
-###some values for the paper:
+                        
 all_aucs %>%
-  filter(ifRand == "noRandTrain") %>%
-  group_by(train_class) %>%
+  filter(ifRand == "noRand") %>%
+  group_by(color_class_train) %>%
   summarise(mean_auc = mean(auc))
 
 all_aucs %>%
   group_by(ifRand) %>%
   summarise(median_auc = median(auc))
 
-all_aucs %>%
-  filter(ifRand == "noRandTrain" || ifRand == "noRandTest") #%>%
-  summarise(median_auc = median(auc))
-  
-##### NOT USED FOR THE FINAL FIGURE#####################
+
+#####NOT USED FOR THE FINAL FIGURE#####################
 #only_aucs<-lapply(aucs, function(a) {a_short<-a[(a$ifRand=="noRandTest"|a$ifRand=="noRandTrain" ), c("type", "auc")]; sp<-a[a$ifRand=="noRandTrain", "type"];colnames(a_short)<-c("species", as.character(sp)); return(a_short)})
 #full_auc_m<-Reduce(full_join, only_aucs)
 #write.csv(full_auc_m, paste0(analysis_dir, "/02_predict_meth/02.2_test_on_other_species/summary/all_aucs_matrix.csv"), quote = F)

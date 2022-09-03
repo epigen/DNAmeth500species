@@ -7,16 +7,22 @@ source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/05.0_predict_init
 args = commandArgs(trailingOnly=TRUE)
 
 species=args[1]
-subdir_name=args[2]
-kmer=as.numeric(args[3])
+#subdir_name=args[2]
+kmer=as.numeric(args[2])
 
 if (is.na(kmer)){kmer=c(1:10)}
 
 sessionInfo()
 
 options(cores=1)
+if (is.na(kmer)){
+    subdir_name="screen"
+    runGrid=TRUE
+}else{
+    subdir_name = paste0("kmer", args[2])
+    runGrid=FALSE
+}
 
-subdir_name="screen"
 
 wd=file.path(processed_dir,species)
 setwd(wd)
@@ -39,9 +45,7 @@ ded_ref_cgg=as.character(substring(ded_ref,1,3))=="CGG"
 cgg_names=names(ded_ref[ded_ref_cgg])
 
 #select features (methylated/unmethylated)
-meth_data_mean_long=melt(meth_data_mean,id.vars=c("meta","score","consN","mean_diffNts",
-                          "max_diffNts","min_diffNts"),measure=patterns(".cov", ".meth"),variable.factor=FALSE,
-                         variable.name="sample",value.name=c("cov","meth"),na.rm=TRUE)
+meth_data_mean_long=melt(meth_data_mean,id.vars=c("meta","score","consN","mean_diffNts", "max_diffNts","min_diffNts"),measure=patterns(".cov", ".meth"),variable.factor=FALSE, variable.name="sample",value.name=c("cov","meth"),na.rm=TRUE)
 
 meth_data_mean_cond=meth_data_mean_long[,list(Nsamples=.N,mean_cov=mean(cov),min_cov=min(cov),
                                               max_cov=max(cov),mean_meth=mean(meth),min_meth=min(meth),
@@ -58,8 +62,7 @@ y<-res$y
 
 
 #original labels
-simpleCache(cacheName="methPred_noRand_uc",instruction={train_test(x=x,y=y,type=species, 
-                                                        ifRand='noRand',run=0,k=kmer, subdir=subdir)},
+simpleCache(cacheName="methPred_noRand_uc",instruction={train_test(x=x,y=y,type=species,                     ifRand='noRand',run=0,k=kmer, subdir=subdir)},
             cacheDir=paste0(subdir,"/RCache"),assignToVariable="res",recreate=FALSE)
 roc_res=res$roc_dt
 fit_model <- res$model[[1]]
@@ -94,12 +97,13 @@ stats <- data.table(Species = species,
                     AUC = roc_res$auc[[1]], f1 = roc_res$f1[[1]])
 my_wt(stats, file.path(subdir, paste0(species, "_stats.tsv")))
 
+if(runGrid){
 #grid search with optimal C to test k-AUC relashionship
 simpleCache(cacheName="methPred_gridsearch",instruction={gridSearch_k(x=x,y=y,
                                                         C_opt = stats$c, k=kmer)},
             cacheDir=paste0(subdir,"/RCache"),assignToVariable="gridK",recreate=FALSE)
 my_wt(gridK$dt, file.path(subdir, paste0(species, "_AUC_k_grid.tsv")))
-
+}
 #random labels (several iterations)
 rand_labs=lapply(seq_len(5), function(x) {return(list(name=x,y_rand=sample(y)))})
 rand_res_parallel=mclapply(rand_labs,function(labels_rand){simpleCache(cacheName=paste0("methPred_Rand_uc_",

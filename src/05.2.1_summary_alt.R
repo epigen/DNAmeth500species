@@ -1,14 +1,13 @@
 source(file.path(Sys.getenv("CODEBASE"),"DNAmeth500species/src/00.0_init.R"))
 
-wd=file.path(analysis_dir,"02_predict_meth/02.1_within_species")
+wd=file.path(analysis_dir,"05_predict_meth/05.1_within_species")
 setwd(wd)
 
 ##collecting AUC results
 if(!file.exists("summary/aucs_alternative.csv")){
   stats_files <- system("ls screen_alt/*/roc_res.csv",intern=TRUE)
   stats_files_list <- sapply(stats_files, function(x) 
-    unique(read.csv(x, row.names = 1)[,
-                                      c("auc", "f1","ifRand","type", "N_conv_samples")]), simplify = F)
+    unique(read.csv(x, row.names = 1)[,c("auc", "f1","ifRand","type", "N_conv_samples")]), simplify = F)
   aucs_alt <- rbindlist(stats_files_list)
   write.table(aucs_alt,"summary/aucs_alternative.csv", quote = F, row.names = F)
 }
@@ -24,7 +23,8 @@ aucs <- right_join(aucs[!duplicated(aucs$species),], aucs_alt[aucs_alt$ifRand ==
 
 ##calculating difference
 aucs$delta_AUC = aucs$AUC - aucs$AUC_alt
-aucs$color_class <- factor(aucs$color_class, levels = names(class_colors))
+
+                             
 ggplot(aucs,aes(x = N_conv_samples, fill=color_class)) + 
   geom_histogram() + scale_fill_manual(values = class_colors)
 ggsave("summary/N_conv_samples.pdf", width = 6, height = 4)
@@ -33,7 +33,8 @@ pdf("summary/changes_in_AUC.pdf", width = 6, height = 4)
 ggplot(aucs, aes(x = AUC, y = AUC_alt)) + 
   geom_point(shape = 21,aes(fill = color_class)) + 
   scale_fill_manual(values = class_colors) + 
-  geom_text_repel(data = aucs[abs(aucs$delta_AUC) >= 0.015, ], aes(x = AUC, y = AUC_alt, label = species))
+  geom_text_repel(data = aucs[abs(aucs$delta_AUC) >= 0.015, ], aes(x = AUC, y = AUC_alt, label = species)) + 
+    xlim(c(0,1)) + ylim(c(0,1)) + 
   ggtitle("changes in AUC")
 
 ggplot(aucs, aes(x = AUC, y = AUC_alt)) + 
