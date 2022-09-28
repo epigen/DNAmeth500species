@@ -23,11 +23,12 @@ if(!file.exists("07.3_freq_summary/TF_count_per_species_normalized_2020.csv")){
   TF_norm_df <- Reduce(full_join, TF_norm)
   my_wt(TF_norm_df, "07.3_freq_summary/TF_count_per_species_normalized_2020.csv")
 }else{
-  TF_norm_df <- fread( "07.3_freq_summary/TF_count_per_species_normalized.csv")
+  TF_norm_df <- fread("07.3_freq_summary/TF_count_per_species_normalized_2020.csv")
 }
 
                                  
 ##assigning the TF ids as row.names 
+TF_norm_df <- as.data.frame(TF_norm_df)
 row.names(TF_norm_df) <- TF_norm_df$TF
 TF_norm_df <- TF_norm_df[motif_list, -1]
                            
@@ -67,13 +68,14 @@ my_wt(TF_norm_df_melted_summary, "07.3_freq_summary/TF_frequency_stats_per_class
 ##scaling each TF across species, so that they would be comparable
 TF_norm_df_scaled<-scale(t(TF_norm_df), center = T, scale = T)
 
-pdf("07.3_freq_summary/TF_frequency_z_score.pdf", width = 20, height = 10)
-pheatmap(TF_norm_df_scaled[sp_df[sp_df$species %in% sp_list,]$species,],
+
+p <- pheatmap(TF_norm_df_scaled[sp_df[sp_df$species %in% sp_list,]$species,],
          cluster_rows = F, show_rownames = F, fontsize_col = 5,
          annotation_row = col_annot, annotation_colors = list(phyl.group=class_colors),
          annotation_legend = F,
-         name = "freq. z-score") 
-dev.off()
+         name = "freq. z-score")
+ggsave("07.3_freq_summary/TF_frequency_z_score.pdf",p,  width = 20, height = 10)
+
                              
 range <- max(abs(TF_norm_df_scaled))
 paletteLength <- 50
@@ -85,16 +87,15 @@ myBreaks <- c(seq(-5, 0, length.out=ceiling(paletteLength/2) + 1),
               seq(5/paletteLength, 5, length.out=floor(paletteLength/2)))
 
 
-dev.off()
-pdf("07.3_freq_summary/TF_frequency_z_score_withthr_white_human.pdf", width = 15, height = 10)
-pheatmap(TF_norm_df_scaled[sp_df[sp_df$species %in% colnames(TF_norm_df),]$species,],
+p <- pheatmap(TF_norm_df_scaled[sp_df[sp_df$species %in% colnames(TF_norm_df),]$species,],
          cluster_rows = F, show_rownames = F, fontsize_col = 3,
          annotation_row = col_annot, annotation_colors = list(phyl.group=class_colors),
          annotation_legend = F,
          breaks = myBreaks,
          color = myColor,
          name = "freq. z-score") 
-dev.off()
+ggsave("07.3_freq_summary/TF_frequency_z_score_withthr_white_human.pdf",p,  width = 20, height = 10)
+
                 
 
                              
@@ -103,13 +104,14 @@ TF_norm_df_scaled[TF_norm_df_scaled>5] <- 5
 TF_norm_df_scaled[TF_norm_df_scaled<-5] <- -5
                              
 try(dev.off())
-pdf("07.3_freq_summary/TF_frequency_z_score_withthr.pdf", width = 20, height = 10)
-pheatmap(TF_norm_df_scaled[sp_df[sp_df$species %in% colnames(TF_norm_df),]$species,],
+
+p <- pheatmap(TF_norm_df_scaled[sp_df[sp_df$species %in% colnames(TF_norm_df),]$species,],
          cluster_rows = F, show_rownames = F, fontsize_col = 5,
          annotation_row = col_annot, annotation_colors = list(phyl.group=class_colors),
          annotation_legend = F,
          name = "freq. z-score") 
-dev.off()
+ggsave("07.3_freq_summary/TF_frequency_z_score.pdf",p,  width = 20, height = 10)
+
                              
 ## how many species have heart and liver and more than one replica? 
 replicas <- stats_annot[, c("species", "Tissue", "Sample_Name", "color_class", "conversion_type")] %>%

@@ -194,7 +194,7 @@ dev.off()
 #--> no striking difference between groups that show more tissue specific meth and those that show less
 stats_annot_used=stats_annot[Sample_Name%in%used_samples,]
 pdf("tissues_CoG_overlap.pdf",height=2.5,width=4)
-ggplot(stats_annot_used,aes(y=mean_overlap_perc,x=class_short,fill=color_class))+geom_boxplot()+scale_fill_manual(values = class_colors)+ylab("Mean CpG overlap (%)")+rotate_labels(angle = 45,vjust = 1)
+ggplot(stats_annot_used,aes(y=mean_overlap_perc,x=class_short,fill=color_class))+geom_boxplot(outlier.shape = 21)+scale_fill_manual(values = class_colors)+ylab("Mean CpG overlap (%)")+rotate_labels(angle = 45,vjust = 1) + stat_summary(fun.data = give.n,fun.args = c(y=45), geom = "text",size=4)
 dev.off()
                                   
 # plot correlations of all the sample pairs per species grouped by class as qc

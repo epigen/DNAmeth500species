@@ -176,10 +176,10 @@ self_auc <- res_sum[res_sum$type==species & res_sum$ifRand=="noRandTest", ]
 res_sum <- left_join(res_sum, sp_df, by = c("type" = "species")) 
                              
                              
-p <- ggplot(res_sum, aes(x = class_short, y = AUC, fill = ifRand)) + geom_boxplot(outlier.shape = 21) +
+p <- ggplot(res_sum, aes(x = group, y = AUC, fill = ifRand)) + geom_boxplot(outlier.shape = 21) +
   facet_wrap(~sample_N, ncol = 1) + xlab("taxonomy group") + 
   scale_fill_manual(values = c("noRandTest"="#4682B4", "RandTest" = "grey")) + 
-  geom_hline(data =  self_auc, mapping = aes(yintercept = AUC), linetype = "dashed", color = "red") + 
+  geom_hline(data =  self_auc, mapping = aes(yintercept = AUC), linetype = "dashed", color = "red") + stat_summary(fun.data = give.n, geom = "text", fun.args = c(y = 0.1), size=3)+       
   geom_hline(yintercept = 0.5, linetype = "dashed", color = "grey", alpha = 0.5)
 
 ggsave(file.path(subdir,  "AUC_in_other_sp.pdf"), p, width = 6, height = 2*length(unique(res_sum$sample_N)), device = "pdf")

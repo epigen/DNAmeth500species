@@ -180,7 +180,7 @@ ggplot(all_auc_test[color_class_train!="Jawless_vertebrate"], aes(x = group_test
   scale_fill_manual(values=c(class_colors)) + facet_wrap(~color_class_train, ncol = 4) + 
   theme(legend.position = "None") + labs(x = "class, tested on", y = "ROC-AUC") + 
                       rotate_labels()+  
-stat_summary(fun.data = give.n,fun.args = c(y=0.1), geom = "text",size=4) +
+stat_summary(fun.data = give.n,fun.args = c(y=0.1), geom = "text",size=2, angle = 90, hjust = 0.5) +
   geom_hline(yintercept = 0.5, linetype = "dashed", size= 0.1) + 
   geom_hline(yintercept = 0.25, linetype = "dashed", size= 0.1) + 
   geom_hline(yintercept = 0.75, linetype = "dashed", size= 0.1)
