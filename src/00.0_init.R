@@ -15,7 +15,7 @@ suppressMessages(library(ggplot2))
 library(ggrepel)
 library(ggseqlogo)
 library(pheatmap)
-#suppressMessages(library(ComplexHeatmap)) ##should be installed directly from gitHub
+suppressMessages(library(ComplexHeatmap)) ##should be installed directly from gitHub
 #suppressMessages(library(circlize))
 
 
