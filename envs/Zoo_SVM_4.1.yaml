@@ -18,4 +18,7 @@ dependencies:
   - r-rocr
   - bioconductor-rsamtools
   - bioconductor-rtracklayer
+  - r-ggforce
+  - bioconductor-complexheatmap
+  - r-pryr
 prefix: /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1

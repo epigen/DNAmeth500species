@@ -1,0 +1,49 @@
+name: Zoo_R
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - r-base=3.6.1
+  - r-irkernel
+  - r-simplecache
+  - bioconductor-rsamtools
+  - r-data.table
+  - r-tidyr
+  - r-dplyr
+  - r-ggplot2
+  - r-ggrepel
+  - r-circlize
+  - r-pheatmap
+  - r-ggseqlogo
+  - jupyter_client
+  - bioconductor-complexheatmap
+  - r-taxize
+  - r-maps
+  - r-sf
+  - r-phylobase
+  - bioconductor-kebabs
+  - r-caret
+  - r-rocr
+  - bioconductor-seqlogo
+  - r-sparsem
+  - r-patchwork
+  - samtools
+  - bioconductor-geoquery
+  - r-gtools
+  - r-xlsx
+  - r-dummies
+  - r-boot
+  - r-corrplot
+  - r-gee
+  - r-ggstance
+  - r-s2
+  - r-wk
+  - r-nloptr
+  - r-rcppeigen
+  - bioconductor-tfbstools
+  - bioconductor-genomeintervals
+  - r-ggpubr
+  - r-uwot
+  - bioconductor-biomart
+prefix: /home/lv71484/droman/.conda/envs/Zoo_R

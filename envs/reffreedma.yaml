@@ -1,0 +1,10 @@
+name: reffreedma
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=2.7
+  - bismark=0.17
+  - bowtie=1.1.1
+prefix: /home/lv71484/droman/.conda/envs/reffreedma

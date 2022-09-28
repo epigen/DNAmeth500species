@@ -1,0 +1,10 @@
+name: bisulfiteblast
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - r
+  - samtools
+  - blast
+prefix: /home/lv71484/droman/.conda/envs/bisulfiteblast

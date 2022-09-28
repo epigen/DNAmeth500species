@@ -1,0 +1,432 @@
+Package LibPath Version Priority Depends Imports LinkingTo Suggests Enhances License License_is_FOSS License_restricts_use OS_type MD5sum NeedsCompilation Built
+apcluster apcluster /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.4.8 NA R (>= 3.0.0) Rcpp (>= 0.11.1), methods, Matrix, stats, graphics, grDevices Rcpp Biostrings, kebabs (>= 1.5.4), knitr NA GPL (>= 2) NA NA NA NA yes 4.1.0
+askpass askpass /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.1 NA NA sys (>= 2.1) NA testthat NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+assertthat assertthat /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.2.1 NA NA tools NA testthat, covr NA GPL-3 NA NA NA NA no 4.1.0
+backports backports /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.3.0 NA R (>= 3.0.0) NA NA NA NA GPL-2 | GPL-3 NA NA NA NA yes 4.1.1
+base base /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA NA NA methods NA Part of R 4.1.1 NA NA NA NA NA 4.1.1
+base64enc base64enc /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.1-3 NA R (>= 2.9.0) NA NA NA png GPL-2 | GPL-3 NA NA NA NA yes 4.1.0
+BH BH /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.75.0-0 NA NA NA NA NA NA BSL-1.0 NA NA NA NA no 4.1.0
+Biobase Biobase /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.54.0 NA R (>= 2.10), BiocGenerics (>= 0.27.1), utils methods NA tools, tkWidgets, ALL, RUnit, golubEsets NA Artistic-2.0 NA NA NA NA yes 4.1.1
+BiocGenerics BiocGenerics /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.40.0 NA R (>= 4.0.0), methods, utils, graphics, stats methods, utils, graphics, stats NA Biobase, S4Vectors, IRanges, GenomicRanges, DelayedArray,
+Biostrings, Rsamtools, AnnotationDbi, affy, affyPLM, DESeq2,
+flowClust, MSnbase, annotate, RUnit NA Artistic-2.0 NA NA NA NA no 4.1.1
+BiocIO BiocIO /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.4.0 NA R (>= 4.0) BiocGenerics, S4Vectors, methods, tools NA testthat, knitr, rmarkdown, BiocStyle NA Artistic-2.0 NA NA NA NA no 4.1.1
+BiocManager BiocManager /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.30.16 NA NA utils NA BiocVersion, remotes, rmarkdown, testthat, withr, curl, knitr NA Artistic-2.0 NA NA NA NA no 4.1.1
+BiocParallel BiocParallel /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.28.0 NA methods, R (>= 3.5.0) stats, utils, futile.logger, parallel, snow BH BiocGenerics, tools, foreach, BatchJobs, BBmisc, doParallel,
+Rmpi, GenomicRanges, RNAseqData.HNRNPC.bam.chr14,
+TxDb.Hsapiens.UCSC.hg19.knownGene, VariantAnnotation,
+Rsamtools, GenomicAlignments, ShortRead, codetools, RUnit,
+BiocStyle, knitr, batchtools, data.table NA GPL-2 | GPL-3 NA NA NA NA yes 4.1.1
+BiocVersion BiocVersion /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.14.0 NA R (>= 4.1.0) NA NA NA NA Artistic-2.0 NA NA NA NA no 4.1.1
+Biostrings Biostrings /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.62.0 NA R (>= 4.0.0), methods, BiocGenerics (>= 0.37.0), S4Vectors (>=
+0.27.12), IRanges (>= 2.23.9), XVector (>= 0.29.2),
+GenomeInfoDb methods, utils, grDevices, graphics, stats, crayon S4Vectors, IRanges, XVector BSgenome (>= 1.13.14), BSgenome.Celegans.UCSC.ce2 (>=
+1.3.11), BSgenome.Dmelanogaster.UCSC.dm3 (>= 1.3.11),
+BSgenome.Hsapiens.UCSC.hg18, drosophila2probe, hgu95av2probe,
+hgu133aprobe, GenomicFeatures (>= 1.3.14), hgu95av2cdf, affy
+(>= 1.41.3), affydata (>= 1.11.5), RUnit Rmpi Artistic-2.0 NA NA NA NA yes 4.1.1
+bitops bitops /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0-7 NA NA NA NA NA NA GPL (>= 2) NA NA NA NA yes 4.1.0
+brio brio /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.1.2 NA NA NA NA testthat (>= 2.1.0), covr NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+bslib bslib /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3.1 NA R (>= 2.10) grDevices, htmltools (>= 0.5.2), jsonlite, sass (>= 0.4.0),
+jquerylib (>= 0.1.3), rlang NA shiny (>= 1.6.0), rmarkdown (>= 2.7), thematic, knitr,
+testthat, withr, rappdirs, curl, magrittr NA MIT + file LICENSE NA NA NA NA no 4.1.1
+cachem cachem /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.6 NA NA rlang, fastmap NA testthat NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+callr callr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.7.0 NA NA processx (>= 3.5.0), R6, utils NA cli, covr, ps, rprojroot, spelling, testthat, withr (>=
+2.3.0) NA MIT + file LICENSE NA NA NA NA no 4.1.0
+caret caret /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 6.0-90 NA ggplot2, lattice (>= 0.20), R (>= 3.2.0) e1071, foreach, grDevices, methods, ModelMetrics (>= 1.2.2.2),
+nlme, plyr, pROC, recipes (>= 0.1.10), reshape2, stats, stats4,
+utils, withr (>= 2.0.0) NA BradleyTerry2, covr, Cubist, dplyr, earth (>= 2.2-3),
+ellipse, fastICA, gam (>= 1.15), ipred, kernlab, klaR, knitr,
+MASS, Matrix, mda, mgcv, mlbench, MLmetrics, nnet, pamr, party
+(>= 0.9-99992), pls, proxy, randomForest, RANN, rmarkdown,
+rpart, spls, subselect, superpc, testthat (>= 0.9.1), themis
+(>= 0.1.3) NA GPL (>= 2) NA NA NA NA yes 4.1.1
+caTools caTools /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.18.2 NA R (>= 3.6.0) bitops NA MASS, rpart NA GPL-3 NA NA NA NA yes 4.1.0
+circlize circlize /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.4.13 NA R (>= 3.0.0), graphics GlobalOptions (>= 0.1.2), shape, grDevices, utils, stats,
+colorspace, methods, grid NA knitr, dendextend (>= 1.0.1), ComplexHeatmap (>= 2.0.0),
+gridBase, png, markdown, bezier NA MIT + file LICENSE NA NA NA NA no 4.1.0
+class class /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 7.3-19 recommended R (>= 3.0.0), stats, utils MASS NA NA NA GPL-2 | GPL-3 NA NA NA NA yes 4.1.0
+cli cli /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.1.0 NA R (>= 2.10) glue, utils NA asciicast, callr, covr, grDevices, htmltools, htmlwidgets,
+knitr, methods, mockery, processx, ps (>= 1.3.4.9000), rlang,
+rmarkdown, rstudioapi, shiny, testthat, tibble, whoami, withr NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+clisymbols clisymbols /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.2.0 NA NA NA NA testthat NA MIT + file LICENSE NA NA NA NA no 4.1.1
+clue clue /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3-60 NA R (>= 3.2.0) stats, cluster, graphics, methods NA e1071, lpSolve (>= 5.5.7), quadprog (>= 1.4-8), relations RWeka, ape, cba, cclust, flexclust, flexmix, kernlab, mclust,
+movMF, modeltools GPL-2 NA NA NA NA yes 4.1.1
+cluster cluster /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.1.2 recommended R (>= 3.4.0) graphics, grDevices, stats, utils NA MASS, Matrix NA GPL (>= 2) NA NA NA NA yes 4.1.0
+codetools codetools /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.2-18 recommended R (>= 2.1) NA NA NA NA GPL NA NA NA NA no 4.1.0
+colorspace colorspace /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.0-2 NA R (>= 3.0.0), methods graphics, grDevices, stats NA datasets, utils, KernSmooth, MASS, kernlab, mvtnorm, vcd,
+tcltk, shiny, shinyjs, ggplot2, dplyr, scales, grid, png, jpeg,
+knitr, rmarkdown, RColorBrewer, rcartocolor, scico, viridis,
+wesanderson NA BSD_3_clause + file LICENSE NA NA NA NA yes 4.1.0
+commonmark commonmark /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.8.0 NA NA NA NA curl, testthat, xml2 NA BSD_2_clause + file LICENSE NA NA NA NA yes 4.1.1
+compiler compiler /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA NA NA NA NA Part of R 4.1.1 NA NA NA NA NA 4.1.1
+ComplexHeatmap ComplexHeatmap /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.10.0 NA R (>= 3.5.0), methods, grid, graphics, stats, grDevices circlize (>= 0.4.5), GetoptLong, colorspace, clue,
+RColorBrewer, GlobalOptions (>= 0.1.0), png, digest, IRanges,
+matrixStats, foreach, doParallel NA testthat (>= 1.0.0), knitr, markdown, dendsort, jpeg, tiff,
+fastcluster, EnrichedHeatmap, dendextend (>= 1.0.1), grImport,
+grImport2, glue, GenomicRanges, gridtext, pheatmap (>= 1.0.12),
+gridGraphics, gplots, rmarkdown, Cairo NA MIT + file LICENSE NA NA NA NA no 4.1.1
+cpp11 cpp11 /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.4.0 NA NA NA NA bench, brio, callr, cli, covr, decor, desc, ggplot2, glue,
+knitr, lobstr, mockery, progress, rmarkdown, scales, Rcpp,
+testthat, tibble, utils, vctrs, withr NA MIT + file LICENSE NA NA NA NA no 4.1.1
+crayon crayon /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.4.2 NA NA grDevices, methods, utils NA mockery, rstudioapi, testthat, withr NA MIT + file LICENSE NA NA NA NA no 4.1.1
+crosstalk crosstalk /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.2.0 NA NA htmltools (>= 0.3.6), jsonlite, lazyeval, R6 NA shiny, ggplot2, testthat (>= 2.1.0), sass, bslib NA MIT + file LICENSE NA NA NA NA no 4.1.1
+curl curl /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.3.2 NA R (>= 3.0.0) NA NA spelling, testthat (>= 1.0.0), knitr, jsonlite, rmarkdown,
+magrittr, httpuv (>= 1.4.4), webutils NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+data.table data.table /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.14.2 NA R (>= 3.1.0) methods NA bit64 (>= 4.0.0), bit (>= 4.0.4), curl, R.utils, xts,
+nanotime, zoo (>= 1.8-1), yaml, knitr, rmarkdown NA MPL-2.0 | file LICENSE NA NA NA NA yes 4.1.1
+datasets datasets /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA NA NA NA NA Part of R 4.1.1 NA NA NA NA NA 4.1.1
+DelayedArray DelayedArray /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.20.0 NA R (>= 4.0.0), methods, stats4, Matrix, BiocGenerics (>=
+0.37.0), MatrixGenerics (>= 1.1.3), S4Vectors (>= 0.27.2),
+IRanges (>= 2.17.3) stats S4Vectors BiocParallel, HDF5Array (>= 1.17.12), genefilter,
+SummarizedExperiment, airway, lobstr, DelayedMatrixStats,
+knitr, rmarkdown, BiocStyle, RUnit NA Artistic-2.0 NA NA NA NA yes 4.1.1
+desc desc /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.4.0 NA R (>= 3.1.0) utils, R6, crayon, rprojroot NA covr, testthat, whoami, withr, spelling, gh NA MIT + file LICENSE NA NA NA NA no 4.1.1
+diffobj diffobj /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3.5 NA R (>= 3.1.0) crayon (>= 1.3.2), tools, methods, utils, stats NA knitr, rmarkdown NA GPL-2 | GPL-3 NA NA NA NA yes 4.1.1
+digest digest /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.6.28 NA R (>= 3.3.0) utils NA tinytest, knitr, rmarkdown, minidown NA GPL (>= 2) NA NA NA NA yes 4.1.1
+doParallel doParallel /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.16 NA R (>= 2.14.0), foreach(>= 1.2.0), iterators(>= 1.0.0),
+parallel, utils NA NA caret, mlbench, rpart, RUnit compiler GPL-2 NA NA NA NA no 4.1.0
+dplyr dplyr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.7 NA R (>= 3.3.0) ellipsis, generics, glue (>= 1.3.2), lifecycle (>= 1.0.0),
+magrittr (>= 1.5), methods, R6, rlang (>= 0.4.10), tibble (>=
+2.1.3), tidyselect (>= 1.1.0), utils, vctrs (>= 0.3.5), pillar
+(>= 1.5.1) NA bench, broom, callr, covr, DBI, dbplyr (>= 1.4.3), knitr,
+Lahman, lobstr, microbenchmark, nycflights13, purrr, rmarkdown,
+RMySQL, RPostgreSQL, RSQLite, testthat (>= 3.0.2), tidyr, withr NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+e1071 e1071 /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.7-9 NA NA graphics, grDevices, class, stats, methods, utils, proxy NA cluster, mlbench, nnet, randomForest, rpart, SparseM, xtable,
+Matrix, MASS, slam NA GPL-2 | GPL-3 NA NA NA NA yes 4.1.1
+ellipsis ellipsis /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3.2 NA R (>= 3.2) rlang (>= 0.3.0) NA covr, testthat NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+evaluate evaluate /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.14 NA R (>= 3.0.2) methods NA testthat, lattice, ggplot2 NA MIT + file LICENSE NA NA NA NA no 4.1.0
+fansi fansi /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.4.2 NA R (>= 3.1.0) NA NA unitizer, knitr, rmarkdown NA GPL (>= 2) NA NA NA NA yes 4.1.0
+farver farver /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.1.0 NA NA NA NA testthat (>= 2.1.0), covr NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+fastmap fastmap /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.1.0 NA NA NA NA testthat (>= 2.1.1) NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+fontawesome fontawesome /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.2.2 NA R (>= 3.3.0) rlang (>= 0.4.10), htmltools (>= 0.5.1.1) NA covr, knitr, testthat, rsvg NA MIT + file LICENSE NA NA NA NA no 4.1.1
+foreach foreach /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.5.1 NA R (>= 2.5.0) codetools, utils, iterators NA randomForest, doMC, doParallel, testthat, knitr, rmarkdown NA Apache License (== 2.0) NA NA NA NA no 4.1.0
+formatR formatR /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.11 NA R (>= 3.2.3) NA NA codetools, shiny, testit, rmarkdown, knitr NA GPL NA NA NA NA no 4.1.0
+fs fs /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.5.2 NA R (>= 3.1) methods NA testthat, covr, pillar (>= 1.0.0), tibble (>= 1.1.0), crayon,
+rmarkdown, knitr, withr, spelling, vctrs (>= 0.3.0) NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+futile.logger futile.logger /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.4.3 NA R (>= 3.0.0) utils, lambda.r (>= 1.1.0), futile.options NA testthat, jsonlite NA LGPL-3 NA NA NA NA no 4.1.0
+futile.options futile.options /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.1 NA R (>= 2.8.0) NA NA NA NA LGPL-3 NA NA NA NA no 4.1.0
+future future /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.23.0 NA NA digest, globals (>= 0.14.0), listenv (>= 0.8.0), parallel,
+parallelly (>= 1.26.1), tools, utils NA RhpcBLASctl, R.rsp, markdown NA LGPL (>= 2.1) NA NA NA NA no 4.1.1
+future.apply future.apply /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.8.1 NA R (>= 3.2.0), future (>= 1.21.0) globals (>= 0.14.0), parallel, utils NA datasets, stats, tools, listenv (>= 0.8.0), R.rsp, markdown NA GPL (>= 2) NA NA NA NA no 4.1.1
+generics generics /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.1.1 NA R (>= 3.2) methods NA covr, pkgload, testthat (>= 3.0.0), tibble, withr NA MIT + file LICENSE NA NA NA NA no 4.1.1
+GenomeInfoDb GenomeInfoDb /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.30.0 NA R (>= 4.0.0), methods, BiocGenerics (>= 0.37.0), S4Vectors (>=
+0.25.12), IRanges (>= 2.13.12) stats, stats4, utils, RCurl, GenomeInfoDbData NA GenomicRanges, Rsamtools, GenomicAlignments, GenomicFeatures,
+TxDb.Dmelanogaster.UCSC.dm3.ensGene, BSgenome,
+BSgenome.Scerevisiae.UCSC.sacCer2, BSgenome.Celegans.UCSC.ce2,
+BSgenome.Hsapiens.NCBI.GRCh38, RUnit, BiocStyle, knitr NA Artistic-2.0 NA NA NA NA no 4.1.1
+GenomeInfoDbData GenomeInfoDbData /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.2.7 NA R (>= 3.5.0) NA NA NA NA Artistic-2.0 NA NA NA NA no 4.1.1
+GenomicAlignments GenomicAlignments /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.30.0 NA R (>= 4.0.0), methods, BiocGenerics (>= 0.37.0), S4Vectors (>=
+0.27.12), IRanges (>= 2.23.9), GenomeInfoDb (>= 1.13.1),
+GenomicRanges (>= 1.41.5), SummarizedExperiment (>= 1.9.13),
+Biostrings (>= 2.55.7), Rsamtools (>= 1.31.2) methods, utils, stats, BiocGenerics, S4Vectors, IRanges,
+GenomicRanges, Biostrings, Rsamtools, BiocParallel S4Vectors, IRanges ShortRead, rtracklayer, BSgenome, GenomicFeatures,
+RNAseqData.HNRNPC.bam.chr14, pasillaBamSubset,
+TxDb.Hsapiens.UCSC.hg19.knownGene,
+TxDb.Dmelanogaster.UCSC.dm3.ensGene,
+BSgenome.Dmelanogaster.UCSC.dm3, BSgenome.Hsapiens.UCSC.hg19,
+DESeq2, edgeR, RUnit, BiocStyle NA Artistic-2.0 NA NA NA NA yes 4.1.1
+GenomicRanges GenomicRanges /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.46.0 NA R (>= 4.0.0), methods, stats4, BiocGenerics (>= 0.37.0),
+S4Vectors (>= 0.27.12), IRanges (>= 2.23.9), GenomeInfoDb (>=
+1.15.2) utils, stats, XVector (>= 0.29.2) S4Vectors, IRanges Matrix, Biobase, AnnotationDbi, annotate, Biostrings (>=
+2.25.3), SummarizedExperiment (>= 0.1.5), Rsamtools (>=
+1.13.53), GenomicAlignments, rtracklayer, BSgenome,
+GenomicFeatures, Gviz, VariantAnnotation, AnnotationHub,
+DESeq2, DEXSeq, edgeR, KEGGgraph, RNAseqData.HNRNPC.bam.chr14,
+pasillaBamSubset, KEGGREST, hgu95av2.db, hgu95av2probe,
+BSgenome.Scerevisiae.UCSC.sacCer2, BSgenome.Hsapiens.UCSC.hg19,
+BSgenome.Mmusculus.UCSC.mm10,
+TxDb.Athaliana.BioMart.plantsmart22,
+TxDb.Dmelanogaster.UCSC.dm3.ensGene,
+TxDb.Hsapiens.UCSC.hg19.knownGene,
+TxDb.Mmusculus.UCSC.mm10.knownGene, RUnit, digest, knitr,
+rmarkdown, BiocStyle NA Artistic-2.0 NA NA NA NA yes 4.1.1
+GetoptLong GetoptLong /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.5 NA R (>= 3.3.0) rjson, GlobalOptions (>= 0.1.0), methods, crayon NA testthat (>= 1.0.0), knitr, markdown, rmarkdown NA MIT + file LICENSE NA NA NA NA no 4.1.0
+ggforce ggforce /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3.3 NA ggplot2 (>= 3.0.0), R (>= 3.3.0) Rcpp (>= 0.12.2), grid, scales, MASS, tweenr (>= 0.1.5),
+gtable, rlang, polyclip, stats, grDevices, tidyselect, withr,
+utils Rcpp, RcppEigen sessioninfo, concaveman, deldir, reshape2, units (>= 0.4-6),
+covr NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+ggplot2 ggplot2 /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.3.5 NA R (>= 3.3) digest, glue, grDevices, grid, gtable (>= 0.1.1), isoband,
+MASS, mgcv, rlang (>= 0.4.10), scales (>= 0.5.0), stats,
+tibble, withr (>= 2.0.0) NA covr, ragg, dplyr, ggplot2movies, hexbin, Hmisc, interp,
+knitr, lattice, mapproj, maps, maptools, multcomp, munsell,
+nlme, profvis, quantreg, RColorBrewer, rgeos, rmarkdown, rpart,
+sf (>= 0.7-3), svglite (>= 1.2.0.9001), testthat (>= 2.1.0),
+vdiffr (>= 1.0.0), xml2 sp MIT + file LICENSE NA NA NA NA no 4.1.0
+ggrepel ggrepel /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.9.1 NA R (>= 3.0.0), ggplot2 (>= 2.2.0) grid, Rcpp, rlang (>= 0.3.0), scales (>= 0.5.0) Rcpp knitr, rmarkdown, testthat, gridExtra, devtools, prettydoc,
+ggbeeswarm, dplyr, magrittr, readr, stringr NA GPL-3 | file LICENSE NA NA NA NA yes 4.1.0
+ggseqlogo ggseqlogo /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.1 NA NA ggplot2 NA knitr, rmarkdown NA LGPL NA NA NA NA no 4.1.0
+GlobalOptions GlobalOptions /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.1.2 NA R (>= 3.3.0), methods utils NA testthat (>= 1.0.0), knitr, markdown, GetoptLong NA MIT + file LICENSE NA NA NA NA no 4.1.0
+globals globals /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.14.0 NA R (>= 3.1.2) codetools NA NA NA LGPL (>= 2.1) NA NA NA NA no 4.1.0
+glue glue /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.4.2 NA R (>= 3.2) methods NA testthat, covr, magrittr, crayon, knitr, rmarkdown, DBI,
+RSQLite, R.utils, forcats, microbenchmark, rprintf, stringr,
+ggplot2, dplyr, withr, vctrs (>= 0.3.0) NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+gower gower /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.2.2 NA NA NA NA tinytest (>= 0.9.3), NA GPL-3 NA NA NA NA yes 4.1.0
+gplots gplots /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.1.1 NA R (>= 3.0) gtools, stats, caTools, KernSmooth NA grid, MASS, knitr NA GPL-2 NA NA NA NA no 4.1.0
+graphics graphics /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA grDevices NA NA NA Part of R 4.1.1 NA NA NA NA yes 4.1.1
+grDevices grDevices /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA NA NA KernSmooth NA Part of R 4.1.1 NA NA NA NA yes 4.1.1
+grid grid /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA grDevices, utils NA NA NA Part of R 4.1.1 NA NA NA NA yes 4.1.1
+gridExtra gridExtra /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.3 NA NA gtable, grid, grDevices, graphics, utils NA ggplot2, egg, lattice, knitr, testthat NA GPL (>= 2) NA NA NA NA no 4.1.1
+gtable gtable /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3.0 NA R (>= 3.0) grid NA covr, testthat, knitr, rmarkdown, ggplot2, profvis NA GPL-2 NA NA NA NA no 4.1.0
+gtools gtools /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.9.2 NA methods, stats, utils NA NA car, gplots, knitr, rstudioapi, SGP, taxize NA GPL-2 NA NA NA NA yes 4.1.0
+highr highr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.9 NA R (>= 3.2.3) xfun (>= 0.18) NA knitr, markdown, testit NA GPL NA NA NA NA no 4.1.1
+htmltools htmltools /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.5.2 NA R (>= 2.14.1) utils, digest, grDevices, base64enc, rlang (>= 0.4.10),
+fastmap NA markdown, testthat, withr, Cairo, ragg, shiny knitr GPL (>= 2) NA NA NA NA yes 4.1.1
+htmlwidgets htmlwidgets /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.5.4 NA NA grDevices, htmltools (>= 0.3), jsonlite (>= 0.9.16), yaml NA knitr (>= 1.8), rmarkdown, testthat shiny (>= 1.1) MIT + file LICENSE NA NA NA NA no 4.1.1
+httpuv httpuv /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.6.5 NA R (>= 2.15.1) Rcpp (>= 1.0.7), utils, R6, promises, later (>= 0.8.0) Rcpp, later testthat, callr, curl, websocket NA GPL (>= 2) | file LICENSE NA NA NA NA yes 4.1.1
+httr httr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.4.2 NA R (>= 3.2) curl (>= 3.0.0), jsonlite, mime, openssl (>= 0.8), R6 NA covr, httpuv, jpeg, knitr, png, readr, rmarkdown, testthat
+(>= 0.8.0), xml2 NA MIT + file LICENSE NA NA NA NA no 4.1.1
+InteractiveComplexHeatmap InteractiveComplexHeatmap /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.2.0 NA R (>= 4.0.0), ComplexHeatmap (>= 2.7.10), grDevices, stats, shiny, grid,
+GetoptLong, S4Vectors (>= 0.26.1), digest, IRanges, kableExtra
+(>= 1.3.1), utils, svglite, htmltools, clisymbols, jsonlite,
+RColorBrewer, fontawesome NA knitr, rmarkdown, testthat, EnrichedHeatmap, GenomicRanges,
+data.table, circlize, GenomicFeatures, tidyverse, tidyHeatmap,
+cluster, org.Hs.eg.db, simplifyEnrichment, GO.db, SC3,
+GOexpress, SingleCellExperiment, scater, gplots, pheatmap,
+airway, DESeq2, DT, cola, BiocManager, gridtext, HilbertCurve
+(>= 1.21.1), shinydashboard, SummarizedExperiment, pkgndep, ks NA MIT + file LICENSE NA NA NA NA no 4.1.1
+ipred ipred /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.9-12 NA R (>= 2.10) rpart (>= 3.1-8), MASS, survival, nnet, class, prodlim NA mvtnorm, mlbench, TH.data, randomForest, party NA GPL (>= 2) NA NA NA NA yes 4.1.1
+IRanges IRanges /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.28.0 NA R (>= 4.0.0), methods, utils, stats, BiocGenerics (>= 0.39.2),
+S4Vectors (>= 0.29.19) stats4 S4Vectors XVector, GenomicRanges, Rsamtools, GenomicAlignments,
+GenomicFeatures, BSgenome.Celegans.UCSC.ce2, pasillaBamSubset,
+RUnit, BiocStyle NA Artistic-2.0 NA NA NA NA yes 4.1.1
+IRdisplay IRdisplay /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0 NA R (>= 3.0.1) methods,
+repr NA testthat,
+withr NA MIT + file LICENSE NA NA NA NA NA 4.1.0
+IRkernel IRkernel /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.2 NA R (>= 3.2.0) repr (>= 0.4.99), methods, evaluate (>= 0.10), IRdisplay (>=
+0.3.0.9999), pbdZMQ (>= 0.2-1), crayon, jsonlite (>= 0.9.6),
+uuid, digest NA testthat, roxygen2 NA MIT + file LICENSE NA NA NA NA no 4.1.0
+isoband isoband /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.2.5 NA NA grid, utils NA covr, ggplot2, knitr, magick, microbenchmark, rmarkdown, sf,
+testthat, xml2 NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+iterators iterators /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.13 NA R (>= 2.5.0), utils NA NA RUnit, foreach NA Apache License (== 2.0) NA NA NA NA no 4.1.0
+jquerylib jquerylib /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.1.4 NA NA htmltools NA testthat NA MIT + file LICENSE NA NA NA NA no 4.1.1
+jsonlite jsonlite /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.7.2 NA methods NA NA httr, curl, plyr, testthat, knitr, rmarkdown, R.rsp, sf NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+kableExtra kableExtra /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.3.4 NA R (>= 3.1.0) knitr (>= 1.16), magrittr, stringr (>= 1.0), xml2 (>= 1.1.1),
+rvest, rmarkdown (>= 1.6.0), scales, viridisLite, stats,
+grDevices, htmltools, rstudioapi, glue, tools, webshot, digest,
+graphics, svglite NA testthat, magick, formattable, sparkline NA MIT + file LICENSE NA NA NA NA no 4.1.1
+kebabs kebabs /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.28.0 NA R (>= 3.2.0), Biostrings (>= 2.35.5), kernlab methods, stats, Rcpp (>= 0.11.2), Matrix, XVector (>= 0.7.3),
+S4Vectors (>= 0.27.3), e1071, LiblineaR, graphics, grDevices,
+utils, apcluster IRanges, XVector, Biostrings, Rcpp, S4Vectors SparseM, Biobase, BiocGenerics, knitr NA GPL (>= 2.1) NA NA NA NA yes 4.1.1
+kernlab kernlab /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.9-29 NA R (>= 2.10) methods, stats, grDevices, graphics NA NA NA GPL-2 NA NA NA NA yes 4.1.0
+KernSmooth KernSmooth /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.23-20 recommended R (>= 2.5.0), stats NA NA MASS, carData NA Unlimited NA NA NA NA yes 4.1.0
+knitr knitr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.37 NA R (>= 3.2.3) evaluate (>= 0.10), highr, methods, stringr (>= 0.6), yaml (>=
+2.1.19), xfun (>= 0.27), tools NA markdown, formatR, testit, digest, rgl (>= 0.95.1201),
+codetools, rmarkdown, htmlwidgets (>= 0.7), webshot, tikzDevice
+(>= 0.10), tinytex, reticulate (>= 1.4), JuliaCall (>= 0.11.1),
+magick, png, jpeg, gifski, xml2 (>= 1.2.0), httr, DBI (>=
+0.4-1), showtext, tibble, sass, bslib, ragg, styler (>= 1.2.0),
+targets (>= 0.6.0) NA GPL NA NA NA NA no 4.1.1
+labeling labeling /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.4.2 NA NA stats, graphics NA NA NA MIT + file LICENSE | Unlimited NA NA NA NA no 4.1.0
+lambda.r lambda.r /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.2.4 NA R (>= 3.0.0) formatR NA testit NA LGPL-3 NA NA NA NA no 4.1.0
+later later /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.3.0 NA NA Rcpp (>= 0.12.9), rlang Rcpp knitr, rmarkdown, testthat (>= 2.1.0) NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+lattice lattice /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.20-45 recommended R (>= 3.0.0) grid, grDevices, graphics, stats, utils NA KernSmooth, MASS, latticeExtra chron GPL (>= 2) NA NA NA NA yes 4.1.1
+lava lava /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.6.10 NA R (>= 3.0) future.apply, progressr, grDevices, graphics, methods,
+numDeriv, stats, survival, SQUAREM, utils NA KernSmooth, Matrix, Rgraphviz, data.table, ellipse, fields,
+geepack, gof (>= 0.9), graph, knitr, bookdown, rmarkdown,
+igraph (>= 0.6), lava.tobit (>= 0.4.7), lavaSearch2, lme4,
+magrittr, mets (>= 1.1), nlme, optimx, polycor, quantreg, rgl,
+R.rsp (>= 0.40), testthat (>= 0.11), visNetwork, zoo NA GPL-3 NA NA NA NA no 4.1.1
+lazyeval lazyeval /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.2.2 NA R (>= 3.1.0) NA NA knitr, rmarkdown (>= 0.2.65), testthat, covr NA GPL-3 NA NA NA NA yes 4.1.1
+LiblineaR LiblineaR /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.10-12 NA NA methods NA SparseM, Matrix NA GPL-2 NA NA NA NA yes 4.1.0
+lifecycle lifecycle /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.1 NA R (>= 3.3) glue, rlang (>= 0.4.10) NA covr, crayon, lintr, tidyverse, knitr, rmarkdown, testthat
+(>= 3.0.1), tools, tibble, vctrs NA MIT + file LICENSE NA NA NA NA no 4.1.1
+listenv listenv /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.8.0 NA R (>= 3.1.2) NA NA R.utils, R.rsp, markdown NA LGPL (>= 2.1) NA NA NA NA no 4.1.0
+lobstr lobstr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.1.2 NA R (>= 3.2) crayon, methods, prettyunits, rlang (>= 1.0.0) cpp11 (>= 0.4.2) covr, pillar, pkgdown, testthat (>= 3.0.0) NA MIT + file LICENSE NA NA NA NA yes 4.1.3
+lubridate lubridate /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.8.0 NA methods, R (>= 3.2) generics cpp11 (>= 0.2.7) covr, knitr, testthat (>= 2.1.0), vctrs (>= 0.3.0), rmarkdown chron, timeDate, tis, zoo GPL (>= 2) NA NA NA NA yes 4.1.1
+magrittr magrittr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.0.1 NA NA NA NA covr, knitr, rlang, rmarkdown, testthat NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+MASS MASS /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 7.3-54 recommended R (>= 3.3.0), grDevices, graphics, stats, utils methods NA lattice, nlme, nnet, survival NA GPL-2 | GPL-3 NA NA NA NA yes 4.1.0
+Matrix Matrix /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.3-4 recommended R (>= 3.5.0) methods, graphics, grid, stats, utils, lattice NA expm, MASS MatrixModels, graph, SparseM, sfsmisc, igraph, maptools, sp,
+spdep GPL (>= 2) | file LICENCE NA NA NA NA yes 4.1.0
+MatrixGenerics MatrixGenerics /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.6.0 NA matrixStats (>= 0.60.1) methods NA sparseMatrixStats, DelayedMatrixStats, SummarizedExperiment,
+testthat (>= 2.1.0) NA Artistic-2.0 NA NA NA NA no 4.1.1
+matrixStats matrixStats /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.61.0 NA R (>= 2.12.0) NA NA base64enc, ggplot2, knitr, markdown, microbenchmark,
+R.devices, R.rsp NA Artistic-2.0 NA NA NA NA yes 4.1.1
+methods methods /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA utils, stats NA codetools NA Part of R 4.1.1 NA NA NA NA yes 4.1.1
+mgcv mgcv /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.8-38 recommended R (>= 3.6.0), nlme (>= 3.1-64) methods, stats, graphics, Matrix, splines, utils NA parallel, survival, MASS NA GPL (>= 2) NA NA NA NA yes 4.1.1
+mime mime /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.12 NA NA tools NA NA NA GPL NA NA NA NA yes 4.1.1
+ModelMetrics ModelMetrics /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.2.2.2 NA R (>= 3.2.2) Rcpp, data.table Rcpp testthat NA GPL (>= 2) NA NA NA NA yes 4.1.0
+munsell munsell /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.5.0 NA NA colorspace, methods NA ggplot2, testthat NA MIT + file LICENSE NA NA NA NA no 4.1.0
+nlme nlme /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.1-153 recommended R (>= 3.4.0) graphics, stats, utils, lattice NA Hmisc, MASS NA GPL (>= 2) | file LICENCE NA NA NA NA yes 4.1.1
+nnet nnet /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 7.3-16 recommended R (>= 3.0.0), stats, utils NA NA MASS NA GPL-2 | GPL-3 NA NA NA NA yes 4.1.0
+numDeriv numDeriv /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2016.8-1.1 NA R (>= 2.11.1) NA NA NA NA GPL-2 NA NA NA NA no 4.1.0
+openssl openssl /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.0.0 NA NA askpass NA curl, testthat (>= 2.1.0), digest, knitr, rmarkdown,
+jsonlite, jose, sodium NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+parallel parallel /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA tools, compiler NA methods snow, nws, Rmpi Part of R 4.1.1 NA NA NA NA yes 4.1.1
+parallelly parallelly /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.28.1 NA NA parallel, tools, utils NA NA NA LGPL (>= 2.1) NA NA NA NA no 4.1.1
+pbdZMQ pbdZMQ /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3-6 NA R (>= 3.5.0) NA NA NA NA GPL-3 NA NA NA NA yes 4.1.1
+pheatmap pheatmap /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.12 NA R (>= 2.0) grid, RColorBrewer, scales, gtable, stats, grDevices, graphics NA NA NA GPL-2 NA NA NA NA no 4.1.0
+pillar pillar /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.6.4 NA NA cli, crayon (>= 1.3.4), ellipsis (>= 0.3.2), fansi, lifecycle,
+rlang (>= 0.3.0), utf8 (>= 1.1.0), utils, vctrs (>= 0.3.8) NA bit64, debugme, DiagrammeR, dplyr, formattable, ggplot2,
+knitr, lubridate, nycflights13, palmerpenguins, rmarkdown,
+scales, stringi, survival, testthat (>= 3.0.2), tibble, units
+(>= 0.7.2), withr NA MIT + file LICENSE NA NA NA NA no 4.1.1
+pkgconfig pkgconfig /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.0.3 NA NA utils NA covr, testthat, disposables (>= 1.0.3) NA MIT + file LICENSE NA NA NA NA no 4.1.0
+pkgload pkgload /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.2.3 NA NA cli, crayon, desc, methods, rlang, rprojroot, rstudioapi,
+utils, withr NA bitops, covr, pkgbuild, Rcpp, testthat NA GPL-3 NA NA NA NA no 4.1.1
+plyr plyr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.8.6 NA R (>= 3.1.0) Rcpp (>= 0.11.0) Rcpp abind, covr, doParallel, foreach, iterators, itertools,
+tcltk, testthat NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+png png /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.1-7 NA R (>= 2.9.0) NA NA NA NA GPL-2 | GPL-3 NA NA NA NA yes 4.1.0
+polyclip polyclip /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.10-0 NA R (>= 3.0.0) NA NA NA NA BSL NA NA NA NA yes 4.1.0
+praise praise /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.0 NA NA NA NA testthat NA MIT + file LICENSE NA NA NA NA no 4.1.0
+prettyunits prettyunits /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.1.1 NA NA NA NA codetools, covr, testthat NA MIT + file LICENSE NA NA NA NA no 4.1.0
+pROC pROC /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.18.0 NA R (>= 2.14) methods, plyr, Rcpp (>= 0.11.1) Rcpp microbenchmark, tcltk, MASS, logcondens, doParallel,
+testthat, vdiffr, ggplot2 NA GPL (>= 3) NA NA NA NA yes 4.1.1
+processx processx /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.5.2 NA NA ps (>= 1.2.0), R6, utils NA callr (>= 3.2.0), cli, codetools, covr, curl, debugme,
+parallel, testthat, withr NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+prodlim prodlim /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2019.11.13 NA R (>= 2.9.0) Rcpp (>= 0.11.5), stats, grDevices, graphics, survival,
+KernSmooth, lava Rcpp NA NA GPL (>= 2) NA NA NA NA yes 4.1.0
+progressr progressr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.9.0 NA R (>= 3.5.0) digest, utils NA graphics, tcltk, beepr, crayon, pbmcapply, progress, purrr,
+foreach, plyr, doFuture, future, future.apply, furrr,
+rstudioapi, shiny, commonmark, base64enc, tools NA GPL (>= 3) NA NA NA NA no 4.1.1
+promises promises /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.2.0.1 NA NA R6, Rcpp, later, rlang, stats, magrittr later, Rcpp testthat, future (>= 1.21.0), fastmap (>= 1.1.0), purrr,
+knitr, rmarkdown, vembedr, spelling NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+proxy proxy /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.4-26 NA R (>= 3.4.0) stats, utils NA cba NA GPL-2 NA NA NA NA yes 4.1.0
+pryr pryr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.1.5 NA R (>= 3.1.0) stringr, codetools, methods, Rcpp (>= 0.11.0), lobstr Rcpp testthat (>= 0.8.0) NA GPL-2 NA NA NA NA yes 4.1.3
+ps ps /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.6.0 NA R (>= 3.1) utils NA callr, covr, curl, pingr, processx (>= 3.1.0), R6, rlang,
+testthat, tibble NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+purrr purrr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3.4 NA R (>= 3.2) magrittr (>= 1.5), rlang (>= 0.3.1) NA covr, crayon, dplyr (>= 0.7.8), knitr, rmarkdown, testthat,
+tibble, tidyselect NA GPL-3 | file LICENSE NA NA NA NA yes 4.1.0
+R6 R6 /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.5.1 NA R (>= 3.0) NA NA testthat, pryr NA MIT + file LICENSE NA NA NA NA no 4.1.1
+rappdirs rappdirs /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3.3 NA R (>= 3.2) NA NA roxygen2, testthat (>= 3.0.0), covr, withr NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+RColorBrewer RColorBrewer /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.1-2 NA R (>= 2.0.0) NA NA NA NA Apache License 2.0 NA NA NA NA no 4.1.0
+Rcpp Rcpp /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.7 NA NA methods, utils NA tinytest, inline, rbenchmark, pkgKitten (>= 0.1.2) NA GPL (>= 2) NA NA NA NA yes 4.1.0
+RcppEigen RcppEigen /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3.3.9.1 NA NA Matrix (>= 1.1-0), Rcpp (>= 0.11.0), stats, utils Rcpp inline, tinytest, pkgKitten, microbenchmark NA GPL (>= 2) | file LICENSE NA NA NA NA yes 4.1.0
+RCurl RCurl /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.98-1.5 NA R (>= 3.4.0), methods bitops NA XML NA BSD_3_clause + file LICENSE NA NA NA NA yes 4.1.1
+recipes recipes /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.1.17 NA dplyr, R (>= 3.1) ellipsis, generics (>= 0.1.0), glue, gower, ipred (>= 0.9-12),
+lifecycle, lubridate, magrittr, Matrix, purrr (>= 0.2.3), rlang
+(>= 0.4.0), stats, tibble, tidyr (>= 1.0.0), tidyselect (>=
+1.1.0), timeDate, utils, vctrs, withr NA covr, ddalpha, dimRed (>= 0.2.2), fastICA, ggplot2, igraph,
+kernlab, knitr, modeldata, parsnip (>= 0.1.7), RANN, RcppRoll,
+rmarkdown, rpart, rsample, RSpectra, testthat (>= 3.0.0),
+workflows, xml2 NA MIT + file LICENSE NA NA NA NA no 4.1.1
+rematch2 rematch2 /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.1.2 NA NA tibble NA covr, testthat NA MIT + file LICENSE NA NA NA NA no 4.1.0
+repr repr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.1.3 NA R (>= 3.0.1) utils, grDevices, htmltools, jsonlite, pillar (>= 1.4.0),
+base64enc NA methods, highr, Cairo, stringr, testthat (>= 3.0.0), leaflet data.table, tibble, htmlwidgets, vegalite, plotly, geojsonio GPL-3 NA NA NA NA no 4.1.0
+reshape2 reshape2 /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.4.4 NA R (>= 3.1) plyr (>= 1.8.1), Rcpp, stringr Rcpp covr, lattice, testthat (>= 0.8.0) NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+restfulr restfulr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.0.13 NA R (>= 3.4.0), methods XML, RCurl, rjson, S4Vectors (>= 0.13.15), yaml NA getPass, rsolr, RUnit NA Artistic-2.0 NA NA NA NA yes 4.1.0
+Rhtslib Rhtslib /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.26.0 NA NA zlibbioc zlibbioc knitr, rmarkdown, BiocStyle NA LGPL (>= 2) NA NA NA NA yes 4.1.1
+rjson rjson /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.2.20 NA R (>= 3.1.0) NA NA NA NA GPL-2 NA NA NA NA yes 4.1.0
+rlang rlang /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.4 NA R (>= 3.4.0) utils NA cli (>= 3.1.0), covr, crayon, fs, glue, knitr, magrittr,
+methods, pillar, rmarkdown, stats, testthat (>= 3.0.0), tibble,
+usethis, vctrs (>= 0.2.3), withr winch MIT + file LICENSE NA NA NA NA yes 4.1.3
+rmarkdown rmarkdown /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.13 NA R (>= 3.0) bslib (>= 0.2.5.1), evaluate (>= 0.13), htmltools (>= 0.3.5),
+jquerylib, jsonlite, knitr (>= 1.22), methods, stringr (>=
+1.2.0), tinytex (>= 0.31), tools, utils, xfun (>= 0.30), yaml
+(>= 2.1.19) NA digest, dygraphs, fs, rsconnect, downlit (>= 0.4.0), katex
+(>= 1.4.0), sass (>= 0.4.0), shiny (>= 1.6.0), testthat (>=
+3.0.3), tibble, tufte, vctrs, withr (>= 2.4.2) NA GPL-3 NA NA NA NA no 4.1.1
+ROCR ROCR /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0-11 NA R (>= 3.6) methods, graphics, grDevices, gplots, stats NA testthat, knitr, rmarkdown NA GPL (>= 2) NA NA NA NA no 4.1.0
+rpart rpart /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1-15 recommended R (>= 2.15.0), graphics, stats, grDevices NA NA survival NA GPL-2 | GPL-3 NA NA NA NA yes 4.1.0
+rprojroot rprojroot /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.0.2 NA R (>= 3.0.0) NA NA covr, knitr, lifecycle, mockr, rmarkdown, testthat (>=
+3.0.0), withr NA MIT + file LICENSE NA NA NA NA no 4.1.0
+Rsamtools Rsamtools /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.10.0 NA methods, GenomeInfoDb (>= 1.1.3), GenomicRanges (>= 1.31.8),
+Biostrings (>= 2.47.6), R (>= 3.5.0) utils, BiocGenerics (>= 0.25.1), S4Vectors (>= 0.17.25),
+IRanges (>= 2.13.12), XVector (>= 0.19.7), zlibbioc, bitops,
+BiocParallel, stats Rhtslib (>= 1.17.7), S4Vectors, IRanges, XVector, Biostrings GenomicAlignments, ShortRead (>= 1.19.10), GenomicFeatures,
+TxDb.Dmelanogaster.UCSC.dm3.ensGene,
+TxDb.Hsapiens.UCSC.hg18.knownGene, RNAseqData.HNRNPC.bam.chr14,
+BSgenome.Hsapiens.UCSC.hg19, RUnit, BiocStyle NA Artistic-2.0 | file LICENSE NA NA NA NA yes 4.1.1
+rstudioapi rstudioapi /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.13 NA NA NA NA testthat, knitr, rmarkdown, clipr NA MIT + file LICENSE NA NA NA NA no 4.1.0
+rtracklayer rtracklayer /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.54.0 NA R (>= 3.3), methods, GenomicRanges (>= 1.37.2) XML (>= 1.98-0), BiocGenerics (>= 0.35.3), S4Vectors (>=
+0.23.18), IRanges (>= 2.13.13), XVector (>= 0.19.7),
+GenomeInfoDb (>= 1.15.2), Biostrings (>= 2.47.6), zlibbioc,
+RCurl (>= 1.4-2), Rsamtools (>= 1.31.2), GenomicAlignments (>=
+1.15.6), BiocIO, tools, restfulr (>= 0.0.13) S4Vectors, IRanges, XVector BSgenome (>= 1.33.4), humanStemCell, microRNA (>= 1.1.1),
+genefilter, limma, org.Hs.eg.db, hgu133plus2.db,
+GenomicFeatures, BSgenome.Hsapiens.UCSC.hg19,
+TxDb.Hsapiens.UCSC.hg19.knownGene, RUnit NA Artistic-2.0 + file LICENSE NA NA NA NA yes 4.1.1
+rvest rvest /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.2 NA R (>= 3.2) httr (>= 0.5), lifecycle (>= 1.0.0), magrittr, rlang (>=
+0.4.10), selectr, tibble, xml2 (>= 1.3) NA covr, glue, knitr, readr, rmarkdown, repurrrsive, spelling,
+stringi (>= 0.3.1), testthat (>= 3.0.2), webfakes NA MIT + file LICENSE NA NA NA NA no 4.1.1
+S4Vectors S4Vectors /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.32.0 NA R (>= 4.0.0), methods, utils, stats, stats4, BiocGenerics (>=
+0.37.0) NA NA IRanges, GenomicRanges, SummarizedExperiment, Matrix,
+DelayedArray, ShortRead, graph, data.table, RUnit, BiocStyle NA Artistic-2.0 NA NA NA NA yes 4.1.1
+sass sass /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.4.0 NA NA fs, rlang (>= 0.4.10), htmltools (>= 0.5.1), R6, rappdirs NA testthat, knitr, rmarkdown, withr, shiny, curl NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+scales scales /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.1.1 NA R (>= 3.2) farver (>= 2.0.3), labeling, lifecycle, munsell (>= 0.5), R6,
+RColorBrewer, viridisLite NA bit64, covr, dichromat, ggplot2, hms (>= 0.5.0), testthat (>=
+2.1.0) NA MIT + file LICENSE NA NA NA NA no 4.1.0
+selectr selectr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.4-2 NA R (>= 3.0) methods, stringr, R6 NA testthat, XML, xml2 NA BSD_3_clause + file LICENCE NA NA NA NA no 4.1.1
+seqLogo seqLogo /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.60.0 NA methods, grid stats4, grDevices NA knitr, BiocStyle, rmarkdown, testthat NA LGPL (>= 2) NA NA NA NA no 4.1.1
+shape shape /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.4.6 NA R (>= 2.01) stats, graphics, grDevices NA NA NA GPL (>= 3) NA NA NA NA no 4.1.0
+shiny shiny /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.7.1 NA R (>= 3.0.2), methods utils, grDevices, httpuv (>= 1.5.2), mime (>= 0.3), jsonlite
+(>= 0.9.16), xtable, fontawesome (>= 0.2.1), htmltools (>=
+0.5.2), R6 (>= 2.0), sourcetools, later (>= 1.0.0), promises
+(>= 1.1.0), tools, crayon, rlang (>= 0.4.10), fastmap (>=
+1.1.0), withr, commonmark (>= 1.7), glue (>= 1.3.2), bslib (>=
+0.3.0), cachem, ellipsis, lifecycle (>= 0.2.0) NA datasets, Cairo (>= 1.5-5), testthat (>= 3.0.0), knitr (>=
+1.6), markdown, rmarkdown, ggplot2, reactlog (>= 1.0.0),
+magrittr, shinytest (>= 1.4.0.9003), yaml, future, dygraphs,
+ragg, showtext, sass NA GPL-3 | file LICENSE NA NA NA NA no 4.1.1
+simpleCache simpleCache /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.4.2 NA NA NA NA knitr, rmarkdown, testthat batchtools BSD_2_clause + file LICENSE NA NA NA NA no 4.1.0
+snow snow /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.4-4 NA R (>= 2.13.1), utils NA NA rlecuyer Rmpi GPL NA NA NA NA no 4.1.1
+sourcetools sourcetools /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.1.7 NA R (>= 3.0.2) NA NA testthat NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+SparseM SparseM /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.81 NA R (>= 2.15), methods graphics, stats, utils NA NA NA GPL (>= 2) NA NA NA NA yes 4.1.1
+splines splines /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA graphics, stats NA Matrix, methods NA Part of R 4.1.1 NA NA NA NA yes 4.1.1
+SQUAREM SQUAREM /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2021.1 NA R (>= 3.0) NA NA setRNG NA GPL (>= 2) NA NA NA NA no 4.1.0
+stats stats /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA utils, grDevices, graphics NA MASS, Matrix, SuppDists, methods, stats4 NA Part of R 4.1.1 NA NA NA NA yes 4.1.1
+stats4 stats4 /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA graphics, methods, stats NA NA NA Part of R 4.1.1 NA NA NA NA NA 4.1.1
+stringi stringi /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.7.5 NA R (>= 3.1) tools, utils, stats NA NA NA file LICENSE yes NA NA NA yes 4.1.1
+stringr stringr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.4.0 NA R (>= 3.1) glue (>= 1.2.0), magrittr, stringi (>= 1.1.7) NA covr, htmltools, htmlwidgets, knitr, rmarkdown, testthat NA GPL-2 | file LICENSE NA NA NA NA no 4.1.0
+SummarizedExperiment SummarizedExperiment /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.24.0 NA R (>= 4.0.0), methods, MatrixGenerics (>= 1.1.3),
+GenomicRanges (>= 1.41.5), Biobase utils, stats, tools, Matrix, BiocGenerics (>= 0.37.0),
+S4Vectors (>= 0.27.12), IRanges (>= 2.23.9), GenomeInfoDb (>=
+1.13.1), DelayedArray (>= 0.15.10) NA HDF5Array (>= 1.7.5), annotate, AnnotationDbi, hgu95av2.db,
+GenomicFeatures, TxDb.Hsapiens.UCSC.hg19.knownGene, jsonlite,
+rhdf5, airway, BiocStyle, knitr, rmarkdown, RUnit, testthat,
+digest NA Artistic-2.0 NA NA NA NA no 4.1.1
+survival survival /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.2-13 recommended R (>= 3.5.0) graphics, Matrix, methods, splines, stats, utils NA NA NA LGPL (>= 2) NA NA NA NA yes 4.1.1
+svglite svglite /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.1.0 NA R (>= 3.0.0) systemfonts (>= 1.0.0) cpp11, systemfonts htmltools, testthat, xml2 (>= 1.0.0), covr, fontquiver (>=
+0.2.0), knitr, rmarkdown NA GPL (>= 2) NA NA NA NA yes 4.1.1
+sys sys /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.4 NA NA NA NA unix (>= 1.4), spelling, testthat NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+systemfonts systemfonts /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.4 NA R (>= 3.2.0) NA cpp11 (>= 0.2.1) testthat (>= 2.1.0), covr, knitr, rmarkdown, tools NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+tcltk tcltk /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA utils NA NA NA Part of R 4.1.1 NA NA NA NA yes 4.1.1
+testthat testthat /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.1.0 NA R (>= 3.1) brio, callr (>= 3.5.1), cli (>= 2.2.0), crayon (>= 1.3.4),
+desc, digest, ellipsis (>= 0.2.0), evaluate, jsonlite,
+lifecycle, magrittr, methods, pkgload, praise, processx, ps (>=
+1.3.4), R6 (>= 2.2.0), rlang (>= 0.4.9), utils, waldo (>=
+0.2.4), withr (>= 2.3.0) NA covr, curl (>= 0.9.5), diffviewer (>= 0.1.0), knitr, mockery,
+rmarkdown, rstudioapi, shiny, usethis, vctrs (>= 0.1.0), xml2 NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+tibble tibble /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.1.5 NA R (>= 3.1.0) ellipsis (>= 0.3.2), fansi (>= 0.4.0), lifecycle (>= 1.0.0),
+magrittr, methods, pillar (>= 1.6.2), pkgconfig, rlang (>=
+0.4.3), utils, vctrs (>= 0.3.8) NA bench, bit64, blob, brio, callr, cli, covr, crayon (>=
+1.3.4), DiagrammeR, dplyr, evaluate, formattable, ggplot2, hms,
+htmltools, knitr, lubridate, mockr, nycflights13, pkgbuild,
+pkgload, purrr, rmarkdown, stringi, testthat (>= 3.0.2), tidyr,
+withr NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+tidyr tidyr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.1.4 NA R (>= 3.1) dplyr (>= 0.8.2), ellipsis (>= 0.1.0), glue, lifecycle,
+magrittr, purrr, rlang, tibble (>= 2.1.1), tidyselect (>=
+1.1.0), utils, vctrs (>= 0.3.6) cpp11 (>= 0.2.6) covr, data.table, jsonlite, knitr, readr, repurrrsive (>=
+1.0.0), rmarkdown, testthat (>= 3.0.0) NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+tidyselect tidyselect /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.1.1 NA R (>= 3.2) ellipsis, glue (>= 1.3.0), purrr (>= 0.3.2), rlang (>= 0.4.6),
+vctrs (>= 0.3.0) NA covr, crayon, dplyr, knitr, magrittr, rmarkdown, testthat (>=
+2.3.0), tibble (>= 2.1.3), withr NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+timeDate timeDate /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3043.102 NA R (>= 2.15.1), graphics, utils, stats, methods NA NA date, RUnit NA GPL (>= 2) NA NA NA NA no 4.1.0
+tinytex tinytex /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.37 NA NA xfun (>= 0.29) NA testit, rstudioapi NA MIT + file LICENSE NA NA NA NA no 4.1.1
+tools tools /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA NA NA codetools, methods, xml2, curl, commonmark NA Part of R 4.1.1 NA NA NA NA yes 4.1.1
+tweenr tweenr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0.2 NA R (>= 3.2.0) Rcpp (>= 0.12.3), grDevices, farver, magrittr, rlang Rcpp testthat, covr NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+utf8 utf8 /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.2.2 NA R (>= 2.10) NA NA cli, covr, knitr, rlang, rmarkdown, testthat (>= 3.0.0),
+withr NA Apache License (== 2.0) | file LICENSE NA NA NA NA yes 4.1.0
+utils utils /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 4.1.1 base NA NA NA methods, xml2, commonmark NA Part of R 4.1.1 NA NA NA NA yes 4.1.1
+uuid uuid /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.0-3 NA R (>= 2.9.0) NA NA NA NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+vctrs vctrs /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3.8 NA R (>= 3.3) ellipsis (>= 0.2.0), glue, rlang (>= 0.4.10) NA bit64, covr, crayon, dplyr (>= 0.8.5), generics, knitr,
+pillar (>= 1.4.4), pkgdown, rmarkdown, testthat (>= 2.3.0),
+tibble, withr, xml2, waldo (>= 0.2.0), zeallot NA MIT + file LICENSE NA NA NA NA yes 4.1.0
+viridisLite viridisLite /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.4.0 NA R (>= 2.10) NA NA hexbin (>= 1.27.0), ggplot2 (>= 1.0.1), testthat, covr NA MIT + file LICENSE NA NA NA NA no 4.1.0
+waldo waldo /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.3.1 NA NA cli, diffobj (>= 0.3.4), fansi, glue, methods, rematch2, rlang
+(>= 0.4.10), tibble NA testthat (>= 3.0.0), covr, R6, withr, xml2 NA MIT + file LICENSE NA NA NA NA no 4.1.1
+webshot webshot /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.5.2 NA R (>= 3.0) magrittr, jsonlite, callr NA httpuv, knitr, rmarkdown, shiny NA GPL-2 NA NA NA NA no 4.1.1
+withr withr /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.4.2 NA R (>= 3.2.0) graphics, grDevices, stats NA covr, DBI, knitr, lattice, methods, rmarkdown, RSQLite,
+testthat (>= 2.1.0) NA MIT + file LICENSE NA NA NA NA no 4.1.0
+xfun xfun /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.30 NA NA stats, tools NA testit, parallel, codetools, rstudioapi, tinytex (>= 0.30),
+mime, markdown, knitr, htmltools, remotes, pak, rhub, renv,
+curl, jsonlite, rmarkdown NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+XML XML /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 3.99-0.8 NA R (>= 4.0.0), methods, utils NA NA bitops, RCurl NA BSD_3_clause + file LICENSE NA NA NA NA yes 4.1.1
+xml2 xml2 /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.3.3 NA R (>= 3.1.0) methods NA covr, curl, httr, knitr, magrittr, mockery, rmarkdown,
+testthat (>= 2.1.0) NA MIT + file LICENSE NA NA NA NA yes 4.1.1
+xtable xtable /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.8-4 NA R (>= 2.10.0) stats, utils NA knitr, plm, zoo, survival NA GPL (>= 2) NA NA NA NA no 4.1.1
+XVector XVector /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 0.34.0 NA R (>= 4.0.0), methods, BiocGenerics (>= 0.37.0), S4Vectors (>=
+0.27.12), IRanges (>= 2.23.9) methods, utils, tools, zlibbioc, BiocGenerics, S4Vectors,
+IRanges S4Vectors, IRanges Biostrings, drosophila2probe, RUnit NA Artistic-2.0 NA NA NA NA yes 4.1.1
+yaml yaml /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 2.2.1 NA NA NA NA RUnit NA BSD_3_clause + file LICENSE NA NA NA NA yes 4.1.0
+zlibbioc zlibbioc /home/lv71484/droman/miniconda3/envs/Zoo_SVM_4.1/lib/R/library 1.40.0 NA NA NA NA NA NA Artistic-2.0 + file LICENSE NA NA NA NA yes 4.1.1
