@@ -1,5 +1,5 @@
 ##specifying the species:
-DATA_DIR="/binfl/lv71484/droman/DNAmeth500species/"
+DATA_DIR=<your path here>
 wd=${DATA_DIR}"/results_pipeline/${1}"
 RRBSdir="toSelf_filtered_0.08mm_final_concat"
 species=${1}
@@ -14,5 +14,5 @@ uc_tag="_uc"
 output_dir=$DATA_DIR"/results_analysis/07_motifAnalysis/07.4_diffMeth_additional_run/${1}"
 echo $output_dir
 
-/home/lv71484/droman/.conda/envs/Zoo_R/bin/Rscript ${CODEBASE}/DNAmeth500species/src/diffMeth.R ${wd} ${RRBSdir} $species $dedRef_id $sampleAnnotation $comp_col $groups_col $nTopDiffMeth $scripts $motif $uc_tag $output_dir
+<your env path here>/Rscript ${CODEBASE}/DNAmeth500species/src/diffMeth.R ${wd} ${RRBSdir} $species $dedRef_id $sampleAnnotation $comp_col $groups_col $nTopDiffMeth $scripts $motif $uc_tag $output_dir
 
