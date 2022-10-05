@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## $1 - the species to run the analysis on
-DATA_DIR="/binfl/lv71484/droman/DNAmeth500species/"
+DATA_DIR=<your path here>
 MOTIF_FILE=${DATA_DIR}"resources/JASPAR/JASPAR2020_CORE_vertebrates_non-redundant_pfms.meme"
 FASTA_DIR=$DATA_DIR"/results_analysis/07_motifAnalysis/07.4_diffMeth_additional_run/${1}/motifAnalysis/"
 OUTPUT_DIR=$DATA_DIR"/results_analysis/07_motifAnalysis/07.5_AME/screen/${1}"
