@@ -1,15 +1,15 @@
 #!/bin/bash
 
 #SBATCH --job-name meme
-#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/06.3.2_%A_%a.log
+#SBATCH --output ../../log/06.3.2_%A_%a.log
 #SBATCH --partition vsc3plus_0256
 #SBATCH --qos vsc3plus_0256
 #SBATCH -N 1
 #SBATCH --array=1-192%100
 
-ANALYSIS_DIR=/binfl/lv71484/droman/DNAmeth500species/results_analysis/
-export SCRATCH_PATH=/binfl/lv71484/droman/DNAmeth500species/log/mytmp
-export TMPDIR=/binfl/lv71484/droman/tmp
+ANALYSIS_DIR=../../results_analysis/
+export SCRATCH_PATH=${LOGDIR}
+export TMPDIR=${LOGDIR}/tmp
 
 echo "$SLURM_ARRAY_TASK_ID"
 SP=`awk 'NR=='$SLURM_ARRAY_TASK_ID'{print $1}' ${ANALYSIS_DIR}/06_inv/classes_with_inv.txt`
