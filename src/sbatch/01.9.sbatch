@@ -17,6 +17,6 @@ source ~/.bashrc
 conda activate Zoo_R
 
 date
-/home/lv71484/droman/.conda/envs/Zoo_R/bin/Rscript ${CODEBASE}/DNAmeth500species/src/01.9_coverage_analysis.R ${SP} 
+<your env path here>/Rscript ${CODEBASE}/DNAmeth500species/src/01.9_coverage_analysis.R ${SP} 
 date
 
