@@ -6,9 +6,9 @@
 #SBATCH --array=183,472
 #SBATCH -N 1
 
-ANALYSIS_DIR=/binfl/lv71484/droman/DNAmeth500species/results_analysis
-export SCRATCH_PATH=/binfl/lv71484/droman/DNAmeth500species/log/mytmp
-export TMPDIR=/binfl/lv71484/droman/tmp
+ANALYSIS_DIR=../../results_analysis
+export SCRATCH_PATH=../../log/mytmp
+export TMPDIR=<your path here>
 
 echo "$SLURM_ARRAY_TASK_ID"
 
