@@ -77,12 +77,12 @@ core_vert <- c("Liver","Heart","Brain","Spleen","Muscle","Gills","Fin")
 core <- c("Liver","Heart","Lung", "Brain","Spleen","Muscle","Gills","Fin", "Kidney")
 
 #paths (have to be updated)
-RefFreeDMA_dir="/home/lv71484/droman/reffreedma/RefFreeDMA" 
-convCtr_dir = "/home/lv71484/droman/reffreedma/conversionCtr"
-bisulfiteBlast_dir = "/home/lv71484/droman/reffreedma/bisulfiteBlast"
-BSF_dir = "/binfl/lv71484/droman/DNAmeth500species/raw_data"
+RefFreeDMA_dir=<your path here>
+convCtr_dir = <your path here>
+bisulfiteBlast_dir = <your path here>
+BSF_dir = <your path here>
 
-data_dir = "/binfl/lv71484/droman/DNAmeth500species/"
+data_dir = <your path here>
 source_dir = file.path(Sys.getenv("CODEBASE"),"DNAmeth500species")
 rrbs_dir = "toSelf_filtered_0.08mm_final_concat"
 
