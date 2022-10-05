@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name kebabs
-#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/05.1.1_%A_%a.log
+#SBATCH --output ../../log/05.1.1_%A_%a.log
 #SBATCH --partition vsc3plus_0064
 #SBATCH --qos vsc3plus_0064
 #SBATCH -N 1
@@ -18,5 +18,5 @@ echo "$SP"
 
 
 date
-~/miniconda3/envs/Zoo_SVM_4.1/bin/Rscript ${CODEBASE}/DNAmeth500species/src/05.1.1_predict_meth_kebabs_alt.R $SP
+<your env path here>/Rscript ${CODEBASE}/DNAmeth500species/src/05.1.1_predict_meth_kebabs_alt.R $SP
 date
