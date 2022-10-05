@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name dedRefCount
-#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/01.4_dedRefCount.log
+#SBATCH --output ../../log/01.4_dedRefCount.log
 #SBATCH --partition vsc3plus_0064
 #SBATCH --qos vsc3plus_0064
 #SBATCH -N 1
