@@ -1,15 +1,15 @@
 #!/bin/bash
 #SBATCH --job-name coverage
-#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/coverage_%A_%a.txt
+#SBATCH --output ../../log/coverage_%A_%a.txt
 #SBATCH --partition vsc3plus_0064
 #SBATCH --qos vsc3plus_0064
 #SBATCH -N 1
 #SBATCH --array=183
 
-export SCRATCH_PATH=/binfl/lv71484/droman/DNAmeth500species/mytmp
+export SCRATCH_PATH=<your path here>
 export TMPDIR=$SCRATCH_PATH/Rtmp
 
-SP=`awk 'NR=='$SLURM_ARRAY_TASK_ID'{print $0}' /home/lv71484/droman/DNAmeth500species/meta/species_list.txt`
+SP=`awk 'NR=='$SLURM_ARRAY_TASK_ID'{print $0}' ../../meta/species_list.txt`
 
 echo "$SP"
 
