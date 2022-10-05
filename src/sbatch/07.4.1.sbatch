@@ -3,15 +3,10 @@
 #SBATCH --partition vsc3plus_0064
 #SBATCH --qos vsc3plus_0064
 #SBATCH -N 1
-#SBATCH --output /binfl/lv71484/droman/DNAmeth500species/log/07.1_%A_%a.log
+#SBATCH --output ../../log/07.1_%A_%a.log
 #SBATCH --array=3-580%100
 
-source ~/.bashrc
-conda activate Zoo_R
-
 echo "TEST"
-
-LOGDIR="/binfl/lv71484/droman/DNAmeth500species/log/mytmp"
 
 export SCRATCH_PATH=${LOGDIR}/mytmp
 export TMPDIR=$SCRATCH_PATH/Rtmp
