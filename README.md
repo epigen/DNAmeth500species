@@ -1,14 +1,15 @@
 # DNAmeth500species
 Comparative analysis of DNA methylation across more than 500 animal species
 
-In general, scripts can be divided into two categories: Those that have to be rn in HPC mode on each species in parallel, andthose that are used for summarizing and vizualizing results by generating summary tables and figure panels. For the HPC scrips sbatch scripts with reccomended parametrs to run the job are provided but need to be adjusted if a sheduler other than SLURM is to be used.
+In general, scripts can be divided into two categories: Those that have to be run in HPC mode on each species in parallel, and those that are used for summarizing and vizualizing results by generating summary tables and figure panels. For the HPC scrips sbatch scripts with reccomended parametrs to run the job. Those scripts have to be adjusted to the HPC and scheduler settings.
 
 ## Reproducing the project step-by-step
+
 ### Adapting to your setup
 00.0_init.R is the script, to initialize all further scripts, it will standardize setting, make annotations availble, and set paths to data and scripts. Few absolute paths need to be adjusted and two enviromnental variables are required:  
 ```
 CODEBASE (location of this github repository) 
-LOGDIR (location for pipelen log files) 
+LOGDIR (location for pipeline log and tmp files) 
 ```
 #### Preparation
 Make sure, you have all the nessesary packages in R:
@@ -16,16 +17,17 @@ Make sure, you have all the nessesary packages in R:
 https://github.com/jklughammer/RefFreeDMA 
 https://github.com/jklughammer/bisulfiteBlast
 
-2. for the analysis install the following packages via install.packages or bioconductor:
-simpleCache, parallel, Rsamtools, data.table, dplyr, tidyr, ggplot2, ggrepel, ggseqlogo, pheatmap, ComplexHeatmap, circlize, ape, ggtree, taxize, phylobase, tidytree, maps, dummies, MASS, boot, magrittr, corrplot, caret, LiblineaR, rr2, ggdendro, phylolm, dendextend, mclust, kebabs, ROCR, seqLogo, pheatmap, ggseqlogo, treeio, pryr, tibble, msa, ggubr, Biostrings, RColorBrewer, plyr, TFBSTools, JASPAR2014, GenomicRanges, topGO, biomaRt, MASS, stringr
+2. for the analysis we use two versions of R (3.6.1 for the most part and 4.1 for the SVM modelling). We provide the conda environmets with listed packages as yaml files in the envs folders. The missing packages that were not available via conda and must be installed within R are provided as csv tables.
 
 ### 00: Preparing to run the pipeline on raw data
-Preparing to run RefFreeDMA, if you want to start from the raw data. This will prepare the run folders and shell scripts containing the commands to run RefFeeDMA.
-If run in interactive mode stats can be checked and parameters can be adjusted.
+
+For the first processing step the RefFreeDMA pipeline[https://github.com/jklughammer/RefFreeDMA] is used. The 00.1 script will prepare the run folders and shell scripts containing the commands to run RefFeeDMA. For setting up RefFreeDMA please follow the instructions in the corresponding repository.
+
 ```bash
 Rscript 00.1_prepareRefFreeDMA.R 
 ```
 ### 01: Creating a comprehensive sample annotation table
+
 Following scripts will generate some additional data metrices, that are used in most subsequent analysis.
 Here we create the big summary annotation table and other initial stats:
 ```bash
@@ -226,3 +228,4 @@ Rscript 03.6_summary.R
 ```
 
 
+![image](https://user-images.githubusercontent.com/29308509/194266960-7b7a06fd-3312-4643-88c4-48694983cc02.png)
