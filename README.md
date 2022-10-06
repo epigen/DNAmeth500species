@@ -226,6 +226,3 @@ Rscript 03.4.1_WGBS_prediction_summary.R
 Rscript 03.5_summary.R
 Rscript 03.6_summary.R
 ```
-
-
-![image](https://user-images.githubusercontent.com/29308509/194266960-7b7a06fd-3312-4643-88c4-48694983cc02.png)
