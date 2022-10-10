@@ -44,9 +44,9 @@ This repository provides a set of scripts used to analyze the data. Below please
 |5D|validation/01.5.3_crossMapping_plot.R| 
 |5E|validation/01.5.3_crossMapping_plot.R| 
 
-## Reproducing the project step-by-step
+## Reproducing the project step-by-step:
 
-### Setup
+### Setup.
 For computational analysis, we use R version 3.6.1 with all the corresponding packages. The SVM module requires an independent block with R version 4.1.
 We provide a full list of packages installed in each of the subsets with their versions in the envs/ folder as csv files. For your convinience, we also provide the mirrors of conda environments as yaml files, generated with ```bash conda env export```. Please note that not all packages were installed within conda, so additionally you would still have to install missing R packages from the csv tables if needed for the corresponding part of the analysis. 
  
@@ -68,7 +68,7 @@ CODEBASE (location of this github repository)
 LOGDIR (location for pipeline log and tmp files) 
 ```
 
-### 00: Preparing to run the pipeline on raw data
+### 00: Preparing to run the pipeline on raw data.
 
 For data processing you would have to use [RefFreeDMA](https://github.com/jklughammer/RefFreeDMA) and [bisulfiteBlast](https://github.com/jklughammer/bisulfiteBlast).
 The 00.1 script will prepare the run folders and shell scripts containing the commands to run RefFeeDMA. For setting up RefFreeDMA please follow the instructions in the [corresponding repository](https://github.com/jklughammer/bisulfiteBlast).
@@ -82,8 +82,8 @@ Following scripts will generate some additional data metrices, that are used in 
 Here we create the big summary annotation table and other initial stats:
 ```bash
 Rscript 01.1_collectStats.R
-RScript 01.2_taxonomicAnnotation.R. #generates the stats annot table
-RScript 01.3_quality_stratification.R
+Rscript 01.2_taxonomicAnnotation.R. #generates the stats annot table
+Rscript 01.3_quality_stratification.R
 ```
 
 Calcualating the frequency of CGs for subsequent analysis:
@@ -227,8 +227,8 @@ Create correlation plots between liver and heart DNA methylattion levels for sel
 08.4_tissue_diffMeth.R
 ```
 
-## Validation on on reference genomes.
-### 01 CrossMapping RefFreeDMA analysis to reference genomes.
+## Validation on publicly available reference genomes.
+### 01: CrossMapping RefFreeDMA analysis to reference genomes.
 
 determining which genomes to process, cleaning them up and concatting:
 
@@ -252,7 +252,7 @@ Rscript 01.5.2_crossMappingAnalysis_summary.R
 Rscript 01.5.3_crossMapping_plot.R
 ```
 
-### 02 Insilico RRBS simulation
+### 02: Insilico RRBS simulation.
 
 In interactive jupyer notebook run the preparation notebook for genomes:
 02.1_insilico_digest_prepare_genomes.R
@@ -261,7 +261,7 @@ In interactive jupyer notebook run the preparation notebook for genomes:
 sbatch 02.2_insilicoDigest.sbatch
 Rscript 02.3_insilicoDigest_summary.R
 ```
-### 03 WGBS analysis
+### 03: WGBS analysis.
 
 WGBS data download is described at 03.1_download_WGBS.ipynb:
 ```bash
