@@ -48,7 +48,7 @@ This repository provides a set of scripts used to analyze the data. Below please
 
 ### Setup.
 For computational analysis, we use R version 3.6.1 with all the corresponding packages. The SVM module requires an independent block with R version 4.1.
-We provide a full list of packages installed in each of the subsets with their versions in the envs/ folder as csv files. For your convinience, we also provide the mirrors of conda environments as yaml files, generated with ```bash conda env export```. Please note that not all packages were installed within conda, so additionally you would still have to install missing R packages from the csv tables if needed for the corresponding part of the analysis. 
+We provide a full list of packages installed in each of the subsets with their versions in the envs/ folder as csv files. For your convinience, we also provide the mirrors of conda environments as yaml files, generated with ```conda env export```. Please note that not all packages were installed within conda, so additionally you would still have to install missing R packages from the csv tables if needed for the corresponding part of the analysis. 
  
 The project folder contains the following folders:
 -src 
@@ -95,8 +95,8 @@ Calculating the frequency of kmers, using the MEME tool:
 
 ```bash
 sbatch sbatch/01.5.1.sbatch ##prefilteing
-sbatch sbatch/01.5.sbatch
-Rscript 01.5.2_kmer_count_summary.R  ##summary for further use
+sbatch sbatch/01.5.2.sbatch
+Rscript 01.5.3_kmer_count_summary.R  ##summary for further use
 ```
 
 Generation of the phylogenetic tree for iTOL, it's optimization for future analysis and exporting the taxonomimc order of species for use in subsequent analysis:
@@ -109,7 +109,11 @@ Calculating the CpG island properties:
 ```bash
 sbatch sbatch/01.8.sbatch 
 ```
-
+Coverage statistics and sequence features:
+```bash
+Rscript 01.9_coverage_analysis.R
+Rscript 01.10_seq_features.R
+```
 ### 02: Main statistics.
 
 The following scripts create summary statistics and generate summary plots, giving us an overview of the data:  
@@ -118,7 +122,8 @@ Rscript 02.1_stats_uc.R
 Rscript 02.2_stats_general.R  
 Rscript 02.3_stats_detail.R  
 Rscript 02.4_stats_location.R  
-Rscript 02.5_stats_methylation.R  
+Rscript 02.5_stats_methylation.R 
+Rscript 02.7_speicesMeta.R
 ```
 
 Saving the supplementary tables and the stats for the paper:
@@ -131,9 +136,9 @@ Rscript 02.6_save_annot.R
 Step-by-step exploration of features, that explain mean DNA methylation level per species:
 
 ```bash
-Rscript 03.1_prediction_features.R ##creating a table of features
-Rscript 03.2_kmer_predictability_by_group.R ##prediction values for each group, takes a couple of hours
-Rscript 03.3_kmer3_stability.R ##stepwise selection on 3mers, takes a while
+Rscript 03.1_predict_average_meth_levels.R ##creating a table of features & prediction values for each group (takes a couple of hours on a large dataset)
+Rscript 03.2_kmer3_stability.R ##stepwise selection on 3mers
+Rscript 03.3_phyloglm.R ##phylogenetic models
 ```
 ### 04: Reconstructing phylogeny.
 Using kmer frequencies to create a hierarchical clustering of species, based on the sequence composition of the consensus genomes:
@@ -208,9 +213,12 @@ For integrating the methylation preference for TF binding, we used the data from
 
 ```bash
 Rscript 07.5_ame_selex.R
-Rscript 07.6_GO.R
-Rscript 07.7_GO.R
+Rscript 07.6_GO_enrichment.R
+Rscript 07.7_GRN.R
 ```
+Interactively: 07.8_followup_analysis.ipynb
+
+
 ### 08: Investigating sources of within-species DNA methylation variability.
 
 Multidimensional scaling analysis for selected species:
