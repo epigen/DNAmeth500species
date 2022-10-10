@@ -1,0 +1,10 @@
+.*
+src/.*
+src/validation/.*
+forGEO
+log
+rerun/*
+resources
+results_analysis
+results_pipeline
+tools/
