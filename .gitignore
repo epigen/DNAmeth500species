@@ -3,7 +3,7 @@ src/.*
 src/validation/.*
 forGEO
 log
-rerun/*
+rerun
 resources
 results_analysis
 results_pipeline
