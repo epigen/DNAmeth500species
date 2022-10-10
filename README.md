@@ -1,7 +1,31 @@
 # DNAmeth500species
-Comparative analysis of DNA methylation across more than 500 animal species
 
-In general, scripts can be divided into two categories: Those that have to be run in HPC mode on each species in parallel, and those that are used for summarizing and vizualizing results by generating summary tables and figure panels. For the HPC scrips sbatch scripts with reccomended parametrs to run the job. Those scripts have to be adjusted to the HPC and scheduler settings.
+Comparative analysis of genome-scale, base-resolution DNA methylation pro-files across 580 animal species.
+
+Methylation of cytosines is the prototypic epigenetic modification of the DNA. It has been implicated in various regulatory mechanisms throughout the animal kingdom and particularly in vertebrates. We mapped DNA methylation in 580 animal species (535 vertebrates, 45 invertebrates), resulting in 2443 genome-scale DNA methylation profiles of multiple organs. Reference-genome independent analysis of this comprehensive dataset quantified the association of DNA methylation with the underlying genomic DNA sequence throughout vertebrate evolution. We observed a broadly conserved link with two major transitions – once in the first vertebrates and again with the emergence of reptiles. Cross-species com-parisons focusing on individual organs supported a deeply conserved association of DNA methylation with tissue type, and cross-mapping analysis of DNA methylation at gene promoters revealed evolu-tionary changes for orthologous genes with conserved DNA methylation patterns. In summary, this study establishes a large resource of vertebrate and invertebrate DNA methylomes, it showcases the power of reference-free epigenome analysis in species for which no reference genomes are available, and it contributes an epigenetic perspective to the study of vertebrate evolution.
+
+This repository provides a set of scripts that were used to analyse the data. Below please find a step-by-step instruction of how to reproduce the analysis in the paper. There are two categories of scripts: those that have to be run in HPC mode on each species in parallel, and those that are used for summarizing and vizualizing results by generating summary tables and figure panels. 
+
+## Linking figures and scripts:
+|Panel|Script|
+| --- | --- |
+|1A	|Overview, no script | 
+|1B	|02.3_stats_detail.R|
+|1C	|02.6_create_ITOL.R|
+|1D	|02.3_stats_detail.R|
+|1E	|02.5_stats_methylation.R|
+|1F	|03.1_predict_average_meth_levels.R & 03.2_kmer_stability.R|
+|1G	|04.1_phylogeny_reconstruction.R|
+|1H	|03.3_phyloglm.R|
+|1I	|02.7_speciesMeta.R|
+|1J	|02.7_speciesMeta.R|
+|1K	|02.7_speciesMeta.R|
+|2A	|Overview, no script|
+|2B	|05.2_summarize_within_sp_prediction.R|
+|2C	|05.2_summarize_within_sp_prediction.R|
+|2D	|05.2_summarize_within_sp_prediction.R|
+|2E	|05.3_feature_weight_analysis.R|
+|2F	|05.3_feature_weight_analysis.R|
 
 ## Reproducing the project step-by-step
 
