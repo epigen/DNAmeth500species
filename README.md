@@ -3,7 +3,7 @@
 
 Methylation of cytosines is the prototypic epigenetic modification of the DNA. It has been implicated in various regulatory mechanisms throughout the animal kingdom and particularly in vertebrates. We mapped DNA methylation in 580 animal species (535 vertebrates, 45 invertebrates), resulting in 2443 genome-scale DNA methylation profiles of multiple organs. Reference-genome independent analysis of this comprehensive dataset quantified the association of DNA methylation with the underlying genomic DNA sequence throughout vertebrate evolution. We observed a broadly conserved link with two major transitions – once in the first vertebrates and again with the emergence of reptiles. Cross-species com-parisons focusing on individual organs supported a deeply conserved association of DNA methylation with tissue type, and cross-mapping analysis of DNA methylation at gene promoters revealed evolu-tionary changes for orthologous genes with conserved DNA methylation patterns. In summary, this study establishes a large resource of vertebrate and invertebrate DNA methylomes, it showcases the power of reference-free epigenome analysis in species for which no reference genomes are available, and it contributes an epigenetic perspective to the study of vertebrate evolution.
 
-More supplementary data and interactive data exploration  are available at [**supplemenary website**](https://medical-epigenomics.org/papers/DNAmeth500species/).  
+More supplementary data and interactive data exploration  are available on the [**supplementary website**](https://medical-epigenomics.org/papers/DNAmeth500species/).  
 
 This repository provides a set of scripts used to analyze the data. Below please find step-by-step instructions on how to reproduce the analysis in the paper. There are two categories of scripts: those that have to be run in HPC mode on each species in parallel, and those used for summarizing and visualizing results by generating summary tables and figure panels. The provided HPC scripts are written for a SLURM scheduling system and would have to be adjusted for your own computational environment and scheduler.
 
@@ -57,9 +57,9 @@ The project folder contains the following folders:
 -results_pipeline
 -results_analysis
 
-The *results_pipeline* folder should contain the per-species output of the RefFreeDMA. Most relevant files (deduced reference genome and methylation profiles) are shared and could be downloaded from the GEO repository under accession number GSE195869 or from the [supplemenary website](https://medical-epigenomics.org/papers/DNAmeth500species/).
+The *results_pipeline* folder should contain the per-species output of the RefFreeDMA. Most relevant files (deduced reference genome and methylation profiles) are shared and could be downloaded from the GEO repository under accession number GSE195869 or from the [supplementary website](https://medical-epigenomics.org/papers/DNAmeth500species/).
 
-The *results_analysis* folder contains the output of most of the scripts below. We also have provided the most relevant summary tables for download on the [supplemenary website](https://medical-epigenomics.org/papers/DNAmeth500species/).
+The *results_analysis* folder contains the output of most of the scripts below. We also have provided the most relevant summary tables for download on the [supplementary website](https://medical-epigenomics.org/papers/DNAmeth500species/).
 
 00.0_init.R is the script, to initialize all further scripts, it will standardize settings, make annotations available, and set paths to data and scripts. A few absolute paths need to be adjusted and two environmental variables are required (they have to be visible by both Rscript and bash): 
 
